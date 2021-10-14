@@ -1,0 +1,24 @@
+﻿@model IEnumerable<ChanhThu_Store.Models.DanhMuc>
+<div class="filter-sidebar-left">
+    <div class="title-left">
+        <h3>Phân Loại</h3>
+    </div>
+    <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
+        @foreach (var item in Model)
+        {
+        <div class="list-group-collapse sub-men">
+            <a data-toggle="collapse" aria-expanded="true" aria-controls="@item.MaDanhMuc" class="list-group-item list-group-item-action" href="#@item.MaDanhMuc">
+                @item.TenDanhMuc@*<small class="text-muted">(100)</small>*@
+                <i class="fas fa-chevron-down arrow-down float-right"></i>
+            </a>
+            <div class="danh-muc collapse" id="@item.MaDanhMuc" data-parent="#list-group-men">
+                <div class="list-group">
+                   @Html.Partial("_DanhMucCon",ChanhThu_Store.Models.BUS.DanhMucBUS.DanhMucCon(@item.MaDanhMuc))
+                </div>
+            </div>
+        </div>
+
+        }
+
+    </div>
+</div>

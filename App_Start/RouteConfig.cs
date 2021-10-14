@@ -1,0 +1,59 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Routing;
+
+namespace ChanhThu_Store
+{
+    public class RouteConfig
+    {
+        public static void RegisterRoutes(RouteCollection routes)
+        {
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapRoute(
+              name: "lien he",
+              url: "lien-he",
+              defaults: new { controller = "ContactUs", action = "Index", id = UrlParameter.Optional }
+          );
+            routes.MapRoute(
+              name: "cua hang",
+              url: "cua-hang",
+              defaults: new { controller = "SanPhams", action = "Index", id = UrlParameter.Optional }
+          );
+            routes.MapRoute(
+              name: "thong tin",
+              url: "thong-tin",
+              defaults: new { controller = "AboutUs", action = "Index", id = UrlParameter.Optional }
+          );
+            routes.MapRoute(
+              name: "trang chu",
+              url: "trang-chu",
+              defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+          );
+            routes.MapRoute(
+              name: "bo suu tap",
+              url: "bo-suu-tap",
+              defaults: new { controller = "DanhMucCons", action = "Index", id = UrlParameter.Optional }
+          );
+            routes.MapRoute(
+              name: "san pham theo danh muc con",
+              url: "cua-hang/danh-muc-con/id={id}",
+              defaults : new { controller = "DanhMucCons", action = "Details", id = UrlParameter.Optional }
+          );
+            routes.MapRoute(
+               name: "chi tiet san pham",
+               url: "san-pham/chi-tiet/id={id}",
+               defaults: new { controller = "SanPhams", action = "Details", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            );
+        }
+    }
+}
