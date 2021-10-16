@@ -6,8 +6,8 @@ namespace ChanhThu_Store.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("BinhLuan")]
-    public partial class BinhLuan
+    [Table("TuongTac")]
+    public partial class TuongTac
     {
         [Key]
         [Column(Order = 0)]
@@ -20,12 +20,12 @@ namespace ChanhThu_Store.Models
 
         [Required]
         [StringLength(255)]
-        public string NoiDung { get; set; }
+        public string NoiDungBinhLuan { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime? NgayBinhLuan { get; set; }
 
-        public virtual KhachHang KhachHang { get; set; }
+        public bool? YeuThich { get; set; }
 
         public virtual SanPham SanPham { get; set; }
     }

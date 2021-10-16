@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ChanhThu_Store.Models;
 
-namespace WebApplication1.Controllers
+namespace ChanhThu_Store.Controllers
 {
     public class DanhMucsController : Controller
     {

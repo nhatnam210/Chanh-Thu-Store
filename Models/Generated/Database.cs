@@ -137,6 +137,284 @@ namespace ChanhThuStorePoCo
 
     
 
+	[TableName("dbo.__MigrationHistory")]
+
+
+
+	[PrimaryKey("MigrationId", AutoIncrement=false)]
+
+
+	[ExplicitColumns]
+
+    public partial class __MigrationHistory : ChanhThuStorePoCoDB.Record<__MigrationHistory>  
+    {
+
+
+
+		[Column] public string MigrationId { get; set; }
+
+
+
+
+
+		[Column] public string ContextKey { get; set; }
+
+
+
+
+
+		[Column] public byte[] Model { get; set; }
+
+
+
+
+
+		[Column] public string ProductVersion { get; set; }
+
+
+
+	}
+
+    
+
+	[TableName("dbo.AspNetRoles")]
+
+
+
+	[PrimaryKey("Id", AutoIncrement=false)]
+
+
+	[ExplicitColumns]
+
+    public partial class AspNetRole : ChanhThuStorePoCoDB.Record<AspNetRole>  
+    {
+
+
+
+		[Column] public string Id { get; set; }
+
+
+
+
+
+		[Column] public string Name { get; set; }
+
+
+
+	}
+
+    
+
+	[TableName("dbo.AspNetUserClaims")]
+
+
+
+	[PrimaryKey("Id")]
+
+
+
+
+	[ExplicitColumns]
+
+    public partial class AspNetUserClaim : ChanhThuStorePoCoDB.Record<AspNetUserClaim>  
+    {
+
+
+
+		[Column] public int Id { get; set; }
+
+
+
+
+
+		[Column] public string UserId { get; set; }
+
+
+
+
+
+		[Column] public string ClaimType { get; set; }
+
+
+
+
+
+		[Column] public string ClaimValue { get; set; }
+
+
+
+	}
+
+    
+
+	[TableName("dbo.AspNetUserLogins")]
+
+
+
+	[PrimaryKey("LoginProvider", AutoIncrement=false)]
+
+
+	[ExplicitColumns]
+
+    public partial class AspNetUserLogin : ChanhThuStorePoCoDB.Record<AspNetUserLogin>  
+    {
+
+
+
+		[Column] public string LoginProvider { get; set; }
+
+
+
+
+
+		[Column] public string ProviderKey { get; set; }
+
+
+
+
+
+		[Column] public string UserId { get; set; }
+
+
+
+	}
+
+    
+
+	[TableName("dbo.AspNetUserRoles")]
+
+
+
+	[PrimaryKey("UserId", AutoIncrement=false)]
+
+
+	[ExplicitColumns]
+
+    public partial class AspNetUserRole : ChanhThuStorePoCoDB.Record<AspNetUserRole>  
+    {
+
+
+
+		[Column] public string UserId { get; set; }
+
+
+
+
+
+		[Column] public string RoleId { get; set; }
+
+
+
+	}
+
+    
+
+	[TableName("dbo.AspNetUsers")]
+
+
+
+	[PrimaryKey("Id", AutoIncrement=false)]
+
+
+	[ExplicitColumns]
+
+    public partial class AspNetUser : ChanhThuStorePoCoDB.Record<AspNetUser>  
+    {
+
+
+
+		[Column] public string Id { get; set; }
+
+
+
+
+
+		[Column] public string Ten { get; set; }
+
+
+
+
+
+		[Column] public string UserName { get; set; }
+
+
+
+
+
+		[Column] public string Email { get; set; }
+
+
+
+
+
+		[Column] public bool EmailConfirmed { get; set; }
+
+
+
+
+
+		[Column] public string PasswordHash { get; set; }
+
+
+
+
+
+		[Column] public string PhoneNumber { get; set; }
+
+
+
+
+
+		[Column] public string DiaChi { get; set; }
+
+
+
+
+
+		[Column] public int? DiemTichLuy { get; set; }
+
+
+
+
+
+		[Column] public string SecurityStamp { get; set; }
+
+
+
+
+
+		[Column] public bool PhoneNumberConfirmed { get; set; }
+
+
+
+
+
+		[Column] public bool TwoFactorEnabled { get; set; }
+
+
+
+
+
+		[Column] public DateTime? LockoutEndDateUtc { get; set; }
+
+
+
+
+
+		[Column] public bool LockoutEnabled { get; set; }
+
+
+
+
+
+		[Column] public int AccessFailedCount { get; set; }
+
+
+
+	}
+
+    
+
 	[TableName("dbo.Banner")]
 
 
@@ -158,46 +436,6 @@ namespace ChanhThuStorePoCo
 
 
 		[Column] public string HinhBanner2 { get; set; }
-
-
-
-	}
-
-    
-
-	[TableName("dbo.BinhLuan")]
-
-
-
-	[PrimaryKey("MaKhachHang", AutoIncrement=false)]
-
-
-	[ExplicitColumns]
-
-    public partial class BinhLuan : ChanhThuStorePoCoDB.Record<BinhLuan>  
-    {
-
-
-
-		[Column] public string MaKhachHang { get; set; }
-
-
-
-
-
-		[Column] public string MaSanPham { get; set; }
-
-
-
-
-
-		[Column] public string NoiDung { get; set; }
-
-
-
-
-
-		[Column] public DateTime? NgayBinhLuan { get; set; }
 
 
 
@@ -265,7 +503,7 @@ namespace ChanhThuStorePoCo
 
 
 
-		[Column] public string MaKhachhang { get; set; }
+		[Column] public string MaKhachHang { get; set; }
 
 
 
@@ -380,64 +618,6 @@ namespace ChanhThuStorePoCo
 
 
 		[Column] public int TongTien { get; set; }
-
-
-
-	}
-
-    
-
-	[TableName("dbo.KhachHang")]
-
-
-
-	[PrimaryKey("MaKhachHang", AutoIncrement=false)]
-
-
-	[ExplicitColumns]
-
-    public partial class KhachHang : ChanhThuStorePoCoDB.Record<KhachHang>  
-    {
-
-
-
-		[Column] public string MaKhachHang { get; set; }
-
-
-
-
-
-		[Column] public string TenKhachHang { get; set; }
-
-
-
-
-
-		[Column] public string SDT { get; set; }
-
-
-
-
-
-		[Column] public string Email { get; set; }
-
-
-
-
-
-		[Column] public string MatKhau { get; set; }
-
-
-
-
-
-		[Column] public string DiaChi { get; set; }
-
-
-
-
-
-		[Column] public int? DiemTichLuy { get; set; }
 
 
 
@@ -577,35 +757,7 @@ namespace ChanhThuStorePoCo
 
 
 
-		[Column] public string TinhTrang { get; set; }
-
-
-
-	}
-
-    
-
-	[TableName("dbo.SanPhamYeuThich")]
-
-
-
-	[PrimaryKey("MaKhachHang", AutoIncrement=false)]
-
-
-	[ExplicitColumns]
-
-    public partial class SanPhamYeuThich : ChanhThuStorePoCoDB.Record<SanPhamYeuThich>  
-    {
-
-
-
-		[Column] public string MaKhachHang { get; set; }
-
-
-
-
-
-		[Column] public string MaSanPham { get; set; }
+		[Column] public bool TinhTrang { get; set; }
 
 
 
@@ -804,6 +956,52 @@ namespace ChanhThuStorePoCo
 
 
 		[Column] public string HinhMinhHoa { get; set; }
+
+
+
+	}
+
+    
+
+	[TableName("dbo.TuongTac")]
+
+
+
+	[PrimaryKey("MaKhachHang", AutoIncrement=false)]
+
+
+	[ExplicitColumns]
+
+    public partial class TuongTac : ChanhThuStorePoCoDB.Record<TuongTac>  
+    {
+
+
+
+		[Column] public string MaKhachHang { get; set; }
+
+
+
+
+
+		[Column] public string MaSanPham { get; set; }
+
+
+
+
+
+		[Column] public string NoiDungBinhLuan { get; set; }
+
+
+
+
+
+		[Column] public DateTime? NgayBinhLuan { get; set; }
+
+
+
+
+
+		[Column] public bool? YeuThich { get; set; }
 
 
 

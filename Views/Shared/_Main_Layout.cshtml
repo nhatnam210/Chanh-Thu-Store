@@ -39,7 +39,7 @@
     <link rel="stylesheet" href="~/Content/css/bootsnav.css">
     <link rel="stylesheet" href="~/Content/css/bootstrap-select.css">
     <link rel="stylesheet" href="~/Content/css/carousel-ticker.css">
-
+    @Scripts.Render("~/bundles/modernizr")
 
 
 
@@ -70,18 +70,22 @@
                     </div>
                     <div class="our-link">
                         <ul>
-                            <li><a href="#"><i class="fa fa-user s_color"></i> Tài Khoản</a></li>
                             <li><a href="#"><i class="fas fa-location-arrow"></i> Địa ĐIểm Cửa Hàng</a></li>
                             <li><a href="#"><i class="fas fa-headset"></i> Liên hệ</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <div class="login-box">
-                        <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
-                            <option>Đăng Kí Tại Đây</option>
-                            <option>Đăng Nhập</option>
-                        </select>
+                    @*<div class="login-box">
+            <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
+                <option>Đăng Kí Tại Đây</option>
+                <option>Đăng Nhập</option>
+            </select>
+        </div>*@
+                    <div class="account"><a href="#"><i class="fa fa-user s_color"></i> Tài Khoản</a></div>
+                    <div class="option-account">
+                        <a href="" class="btn btn-success register hvr-hover">Đăng nhập</a>
+                        <a href="" class="btn btn-success login hvr-hover">Đăng ký</a>
                     </div>
                     <div class="text-slid-box">
                         <div id="offer-box" class="carouselTicker">
@@ -416,6 +420,10 @@
     <script src="~/Content/js/contact-form-script.js"></script>
     <script src="~/Content/js/custom.js"></script>
     <script src="~/Content/js/style.js"></script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </body>
 
 </html>
