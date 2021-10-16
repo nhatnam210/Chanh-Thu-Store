@@ -10,12 +10,10 @@ namespace ChanhThu_Store.Models
     public partial class ThongTinCuaHang
     {
         [Key]
-        [Column(Order = 0)]
         [StringLength(30)]
-        public string TenCuHang { get; set; }
+        public string TenCuaHang { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
+        [Required]
         [StringLength(10)]
         public string SDT { get; set; }
 

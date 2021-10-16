@@ -1,5 +1,4 @@
-﻿
-
+﻿@model IEnumerable<ChanhThu_Store.Models.SanPham>
 
 @{
     ViewBag.Title = "Index";
@@ -25,16 +24,16 @@
 <div class="shop-box-inner">
     <div class="container">
         <div class="row">
-            @Html.Partial("_Sanphamtheodanhmuc", ChanhThu_Store.Models.BUS.SanPhamBUS.DanhSachSanPhamtheoDanhMucMacDinh())
+            @Html.Partial("_SanPham_DMC", ChanhThu_Store.Models.BUS.SanPhamBUS.DanhSachSanPhamTheoDanhMucConMacDinh())
             <div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
                 <div class="product-categori">
                     <div class="search-product">
                         <form action="#">
-                            <input class="form-control" placeholder="Search here..." type="text">
+                            <input class="form-control" placeholder="Tìm kiếm..." type="text">
                             <button type="submit"> <i class="fa fa-search"></i> </button>
                         </form>
                     </div>
-                    @Html.Partial("_PhanLoaiDanhMuc", ChanhThu_Store.Models.BUS.DanhMucBUS.DanhSach())
+                    @Html.Partial("_PhanLoaiDanhMuc", ChanhThu_Store.Models.BUS.DanhMucBUS.DanhSachDM())
 
                     <!-- <div class="filter-price-left">
                         <div class="title-left">
@@ -54,6 +53,3 @@
     </div>
 </div>
 <!-- End Shop Page -->
-
-
-

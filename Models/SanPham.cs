@@ -22,10 +22,6 @@ namespace ChanhThu_Store.Models
         public string MaSanPham { get; set; }
 
         [Required]
-        [StringLength(5)]
-        public string MaDanhMuc { get; set; }
-
-        [Required]
         [StringLength(6)]
         public string MaDanhMucCon { get; set; }
 
@@ -74,8 +70,6 @@ namespace ChanhThu_Store.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
-
-        public virtual DanhMuc DanhMuc { get; set; }
 
         public virtual DanhMucCon DanhMucCon { get; set; }
 

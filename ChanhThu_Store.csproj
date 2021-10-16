@@ -182,6 +182,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Banner.cs" />
     <Compile Include="Models\BinhLuan.cs" />
     <Compile Include="Models\BUS\DanhMucBUS.cs" />
     <Compile Include="Models\BUS\SanPhamBUS.cs" />
@@ -201,7 +202,8 @@
     <Compile Include="Models\NhaSanXuat.cs" />
     <Compile Include="Models\PetaPoco.cs" />
     <Compile Include="Models\SanPham.cs" />
-    <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Models\SlideFooter.cs" />
+    <Compile Include="Models\SlideHeader.cs" />
     <Compile Include="Models\ThongTinCuaHang.cs" />
     <Compile Include="Models\Voucher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -252,6 +254,7 @@
     <Content Include="Content\images\categories_img_02.jpg" />
     <Content Include="Content\images\categories_img_03.jpg" />
     <Content Include="Content\images\contact-bg.jpg" />
+    <Content Include="Content\images\default.png" />
     <Content Include="Content\images\favicon.ico" />
     <Content Include="Content\images\gallery-img-01.jpg" />
     <Content Include="Content\images\gallery-img-02.jpg" />
@@ -387,27 +390,28 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Shared\_BoSuuTapHinh.cshtml" />
     <Content Include="Views\Shared\_Main_Layout.cshtml" />
-    <Content Include="Views\Shared\_Sanphamtheodanhmuc.cshtml" />
-    <Content Include="Views\DanhMucs\Create.cshtml" />
-    <Content Include="Views\DanhMucs\Delete.cshtml" />
-    <Content Include="Views\DanhMucs\Edit.cshtml" />
-    <Content Include="Views\DanhMucs\Index.cshtml" />
-    <Content Include="Views\Shared\_BoSuuTapTen.cshtml" />
+    <Content Include="Views\Shared\_SanPham_DMC.cshtml" />
+    <Content Include="Views\Shared\_DanhMucCon_DM.cshtml" />
+    <Content Include="Views\Shared\_PhanLoaiDanhMuc.cshtml" />
     <Content Include="Views\SanPhams\Create.cshtml" />
     <Content Include="Views\SanPhams\Delete.cshtml" />
     <Content Include="Views\SanPhams\Details.cshtml" />
     <Content Include="Views\SanPhams\Edit.cshtml" />
     <Content Include="Views\SanPhams\Index.cshtml" />
-    <Content Include="Views\Shared\_DanhMucCon.cshtml" />
-    <Content Include="Views\Shared\_PhanLoaiDanhMuc.cshtml" />
     <Content Include="Views\DanhMucCons\Create.cshtml" />
     <Content Include="Views\DanhMucCons\Delete.cshtml" />
     <Content Include="Views\DanhMucCons\Details.cshtml" />
     <Content Include="Views\DanhMucCons\Edit.cshtml" />
     <Content Include="Views\DanhMucCons\Index.cshtml" />
-    <Content Include="Views\DanhMucs\SpDanhMuc.cshtml" />
+    <Content Include="Views\DanhMucs\Create.cshtml" />
+    <Content Include="Views\DanhMucs\Delete.cshtml" />
+    <Content Include="Views\DanhMucs\Details.cshtml" />
+    <Content Include="Views\DanhMucs\Edit.cshtml" />
+    <Content Include="Views\DanhMucs\Index.cshtml" />
+    <Content Include="Views\DanhMucs\SanPhamTheoDanhMuc.cshtml" />
+    <Content Include="Views\Shared\_BoSuuTap_Ten.cshtml" />
+    <Content Include="Views\Shared\_BoSuuTap_Hinh.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

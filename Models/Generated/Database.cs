@@ -26,7 +26,7 @@
 // 
 //     Connection String Name: `ChanhThuStorePoCo`
 //     Provider:               `System.Data.SqlClient`
-//     Connection String:      `Data Source=LAPTOP-9F4GMIKT\SQLEXPRESS;Initial Catalog=ChanhThuStore;Integrated Security=True`
+//     Connection String:      `Data Source=LAP-NAW\SQLEXPRESS;Initial Catalog=ChanhThuStore;Integrated Security=True`
 //     Schema:                 ``
 //     Include Views:          `False`
 
@@ -141,6 +141,8 @@ namespace ChanhThuStorePoCo
 
 
 
+	[PrimaryKey("HinhBanner1", AutoIncrement=false)]
+
 
 	[ExplicitColumns]
 
@@ -236,12 +238,6 @@ namespace ChanhThuStorePoCo
 
 
 		[Column] public int? DonGia { get; set; }
-
-
-
-
-
-		[Column] public int TongTienSanPham { get; set; }
 
 
 
@@ -383,7 +379,7 @@ namespace ChanhThuStorePoCo
 
 
 
-		[Column] public int TongTienHoaDon { get; set; }
+		[Column] public int TongTien { get; set; }
 
 
 
@@ -492,12 +488,6 @@ namespace ChanhThuStorePoCo
 
 
 		[Column] public string MaSanPham { get; set; }
-
-
-
-
-
-		[Column] public string MaDanhMuc { get; set; }
 
 
 
@@ -627,6 +617,8 @@ namespace ChanhThuStorePoCo
 
 
 
+	[PrimaryKey("HinhSlideFooter1", AutoIncrement=false)]
+
 
 	[ExplicitColumns]
 
@@ -670,6 +662,8 @@ namespace ChanhThuStorePoCo
 	[TableName("dbo.SlideHeader")]
 
 
+
+	[PrimaryKey("HinhSlideHeader1", AutoIncrement=false)]
 
 
 	[ExplicitColumns]
@@ -751,6 +745,8 @@ namespace ChanhThuStorePoCo
 
 
 
+	[PrimaryKey("TenCuaHang", AutoIncrement=false)]
+
 
 	[ExplicitColumns]
 
@@ -759,7 +755,7 @@ namespace ChanhThuStorePoCo
 
 
 
-		[Column] public string TenCuHang { get; set; }
+		[Column] public string TenCuaHang { get; set; }
 
 
 

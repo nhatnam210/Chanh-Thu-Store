@@ -15,22 +15,22 @@ namespace ChanhThu_Store.Models.BUS
             return db.Query<SanPham>("Select * from SanPham where TinhTrang = 1");
         }
       
-        public static IEnumerable<SanPham> DanhSachSanPhamtheoDanhMucMacDinh()
+        public static IEnumerable<SanPham> DanhSachSanPhamTheoDanhMucConMacDinh()
         {
             var db = new ChanhThuStorePoCoDB();
-            return db.Query<SanPham>("select * from SanPham where MaDanhMuc = (select top 1 MaDanhMuc from DanhMuc)");
+            return db.Query<SanPham>("select * from SanPham where MaDanhMucCon = (select top 1 MaDanhMucCon from DanhMucCon)");
         }
 
-        public static IEnumerable<SanPham> DanhSachSanPhamtheoDanhMuc(String id)
+        public static IEnumerable<SanPham> DanhSachSanPhamTheoDanhMuc(String id)
         {
             var db = new ChanhThuStorePoCoDB();
-            return db.Query<SanPham>("select * from SanPham where MaDanhMuc = '" + id + "' ");
+            return db.Query<SanPham>("select * from SanPham where MaDanhMucCon in (select MaDanhMucCon from DanhMucCon where MaDanhMuc = '"+ id +"')");
         }
 
-        public static IEnumerable<SanPham> DanhSachSanPhamtheoDanhMucCon(string id)
+        public static IEnumerable<SanPham> DanhSachSanPhamTheoDanhMucCon(string id)
         {
             var db = new ChanhThuStorePoCoDB();
-            return db.Query<SanPham>("select * from SanPham where MaDanhMucCon = '" + id + "' ");
+            return db.Query<SanPham>("select * from SanPham where MaDanhMucCon = '"+ id +"' ");
         }
     }
 }
