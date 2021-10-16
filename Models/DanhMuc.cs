@@ -13,7 +13,6 @@ namespace ChanhThu_Store.Models
         public DanhMuc()
         {
             DanhMucCons = new HashSet<DanhMucCon>();
-            SanPhams = new HashSet<SanPham>();
         }
 
         [Key]
@@ -26,8 +25,5 @@ namespace ChanhThu_Store.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DanhMucCon> DanhMucCons { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SanPham> SanPhams { get; set; }
     }
 }

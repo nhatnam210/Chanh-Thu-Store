@@ -29,5 +29,11 @@ namespace ChanhThu_Store.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<ChanhThu_Store.Models.SanPham> SanPhams { get; set; }
+
+        public System.Data.Entity.DbSet<ChanhThu_Store.Models.DanhMucCon> DanhMucCons { get; set; }
+
+        public System.Data.Entity.DbSet<ChanhThu_Store.Models.NhaSanXuat> NhaSanXuats { get; set; }
     }
 }

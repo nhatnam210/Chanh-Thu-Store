@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<ChanhThu_Store.Models.SanPham>
 
-<div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-right">
+
+<div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-left">
     <div class="right-product-box">
         <div class="product-item-filter row">
             <div class="col-12 col-sm-8 text-center text-sm-left">
@@ -44,7 +45,9 @@
                                         <div class="type-lb">
                                             <p class="sale">Sale</p>
                                         </div>
-                                        <img src="@item.HinhChinh" class="img-fluid" alt="Image">
+                                        @*<img src="@item.HinhChinh" class="img-fluid" alt="Image">*@
+                                        <div class="img-fit" style="background-image: url('@item.HinhChinh'),url('~/Content/images/default.png');">
+                                        </div>
                                         <div class="mask-icon">
                                             <ul>
                                                 <li>
@@ -61,9 +64,9 @@
                                             <a class="cart" href="#">Thêm Vào Giỏ</a>
                                         </div>
                                     </div>
-                                    <div class="why-text">
+                                    <div class="why-text view-row-content">
                                         <h4>@item.TenSanPham</h4>
-                                        <h5>@string.Format("{0:#,##0}", @item.Gia)đ</h5>
+                                        <h5>@string.Format("{0:#,##0}", @item.Gia) đ</h5>
                                     </div>
                                 </div>
                             </div>
@@ -79,9 +82,10 @@
                                     <div class="products-single fix">
                                         <div class="box-img-hover">
                                             @*<div class="type-lb">
-                                                <p class="new">New</p>
-                                            </div>*@
-                                            <img src="@item.HinhChinh" class="img-fluid" alt="Image">
+                                            <p class="new">New</p>
+                                        </div>*@
+                                            @*<img src="@item.HinhChinh" class="img-fluid" alt="Image">*@
+                                            <div class="img-fit" style="background-image: url('@item.HinhChinh'),url('~/Content/images/default.png');"></div>
                                             <div class="mask-icon">
                                                 <ul>
                                                     <li>
@@ -104,9 +108,9 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
-                                    <div class="why-text full-width">
-                                        <h4>Lorem ipsum dolor sit amet</h4>
-                                        <h5>@string.Format("{0:#,##0}", @item.Gia)đ</h5>
+                                    <div class="why-text full-width view-column-content">
+                                        <h4>@item.TenSanPham</h4>
+                                        <h5>@string.Format("{0:#,##0}", @item.Gia) đ</h5>
                                         <p>
                                            @item.Mota
                                         </p>

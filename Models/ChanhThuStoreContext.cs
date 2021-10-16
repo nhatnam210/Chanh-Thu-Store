@@ -12,6 +12,7 @@ namespace ChanhThu_Store.Models
         {
         }
 
+        public virtual DbSet<Banner> Banners { get; set; }
         public virtual DbSet<BinhLuan> BinhLuans { get; set; }
         public virtual DbSet<ChiTietHoaDon> ChiTietHoaDons { get; set; }
         public virtual DbSet<DanhMuc> DanhMucs { get; set; }
@@ -20,9 +21,10 @@ namespace ChanhThu_Store.Models
         public virtual DbSet<KhachHang> KhachHangs { get; set; }
         public virtual DbSet<NhaSanXuat> NhaSanXuats { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<Voucher> Vouchers { get; set; }
+        public virtual DbSet<SlideFooter> SlideFooters { get; set; }
+        public virtual DbSet<SlideHeader> SlideHeaders { get; set; }
         public virtual DbSet<ThongTinCuaHang> ThongTinCuaHangs { get; set; }
+        public virtual DbSet<Voucher> Vouchers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -32,11 +34,6 @@ namespace ChanhThu_Store.Models
 
             modelBuilder.Entity<DanhMuc>()
                 .HasMany(e => e.DanhMucCons)
-                .WithRequired(e => e.DanhMuc)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<DanhMuc>()
-                .HasMany(e => e.SanPhams)
                 .WithRequired(e => e.DanhMuc)
                 .WillCascadeOnDelete(false);
 
