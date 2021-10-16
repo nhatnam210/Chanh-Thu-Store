@@ -48,7 +48,16 @@ namespace ChanhThu_Store
                url: "san-pham/chi-tiet/id={id}",
                defaults: new { controller = "SanPhams", action = "Details", id = UrlParameter.Optional }
             );
-
+            routes.MapRoute(
+               name: "dang ky",
+               url: "tai-khoan/dang-ky",
+               defaults: new { controller = "Account", action = "Register", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+               name: "dang nhap",
+               url: "tai-khoan/dang-nhap",
+               defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional }
+            );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
