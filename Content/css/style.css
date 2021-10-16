@@ -3505,17 +3505,18 @@ ul.cart-list > li.total > .btn:hover {
             .custom-login .account a:hover {
                 color: var(--primary-color);
             }
+
     .custom-login .login,
     .custom-login .register {
         background-color: var(--primary-color);
         outline: none;
         border: 1px solid var(--primary-color);
     }
+
         .custom-login .login:hover,
         .custom-login .register:hover {
             color: var(--primary-color);
         }
-
 
 
 
