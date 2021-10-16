@@ -436,4 +436,3 @@ D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\obj\Debug\ChanhThu_Store.csproj.Co
 D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\obj\Debug\ChanhThu_Store.csproj.CopyComplete
 D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\obj\Debug\WebApplication1.dll
 D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\obj\Debug\WebApplication1.pdb
-D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\obj\Debug\ChanhThu_Store.csproj.AssemblyReference.cache

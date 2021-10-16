@@ -12,9 +12,8 @@ namespace ChanhThu_Store.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SanPham()
         {
-            BinhLuans = new HashSet<BinhLuan>();
             ChiTietHoaDons = new HashSet<ChiTietHoaDon>();
-            KhachHangs = new HashSet<KhachHang>();
+            TuongTacs = new HashSet<TuongTac>();
         }
 
         [Key]
@@ -61,12 +60,7 @@ namespace ChanhThu_Store.Models
 
         public int Diem { get; set; }
 
-        [Required]
-        [StringLength(10)]
-        public string TinhTrang { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BinhLuan> BinhLuans { get; set; }
+        public bool TinhTrang { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
@@ -76,6 +70,6 @@ namespace ChanhThu_Store.Models
         public virtual NhaSanXuat NhaSanXuat { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KhachHang> KhachHangs { get; set; }
+        public virtual ICollection<TuongTac> TuongTacs { get; set; }
     }
 }
