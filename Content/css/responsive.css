@@ -330,4 +330,28 @@
     .side-menu p {
         display: none;
     }
+
+    .custom-login {
+        justify-content: center !important;
+        margin: 15px auto 5px auto;
+    }
+}
+
+@media (max-width: 992px) {
+    .shop-content-left {
+        order: 2;
+    }
+
+    .list-group-tree {
+        max-height: 20px;
+        overflow-y: auto;
+    }
+
+        .list-group-tree::-webkit-scrollbar {
+            display: none !important;
+        }
+
+    #navbar-menu {
+        overflow-x: hidden !important;
+    }
 }
