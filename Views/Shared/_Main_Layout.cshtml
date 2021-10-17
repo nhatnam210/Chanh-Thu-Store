@@ -57,7 +57,7 @@
     <div class="main-top">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-6 col-md-5 col-sm-12 col-xs-12">
+                <div class="col-lg-6 col-md-5 col-sm-12 col-xs-12 custom-about-shop">
                     @*<div class="custom-select-box">
                         <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
                             <option> VND</option>
@@ -76,16 +76,11 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-7 col-sm-12 col-xs-12 custom-login">
-                    @*<div class="login-box">
-            <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
-                <option>Đăng Kí Tại Đây</option>
-                <option>Đăng Nhập</option>
-            </select>
-        </div>*@
                     <!-- <div class="account"><a href="#"><i class="fa fa-user s_color"></i> Tài Khoản</a></div> -->
                     <div class="option-account">
-                        <a href="/tai-khoan/dang-nhap" class="btn btn-success register hvr-hover">Đăng nhập</a>
-                        <a href="/tai-khoan/dang-ky" class="btn btn-success login hvr-hover">Đăng ký</a>
+                        @Html.Partial("_LoginPartial")
+                        @*<a href="/dang-nhap" class="btn btn-success register hvr-hover">Đăng nhập</a>
+                          <a href="/dang-ky" class="btn btn-success login hvr-hover">Đăng ký</a>*@
                     </div>
                     <div class="text-slid-box">
                         <div id="offer-box" class="carouselTicker">
@@ -179,7 +174,7 @@
             <!-- Start Side Menu -->
             <div class="side">
                 <a href="#" class="close-side"><i class="fa fa-times"></i></a>
-                <li class="cart-box">
+                <div class="cart-box">
                     <ul class="cart-list">
                         <li>
                             <a href="#" class="photo"><img src="images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
@@ -201,7 +196,7 @@
                             <span class="float-right"><strong>Total</strong>: $180.00</span>
                         </li>
                     </ul>
-                </li>
+                </div>
             </div>
             <!-- End Side Menu -->
         </nav>

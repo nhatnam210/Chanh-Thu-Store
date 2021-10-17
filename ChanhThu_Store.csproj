@@ -172,7 +172,9 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ContactUsController.cs" />
     <Compile Include="Controllers\DanhMucConsController.cs" />
     <Compile Include="Controllers\DanhMucsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -412,6 +414,9 @@
     <Content Include="Views\DanhMucs\SanPhamTheoDanhMuc.cshtml" />
     <Content Include="Views\Shared\_BoSuuTap_Ten.cshtml" />
     <Content Include="Views\Shared\_BoSuuTap_Hinh.cshtml" />
+    <Content Include="Views\AboutUs\Index.cshtml" />
+    <Content Include="Views\ContactUs\Index.cshtml" />
+    <Content Include="Views\Shared\_SanPhamMoiNhat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -50,12 +50,12 @@ namespace ChanhThu_Store
             );
             routes.MapRoute(
                name: "dang ky",
-               url: "tai-khoan/dang-ky",
+               url: "dang-ky",
                defaults: new { controller = "Account", action = "Register", id = UrlParameter.Optional }
             );
             routes.MapRoute(
                name: "dang nhap",
-               url: "tai-khoan/dang-nhap",
+               url: "dang-nhap",
                defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional }
             );
             routes.MapRoute(

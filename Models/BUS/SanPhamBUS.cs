@@ -32,5 +32,10 @@ namespace ChanhThu_Store.Models.BUS
             var db = new ChanhThuStorePoCoDB();
             return db.Query<SanPham>("select * from SanPham where MaDanhMucCon = '"+ id +"' ");
         }
+        public static IEnumerable<SanPham> Top3Sanphammoi()
+        {
+            var db = new ChanhThuStorePoCoDB();
+            return db.Query<SanPham>("select top 3 * from Sanpham order by Masanpham desc");
+        }
     }
 }

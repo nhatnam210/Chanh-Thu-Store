@@ -285,7 +285,13 @@ p {
             .right-phone-box p a:hover {
                 color: var(--primary-color);
             }
-
+.new-product-descrip {
+    overflow: hidden;
+    line-height: 1.8rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
 .offer-box,
 .slide {
     color: #ffffff;
@@ -551,10 +557,29 @@ nav.navbar.navbar-inverse {
     background-color: #222;
     border-bottom: solid 1px #303030;
 }
-
-    nav.navbar.navbar-inverse ul.cart-list > li.total > .btn {
-        border-bottom: solid 1px #222 !important;
-    }
+.name-account{
+    color:#ffffff;
+    margin-right:20px;
+}
+.name-account::after{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 0%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: auto;
+    bottom: 0;
+    background: #000000;
+    transition: ease-in-out .3s;
+}
+.name-account:hover{
+    color:var(--primary-color);
+}
+nav.navbar.navbar-inverse ul.cart-list > li.total > .btn {
+    border-bottom: solid 1px #222 !important;
+}
 
     nav.navbar.navbar-inverse ul.cart-list > li.total .pull-right {
         color: #fff;
@@ -1378,6 +1403,7 @@ ul.cart-list > li.total > .btn:hover {
 
 .blog-content {
     position: relative;
+    height:200px;
 }
 
 .title-blog {
@@ -3475,11 +3501,13 @@ ul.cart-list > li.total > .btn:hover {
     justify-content: space-between;
     flex-direction: row-reverse;
     align-items: center;
+    flex-wrap: nowrap;
 }
 
-    .custom-login .account {
-        color: #fff;
-    }
+
+.custom-login .account {
+    color: #fff;
+}
 
         .custom-login .account a {
             display: block;
@@ -3502,5 +3530,14 @@ ul.cart-list > li.total > .btn:hover {
             color: var(--primary-color);
         }
 
+.custom-about-shop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#offer-box {
+    width: 250px;
+}
 
 
