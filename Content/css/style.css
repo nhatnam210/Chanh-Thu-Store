@@ -1094,7 +1094,6 @@ ul.cart-list > li.total > .btn:hover {
 .offer-box {
     position: relative;
     overflow: hidden;
-    width: 250px;
 }
 
 .offer-box-products {
@@ -3446,21 +3445,6 @@ ul.cart-list > li.total > .btn:hover {
     .img-fit.detail {
         height: 380px;
     }
-
-@media (max-width: 992px) {
-    .shop-content-left {
-        order: 2;
-    }
-
-    .list-group-tree {
-        max-height: 200px;
-        overflow: auto;
-    }
-
-    .list-group-tree::-webkit-scrollbar {
-        display: none !important;
-    }
-}
 
 .view-column-content p,
 .view-row-content h4 {
