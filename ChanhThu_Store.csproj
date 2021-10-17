@@ -416,6 +416,7 @@
     <Content Include="Views\Shared\_BoSuuTap_Hinh.cshtml" />
     <Content Include="Views\AboutUs\Index.cshtml" />
     <Content Include="Views\ContactUs\Index.cshtml" />
+    <Content Include="Views\Shared\_SanPhamMoiNhat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
