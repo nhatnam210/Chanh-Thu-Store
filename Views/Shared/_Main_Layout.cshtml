@@ -84,8 +84,9 @@
         </div>*@
                     <!-- <div class="account"><a href="#"><i class="fa fa-user s_color"></i> Tài Khoản</a></div> -->
                     <div class="option-account">
-                        <a href="" class="btn btn-success register hvr-hover">Đăng nhập</a>
-                        <a href="" class="btn btn-success login hvr-hover">Đăng ký</a>
+                        @Html.Partial("_LoginPartial")
+                        @*<a href="/dang-nhap" class="btn btn-success register hvr-hover">Đăng nhập</a>
+                          <a href="/dang-ky" class="btn btn-success login hvr-hover">Đăng ký</a>*@
                     </div>
                     <div class="text-slid-box">
                         <div id="offer-box" class="carouselTicker">

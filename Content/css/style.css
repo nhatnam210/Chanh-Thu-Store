@@ -551,10 +551,29 @@ nav.navbar.navbar-inverse {
     background-color: #222;
     border-bottom: solid 1px #303030;
 }
-
-    nav.navbar.navbar-inverse ul.cart-list > li.total > .btn {
-        border-bottom: solid 1px #222 !important;
-    }
+.name-account{
+    color:#ffffff;
+    margin-right:20px;
+}
+.name-account::after{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 0%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: auto;
+    bottom: 0;
+    background: #000000;
+    transition: ease-in-out .3s;
+}
+.name-account:hover{
+    color:var(--primary-color);
+}
+nav.navbar.navbar-inverse ul.cart-list > li.total > .btn {
+    border-bottom: solid 1px #222 !important;
+}
 
     nav.navbar.navbar-inverse ul.cart-list > li.total .pull-right {
         color: #fff;
