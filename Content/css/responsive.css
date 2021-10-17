@@ -72,6 +72,7 @@
     .right-phone-box {
         display: none;
     }
+
 }
 /* mobile or only mobile */
 @media (max-width: 767px) {
@@ -204,6 +205,11 @@
     .offer-box-products {
         margin-bottom: 30px;
     }
+
+    .custom-login {
+        justify-content: center !important;
+        margin: 15px auto 5px auto;
+    }
 }
 @media only screen and (min-width: 280px) and (max-width: 599px) {
     .navbar-light .navbar-toggler {
@@ -329,5 +335,25 @@
     }
     .side-menu p {
         display: none;
+    }
+
+}
+
+@media (max-width: 992px) {
+    .shop-content-left {
+        order: 2;
+    }
+
+    .list-group-tree {
+        max-height: 20px;
+        overflow-y: auto;
+    }
+
+        .list-group-tree::-webkit-scrollbar {
+            display: none !important;
+        }
+
+    #navbar-menu {
+        overflow-x: hidden !important;
     }
 }

@@ -436,6 +436,7 @@ D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\obj\Debug\ChanhThu_Store.csproj.Co
 D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\obj\Debug\ChanhThu_Store.csproj.CopyComplete
 D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\obj\Debug\WebApplication1.dll
 D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\obj\Debug\WebApplication1.pdb
+<<<<<<< HEAD
 C:\Users\Adminss\Desktop\New folder\Chanh-Thu-Store\bin\WebApplication1.dll.config
 C:\Users\Adminss\Desktop\New folder\Chanh-Thu-Store\bin\WebApplication1.dll
 C:\Users\Adminss\Desktop\New folder\Chanh-Thu-Store\bin\WebApplication1.pdb
@@ -546,3 +547,6 @@ C:\Users\Adminss\Desktop\New folder\Chanh-Thu-Store\obj\Debug\ChanhThu_Store.csp
 C:\Users\Adminss\Desktop\New folder\Chanh-Thu-Store\obj\Debug\WebApplication1.dll
 C:\Users\Adminss\Desktop\New folder\Chanh-Thu-Store\obj\Debug\WebApplication1.pdb
 C:\Users\Adminss\Desktop\New folder\Chanh-Thu-Store\obj\Debug\ChanhThu_Store.csproj.AssemblyReference.cache
+=======
+D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\obj\Debug\ChanhThu_Store.csproj.AssemblyReference.cache
+>>>>>>> 983071b481a15ad4cb999b9c6c0917e07c19ef43
