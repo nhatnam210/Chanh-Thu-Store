@@ -3501,11 +3501,13 @@ ul.cart-list > li.total > .btn:hover {
     justify-content: space-between;
     flex-direction: row-reverse;
     align-items: center;
+    flex-wrap: nowrap;
 }
 
-    .custom-login .account {
-        color: #fff;
-    }
+
+.custom-login .account {
+    color: #fff;
+}
 
         .custom-login .account a {
             display: block;
@@ -3528,5 +3530,14 @@ ul.cart-list > li.total > .btn:hover {
             color: var(--primary-color);
         }
 
+.custom-about-shop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#offer-box {
+    width: 250px;
+}
 
 

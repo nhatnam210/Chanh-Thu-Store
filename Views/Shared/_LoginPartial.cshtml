@@ -22,9 +22,9 @@
 
           
           
-               @Html.ActionLink("Xin chào  " + User.Identity.GetUserName(), "Storage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" , @class = "name-account" })
+               @Html.ActionLink("Xin chào " + User.Identity.GetUserName(), "Storage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" , @class = "name-account" })
              
-               <a class="btn login btn-primary  text-uppercase hvr-hover" href="javascript:document.getElementById('logoutForm').submit()">Đăng xuất</a>
+               <a class="btn login btn-primary hvr-hover" href="javascript:document.getElementById('logoutForm').submit()">Đăng xuất</a>
       
         }
     }
