@@ -17,23 +17,9 @@ namespace ChanhThu_Store.Controllers
         // GET: DanhMucs
         public ActionResult Index()
         {
-            
-            return View();
+            return View(db.DanhMucs.ToList());
         }
 
-        public ActionResult SpDanhMuc(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DanhMuc SpdanhMuc = db.DanhMucs.Find(id);
-            if (SpdanhMuc == null)
-            {
-                return HttpNotFound();
-            }
-            return View(SpdanhMuc);
-        }
         // GET: DanhMucs/Details/5
         public ActionResult Details(string id)
         {
@@ -41,12 +27,26 @@ namespace ChanhThu_Store.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DanhMucCon danhMuc = db.DanhMucCons.Find(id);
+            DanhMuc danhMuc = db.DanhMucs.Find(id);
             if (danhMuc == null)
             {
                 return HttpNotFound();
             }
             return View(danhMuc);
+        }
+
+        public ActionResult SanPhamTheoDanhMuc(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            DanhMuc SanPham_DM = db.DanhMucs.Find(id);
+            if (SanPham_DM == null)
+            {
+                return HttpNotFound();
+            }
+            return View(SanPham_DM);
         }
 
         // GET: DanhMucs/Create

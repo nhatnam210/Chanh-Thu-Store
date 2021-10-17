@@ -223,17 +223,20 @@ li.close-full-menu{
     position: relative;
 }
 
-.attr-nav > ul > li > a span.badge{
-    position: absolute;
-    top: 50%;
-    margin-top: -15px;
-    right: 5px;
-    font-size: 10px;
-    padding: 0;
-    width: 15px;
-    height: 15px;
-    padding-top: 2px;
-}
+    .attr-nav > ul > li > a span.badge {
+        position: absolute;
+        top: 50%;
+        margin-top: -15px;
+        right: 3px;
+        font-size: 10px;
+        padding: 0;
+        width: 15px;
+        height: 15px;
+        padding-top: 2px;
+        background-color: red;
+        color: #fff;
+        border-radius: 50%;
+    }
 
 .attr-nav > ul > li.dropdown ul.dropdown-menu{
     -moz-border-radius: 0px;
@@ -1035,7 +1038,7 @@ nav.navbar.bootsnav ul.dropdown-menu.megamenu-content .content ul.menu-col li a:
     
     nav.navbar.bootsnav li.dropdown a.dropdown-toggle:before{
         font-family: 'FontAwesome';
-        content: "\f105";
+        content: "";
         float: right;
         font-size: 16px;
         margin-left: 10px;
@@ -1044,7 +1047,7 @@ nav.navbar.bootsnav ul.dropdown-menu.megamenu-content .content ul.menu-col li a:
     }
     
     nav.navbar.bootsnav li.dropdown.on > a.dropdown-toggle:before{
-        content: "\f107";
+        content: "";
     }
     
     nav.navbar.bootsnav .navbar-nav > li > a{

@@ -23,8 +23,6 @@ namespace ChanhThu_Store.Models
 
         public int? DonGia { get; set; }
 
-        public int TongTienSanPham { get; set; }
-
         public virtual HoaDon HoaDon { get; set; }
 
         public virtual SanPham SanPham { get; set; }

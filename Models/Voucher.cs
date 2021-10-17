@@ -12,8 +12,7 @@ namespace ChanhThu_Store.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Voucher()
         {
-            HoaDons = new HashSet<HoaDon>();
-            KhachHangs = new HashSet<KhachHang>();
+            ChiTietVouchers = new HashSet<ChiTietVoucher>();
         }
 
         [Key]
@@ -32,9 +31,6 @@ namespace ChanhThu_Store.Models
         public DateTime HanSuDung { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HoaDon> HoaDons { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KhachHang> KhachHangs { get; set; }
+        public virtual ICollection<ChiTietVoucher> ChiTietVouchers { get; set; }
     }
 }

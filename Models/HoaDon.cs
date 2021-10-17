@@ -29,13 +29,9 @@ namespace ChanhThu_Store.Models
         [StringLength(10)]
         public string MaVoucher { get; set; }
 
-        public int TongTienHoaDon { get; set; }
+        public int TongTien { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
-
-        public virtual KhachHang KhachHang { get; set; }
-
-        public virtual Voucher Voucher { get; set; }
     }
 }
