@@ -59,12 +59,12 @@
             <div class="row">
                 <div class="col-lg-6 col-md-5 col-sm-12 col-xs-12 custom-about-shop">
                     @*<div class="custom-select-box">
-                        <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
-                            <option> VND</option>
-                            <option> USD</option>
-                            <option> EUR</option>
-                        </select>
-                    </div>*@
+                            <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
+                                <option> VND</option>
+                                <option> USD</option>
+                                <option> EUR</option>
+                            </select>
+                        </div>*@
                     <div class="right-phone-box">
                         <p>Gọi ngay : <a href="#"> +84868454218</a></p>
                     </div>
@@ -80,7 +80,7 @@
                     <div class="option-account">
                         @Html.Partial("_LoginPartial")
                         @*<a href="/dang-nhap" class="btn btn-success register hvr-hover">Đăng nhập</a>
-                          <a href="/dang-ky" class="btn btn-success login hvr-hover">Đăng ký</a>*@
+                            <a href="/dang-ky" class="btn btn-success login hvr-hover">Đăng ký</a>*@
                     </div>
                     <div class="text-slid-box">
                         <div id="offer-box" class="carouselTicker">
@@ -160,44 +160,34 @@
                 <div class="attr-nav">
                     <ul>
                         <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+                        @*@Html.Partial("_NumberofBadge")*@
                         <li class="side-menu">
                             <a href="#">
                                 <i class="fa fa-shopping-bag"></i>
-                                <span class="badge">3</span>
+                                <span class="badge">0</span>
                                 <p></p>
                             </a>
                         </li>
+
                     </ul>
                 </div>
                 <!-- End Atribute Navigation -->
             </div>
             <!-- Start Side Menu -->
-            <div class="side">
+            @Html.Partial("MiniCart")
+            @*<div class="side">
                 <a href="#" class="close-side"><i class="fa fa-times"></i></a>
                 <div class="cart-box">
                     <ul class="cart-list">
-                        <li>
-                            <a href="#" class="photo"><img src="images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Delica omtantur </a></h6>
-                            <p>1x - <span class="price">$80.00</span></p>
-                        </li>
-                        <li>
-                            <a href="#" class="photo"><img src="images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Omnes ocurreret</a></h6>
-                            <p>1x - <span class="price">$60.00</span></p>
-                        </li>
-                        <li>
-                            <a href="#" class="photo"><img src="images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Agam facilisis</a></h6>
-                            <p>1x - <span class="price">$40.00</span></p>
-                        </li>
+
                         <li class="total">
-                            <a href="#" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
-                            <span class="float-right"><strong>Total</strong>: $180.00</span>
+                            <a href="/gio-hang" class="btn btn-default hvr-hover btn-cart">Xem giỏ hàng</a>
+                            <span class="float-right"><strong>Tổng cộng</strong>00.000 VND</span>
                         </li>
+
                     </ul>
                 </div>
-            </div>
+            </div>*@
             <!-- End Side Menu -->
         </nav>
         <!-- End Navigation -->
