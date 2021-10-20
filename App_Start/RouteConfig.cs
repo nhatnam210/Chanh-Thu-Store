@@ -59,9 +59,14 @@ namespace ChanhThu_Store
                defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional }
             );
             routes.MapRoute(
-              name: "gio hang",
+              name: "them gio hang",
+              url: "them-vao-gio",
+              defaults: new { controller = "Cart", action = "AddItem", id = UrlParameter.Optional }
+           );
+            routes.MapRoute(
+              name: "xem gio hang",
               url: "gio-hang",
-              defaults: new { controller = "ShoppingCart", action = "ShowtoCart", id = UrlParameter.Optional }
+              defaults: new { controller = "Cart", action = "Index", id = UrlParameter.Optional }
            );
             routes.MapRoute(
                 name: "Default",

@@ -9,13 +9,18 @@ namespace ChanhThu_Store.Controllers
 {
     public class AboutUsController : Controller
     {
+        private const string CartSession = "CartSession";
         // GET: AboutUs
         public ActionResult Index()
         {
-            if (Session["Cart"] == null)
-                return RedirectToAction("ShowToCart", "ShoppingCart");
-            Cart cart = Session["Cart"] as Cart;
-            return View(cart);
+            var cart = Session[CartSession];
+            var list = new List<CartItem>();
+            if (cart != null)
+            {
+                list = (List<CartItem>)cart;
+            }
+            return View(list);
+            
         }
     }
 }
