@@ -157,38 +157,7 @@
                 </div>
                 <!-- /.navbar-collapse -->
                 <!-- Start Atribute Navigation -->
-                <div class="attr-nav">
-                    <ul>
-                        <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-                        
-                        <li class="side-menu">
-                            <a href="#">
-                                <i class="fa fa-shopping-bag"></i>
-                                <span class="badge">0</span>
-                                <p></p>
-                            </a>
-                        </li>
-
-                    </ul>
-                </div>
-                <!-- End Atribute Navigation -->
-            </div>
-            <!-- Start Side Menu -->
-           
-            <div class="side">
-                <a href="#" class="close-side"><i class="fa fa-times"></i></a>
-                <div class="cart-box">
-                    <ul class="cart-list">
-
-                        <li class="total">
-                            <a href="/gio-hang" class="btn btn-default hvr-hover btn-cart">Xem giỏ hàng</a>
-                            <span class="float-right"><strong>Tổng cộng</strong>00.000 VND</span>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-            <!-- End Side Menu -->
+               @{ Html.RenderAction("_Header_Cart", "Home");}
         </nav>
         <!-- End Navigation -->
     </header>

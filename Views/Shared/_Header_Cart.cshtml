@@ -1,0 +1,45 @@
+﻿@model List<ChanhThu_Store.Models.CartItem>
+
+<div class="attr-nav">
+    <ul>
+        <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+
+        <li class="side-menu">
+            <a href="#">
+                <i class="fa fa-shopping-bag"></i>
+                <span class="badge">@Model.Count</span>
+                <p></p>
+            </a>
+        </li>
+
+    </ul>
+</div>
+<!-- End Atribute Navigation -->
+            </div>
+<!-- Start Side Menu -->
+
+<div class="side">
+    <a href="#" class="close-side"><i class="fa fa-times"></i></a>
+    <div class="cart-box">
+        <ul class="cart-list">
+            @{var Total = 0; }
+            @foreach (var item in Model)
+            {
+                Total += item.Product.Gia; 
+                <li>
+                    <a href="#" class="photo"><img src="@item.Product.HinhChinh" class="cart-thumb" alt="" /></a>
+                    <h6><a href="#">@item.Product.TenSanPham</a></h6>
+                    <p>@item.Quantity x<span class="price">@item.Product.Gia VND</span></p>
+                </li>
+            }
+            <li class="total">
+                <a href="/gio-hang" class="btn btn-default hvr-hover btn-cart">Xem giỏ hàng</a>
+                <span class="float-right"><strong>Tổng:</strong>@Total VND</span>
+            </li>
+
+        </ul>
+    </div>
+</div>
+<!-- End Side Menu -->
+
+
