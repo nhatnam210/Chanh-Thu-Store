@@ -40,12 +40,12 @@ namespace ChanhThu_Store
           );
             routes.MapRoute(
               name: "san pham theo danh muc con",
-              url: "cua-hang/danh-muc-con/id={id}",
+              url: "cua-hang/danh-muc-con",
               defaults : new { controller = "DanhMucCons", action = "Details", id = UrlParameter.Optional }
           );
             routes.MapRoute(
                name: "chi tiet san pham",
-               url: "san-pham/chi-tiet/id={id}",
+               url: "san-pham/chi-tiet",
                defaults: new { controller = "SanPhams", action = "Details", id = UrlParameter.Optional }
             );
             routes.MapRoute(
@@ -59,12 +59,12 @@ namespace ChanhThu_Store
                defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional }
             );
             routes.MapRoute(
-              name: "them gio hang",
+              name: "them vao gio",
               url: "them-vao-gio",
               defaults: new { controller = "Cart", action = "AddItem", id = UrlParameter.Optional }
            );
             routes.MapRoute(
-              name: "xem gio hang",
+              name: "gio hang",
               url: "gio-hang",
               defaults: new { controller = "Cart", action = "Index", id = UrlParameter.Optional }
            );

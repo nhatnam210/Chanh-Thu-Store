@@ -870,7 +870,12 @@ ul.cart-list p .price {
     transition-duration: 0.3s;
     border-radius: 0;
     box-shadow: none;
+    color: #000000 !important;
 }
+
+    .hvr-hover:hover {
+        color: var(--primary-color) !important;
+    }
 
     .hvr-hover::after {
         content: "";
@@ -1274,6 +1279,7 @@ ul.cart-list > li.total > .btn:hover {
         padding: 10px 20px;
         font-weight: 700;
         color: #000000;
+        transition: all linear .2s;
     }
 
         .mask-icon a.cart:hover {
@@ -1917,6 +1923,7 @@ ul.cart-list > li.total > .btn:hover {
             display: inline-block;
             color: #000000;
             font-size: 16px;
+            font-weight: 500;
         }
 
             .all-title-box .breadcrumb li a {
@@ -1961,7 +1968,7 @@ ul.cart-list > li.total > .btn:hover {
 .about-box-main a {
     color: #ffffff;
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 600;
     border: none;
 }
 
@@ -1978,7 +1985,7 @@ ul.cart-list > li.total > .btn:hover {
     position: absolute;
     top: 0;
     left: 0;
-    transition: all 0.5s ease 0s;
+    transition: all .5s ease 0s;
 }
 
 .service-block-inner::after {
@@ -1991,7 +1998,7 @@ ul.cart-list > li.total > .btn:hover {
     top: 0;
     left: 0;
     z-index: -1;
-    transition: all 0.5s ease 0s;
+    transition: all .5s ease 0s;
 }
 
 .service-block-inner h3 {
@@ -2013,12 +2020,12 @@ ul.cart-list > li.total > .btn:hover {
 
 .service-block-inner:hover h3 {
     color: #ffffff;
-    transition: all 0.5s ease 0s;
+    transition: all 0.2s ease 0s;
 }
 
 .service-block-inner:hover p {
     color: #ffffff;
-    transition: all 0.5s ease 0s;
+    transition: all 0.2s ease 0s;
 }
 
 .our-team {
@@ -2829,10 +2836,14 @@ ul.cart-list > li.total > .btn:hover {
     border-radius: 0px;
     font-size: 16px;
     padding: 0px 20px;
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+    font-weight: 500;
 }
 
     .coupon-box .input-group .input-group-append .btn-theme:hover {
         background: var(--primary-color);
+        color: #000000;
     }
 
 .update-box input[type="submit"] {
@@ -2853,14 +2864,15 @@ ul.cart-list > li.total > .btn:hover {
     padding: 0 20px;
     text-shadow: none;
     text-transform: uppercase;
-    -webkit-transition: all 0.3s ease 0s;
-    transition: all 0.3s ease 0s;
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
     white-space: nowrap;
     width: inherit;
 }
 
     .update-box input[type="submit"]:hover {
         background: var(--primary-color);
+        color: #000000;
     }
 
 .order-box h3 {
@@ -3255,7 +3267,7 @@ ul.cart-list > li.total > .btn:hover {
 .help-block.with-errors {
     position: absolute;
     right: 0;
-    background: red;
+    background: #ff3333;
     color: #fff;
     padding: 0px 15px;
 }
@@ -3472,6 +3484,15 @@ ul.cart-list > li.total > .btn:hover {
         height: 380px;
     }
 
+    .img-fit.cart {
+        height: 70px;
+    }
+
+    .img-fit.cart--mini {
+        height: 50px;
+    }
+
+.cart-list h6 a,
 .view-column-content p,
 .view-row-content h4 {
     height: calc(var(--height) * var(--column-num));
@@ -3494,6 +3515,16 @@ ul.cart-list > li.total > .btn:hover {
 .view-row-content h4 {
     --column-num: 2;
     --height: 20px;
+}
+
+.cart-list h6 a {
+    --column-num: 1;
+    --height: 20px;
+    margin-bottom: 0px
+}
+
+.cart-list h6 {
+    padding: 0;
 }
 
 .custom-login {
@@ -3540,4 +3571,15 @@ ul.cart-list > li.total > .btn:hover {
     width: 250px;
 }
 
+.delete-product {
+    transition: color ease .2s;
+    font-size: 18px;
+}
 
+    .delete-product:hover {
+        color: #ff3333 !important;
+    }
+
+.change-color:hover {
+    color: #000000;
+}
