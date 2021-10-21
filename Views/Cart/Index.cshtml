@@ -61,10 +61,12 @@
                                             <p>@string.Format("{0:#,##0}", @item.Sanpham.Gia) đ</p>
                                         </td>
                                         <td class="quantity-box">
-                                            <button class="btn decrease open" data-id="@item.Sanpham.MaSanPham"><i class="fas fa-minus"></i></button>
-                                            <input type="number" data-id="@item.Sanpham.MaSanPham" maxValue="@item.Sanpham.SoLuongTonKho" size="4" value="@item.Soluong" min="0" step="1" class="c-input-text qty text">
-                                            <p class="message" data-id="@item.Sanpham.MaSanPham"></p>
-                                            <button class="btn increase open" data-id="@item.Sanpham.MaSanPham"><i class="fas fa-plus"></i></button>
+                                            <div class="quantity-box-wrap">
+                                                <button class="btn decrease open" data-id="@item.Sanpham.MaSanPham"><i class="fas fa-minus"></i></button>
+                                                <input type="number" data-id="@item.Sanpham.MaSanPham" maxValue="@item.Sanpham.SoLuongTonKho" size="4" value="@item.Soluong" min="0" step="1" class="c-input-text qty text">
+                                                <p class="message" data-id="@item.Sanpham.MaSanPham"></p>
+                                                <button class="btn increase open" data-id="@item.Sanpham.MaSanPham"><i class="fas fa-plus"></i></button>
+                                            </div>
                                         </td>
                                         <td class="total-pr" style="font-weight: 700;">
                                             <p>@string.Format("{0:#,##0}", item.Sanpham.Gia * item.Soluong) đ</p>

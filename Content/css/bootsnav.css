@@ -292,7 +292,6 @@ ul.cart-list > li > p{
 
 ul.cart-list > li.total{
     background-color: #f5f5f5;
-    padding-bottom: 15px !important;
 }
 
 ul.cart-list > li.total > .btn{
