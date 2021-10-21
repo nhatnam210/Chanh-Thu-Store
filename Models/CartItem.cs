@@ -9,7 +9,7 @@ namespace ChanhThu_Store.Models
     [Serializable]
     public class CartItem
     {
-        public SanPham Product { get; set; }
-        public int Quantity { get; set; }
+        public SanPham Sanpham { get; set; }
+        public int Soluong { get; set; }
     }
 }

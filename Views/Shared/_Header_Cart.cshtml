@@ -25,19 +25,19 @@
             @{var Total = 0; }
             @foreach (var item in Model)
             {
-                Total += item.Product.Gia; 
+                Total += item.Sanpham.Gia*item.Soluong; 
                 <li>
                     <a href="#" class="photo">
-                        @*<img src="@item.Product.HinhChinh" class="cart-thumb" alt="" />*@
-                        <div class="img-fit cart--mini" style="background-image: url('@item.Product.HinhChinh'),url('~/Content/images/default.png');"></div>
+                        @*<img src="@item.Sanpham.HinhChinh" class="cart-thumb" alt="" />*@
+                        <div class="img-fit cart--mini" style="background-image: url('@item.Sanpham.HinhChinh'),url('/Content/images/default.png');"></div>
                     </a>
-                    <h6><a href="#">@item.Product.TenSanPham</a></h6>
-                    <p>@item.Quantity x <span class="price">@string.Format("{0:#,##0}",@item.Product.Gia) đ</span></p>
+                    <h6><a href="#">@item.Sanpham.TenSanPham</a></h6>
+                    <p>@item.Soluong x <span class="price">@string.Format("{0:#,##0}",@item.Sanpham.Gia) đ</span></p>
                 </li>
             }
             <li class="total">
                 <a href="/gio-hang" class="btn btn-default hvr-hover btn-cart">Xem giỏ hàng</a>
-                <span class="float-right"><strong>Tổng: </strong>@string.Format("{0:#,##0}",@Total) VND</span>
+                <span class="float-right"><strong>Tổng: </strong>@string.Format("{0:#,##0}",@Total) VNĐ</span>
             </li>
 
         </ul>

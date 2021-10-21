@@ -23,20 +23,20 @@ namespace ChanhThu_Store.Controllers
             }
             return View(list);
         }
-        public ActionResult AddItem(string productId, int quantity)
+        public ActionResult AddItem(string masanpham, int soluong)
         {
-            var product = new SanPhamModel().ViewDetail(productId);
+            var sanpham = new SanPhamModel().ViewDetail(masanpham);
             var cart = Session[CartSession];
             if(cart != null)
             {
                 var list = (List<CartItem>)cart;
-                if(list.Exists(x => x.Product.MaSanPham == productId))
+                if(list.Exists(x => x.Sanpham.MaSanPham == masanpham))
                 {
                     foreach (var item in list)
                     {
-                        if (item.Product.MaSanPham == productId)
+                        if (item.Sanpham.MaSanPham == masanpham)
                         {
-                            item.Quantity += quantity;
+                            item.Soluong += soluong;
                         }
                         
                     }
@@ -44,8 +44,8 @@ namespace ChanhThu_Store.Controllers
                 else
                 {
                     var item = new CartItem();
-                    item.Product = product;
-                    item.Quantity = quantity;
+                    item.Sanpham = sanpham;
+                    item.Soluong = soluong;
                     list.Add(item);
                 }
                 Session[CartSession] = list;
@@ -53,8 +53,8 @@ namespace ChanhThu_Store.Controllers
             else
             {
                 var item = new CartItem();
-                item.Product = product;
-                item.Quantity = quantity;
+                item.Sanpham = sanpham;
+                item.Soluong = soluong;
                 var list = new List<CartItem>();
                 list.Add(item);
                 Session[CartSession] = list;
