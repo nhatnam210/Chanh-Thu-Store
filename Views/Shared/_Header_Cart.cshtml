@@ -27,17 +27,17 @@
             {
                 Total += item.Sanpham.Gia*item.Soluong; 
                 <li>
-                    <a href="#" class="photo">
+                    <a href="/san-pham/chi-tiet?id=@item.Sanpham.MaSanPham" class="photo">
                         @*<img src="@item.Sanpham.HinhChinh" class="cart-thumb" alt="" />*@
                         <div class="img-fit cart--mini" style="background-image: url('@item.Sanpham.HinhChinh'),url('/Content/images/default.png');"></div>
                     </a>
-                    <h6><a href="#">@item.Sanpham.TenSanPham</a></h6>
+                    <h6><a href="/san-pham/chi-tiet?id=@item.Sanpham.MaSanPham">@item.Sanpham.TenSanPham</a></h6>
                     <p>@item.Soluong x <span class="price">@string.Format("{0:#,##0}",@item.Sanpham.Gia) đ</span></p>
                 </li>
             }
             <li class="total">
+                <span class="float-right total-price"><strong>Tổng: </strong>@string.Format("{0:#,##0}",@Total) VNĐ</span>
                 <a href="/gio-hang" class="btn btn-default hvr-hover btn-cart">Xem giỏ hàng</a>
-                <span class="float-right"><strong>Tổng: </strong>@string.Format("{0:#,##0}",@Total) VNĐ</span>
             </li>
 
         </ul>

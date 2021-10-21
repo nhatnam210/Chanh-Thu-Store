@@ -91,7 +91,7 @@ Array.from(inputQuantity).forEach((item) => {
     //Hiện thông báo quá số lượng
     function MaxValueMess() {
         message.style.visibility = "visible"
-        message.textContent = "Đã đạt giới hạn tồn kho"
+        message.textContent = "Đã đạt giới hạn tồn kho!"
         setTimeout(() => {
             message.style.visibility = "hidden"
         }, 1000)
@@ -101,16 +101,13 @@ Array.from(inputQuantity).forEach((item) => {
 //Hiển thị thông báo thêm vào giỏ hàng thành công
 const listBtnShow = document.querySelectorAll('.add-cart-notify')
 const modal = document.querySelector('.modal')
-const notify = document.querySelector('.add-cart__success')
 
 Array.from(listBtnShow).forEach((item) => {
     item.onclick = () => {
         modal.classList.add('show')
-        notify.classList.add('show')
 
         setTimeout(() => {
             modal.classList.remove('show')
-            notify.classList.remove('show')
         }, 1500)
     }
 })

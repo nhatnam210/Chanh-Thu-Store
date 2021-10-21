@@ -3623,38 +3623,46 @@ ul.cart-list > li.total > .btn:hover {
 
 /*custom quantity*/
 .quantity-box {
-    display: flex;
-    align-items: center;
-    height: 100px;
     position: relative;
-    border: 0px !important;
 }
 
-    .quantity-box input {
-        margin: 0 10px;
-        min-width: 50px;
+    /*label số lượng của trang chi tiết sản phẩm*/
+    .quantity-box .control-label {
+        padding-left: 10px;
     }
 
+    .quantity-box-wrap {
+        display: flex;
+        margin: 0;
+    }
+
+.quantity-box input {
+    margin: 0 10px;
+    min-width: 50px;
+}
+
         /* Chrome, Safari, Edge, Opera */
-        .quantity-box input::-webkit-outer-spin-button,
-        .quantity-box input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
+    .quantity-box input::-webkit-outer-spin-button,
+    .quantity-box input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
 
         /* Firefox */
-        .quantity-box input[type=number] {
-            -moz-appearance: textfield;
-        }
+    .quantity-box input[type=number] {
+        -moz-appearance: textfield;
+    }
 
     .quantity-box .message {
-        display: flex;
+        max-width: 200px;
+
         position: absolute;
-        bottom: 0;
+        bottom: 10px;
         left: 50%;
         transform: translateX(-50%);
+        
         color: #ff3333;
-        max-width: 200px;
+        font-weight: 500;
         transition: all linear .2s;
         visibility: hidden;
     }
@@ -3686,7 +3694,8 @@ ul.cart-list > li.total > .btn:hover {
 
 /*custom modal*/
 .modal {
-    display: flex;
+    /* display: flex; */
+    display: none;
     justify-content: center;
     align-items: center;
 
@@ -3700,11 +3709,11 @@ ul.cart-list > li.total > .btn:hover {
     left: 0;
 
     background-color: rgba(0, 0, 0,0.1);
-    visibility: hidden;
+    animation: fadeInModal linear .2s;
 }
 
     .modal.show {
-        visibility: visible;
+        display: flex;
     }
 
 .add-cart__success {
@@ -3717,30 +3726,18 @@ ul.cart-list > li.total > .btn:hover {
     width: 300px;
     height: 150px;
     border-radius: 20px;
-
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%) scale(0.2);
+    padding: 16px;
 
     color: var(--primary-color);
     background-color: rgba(0, 0, 0,0.6);
     backdrop-filter: blur(7px);
 
-    z-index: -1;
-    opacity: 0;
+    animation: fadeInNotify ease-out .2s;
 }
 
-    .add-cart__success.show {
-        z-index: 999;
-        transform: translate(-50%,-50%) scale(1);
-        opacity: 1;
-        transition: all ease-out .2s;
-    }
-
     .add-cart__success i {
-        font-size: 50px;
-        padding: 20px 15px 15px 15px;
+        font-size: 40px;
+        padding-bottom: 10px;
     }
 
     .add-cart__success p {
@@ -3749,9 +3746,9 @@ ul.cart-list > li.total > .btn:hover {
         font-weight: 500;
     }
 
-/*@keyframes notifyIn {
+@keyframes fadeInNotify {
     0% {
-        transform: scale(0.5);
+        transform: scale(0.2);
         opacity: 0;
     }
 
@@ -3759,4 +3756,40 @@ ul.cart-list > li.total > .btn:hover {
         transform: scale(1);
         opacity: 1;
     }
-}*/
+}
+
+@keyframes fadeInModal {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/*Custom mini cart*/
+.cart-list .total {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px !important;
+}
+
+    .cart-list .total .total-price {
+        padding: 0 0 5px 0;
+        font-weight: 600;
+        font-size: 17px;
+        color: #ff3333;
+    }
+    .cart-list .total .total-price strong {
+        color: #555;
+    }
+
+.cart-list .photo {
+    background-color: var(--second-color);
+}
+
+.cart-list .photo:hover {
+    filter: brightness(0.8);
+}
