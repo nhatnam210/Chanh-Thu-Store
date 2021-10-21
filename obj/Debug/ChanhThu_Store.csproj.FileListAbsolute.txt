@@ -436,7 +436,6 @@ D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\obj\Debug\ChanhThu_Store.csproj.Co
 D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\obj\Debug\ChanhThu_Store.csproj.CopyComplete
 D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\obj\Debug\WebApplication1.dll
 D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\obj\Debug\WebApplication1.pdb
-D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\obj\Debug\ChanhThu_Store.csproj.AssemblyReference.cache
 C:\Users\ASUS\Desktop\ChanhThuStore\Chanh-Thu-Store\obj\Debug\ChanhThu_Store.csproj.CoreCompileInputs.cache
 C:\Users\ASUS\Desktop\ChanhThuStore\Chanh-Thu-Store\obj\Debug\WebApplication1.dll
 C:\Users\ASUS\Desktop\ChanhThuStore\Chanh-Thu-Store\obj\Debug\WebApplication1.pdb
@@ -547,3 +546,4 @@ C:\Users\ASUS\Desktop\ChanhThuStore\Chanh-Thu-Store\bin\Microsoft.Owin.Security.
 C:\Users\ASUS\Desktop\ChanhThuStore\Chanh-Thu-Store\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\ASUS\Desktop\ChanhThuStore\Chanh-Thu-Store\obj\Debug\ChanhThu_Store.csproj.CopyComplete
 C:\Users\ASUS\Desktop\ChanhThuStore\Chanh-Thu-Store\obj\Debug\ChanhThu_Store.csprojAssemblyReference.cache
+D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\obj\Debug\ChanhThu_Store.csproj.AssemblyReference.cache

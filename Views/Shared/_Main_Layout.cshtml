@@ -117,6 +117,20 @@
         </div>
     </div>
     <!-- End Main Top -->
+
+    <!-- Start Modal Add Success Notify-->
+    <div class="modal">
+        <!-- <div class="add-cart__success">
+            <i class="fas fa-check-circle"></i>
+            <p>Đã thêm vào giỏ hàng!</p>
+        </div> -->
+    </div>
+    <div class="add-cart__success">
+        <i class="fas fa-check-circle"></i>
+        <p>Đã thêm vào giỏ hàng!</p>
+    </div>
+    <!-- End Modal Add Success Notify-->
+
     <!-- Start Main Top -->
     <header class="main-header">
         <!-- Start Navigation -->
@@ -127,7 +141,7 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fa fa-bars"></i>
                     </button>
-                    <a class="navbar-brand" href="index.html"><img src="images/logo.png" class="logo" alt=""></a>
+                    <a class="navbar-brand" href="/trang-chu"><img src="~/Content/images/logo.png" class="logo" alt=""></a>
                 </div>
                 <!-- End Header Navigation -->
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -144,12 +158,12 @@
                                 <i class="fas fa-chevron-down arrow-down float-right "></i>
                                 Cửa Hàng
                             </a>
-                            <ul class="dropdown-menu custom">
-                                <li><a href="cart.html">Giỏ Hàng</a></li>
-                                <li><a href="checkout.html">Thanh Toán</a></li>
-                                <li><a href="my-account.html">Tài Khoản Của Tôi</a></li>
-                                <li><a href="wishlist.html">Danh Sách Ước</a></li>
-                            </ul>
+                            @*<ul class="dropdown-menu custom">
+                                    <li><a href="cart.html">Giỏ Hàng</a></li>
+                                    <li><a href="checkout.html">Thanh Toán</a></li>
+                                    <li><a href="my-account.html">Tài Khoản Của Tôi</a></li>
+                                    <li><a href="wishlist.html">Danh Sách Ước</a></li>
+                                </ul>*@
                         </li>
                         <li class="nav-item"><a class="nav-link" href="/bo-suu-tap">Bộ Sưu Tập</a></li>
                         <li class="nav-item"><a class="nav-link" href="/lien-he">Liên hệ</a></li>
@@ -157,7 +171,7 @@
                 </div>
                 <!-- /.navbar-collapse -->
                 <!-- Start Atribute Navigation -->
-               @{ Html.RenderAction("_Header_Cart", "Home");}
+                @{ Html.RenderAction("_Header_Cart", "Home");}
         </nav>
         <!-- End Navigation -->
     </header>
