@@ -111,6 +111,6 @@ Array.from(listBtnShow).forEach((item) => {
         setTimeout(() => {
             modal.classList.remove('show')
             notify.classList.remove('show')
-        }, 2000)
+        }, 1500)
     }
 })
