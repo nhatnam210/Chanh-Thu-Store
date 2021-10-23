@@ -6,18 +6,20 @@ namespace ChanhThu_Store.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("ChiTietVoucher")]
-    public partial class ChiTietVoucher
+    public partial class AspNetUserLogin
     {
         [Key]
         [Column(Order = 0)]
-        [StringLength(10)]
-        public string MaVoucher { get; set; }
+        public string LoginProvider { get; set; }
 
         [Key]
         [Column(Order = 1)]
-        public string MaKhachHang { get; set; }
+        public string ProviderKey { get; set; }
 
-        public virtual Voucher Voucher { get; set; }
+        [Key]
+        [Column(Order = 2)]
+        public string UserId { get; set; }
+
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }
