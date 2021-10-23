@@ -63,7 +63,7 @@
                                         <td class="quantity-box">
                                             <div class="quantity-box-wrap">
                                                 <button class="btn decrease open" data-id="@item.Sanpham.MaSanPham"><i class="fas fa-minus"></i></button>
-                                                <input type="number" data-id="@item.Sanpham.MaSanPham" maxValue="@item.Sanpham.SoLuongTonKho" size="4" value="@item.Soluong" min="0" step="1" class="c-input-text qty text">
+                                                <input type="number" data-id="@item.Sanpham.MaSanPham" maxValue="@item.Sanpham.SoLuongTonKho" size="4" value="@item.Soluong" min="0" step="1" class="c-input-text qty text txtquantity">
                                                 <p class="message" data-id="@item.Sanpham.MaSanPham"></p>
                                                 <button class="btn increase open" data-id="@item.Sanpham.MaSanPham"><i class="fas fa-plus"></i></button>
                                             </div>
@@ -72,7 +72,7 @@
                                             <p>@string.Format("{0:#,##0}", item.Sanpham.Gia * item.Soluong) đ</p>
                                         </td>
                                         <td class="remove-pr">
-                                            <a href="#" class="delete-product">
+                                            <a href="#" data-id="@item.Sanpham.MaSanPham" class="delete-product">
                                                 <i class="fas fa-times"></i>
                                             </a>
                                         </td>
@@ -105,7 +105,7 @@
             </div>
             <div class="col-lg-6 col-sm-6">
                 <div class="update-box">
-                    <input value="Cập nhật" class="change-color" type="submit">
+                    <input   class="change-color" id="btn-update" value="Cập nhật" type="submit" />
                 </div>
             </div>
         </div>
@@ -142,7 +142,7 @@
                     <hr>
                 </div>
             </div>
-            <div class="col-12 d-flex shopping-box"><a href="checkout.html" style="font-weight: 600;" class="ml-auto btn hvr-hover">Thanh toán</a> </div>
+            <div class="col-12 d-flex shopping-box"><a href="/thanh-toan" style="font-weight: 600;" class="ml-auto btn hvr-hover">Thanh toán</a> </div>
         </div>
 
     </div>

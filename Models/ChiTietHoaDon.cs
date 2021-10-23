@@ -11,8 +11,8 @@ namespace ChanhThu_Store.Models
     {
         [Key]
         [Column(Order = 0)]
-        [StringLength(12)]
-        public string MaHoaDon { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int MaHoaDon { get; set; }
 
         [Key]
         [Column(Order = 1)]
