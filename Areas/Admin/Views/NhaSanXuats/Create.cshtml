@@ -1,0 +1,34 @@
+﻿@model ChanhThu_Store.Models.NhaSanXuat
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Main_Admin.cshtml";
+}
+
+
+@using (Html.BeginForm("Create", "NhaSanXuats", FormMethod.Post, new { @class = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h2 class="admin-title">Create Section</h2>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <span class"label-admin">Tên nhà sản xuất</span>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TenNhaSanXuat, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TenNhaSanXuat, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+        <div class="form-group col-md-10">
+            <div class="col-md-offset-2 btn-touch">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </div>
+        <div class="col-md-10 back-to-list">
+            @Html.ActionLink("Trở về", "Index")
+        </div>
+    </div>
+}

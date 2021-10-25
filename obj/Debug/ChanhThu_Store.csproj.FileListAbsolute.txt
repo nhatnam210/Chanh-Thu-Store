@@ -668,4 +668,5 @@ D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\bin\System.Web.Http.WebHost.dll
 D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\bin\System.Net.Http.Formatting.xml
 D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\bin\System.Web.Http.xml
 D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\bin\System.Web.Http.WebHost.xml
-D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\obj\Debug\ChanhThu_Store.csproj.AssemblyReference.cache
+D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\bin\PagedList.Mvc.dll
+D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\bin\PagedList.Mvc.xml
