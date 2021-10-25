@@ -16,7 +16,6 @@ namespace ChanhThu_Store.Controllers
         private const string CartSession = "CartSession";
 
         // GET: Cart
-        [Authorize]
         public ActionResult Index()
         {
             var cart = Session[CartSession];
@@ -27,7 +26,6 @@ namespace ChanhThu_Store.Controllers
             }
             return View(list);
         }
-        [Authorize]
         public JsonResult Update(string cartModel)
         {
             var jsonCart = new JavaScriptSerializer().Deserialize<List<CartItem>>(cartModel);
@@ -47,7 +45,6 @@ namespace ChanhThu_Store.Controllers
                 status = true
             });
         }
-        [Authorize]
         public JsonResult Delete(string id)
         {
             var sessionCart = (List<CartItem>)Session[CartSession];

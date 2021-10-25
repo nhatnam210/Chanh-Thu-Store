@@ -662,3 +662,10 @@ C:\Users\Adminss\Desktop\New folder\Chanh-Thu-Store\bin\System.Net.Http.Formatti
 C:\Users\Adminss\Desktop\New folder\Chanh-Thu-Store\bin\System.Web.Http.xml
 C:\Users\Adminss\Desktop\New folder\Chanh-Thu-Store\bin\System.Web.Http.WebHost.xml
 C:\Users\Adminss\Desktop\New folder\Chanh-Thu-Store\obj\Debug\ChanhThu_Store.csproj.AssemblyReference.cache
+D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\bin\System.Net.Http.Formatting.dll
+D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\bin\System.Web.Http.dll
+D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\bin\System.Web.Http.WebHost.dll
+D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\bin\System.Net.Http.Formatting.xml
+D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\bin\System.Web.Http.xml
+D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\bin\System.Web.Http.WebHost.xml
+D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\obj\Debug\ChanhThu_Store.csproj.AssemblyReference.cache

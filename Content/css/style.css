@@ -3475,7 +3475,7 @@ ul.cart-list > li.total > .btn:hover {
 
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
 }
 
     .img-fit.gallery {
@@ -3792,4 +3792,8 @@ ul.cart-list > li.total > .btn:hover {
 
 .cart-list .photo:hover {
     filter: brightness(0.8);
+}
+
+.media-body a:hover{
+    color: var(--primary-color) !important;
 }

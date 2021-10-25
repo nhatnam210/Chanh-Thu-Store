@@ -189,8 +189,8 @@
                                             Total += item.Sanpham.Gia * item.Soluong;
                                             <div class="media mb-2 border-bottom">
                                                 <div class="media-body">
-                                                    <a href="detail.html">@item.Sanpham.TenSanPham</a>
-                                                    <div class="small text-muted">@item.Sanpham.Gia<span class="mx-2">|</span> @item.Soluong cái <span class="mx-2">|</span> Tổng : @string.Format("{0:#,##0}", item.Sanpham.Gia * item.Soluong) đ</div>
+                                                    <a href="/san-pham/chi-tiet?id=@item.Sanpham.MaSanPham">@item.Sanpham.TenSanPham</a>
+                                                    <div class="small text-muted"> @string.Format("{0:#,##0}", @item.Sanpham.Gia) đ<span class="mx-2">|</span> @item.Soluong cái <span class="mx-2">|</span> Tổng : <strong> @string.Format("{0:#,##0}", item.Sanpham.Gia * item.Soluong) đ</strong></div>
                                                 </div>
                                             </div>
                                         }
@@ -235,8 +235,8 @@
                                 </div>
                                 <hr>
                                 <div class="d-flex gr-total">
-                                    <h5>Tỏng Cộng</h5>
-                                    <div class="ml-auto h5"> @string.Format("{0:#,##0}", @Total) đ </div>
+                                    <h5>Tổng Cộng</h5>
+                                    <div class="ml-auto h5"> @string.Format("{0:#,##0}", @Total) VNĐ </div>
                                 </div>
                                 <hr>
                             </div>
