@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<ChanhThu_Store.Models.NhaSanXuat>
+﻿@model PagedList.IPagedList<ChanhThu_Store.Models.SanPham>
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @using PagedList.Mvc;
 @{
@@ -6,34 +6,6 @@
     Layout = "~/Areas/Admin/Views/Shared/_Main_Admin.cshtml";
 }
 
-@*<h2>Index</h2>
-
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.TenNhaSanXuat)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TenNhaSanXuat)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.MaNhaSanXuat }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.MaNhaSanXuat }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.MaNhaSanXuat })
-                </td>
-            </tr>
-        }
-
-    </table>*@
 <!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">
 
@@ -51,7 +23,7 @@
             </form>
 
             <!-- Topbar Search -->
-            <form method="post" action="/admin/nha-san-xuat" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <form method="post" action="/admin/san-pham" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
                     <input class="col-md-10" type="text" name="timkiem" class="form-control bg-light border-0 small" placeholder="Search for @ViewBag.CurrentFilter"
                            aria-label="Search" aria-describedby="basic-addon2">
@@ -112,9 +84,9 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-white">Nhà Sản Xuất</h1>
+            <h1 class="h3 mb-2 text-white">Sản Phẩm</h1>
             <p>
-                @Html.ActionLink("Thêm nhà sản xuất", "Create")
+                @Html.ActionLink("Thêm Sản Phẩm", "Create")
             </p>
 
             <!-- DataTales Example -->
@@ -127,12 +99,40 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        @Html.ActionLink("Mã nhà sản xuất", "Index", new { sapxep = ViewBag.SapxepMa, loc = ViewBag.Loc })
+                                        @Html.ActionLink("Tên Danh Mục Con", "Index")
                                     </th>
                                     <th>
-                                        @Html.ActionLink("Tên nhà sản xuất", "Index", new { sapxep = ViewBag.SapxepTen, loc = ViewBag.Loc })
+                                        @Html.ActionLink("Mã Sản Phẩm", "Index", new { sapxep = ViewBag.SapxepMa, loc = ViewBag.Loc })
                                     </th>
-                                    <th> Tùy chỉnh</th>
+                                    <th>
+                                        @Html.ActionLink("Tên Sản Phẩm", "Index", new { sapxep = ViewBag.SapxepTen, loc = ViewBag.Loc })
+                                    </th>
+                                    <th>
+                                        @Html.ActionLink("Giá", "Index")
+                                    </th>
+                                    <th>
+                                        @Html.ActionLink("Hình", "Index")
+                                    </th>
+                                    <th>
+                                        @Html.ActionLink("Số lượng tồn kho", "Index")
+                                    </th>
+                                    <th>
+                                        @Html.ActionLink("Số lượng đã bán", "Index")
+                                    </th>
+                                    <th>
+                                        @Html.ActionLink("Ngày sản xuất", "Index")
+                                    </th>
+                                    <th>
+                                        @Html.ActionLink("Hạn sử dụng", "Index")
+                                    </th>
+                                    <th>
+                                        @Html.ActionLink("Điêm", "Index")
+                                    </th>
+                                  
+                                    <th>
+                                        @Html.ActionLink("Tình trạng", "Index")
+                                    </th>
+                                    <th>Tùy chỉnh</th>
                                 </tr>
                             </thead>
 
@@ -141,15 +141,43 @@
                                 {
                                     <tr>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.MaNhaSanXuat)
+                                            @Html.DisplayFor(modelItem => item.DanhMucCon.TenDanhMucCon)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.TenNhaSanXuat)
+                                            @Html.DisplayFor(modelItem => item.MaSanPham)
                                         </td>
                                         <td>
-                                            @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.MaNhaSanXuat }) |
-                                            @*@Html.ActionLink("Details", "Details", new { id = item.MaNhaSanXuat }) |*@
-                                            @Html.ActionLink("Xóa", "Delete", new { id = item.MaNhaSanXuat })
+                                            @Html.DisplayFor(modelItem => item.TenSanPham)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Gia)
+                                        </td>
+                                        <td>
+                                            <div class="img-fit cart" style="background-image: url('@item.HinhChinh'),url(" /Content/images/default.png");">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.SoLuongTonKho)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.SoLuongDaBan)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.NgaySanXuat)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.HanSuDung)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Diem)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TinhTrang)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.MaSanPham }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.MaSanPham }) |
+                                            @Html.ActionLink("Xóa", "Delete", new { id = item.MaSanPham })
                                         </td>
                                     </tr>
 
@@ -184,4 +212,3 @@
     <!-- End of Footer -->
 
 </div>
-

@@ -1,0 +1,141 @@
+﻿@model ChanhThu_Store.Models.SanPham
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Main_Admin.cshtml";
+}
+
+
+
+<div class="form">
+
+    <dl class="dl-horizontal">
+        <dt>
+            <span class="label-admin h3">Mã Danh Mục Con</span>
+        </dt>
+
+        <dd class="text-white h5">
+            @Html.DisplayFor(model => model.DanhMucCon.MaDanhMuc)
+        </dd>
+
+        <dt>
+            <span class="label-admin h3">Tên nhà sản xuất</span>
+        </dt>
+
+        <dd class="text-white h3">
+            @Html.DisplayFor(model => model.NhaSanXuat.TenNhaSanXuat)
+        </dd>
+
+        <dt>
+            <span class="label-admin h3">Tên Sản Phẩm</span>
+        </dt>
+
+        <dd class="text-white h3">
+            @Html.DisplayFor(model => model.TenSanPham)
+        </dd>
+
+        <dt>
+            <span class="label-admin h3">Giá</span>
+        </dt>
+
+        <dd class="text-white h3">
+            @Html.DisplayFor(model => model.Gia)
+        </dd>
+
+        <dt>
+            <span class="label-admin h3">Hình Chính</span>
+        </dt>
+
+        <dd class="text-white h3">
+            @Html.DisplayFor(model => model.HinhChinh)
+        </dd>
+
+        <dt>
+            <span class="label-admin h3">Hình 1</span>
+        </dt>
+
+        <dd class="text-white h3">
+            @Html.DisplayFor(model => model.Hinh1)
+        </dd>
+
+        <dt>
+            <span class="label-admin h3">Hình 2</span>
+        </dt>
+
+        <dd class="text-white h3">
+            @Html.DisplayFor(model => model.Hinh2)
+        </dd>
+
+        <dt>
+            <span class="label-admin h3">Mô tả</span>
+        </dt>
+
+        <dd class="text-white h3">
+            @Html.DisplayFor(model => model.Mota)
+        </dd>
+
+        <dt>
+            <span class="label-admin h3">Số lượng Tồn Kho</span>
+        </dt>
+
+        <dd class="text-white h3">
+            @Html.DisplayFor(model => model.SoLuongTonKho)
+        </dd>
+
+        <dt>
+            <span class="label-admin h3">Số lượng Đã Bán</span>
+        </dt>
+
+        <dd class="text-white h3">
+            @Html.DisplayFor(model => model.SoLuongDaBan)
+        </dd>
+
+        <dt>
+            <span class="label-admin h3">Lượt yêu thích</span>
+        </dt>
+
+        <dd class="text-white h3">
+            @Html.DisplayFor(model => model.LuotYeuThich)
+        </dd>
+
+        <dt>
+            <span class="label-admin h3">Ngày sản xuất</span>
+        </dt>
+
+        <dd class="text-white h3">
+            @Html.DisplayFor(model => model.NgaySanXuat)
+        </dd>
+
+        <dt>
+            <span class="label-admin h3">Hạn sử dụng</span>
+        </dt>
+
+        <dd class="text-white h3">
+            @Html.DisplayFor(model => model.HanSuDung)
+        </dd>
+
+        <dt>
+            <span class="label-admin h3">Điểm</span>
+        </dt>
+
+        <dd class="text-white h3">
+            @Html.DisplayFor(model => model.Diem)
+        </dd>
+
+        <dt>
+            <span class="label-admin h3">Tình trạng</span>
+        </dt>
+
+        <dd class="text-white h3">
+            @Html.DisplayFor(model => model.TinhTrang)
+        </dd>
+        <dd>
+            <p>
+                @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.MaSanPham }) |
+                @Html.ActionLink("Trở về trang sản phẩm", "Index")
+            </p>
+        </dd>
+    </dl>
+   
+
+</div>

@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<ChanhThu_Store.Models.NhaSanXuat>
+﻿@model PagedList.IPagedList<ChanhThu_Store.Models.HoaDon>
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @using PagedList.Mvc;
 @{
@@ -6,35 +6,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Main_Admin.cshtml";
 }
 
-@*<h2>Index</h2>
 
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.TenNhaSanXuat)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TenNhaSanXuat)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.MaNhaSanXuat }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.MaNhaSanXuat }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.MaNhaSanXuat })
-                </td>
-            </tr>
-        }
-
-    </table>*@
-<!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">
 
     <!-- Main Content -->
@@ -51,7 +23,7 @@
             </form>
 
             <!-- Topbar Search -->
-            <form method="post" action="/admin/nha-san-xuat" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <form method="post" action="/admin/hoa-don" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
                     <input class="col-md-10" type="text" name="timkiem" class="form-control bg-light border-0 small" placeholder="Search for @ViewBag.CurrentFilter"
                            aria-label="Search" aria-describedby="basic-addon2">
@@ -112,10 +84,8 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-white">Nhà Sản Xuất</h1>
-            <p>
-                @Html.ActionLink("Thêm nhà sản xuất", "Create")
-            </p>
+            <h1 class="h3 mb-2 text-white">Hóa Đơn</h1>
+
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
@@ -127,10 +97,28 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        @Html.ActionLink("Mã nhà sản xuất", "Index", new { sapxep = ViewBag.SapxepMa, loc = ViewBag.Loc })
+                                        @Html.ActionLink("Mã Hóa Đơn", "Index", new { sapxep = ViewBag.SapxepMa, loc = ViewBag.Loc })
                                     </th>
                                     <th>
-                                        @Html.ActionLink("Tên nhà sản xuất", "Index", new { sapxep = ViewBag.SapxepTen, loc = ViewBag.Loc })
+                                        @Html.ActionLink("Tên Khách Hàng", "Index", new { sapxep = ViewBag.SapxepTen, loc = ViewBag.Loc })
+                                    </th>
+                                    <th>
+                                        @Html.ActionLink("Ngày Lập", "Index")
+                                    </th>
+                                    <th>
+                                        @Html.ActionLink("Voucher", "Index")
+                                    </th>
+                                    <th>
+                                        @Html.ActionLink("SDT", "Index")
+                                    </th>
+                                    <th>
+                                        @Html.ActionLink("Địa Chỉ", "Index")
+                                    </th>
+                                    <th>
+                                        @Html.ActionLink("Email", "Index")
+                                    </th>
+                                    <th>
+                                        @Html.ActionLink("Tổng Tiền", "Index")
                                     </th>
                                     <th> Tùy chỉnh</th>
                                 </tr>
@@ -141,15 +129,33 @@
                                 {
                                     <tr>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.MaNhaSanXuat)
+                                            @Html.DisplayFor(modelItem => item.MaHoaDon)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.TenNhaSanXuat)
+                                            @Html.DisplayFor(modelItem => item.AspNetUser.Ten)
                                         </td>
                                         <td>
-                                            @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.MaNhaSanXuat }) |
-                                            @*@Html.ActionLink("Details", "Details", new { id = item.MaNhaSanXuat }) |*@
-                                            @Html.ActionLink("Xóa", "Delete", new { id = item.MaNhaSanXuat })
+                                            @Html.DisplayFor(modelItem => item.NgayLap)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MaVoucher)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.AspNetUser.PhoneNumber)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.AspNetUser.DiaChi)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TongTien)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Chi tiết", "Details", new { id = item.MaHoaDon }) |
+                                            @*@Html.ActionLink("Details", "Details", new { id = item.MaDanhMuc }) |*@
+                                            @Html.ActionLink("Xóa", "Delete", new { id = item.MaHoaDon })
                                         </td>
                                     </tr>
 
@@ -184,4 +190,3 @@
     <!-- End of Footer -->
 
 </div>
-

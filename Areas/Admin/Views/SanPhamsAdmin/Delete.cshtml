@@ -1,19 +1,21 @@
-﻿@model ChanhThu_Store.Models.NhaSanXuat
+﻿@model ChanhThu_Store.Models.SanPham
 
 @{
     ViewBag.Title = "Delete";
     Layout = "~/Areas/Admin/Views/Shared/_Main_Admin.cshtml";
 }
+
+
 <div class="form">
     <div class="max">
         @*<h2 class="admin-title">Delete Section</h2>*@
         @*<hr />*@
-        <h3 class="question text-center">Bạn có chắc chắn muốn xóa Nhà Sản Xuất này không ?</h3>
+        <h3 class="question text-center">Bạn có chắc chắn muốn xóa Sản Phẩm này không ?</h3>
         <dl class="dl-horizontal text-center text-white h1">
 
 
             <dd>
-                @Html.DisplayFor(model => model.TenNhaSanXuat)
+                @Html.DisplayFor(model => model.TenSanPham)
             </dd>
 
         </dl>
@@ -31,4 +33,3 @@
         }
     </div>
 </div>
-
