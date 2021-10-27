@@ -11626,8 +11626,10 @@ body.sidebar-toggled footer.sticky-footer {
 }
 
 .label-admin {
-    color: var(--primary-color) !important;
-    padding: 10px !important;
+    
+    color: var(--primary-color);
+    margin-bottom: 12px;
+    display: block;
 }
 .img-fit {
     width: 100%;

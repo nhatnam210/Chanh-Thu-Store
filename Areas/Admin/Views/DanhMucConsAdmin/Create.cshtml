@@ -5,56 +5,53 @@
     Layout = "~/Areas/Admin/Views/Shared/_Main_Admin.cshtml";
 }
 
-<h2>Create</h2>
 
-@using (Html.BeginForm()) 
+
+
+@using (Html.BeginForm("Create", "DanhMucConsAdmin", FormMethod.Post, new { @class = "form" }))
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>DanhMucCon</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.MaDanhMucCon, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MaDanhMucCon, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MaDanhMucCon, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.MaDanhMuc, "MaDanhMuc", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("MaDanhMuc", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.MaDanhMuc, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.TenDanhMucCon, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TenDanhMucCon, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TenDanhMucCon, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Hinh, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Hinh, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Hinh, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+<div class="form-horizontal">
+    <h2 class="admin-title text-white text-center">Thêm Danh Mục Con</h2>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Mã Danh Mục</span>
+        <div class="col-md-12">
+            @Html.DropDownList("MaDanhMuc", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.MaDanhMuc, "", new { @class = "text-danger" })
         </div>
     </div>
-}
+    <div class="form-group">
+        <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Mã Danh Mục Con</span>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.MaDanhMucCon, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.MaDanhMucCon, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Tên Danh Mục Con</span>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.TenDanhMucCon, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TenDanhMucCon, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Hình</span>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.Hinh, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Hinh, "", new { @class = "text-danger" })
+        </div>
+    </div>
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    <div class="form-group col-md-12">
+        <div class="col-md-offset-2 btn-touch">
+            <input type="submit" value="Create" class="btn btn-success" />
+        </div>
+    </div>
+    <div class="col-md-12 back-to-list">
+        @Html.ActionLink("Trở về", "Index")
+    </div>
 </div>
+}

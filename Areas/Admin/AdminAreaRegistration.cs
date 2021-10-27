@@ -24,6 +24,22 @@ namespace ChanhThu_Store.Areas.Admin
                     "admin/nha-san-xuat",
                     new { controller = "NhaSanXuats", action = "Index", id = UrlParameter.Optional }
                 );
+            
+            context.MapRoute(
+                    "Them nha san xuat admin",
+                    "admin/nha-san-xuat/them-nha-san-xuat",
+                    new { controller = "NhaSanXuats", action = "Create", id = UrlParameter.Optional }
+                );
+            context.MapRoute(
+                    "Sua nha san xuat admin",
+                    "admin/nha-san-xuat/sua-nha-san-xuat",
+                    new { controller = "NhaSanXuats", action = "Edit", id = UrlParameter.Optional }
+                );
+            context.MapRoute(
+                    "Xoa nha san xuat admin",
+                    "admin/nha-san-xuat/xoa-nha-san-xuat",
+                    new { controller = "NhaSanXuats", action = "Delete", id = UrlParameter.Optional }
+                );
             context.MapRoute(
                 "Danh muc admin",
                 "admin/danh-muc",
@@ -38,6 +54,11 @@ namespace ChanhThu_Store.Areas.Admin
                 "Hoa Don admin",
                 "admin/hoa-don",
                 new { controller = "HoaDonsAdmin", action = "Index", id = UrlParameter.Optional }
+            );
+            context.MapRoute(
+                "San Pham admin",
+                "admin/san-pham",
+                new { controller = "SanPhamsAdmin", action = "Index", id = UrlParameter.Optional }
             );
             context.MapRoute(
                 "Admin_default",
