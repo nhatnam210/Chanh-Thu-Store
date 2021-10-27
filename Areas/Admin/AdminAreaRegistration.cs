@@ -61,6 +61,11 @@ namespace ChanhThu_Store.Areas.Admin
                 new { controller = "SanPhamsAdmin", action = "Index", id = UrlParameter.Optional }
             );
             context.MapRoute(
+                "Khach hang admin",
+                "admin/khach-hang",
+                new { controller = "AspNetUsersAdmin", action = "Index", id = UrlParameter.Optional }
+            );
+            context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }

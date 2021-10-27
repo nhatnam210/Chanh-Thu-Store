@@ -45,7 +45,7 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             switch (sapxep)
             {
                 case "Id":
-                    danhmuc = danhmuc.OrderByDescending(s => s.TenDanhMuc);
+                    danhmuc = danhmuc.OrderByDescending(s => s.MaDanhMuc);
                     break;
                 case "Ten":
                     danhmuc = danhmuc.OrderBy(s => s.TenDanhMuc);

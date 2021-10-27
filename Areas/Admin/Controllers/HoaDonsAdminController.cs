@@ -21,7 +21,7 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             ViewBag.Sapxep = sapxep;
             ViewBag.SapxepMa = String.IsNullOrEmpty(sapxep) ? "Id" : "";
             ViewBag.SapxepTen = sapxep == "Ten" ? "Ten_desc" : "Ten";
-
+            ViewBag.SapxepNgay = sapxep == "Ngay" ? "Ngay_desc" : "Ngay";
             //phan trang
             if (timkiem != null)
             {
@@ -47,9 +47,20 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
                 case "Id":
                     hoadon = hoadon.OrderByDescending(s => s.MaHoaDon);
                     break;
-               
                 case "Id desc":
                     hoadon = hoadon.OrderByDescending(s => s.MaHoaDon);
+                    break;
+                case "Ten":
+                    hoadon = hoadon.OrderBy(s => s.Ten);
+                    break;
+                case "Ten_desc":
+                    hoadon = hoadon.OrderByDescending(s => s.Ten);
+                    break;
+                case "Ngay":
+                    hoadon = hoadon.OrderBy(s => s.NgayLap);
+                    break;
+                case "Ngay_desc":
+                    hoadon = hoadon.OrderByDescending(s => s.NgayLap);
                     break;
                 default:
                     hoadon = hoadon.OrderBy(s => s.MaHoaDon);
