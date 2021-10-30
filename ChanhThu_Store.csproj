@@ -186,6 +186,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AspNetUsersAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\DanhMucConsAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\DanhMucsAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\HoaDonsAdminController.cs" />
@@ -3121,6 +3122,11 @@
     <Content Include="Areas\Admin\Views\SanPhamsAdmin\Details.cshtml" />
     <Content Include="Areas\Admin\Views\SanPhamsAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\SanPhamsAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AspNetUsersAdmin\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AspNetUsersAdmin\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AspNetUsersAdmin\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AspNetUsersAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AspNetUsersAdmin\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

@@ -103,22 +103,22 @@
                                         @Html.ActionLink("Tên Khách Hàng", "Index", new { sapxep = ViewBag.SapxepTen, loc = ViewBag.Loc })
                                     </th>
                                     <th>
-                                        @Html.ActionLink("Ngày Lập", "Index")
+                                        @Html.ActionLink("Ngày Lập", "Index" ,  new { sapxep = ViewBag.SapxepNgay, loc = ViewBag.Loc })
                                     </th>
                                     <th>
-                                        @Html.ActionLink("Voucher", "Index")
+                                        Voucher
                                     </th>
                                     <th>
-                                        @Html.ActionLink("SDT", "Index")
+                                        SDT
                                     </th>
                                     <th>
-                                        @Html.ActionLink("Địa Chỉ", "Index")
+                                        Địa Chỉ
                                     </th>
                                     <th>
-                                        @Html.ActionLink("Email", "Index")
+                                       Email
                                     </th>
                                     <th>
-                                        @Html.ActionLink("Tổng Tiền", "Index")
+                                        Tổng Tiền
                                     </th>
                                     <th> Tùy chỉnh</th>
                                 </tr>
@@ -141,10 +141,10 @@
                                             @Html.DisplayFor(modelItem => item.MaVoucher)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.AspNetUser.PhoneNumber)
+                                            @Html.DisplayFor(modelItem => item.SDT)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.AspNetUser.DiaChi)
+                                            @Html.DisplayFor(modelItem => item.DiaChi)
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.AspNetUser.Email)

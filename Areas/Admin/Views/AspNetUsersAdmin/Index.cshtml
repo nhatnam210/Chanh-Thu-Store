@@ -1,4 +1,5 @@
-﻿@model PagedList.IPagedList<ChanhThu_Store.Models.DanhMucCon>
+﻿
+@model PagedList.IPagedList<ChanhThu_Store.Models.AspNetUser>
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @using PagedList.Mvc;
 @{
@@ -6,8 +7,112 @@
     Layout = "~/Areas/Admin/Views/Shared/_Main_Admin.cshtml";
 }
 
+@*<h2>Index</h2>
 
-<!-- Content Wrapper -->
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ten)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailConfirmed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PasswordHash)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiemTichLuy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecurityStamp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TwoFactorEnabled)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LockoutEndDateUtc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LockoutEnabled)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccessFailedCount)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailConfirmed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PasswordHash)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiemTichLuy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecurityStamp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumberConfirmed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TwoFactorEnabled)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LockoutEndDateUtc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LockoutEnabled)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccessFailedCount)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>*@
 <div id="content-wrapper" class="d-flex flex-column">
 
     <!-- Main Content -->
@@ -24,7 +129,7 @@
             </form>
 
             <!-- Topbar Search -->
-            <form method="post" action="/admin/danh-muc-con" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <form method="post" action="/admin/khach-hang" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
                     <input class="col-md-10" type="text" name="timkiem" class="form-control bg-light border-0 small" placeholder="Search for @ViewBag.CurrentFilter"
                            aria-label="Search" aria-describedby="basic-addon2">
@@ -85,10 +190,8 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-white">Danh Mục Con</h1>
-            <p>
-                @Html.ActionLink("Thêm Danh Mục Con", "Create")
-            </p>
+            <h1 class="h3 mb-2 text-white">Khách Hàng</h1>
+
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
@@ -99,17 +202,22 @@
 
                             <thead>
                                 <tr>
-                                    <th>
-                                        Tên Danh Mục
-                                    </th>
-                                    <th>
-                                        @Html.ActionLink("Tên Danh Mục Con", "Index", new { sapxep = ViewBag.SapxepTen, loc = ViewBag.Loc })
-                                    </th>
-                                    <th>
 
-                                      Hình
+                                    <th>
+                                        @Html.ActionLink("Tên", "Index", new { sapxep = ViewBag.SapxepTen, loc = ViewBag.Loc })
                                     </th>
-                                    <th> Tùy chỉnh</th>
+                                    <th>
+                                        @Html.ActionLink("Email", "Index")
+                                    </th>
+
+                                    <th>
+                                       SDT
+                                    </th>
+                                    <th>
+                                       Điểm Tích Lũy
+                                    </th>
+
+                                    @*<th>Tùy chỉnh</th>*@
                                 </tr>
                             </thead>
 
@@ -118,20 +226,23 @@
                                 {
                                     <tr>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.DanhMuc.TenDanhMuc)
+                                            @Html.DisplayFor(modelItem => item.Ten)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.TenDanhMucCon)
+                                            @Html.DisplayFor(modelItem => item.Email)
                                         </td>
                                         <td>
-                                            <div class="img-fit cart" style="background-image: url('@item.Hinh'),url(" /Content/images/default.png");">
-                                             </div>
+                                            @Html.DisplayFor(modelItem => item.PhoneNumber)
                                         </td>
                                         <td>
-                                            @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.MaDanhMucCon }) |
-                                            @*@Html.ActionLink("Details", "Details", new { id = item.MaDanhMuc }) |*@
-                                            @Html.ActionLink("Xóa", "Delete", new { id = item.MaDanhMucCon })
+                                            @Html.DisplayFor(modelItem => item.DiemTichLuy)
                                         </td>
+
+                                        @*<td>
+                                                @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.MaSanPham }) |
+                                                @Html.ActionLink("Details", "Details", new { id = item.MaSanPham }) |
+                                                @Html.ActionLink("Xóa", "Delete", new { id = item.MaSanPham })
+                                            </td>*@
                                     </tr>
 
                                 }

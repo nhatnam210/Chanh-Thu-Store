@@ -11,11 +11,11 @@ using PagedList;
 
 namespace ChanhThu_Store.Areas.Admin.Controllers
 {
-    public class SanPhamsAdminController : Controller
+    public class AspNetUsersAdminController : Controller
     {
         private ChanhThuStoreContext db = new ChanhThuStoreContext();
 
-        // GET: Admin/SanPhamsAdmin
+        // GET: Admin/AspNetUsersAdmin
         public ActionResult Index(string sapxep, string loc, string timkiem, int? trang)
         {
             ViewBag.Sapxep = sapxep;
@@ -33,11 +33,11 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             }
             ViewBag.Loc = timkiem;
             //tìm kiếm
-            var sanpham = from s in db.SanPhams
-                          select s;
+            var khachhang = from s in db.AspNetUsers
+                             select s;
             if (!String.IsNullOrEmpty(timkiem))
             {
-                sanpham = sanpham.Where(s => s.TenSanPham.Contains(timkiem));
+                khachhang = khachhang.Where(s => s.Ten.Contains(timkiem));
                 //|| s.author.Contains(timkiem)
 
             }
@@ -45,123 +45,115 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             switch (sapxep)
             {
                 case "Id":
-                    sanpham = sanpham.OrderByDescending(s => s.MaSanPham);
+                    khachhang = khachhang.OrderByDescending(s => s.Id);
                     break;
                 case "Ten":
-                    sanpham = sanpham.OrderBy(s => s.TenSanPham);
+                    khachhang = khachhang.OrderBy(s => s.Ten);
                     break;
                 case "Ten_desc":
-                    sanpham = sanpham.OrderByDescending(s => s.TenSanPham);
+                    khachhang = khachhang.OrderByDescending(s => s.Ten);
                     break;
                 default:
-                    sanpham = sanpham.OrderBy(s => s.MaSanPham);
+                    khachhang = khachhang.OrderBy(s => s.Id);
                     break;
             }
             //var articles = db.Articles.Include(a => a.Cetegory);
             int pageSize = 5;
             int pageNumber = (trang ?? 1);
-            return View(sanpham.ToPagedList(pageNumber, pageSize));
+            return View(khachhang.ToPagedList(pageNumber, pageSize));
         }
 
-        // GET: Admin/SanPhamsAdmin/Details/5
+        // GET: Admin/AspNetUsersAdmin/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SanPham sanPham = db.SanPhams.Find(id);
-            if (sanPham == null)
+            AspNetUser aspNetUser = db.AspNetUsers.Find(id);
+            if (aspNetUser == null)
             {
                 return HttpNotFound();
             }
-            return View(sanPham);
+            return View(aspNetUser);
         }
 
-        // GET: Admin/SanPhamsAdmin/Create
+        // GET: Admin/AspNetUsersAdmin/Create
         public ActionResult Create()
         {
-            ViewBag.MaDanhMucCon = new SelectList(db.DanhMucCons, "MaDanhMucCon", "MaDanhMuc");
-            ViewBag.MaNhaSanXuat = new SelectList(db.NhaSanXuats, "MaNhaSanXuat", "TenNhaSanXuat");
             return View();
         }
 
-        // POST: Admin/SanPhamsAdmin/Create
+        // POST: Admin/AspNetUsersAdmin/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaSanPham,MaDanhMucCon,MaNhaSanXuat,TenSanPham,Gia,HinhChinh,Hinh1,Hinh2,Mota,SoLuongTonKho,SoLuongDaBan,LuotYeuThich,NgaySanXuat,HanSuDung,Diem,TinhTrang")] SanPham sanPham)
+        public ActionResult Create([Bind(Include = "Id,Ten,UserName,Email,EmailConfirmed,PasswordHash,PhoneNumber,DiaChi,DiemTichLuy,SecurityStamp,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount")] AspNetUser aspNetUser)
         {
             if (ModelState.IsValid)
             {
-                db.SanPhams.Add(sanPham);
+                db.AspNetUsers.Add(aspNetUser);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaDanhMucCon = new SelectList(db.DanhMucCons, "MaDanhMucCon", "MaDanhMuc", sanPham.MaDanhMucCon);
-            ViewBag.MaNhaSanXuat = new SelectList(db.NhaSanXuats, "MaNhaSanXuat", "TenNhaSanXuat", sanPham.MaNhaSanXuat);
-            return View(sanPham);
+            return View(aspNetUser);
         }
 
-        // GET: Admin/SanPhamsAdmin/Edit/5
+        // GET: Admin/AspNetUsersAdmin/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SanPham sanPham = db.SanPhams.Find(id);
-            if (sanPham == null)
+            AspNetUser aspNetUser = db.AspNetUsers.Find(id);
+            if (aspNetUser == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MaDanhMucCon = new SelectList(db.DanhMucCons, "MaDanhMucCon", "MaDanhMuc", sanPham.MaDanhMucCon);
-            ViewBag.MaNhaSanXuat = new SelectList(db.NhaSanXuats, "MaNhaSanXuat", "TenNhaSanXuat", sanPham.MaNhaSanXuat);
-            return View(sanPham);
+            return View(aspNetUser);
         }
 
-        // POST: Admin/SanPhamsAdmin/Edit/5
+        // POST: Admin/AspNetUsersAdmin/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaSanPham,MaDanhMucCon,MaNhaSanXuat,TenSanPham,Gia,HinhChinh,Hinh1,Hinh2,Mota,SoLuongTonKho,SoLuongDaBan,LuotYeuThich,NgaySanXuat,HanSuDung,Diem,TinhTrang")] SanPham sanPham)
+        public ActionResult Edit([Bind(Include = "Id,Ten,UserName,Email,EmailConfirmed,PasswordHash,PhoneNumber,DiaChi,DiemTichLuy,SecurityStamp,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount")] AspNetUser aspNetUser)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(sanPham).State = EntityState.Modified;
+                db.Entry(aspNetUser).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaDanhMucCon = new SelectList(db.DanhMucCons, "MaDanhMucCon", "MaDanhMuc", sanPham.MaDanhMucCon);
-            ViewBag.MaNhaSanXuat = new SelectList(db.NhaSanXuats, "MaNhaSanXuat", "TenNhaSanXuat", sanPham.MaNhaSanXuat);
-            return View(sanPham);
+            return View(aspNetUser);
         }
 
-        // GET: Admin/SanPhamsAdmin/Delete/5
+        // GET: Admin/AspNetUsersAdmin/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SanPham sanPham = db.SanPhams.Find(id);
-            if (sanPham == null)
+            AspNetUser aspNetUser = db.AspNetUsers.Find(id);
+            if (aspNetUser == null)
             {
                 return HttpNotFound();
             }
-            return View(sanPham);
+            return View(aspNetUser);
         }
 
-        // POST: Admin/SanPhamsAdmin/Delete/5
+        // POST: Admin/AspNetUsersAdmin/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            SanPham sanPham = db.SanPhams.Find(id);
-            db.SanPhams.Remove(sanPham);
+            AspNetUser aspNetUser = db.AspNetUsers.Find(id);
+            db.AspNetUsers.Remove(aspNetUser);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
