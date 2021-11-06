@@ -6,8 +6,10 @@ using System.Web.Mvc;
 
 namespace ChanhThu_Store.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class MainAdminController : Controller
     {
+       
         // GET: Admin/MainAdmin
         public ActionResult Index()
         {

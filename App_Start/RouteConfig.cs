@@ -79,6 +79,11 @@ namespace ChanhThu_Store
              defaults: new { controller = "Cart", action = "Success", id = UrlParameter.Optional }
           );
             routes.MapRoute(
+             name: "Thong tin ca nhan",
+             url: "thong-tin-ca-nhan",
+             defaults: new { controller = "Account", action = "Info", id = UrlParameter.Optional }
+          );
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

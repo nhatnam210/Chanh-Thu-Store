@@ -153,7 +153,7 @@
                                             @Html.DisplayFor(modelItem => item.TongTien)
                                         </td>
                                         <td>
-                                            @Html.ActionLink("Chi tiết", "Details", new { id = item.MaHoaDon }) |
+                                            <a href="/admin/chi-tiet-hoa-don?id=@item.MaHoaDon">Chi Tiết</a> |
                                             @*@Html.ActionLink("Details", "Details", new { id = item.MaDanhMuc }) |*@
                                             @Html.ActionLink("Xóa", "Delete", new { id = item.MaHoaDon })
                                         </td>

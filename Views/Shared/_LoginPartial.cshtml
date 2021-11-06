@@ -7,11 +7,12 @@
         {
             @Html.AntiForgeryToken()
 
-            <ul class="nav navbar-nav navbar-right">
+            
 
-                <li><a class="btn login btn-primary text-uppercase " href="/Admin/Manage">Admin Page</a></li>
-                <li><a class="btn login btn-primary text-uppercase " href="javascript:document.getElementById('logoutForm').submit()">Log Out</a></li>
-            </ul>
+                <a href="/admin" class="btn login hvr-hover">Admin Page</a>
+
+                <a class="btn login hvr-hover" href="javascript:document.getElementById('logoutForm').submit()">Đăng Xuất</a>
+            
         }
     }
     else
@@ -20,12 +21,13 @@
         {
             @Html.AntiForgeryToken()
 
-          
-          
-               @Html.ActionLink("Xin chào " + User.Identity.GetUserName(), "Storage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" , @class = "name-account" })
-             
-               <a class="btn login hvr-hover" href="javascript:document.getElementById('logoutForm').submit()">Đăng xuất</a>
-      
+
+
+            <a href="/thong-tin-ca-nhan" class="name-account" routeValues: null> Xin chào @User.Identity.GetUserName()</a>
+            
+
+            <a class="btn login hvr-hover" href="javascript:document.getElementById('logoutForm').submit()">Đăng xuất</a>
+
         }
     }
 
