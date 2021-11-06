@@ -187,6 +187,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AspNetUsersAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ChiTietHoaDonsAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\DanhMucConsAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\DanhMucsAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\HoaDonsAdminController.cs" />
@@ -3127,6 +3128,11 @@
     <Content Include="Areas\Admin\Views\AspNetUsersAdmin\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AspNetUsersAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\AspNetUsersAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietHoaDonsAdmin\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietHoaDonsAdmin\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietHoaDonsAdmin\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietHoaDonsAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietHoaDonsAdmin\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3201,6 +3207,7 @@
     <Content Include="Views\Shared\_Header_Cart.cshtml" />
     <Content Include="Views\Cart\Payment.cshtml" />
     <Content Include="Views\Cart\Success.cshtml" />
+    <Content Include="Views\Account\Info.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

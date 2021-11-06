@@ -11,10 +11,11 @@ using PagedList;
 
 namespace ChanhThu_Store.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class SanPhamsAdminController : Controller
     {
         private ChanhThuStoreContext db = new ChanhThuStoreContext();
-
+        
         // GET: Admin/SanPhamsAdmin
         public ActionResult Index(string sapxep, string loc, string timkiem, int? trang)
         {

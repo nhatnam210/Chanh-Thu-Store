@@ -1,10 +1,9 @@
-﻿@model PagedList.IPagedList<ChanhThu_Store.Models.SanPham>
-<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
-@using PagedList.Mvc;
+﻿@model IEnumerable<ChanhThu_Store.Models.ChiTietHoaDon>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Main_Admin.cshtml";
 }
+
 
 <!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">
@@ -23,7 +22,7 @@
             </form>
 
             <!-- Topbar Search -->
-            <form method="post" action="/admin/san-pham" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <form method="post" action="/admin/chi-tiet-hoa-don" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
                     <input class="col-md-10" type="text" name="timkiem" class="form-control bg-light border-0 small" placeholder="Search for @ViewBag.CurrentFilter"
                            aria-label="Search" aria-describedby="basic-addon2">
@@ -84,10 +83,8 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-white">Sản Phẩm</h1>
-            <p>
-                @Html.ActionLink("Thêm Sản Phẩm", "Create")
-            </p>
+            <h1 class="h3 mb-2 text-white">Chi Tiết Hóa Đơn</h1>
+           
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
@@ -99,65 +96,43 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        Tên Danh Mục Con
+                                        Mã Hóa Đơn
                                     </th>
                                     <th>
-                                        @Html.ActionLink("Mã Sản Phẩm", "Index", new { sapxep = ViewBag.SapxepMa, loc = ViewBag.Loc })
+                                        Mã Sản Phẩm
                                     </th>
                                     <th>
-                                        @Html.ActionLink("Tên Sản Phẩm", "Index", new { sapxep = ViewBag.SapxepTen, loc = ViewBag.Loc })
+
+                                        Số Lượng
                                     </th>
-                                    <th>
-                                        Giá
-                                    </th>
-                                    <th width="125px">
-                                       Hình
-                                    </th>
-                                    <th>
-                                        Số Lượng Tồn Kho
-                                    </th>
-                                   
-                                  
-                                    <th>
-                                  Tình Trạng
-                                    </th>
-                                    <th>Tùy chỉnh</th>
+                                    <th> Đơn Giá</th>
+                                    <th> Thành Tiền</th>
                                 </tr>
                             </thead>
 
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.DanhMucCon.TenDanhMucCon)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.MaSanPham)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.TenSanPham)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Gia)
-                                        </td>
-                                        <td>
-                                            <div class="img-fit cart" style="background-image: url('@item.HinhChinh'),url(" /Content/images/default.png");">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.SoLuongTonKho)
-                                        </td>
-                                        
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.TinhTrang)
-                                        </td>
-                                        <td>
-                                            @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.MaSanPham }) |
-                                            @Html.ActionLink("Details", "Details", new { id = item.MaSanPham }) |
-                                            @Html.ActionLink("Xóa", "Delete", new { id = item.MaSanPham })
-                                        </td>
-                                    </tr>
+                                   
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.MaHoaDon)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.MaSanPham)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Soluong)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DonGia)
+                                    </td>
+                                    <td>
+                                       @(item.DonGia*item.Soluong)
+                                    </td>
+
+
+                                </tr>
 
                                 }
 
@@ -166,10 +141,10 @@
                             </tbody>
                         </table>
                         <br />
-                        <span class="show-page-text text-white">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
+                        @*<span class="show-page-text text-white">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
 
                         @Html.PagedListPager(Model, trang => Url.Action("Index",
-                            new { trang, sapxep = ViewBag.Sapxep, loc = ViewBag.Loc }))
+                            new { trang, sapxep = ViewBag.Sapxep, loc = ViewBag.Loc }))*@
                     </div>
                 </div>
             </div>
