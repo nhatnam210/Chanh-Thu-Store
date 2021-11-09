@@ -5,50 +5,7 @@
 
 
 <!-- Start Slider -->
-<div id="slides-shop" class="cover-slides">
-    <ul class="slides-container">
-        <li class="text-center">
-            <img src="~/Content/images/back3.jpg" alt="">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="m-b-20"><strong>Chào Mừng Đến Với <br> ChanhThuStore</strong></h1>
-                        <p class="m-b-40">Bạn đồng hành của mọi tiệc cưới <br> Khách hàng là thượng đế.</p>
-                        <p><a class="btn hvr-hover" href="#">Mua Ngay</a></p>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li class="text-center">
-            <img src="~/Content/images/back1.jpg" alt="">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="m-b-20"><strong>Chào Mừng Đến Với <br> ChanhThuStore</strong></h1>
-                        <p class="m-b-40">Bạn đồng hành của mọi tiệc cưới <br> Khách hàng là thượng đế.</p>
-                        <p><a class="btn hvr-hover" href="#">Mua Ngay</a></p>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li class="text-center">
-            <img src="~/Content/images/back2.jpg" alt="">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="m-b-20"><strong>Chào Mừng Đến Với <br> ChanhThuStore</strong></h1>
-                        <p class="m-b-40">Bạn đồng hành của mọi tiệc cưới <br> Khách hàng là thượng đế.</p>
-                        <p><a class="btn hvr-hover" href="#">Mua Ngay</a></p>
-                    </div>
-                </div>
-            </div>
-        </li>
-    </ul>
-    <div class="slides-navigation">
-        <a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
-        <a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
-    </div>
-</div>
+@Html.Partial("_Slider_header", ChanhThu_Store.Models.BUS.SliderBUS.DanhSachSliderHeader())
 <!-- End Slider -->
 <!-- Start Categories  -->
 <div class="categories-shop">
@@ -77,22 +34,7 @@
 </div>
 <!-- End Categories -->
 
-<div class="box-add-products">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12">
-                <div class="offer-box-products">
-                    <img class="img-fluid" src="~/Content/images/add-img-01.jpg" alt="" />
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12">
-                <div class="offer-box-products">
-                    <img class="img-fluid" src="~/Content/images/add-img-02.jpg" alt="" />
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@Html.Partial("_Banner",ChanhThu_Store.Models.BUS.BannerBUS.DanhSachBanner())
 
 <!-- Start Products  -->
 <div class="products-box">

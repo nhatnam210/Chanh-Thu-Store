@@ -10,13 +10,12 @@ namespace ChanhThu_Store.Models
     public partial class SlideHeader
     {
         [Key]
-        [StringLength(255)]
-        public string HinhSlideHeader1 { get; set; }
+        public int MaSliderHeader { get; set; }
 
         [StringLength(255)]
-        public string HinhSlideHeader2 { get; set; }
+        public string HinhSlideHeader { get; set; }
 
         [StringLength(255)]
-        public string HinhSlideHeader3 { get; set; }
+        public string MoTaSliderHeader { get; set; }
     }
 }

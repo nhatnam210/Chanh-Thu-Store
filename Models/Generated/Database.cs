@@ -6,7 +6,7 @@
 // 
 //     Connection String Name: `ChanhThuStorePoCo`
 //     Provider:               `System.Data.SqlClient`
-//     Connection String:      `Data Source=DESKTOP-A73BAU0\SQLEXPRESS01;Initial Catalog=ChanhThuStore;Integrated Security=True`
+//     Connection String:      `Data Source=LAPTOP-9F4GMIKT\SQLEXPRESS;Initial Catalog=ChanhThuStore;Integrated Security=True`
 //     Schema:                 ``
 //     Include Views:          `False`
 
@@ -179,12 +179,12 @@ namespace ChanhThuStorePoCo
 	}
     
 	[TableName("dbo.Banner")]
-	[PrimaryKey("HinhBanner1", AutoIncrement=false)]
+	[PrimaryKey("MaBanner")]
 	[ExplicitColumns]
     public partial class Banner : ChanhThuStorePoCoDB.Record<Banner>  
     {
-		[Column] public string HinhBanner1 { get; set; }
-		[Column] public string HinhBanner2 { get; set; }
+		[Column] public int MaBanner { get; set; }
+		[Column] public string HinhBanner { get; set; }
 	}
     
 	[TableName("dbo.ChiTietHoaDon")]
@@ -276,25 +276,22 @@ namespace ChanhThuStorePoCo
 	}
     
 	[TableName("dbo.SlideFooter")]
-	[PrimaryKey("HinhSlideFooter1", AutoIncrement=false)]
+	[PrimaryKey("MaSliderFoot")]
 	[ExplicitColumns]
     public partial class SlideFooter : ChanhThuStorePoCoDB.Record<SlideFooter>  
     {
-		[Column] public string HinhSlideFooter1 { get; set; }
-		[Column] public string HinhSlideFooter2 { get; set; }
-		[Column] public string HinhSlideFooter3 { get; set; }
-		[Column] public string HinhSlideFooter4 { get; set; }
-		[Column] public string HinhSlideFooter5 { get; set; }
+		[Column] public int MaSliderFoot { get; set; }
+		[Column] public string HinhSlideFooter { get; set; }
 	}
     
 	[TableName("dbo.SlideHeader")]
-	[PrimaryKey("HinhSlideHeader1", AutoIncrement=false)]
+	[PrimaryKey("MaSliderHeader")]
 	[ExplicitColumns]
     public partial class SlideHeader : ChanhThuStorePoCoDB.Record<SlideHeader>  
     {
-		[Column] public string HinhSlideHeader1 { get; set; }
-		[Column] public string HinhSlideHeader2 { get; set; }
-		[Column] public string HinhSlideHeader3 { get; set; }
+		[Column] public int MaSliderHeader { get; set; }
+		[Column] public string HinhSlideHeader { get; set; }
+		[Column] public string MoTaSliderHeader { get; set; }
 	}
     
 	[TableName("dbo.sysdiagrams")]
@@ -307,6 +304,18 @@ namespace ChanhThuStorePoCo
 		[Column] public int diagram_id { get; set; }
 		[Column] public int? version { get; set; }
 		[Column] public byte[] definition { get; set; }
+	}
+    
+	[TableName("dbo.TuongTac")]
+	[PrimaryKey("MaKhachHang", AutoIncrement=false)]
+	[ExplicitColumns]
+    public partial class TuongTac : ChanhThuStorePoCoDB.Record<TuongTac>  
+    {
+		[Column] public string MaKhachHang { get; set; }
+		[Column] public string MaSanPham { get; set; }
+		[Column] public string NoiDungBinhLuan { get; set; }
+		[Column] public DateTime? NgayBinhLuan { get; set; }
+		[Column] public bool? YeuThich { get; set; }
 	}
     
 	[TableName("dbo.ThongTinCuaHang")]
@@ -323,18 +332,6 @@ namespace ChanhThuStorePoCo
 		[Column] public string ThoiGianDongCua { get; set; }
 		[Column] public string LoiGioiThieu { get; set; }
 		[Column] public string HinhMinhHoa { get; set; }
-	}
-    
-	[TableName("dbo.TuongTac")]
-	[PrimaryKey("MaKhachHang", AutoIncrement=false)]
-	[ExplicitColumns]
-    public partial class TuongTac : ChanhThuStorePoCoDB.Record<TuongTac>  
-    {
-		[Column] public string MaKhachHang { get; set; }
-		[Column] public string MaSanPham { get; set; }
-		[Column] public string NoiDungBinhLuan { get; set; }
-		[Column] public DateTime? NgayBinhLuan { get; set; }
-		[Column] public bool? YeuThich { get; set; }
 	}
     
 	[TableName("dbo.Voucher")]
