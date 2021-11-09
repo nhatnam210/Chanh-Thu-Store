@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ChanhThu_Store.Models;
+using Microsoft.AspNet.Identity;
 
 namespace ChanhThu_Store.Controllers
 {
@@ -29,10 +30,24 @@ namespace ChanhThu_Store.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             DanhMucCon danhMucCon = db.DanhMucCons.Find(id);
+            //var objProduct = db.SanPhams.Where(p => p.MaSanPham == id);
+            //var userID = User.Identity.GetUserId();
             if (danhMucCon == null)
             {
                 return HttpNotFound();
             }
+            //foreach (SanPham item in objProduct)
+            //{
+
+            //    if (userID != null)
+            //    {
+            //        item.isLogin = true;
+
+            //        TuongTac find = db.TuongTacs.FirstOrDefault(p => p.MaSanPham == item.MaSanPham && p.MaKhachHang == userID);
+            //        if (find == null)
+            //            item.isShowSave = true;
+            //    }
+            //}
             return View(danhMucCon);
         }
 

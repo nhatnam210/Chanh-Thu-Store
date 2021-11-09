@@ -669,7 +669,6 @@ D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\bin\PagedList.Mvc.dll
 D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\bin\PagedList.Mvc.xml
 C:\Users\Adminss\Desktop\New folder\Chanh-Thu-Store\bin\PagedList.Mvc.dll
 C:\Users\Adminss\Desktop\New folder\Chanh-Thu-Store\bin\PagedList.Mvc.xml
-C:\Users\Adminss\Desktop\New folder\Chanh-Thu-Store\obj\Debug\ChanhThu_Store.csproj.AssemblyReference.cache
 C:\Users\ASUS\Desktop\ChanhThuStore\Chanh-Thu-Store\obj\Debug\ChanhThu_Store.csproj.AssemblyReference.cache
 C:\Users\ASUS\Desktop\ChanhThuStore\Chanh-Thu-Store\bin\PagedList.Mvc.dll
 C:\Users\ASUS\Desktop\ChanhThuStore\Chanh-Thu-Store\bin\System.Net.Http.Formatting.dll
@@ -679,3 +678,4 @@ C:\Users\ASUS\Desktop\ChanhThuStore\Chanh-Thu-Store\bin\PagedList.Mvc.xml
 C:\Users\ASUS\Desktop\ChanhThuStore\Chanh-Thu-Store\bin\System.Net.Http.Formatting.xml
 C:\Users\ASUS\Desktop\ChanhThuStore\Chanh-Thu-Store\bin\System.Web.Http.xml
 C:\Users\ASUS\Desktop\ChanhThuStore\Chanh-Thu-Store\bin\System.Web.Http.WebHost.xml
+C:\Users\Adminss\Desktop\New folder\Chanh-Thu-Store\obj\Debug\ChanhThu_Store.csproj.AssemblyReference.cache
