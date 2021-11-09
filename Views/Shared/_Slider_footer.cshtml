@@ -1,0 +1,17 @@
+﻿@model IEnumerable<ChanhThu_Store.Models.SlideFooter>
+<div class="instagram-box">
+    <div class="main-instagram owl-carousel owl-theme">
+        @foreach (var i in Model)
+        {
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="@i.HinhSlideFooter" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
