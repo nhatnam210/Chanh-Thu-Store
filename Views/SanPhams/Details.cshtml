@@ -67,7 +67,27 @@
 
                     <div class="add-to-btn">
                         <div class="add-comp">
-                            <a class="btn hvr-hover" href="#"><i class="fas fa-heart"></i> Thêm Vào Mục Ưa Thích</a>
+
+                            @if (@Model.isLogin)
+                            {
+                                if (@Model.isShowSave)
+                                {
+                                    <a data-product-id="@Model.MaSanPham" class="btn hvr-hover js-tongle-yeuthich" >
+
+                                        <i class="fas fa-heart"></i>
+                                        Thêm Vào Mục Ưa Thích
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a data-product-id="@Model.MaSanPham" class="btn hvr-hover js-tongle-yeuthich" >
+
+                                        <i class="fas fa-heart"></i>
+                                        Hủy Ưa Thích
+                                    </a>
+                                }
+                            }
+                            
                         </div>
                         <!-- <div class="share-bar">
                             <a class="btn hvr-hover" href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a>
@@ -250,3 +270,26 @@
     </div>
 </div>
 <!-- End Cart -->
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $(".js-tongle-yeuthich").click(function (e) {
+               
+                var a = $(e.target);
+                $.post("/api/yeuthich", { MaSanPham: a.attr("data-product-id") })
+                    .done(function (result) {
+                        if (result == "cancel") {
+                            alert("Hủy yêu thích thành công !")
+                            location.reload();
+                           
+                        } else {
+                            alert("Thêm vào yêu thích thành công !")
+                            location.reload();
+                        }
+                    }).fail(function () {
+                        alert("Error 505!");
+                    });
+            });
+        });
+    </script>
+}

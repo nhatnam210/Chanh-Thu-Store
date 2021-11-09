@@ -84,6 +84,11 @@ namespace ChanhThu_Store
              defaults: new { controller = "Account", action = "Info", id = UrlParameter.Optional }
           );
             routes.MapRoute(
+            name: "yeu thich",
+            url: "thong-tin-ca-nhan/yeu-thich",
+            defaults: new { controller = "Account", action = "YeuThich", id = UrlParameter.Optional }
+         );
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
