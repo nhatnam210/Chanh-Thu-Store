@@ -219,6 +219,7 @@
     <Compile Include="Models\AspNetUserLogin.cs" />
     <Compile Include="Models\Banner.cs" />
     <Compile Include="Models\BUS\BannerBUS.cs" />
+    <Compile Include="Models\BUS\ChiTietHoaDonBUS.cs" />
     <Compile Include="Models\BUS\DanhMucBUS.cs" />
     <Compile Include="Models\BUS\SanPhamBUS.cs" />
     <Compile Include="Models\BUS\SliderBUS.cs" />
@@ -1098,15 +1099,21 @@
     <Content Include="Areas\AssetAdmin\ckfinder\skins\v1\skin.js" />
     <Content Include="Areas\AssetAdmin\ckfinder\skins\v1\uipanel.css" />
     <Content Include="Areas\AssetAdmin\ckfinder\translations.txt" />
+    <Content Include="Areas\AssetAdmin\css\adminlte.min.css" />
+    <Content Include="Areas\AssetAdmin\css\all.min.css" />
     <Content Include="Areas\AssetAdmin\css\sb-admin-2.css" />
     <Content Include="Areas\AssetAdmin\css\sb-admin-2.min.css" />
     <Content Include="Areas\AssetAdmin\gulpfile.js" />
+    <Content Include="Areas\AssetAdmin\img\agribank-logo-1CEEE70C76-seeklogo.com.png" />
+    <Content Include="Areas\AssetAdmin\img\momo-upload-api-push-momo-avatar-190131152912 %281%29.png" />
+    <Content Include="Areas\AssetAdmin\img\truck-24-hour-shipping-flat-circle-icon-vector-3442007-300x300.png" />
     <Content Include="Areas\AssetAdmin\img\undraw_posting_photo.svg" />
     <Content Include="Areas\AssetAdmin\img\undraw_profile.svg" />
     <Content Include="Areas\AssetAdmin\img\undraw_profile_1.svg" />
     <Content Include="Areas\AssetAdmin\img\undraw_profile_2.svg" />
     <Content Include="Areas\AssetAdmin\img\undraw_profile_3.svg" />
     <Content Include="Areas\AssetAdmin\img\undraw_rocket.svg" />
+    <Content Include="Areas\AssetAdmin\img\VIETCOMBANK-LOGO %281%29.png" />
     <Content Include="Areas\AssetAdmin\js\demo\chart-area-demo.js" />
     <Content Include="Areas\AssetAdmin\js\demo\chart-bar-demo.js" />
     <Content Include="Areas\AssetAdmin\js\demo\chart-pie-demo.js" />
@@ -3201,6 +3208,7 @@
     <Content Include="Areas\Admin\Views\VouchersAdmin\Details.cshtml" />
     <Content Include="Areas\Admin\Views\VouchersAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\VouchersAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\HoaDonsAdmin\InHoaDon.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3282,6 +3290,7 @@
     <Content Include="Views\Shared\_Banner.cshtml" />
     <Content Include="Views\Shared\_Slider_footer.cshtml" />
     <Content Include="Views\Account\YeuThich.cshtml" />
+    <Content Include="Views\Shared\_Table_HoaDon.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

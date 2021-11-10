@@ -88,6 +88,20 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             return View(hoaDon);
         }
 
+        public ActionResult InHoaDon(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            HoaDon mahoadon = db.HoaDons.Find(id);
+            if (mahoadon == null)
+            {
+                return HttpNotFound();
+            }
+            return View(mahoadon);
+        }
+
         // GET: Admin/HoaDonsAdmin/Create
         public ActionResult Create()
         {
