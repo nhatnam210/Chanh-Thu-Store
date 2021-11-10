@@ -30,8 +30,6 @@ namespace ChanhThu_Store.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            //Article article = db.Articles.Find(id);
-            var objProduct = db.SanPhams.Where(p => p.MaSanPham == id);
 
             SanPham sanpham = db.SanPhams.Find(id);
             if (sanpham == null)
@@ -39,6 +37,8 @@ namespace ChanhThu_Store.Controllers
                 return HttpNotFound();
             }
             var userID = User.Identity.GetUserId();
+            var objProduct = db.SanPhams.Where(p => p.MaSanPham == id);
+
             foreach (SanPham item in objProduct)
             {
 

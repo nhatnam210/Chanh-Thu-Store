@@ -32,10 +32,14 @@
     SKELETON
 -------------------------------------------------------------------*/
 :root {
+    /*color*/
     --primary-color: #f3bf16;
     --second-color: #fff0b3;
     --red: #ff1a1a;
     --gray: #666666;
+
+    /*style*/
+    --btn-corner-radius: 5px;
 }
 
 body {
@@ -874,7 +878,7 @@ ul.cart-list p .price {
     border-radius: 0;
     box-shadow: none;
     color: #222 !important;
-    border-radius: 5px;
+    border-radius: var(--btn-corner-radius);
 }
 
     .hvr-hover:hover {
@@ -1178,6 +1182,7 @@ ul.cart-list > li.total > .btn:hover {
         padding: 5px 30px;
         font-size: 18px;
         font-weight: 500;
+        border-radius: var(--btn-corner-radius);
     }
 
         .filter-button-group button.active {
