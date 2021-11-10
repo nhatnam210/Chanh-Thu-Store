@@ -210,6 +210,31 @@
         justify-content: center !important;
         margin: 15px auto 5px auto;
     }
+
+    .custom-about-shop {
+        justify-content: center !important;
+    }
+
+    .price-box-bar {
+        flex-direction: column;
+    }
+
+    .max-btn {
+        margin-top: 15px;
+        width: 100%;
+        max-width: 100%;
+        margin-left: 10px;
+    }
+
+    .price-box-bar {
+        margin-right: 0px;
+    }
+
+    .max-width-mobile {
+        width: 100%;
+        max-width: 100%;
+    }
+    
 }
 @media only screen and (min-width: 280px) and (max-width: 599px) {
     .navbar-light .navbar-toggler {

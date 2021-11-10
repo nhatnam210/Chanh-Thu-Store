@@ -1,0 +1,136 @@
+﻿@model PagedList.IPagedList<ChanhThu_Store.Models.SanPham>
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "YeuThich";
+    Layout = "~/Views/Shared/_Main_Layout.cshtml";
+}
+
+<!-- Start All Title Box -->
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Yêu Thích</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/trang-chu">Trang Chủ</a></li>
+                    <li class="breadcrumb-item active">Yêu Thích</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End All Title Box -->
+<!-- Start Shop Page  -->
+<div class="shop-box-inner">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-sm-12 col-xs-12 shop-content-left">
+                <div class="right-product-box">
+
+
+                    <div class="product-categorie-box">
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
+                                <div class="row">
+                                    @foreach (var item in Model)
+                                    {
+                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                            <div class="products-single fix">
+                                                <div class="box-img-hover">
+                                                    <div class="type-lb">
+                                                        <p class="sale">Sale</p>
+                                                    </div>
+                                                    @*<img src="@item.HinhChinh" class="img-fluid" alt="Image">*@
+                                                    <div class="img-fit" style="background-image: url('@item.HinhChinh'),url('/Content/images/default.png');">
+                                                    </div>
+                                                    <div class="mask-icon">
+                                                        <ul>
+                                                            <li>
+                                                                <a href="/san-pham/chi-tiet?id=@item.MaSanPham" data-toggle="tooltip" data-placement="right"
+                                                                   title="Xem chi tiết"><i class="fas fa-eye"></i></a>
+                                                            </li>
+                                                            <li>
+
+
+                                                                <a class="js-tongle-yeuthich" data-product-id="@item.MaSanPham" data-toggle="tooltip" data-placement="right"
+                                                                   title="Yêu thích">
+                                                                    <i class="far fa-heart"></i>
+                                                                </a>
+
+
+                                                            </li>
+                                                        </ul>
+                                                        <a class="cart add-cart-notify" href="/them-vao-gio?masanpham=@item.MaSanPham&soluong=1">Thêm Vào Giỏ</a>
+                                                    </div>
+                                                </div>
+                                                <div class="why-text view-row-content">
+                                                    <h4>@item.TenSanPham</h4>
+                                                    <h5>@string.Format("{0:#,##0}", @item.Gia) đ</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="list-view">
+                                @foreach (var item in Model)
+                                {
+                                    <div class="list-view-box">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                <div class="products-single fix">
+                                                    <div class="box-img-hover">
+                                                        @*<div class="type-lb">
+                                        <p class="new">New</p>
+                                    </div>*@
+                                                        @*<img src="@item.HinhChinh" class="img-fluid" alt="Image">*@
+                                                        <div class="img-fit" style="background-image: url('@item.HinhChinh'),url('/Content/images/default.png');"></div>
+                                                        <div class="mask-icon">
+                                                            <ul>
+                                                                <li>
+                                                                    <a href="/san-pham/chi-tiet?id=@item.MaSanPham" data-toggle="tooltip"
+                                                                       data-placement="right" title="Xem chi tiết">
+                                                                        <i class="fas fa-eye"></i>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#" data-toggle="tooltip"
+                                                                       data-placement="right"
+                                                                       title="Yêu thích">
+                                                                        <i class="far fa-heart"></i>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
+                                                <div class="why-text full-width view-column-content">
+                                                    <h4>@item.TenSanPham</h4>
+                                                    <h5>@string.Format("{0:#,##0}", @item.Gia) đ</h5>
+                                                    <p>
+                                                        @item.Mota
+                                                    </p>
+                                                    <a class="btn hvr-hover add-cart-notify" href="/them-vao-gio?masanpham=@item.MaSanPham&soluong=1">Thêm Vào Giỏ</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            <span class="show-page-text">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
+
+                            @Html.PagedListPager(Model, trang => Url.Action("Index",
+                                new { trang, sapxep = ViewBag.Sapxep, loc = ViewBag.Loc }))
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- End Shop Page -->

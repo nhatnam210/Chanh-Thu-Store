@@ -10,19 +10,9 @@ namespace ChanhThu_Store.Models
     public partial class SlideFooter
     {
         [Key]
-        [StringLength(255)]
-        public string HinhSlideFooter1 { get; set; }
+        public int MaSliderFoot { get; set; }
 
         [StringLength(255)]
-        public string HinhSlideFooter2 { get; set; }
-
-        [StringLength(255)]
-        public string HinhSlideFooter3 { get; set; }
-
-        [StringLength(255)]
-        public string HinhSlideFooter4 { get; set; }
-
-        [StringLength(255)]
-        public string HinhSlideFooter5 { get; set; }
+        public string HinhSlideFooter { get; set; }
     }
 }

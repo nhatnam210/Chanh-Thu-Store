@@ -1,0 +1,41 @@
+﻿@model ChanhThu_Store.Models.NhaSanXuat
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Main_Admin.cshtml";
+}
+
+
+@using (Html.BeginForm("Create", "NhaSanXuats", FormMethod.Post, new { @class = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h2 class="admin-title text-white text-center">Thêm Nhà Sản Xuất</h2>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Mã Nhà Sản Xuất</span>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.MaNhaSanXuat, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.MaNhaSanXuat, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Tên Nhà Sản Xuất</span>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.TenNhaSanXuat, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TenNhaSanXuat, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-md-12">
+        <div class="col-md-offset-2 btn-touch">
+            <input type="submit" value="Create" class="btn btn-success" />
+        </div>
+    </div>
+    <div class="col-md-12 back-to-list">
+        @Html.ActionLink("Trở về", "Index")
+    </div>
+</div>
+}

@@ -419,7 +419,9 @@ namespace ChanhThuStorePoCo
 
 
 
-	[PrimaryKey("HinhBanner1", AutoIncrement=false)]
+	[PrimaryKey("MaBanner")]
+
+
 
 
 	[ExplicitColumns]
@@ -429,13 +431,13 @@ namespace ChanhThuStorePoCo
 
 
 
-		[Column] public string HinhBanner1 { get; set; }
+		[Column] public int MaBanner { get; set; }
 
 
 
 
 
-		[Column] public string HinhBanner2 { get; set; }
+		[Column] public string HinhBanner { get; set; }
 
 
 
@@ -457,7 +459,7 @@ namespace ChanhThuStorePoCo
 
 
 
-		[Column] public string MaHoaDon { get; set; }
+		[Column] public int MaHoaDon { get; set; }
 
 
 
@@ -583,7 +585,9 @@ namespace ChanhThuStorePoCo
 
 
 
-	[PrimaryKey("MaHoaDon", AutoIncrement=false)]
+	[PrimaryKey("MaHoaDon")]
+
+
 
 
 	[ExplicitColumns]
@@ -593,7 +597,7 @@ namespace ChanhThuStorePoCo
 
 
 
-		[Column] public string MaHoaDon { get; set; }
+		[Column] public int MaHoaDon { get; set; }
 
 
 
@@ -618,6 +622,30 @@ namespace ChanhThuStorePoCo
 
 
 		[Column] public int TongTien { get; set; }
+
+
+
+
+
+		[Column] public string Ten { get; set; }
+
+
+
+
+
+		[Column] public string SDT { get; set; }
+
+
+
+
+
+		[Column] public string DiaChi { get; set; }
+
+
+
+
+
+		[Column] public string Email { get; set; }
 
 
 
@@ -769,7 +797,9 @@ namespace ChanhThuStorePoCo
 
 
 
-	[PrimaryKey("HinhSlideFooter1", AutoIncrement=false)]
+	[PrimaryKey("MaSliderFoot")]
+
+
 
 
 	[ExplicitColumns]
@@ -779,31 +809,13 @@ namespace ChanhThuStorePoCo
 
 
 
-		[Column] public string HinhSlideFooter1 { get; set; }
+		[Column] public int MaSliderFoot { get; set; }
 
 
 
 
 
-		[Column] public string HinhSlideFooter2 { get; set; }
-
-
-
-
-
-		[Column] public string HinhSlideFooter3 { get; set; }
-
-
-
-
-
-		[Column] public string HinhSlideFooter4 { get; set; }
-
-
-
-
-
-		[Column] public string HinhSlideFooter5 { get; set; }
+		[Column] public string HinhSlideFooter { get; set; }
 
 
 
@@ -815,7 +827,9 @@ namespace ChanhThuStorePoCo
 
 
 
-	[PrimaryKey("HinhSlideHeader1", AutoIncrement=false)]
+	[PrimaryKey("MaSliderHeader")]
+
+
 
 
 	[ExplicitColumns]
@@ -825,67 +839,19 @@ namespace ChanhThuStorePoCo
 
 
 
-		[Column] public string HinhSlideHeader1 { get; set; }
+		[Column] public int MaSliderHeader { get; set; }
 
 
 
 
 
-		[Column] public string HinhSlideHeader2 { get; set; }
+		[Column] public string HinhSlideHeader { get; set; }
 
 
 
 
 
-		[Column] public string HinhSlideHeader3 { get; set; }
-
-
-
-	}
-
-    
-
-	[TableName("dbo.sysdiagrams")]
-
-
-
-	[PrimaryKey("diagram_id")]
-
-
-
-
-	[ExplicitColumns]
-
-    public partial class sysdiagram : ChanhThuStorePoCoDB.Record<sysdiagram>  
-    {
-
-
-
-		[Column] public string name { get; set; }
-
-
-
-
-
-		[Column] public int principal_id { get; set; }
-
-
-
-
-
-		[Column] public int diagram_id { get; set; }
-
-
-
-
-
-		[Column] public int? version { get; set; }
-
-
-
-
-
-		[Column] public byte[] definition { get; set; }
+		[Column] public string MoTaSliderHeader { get; set; }
 
 
 

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<ChanhThu_Store.Models.ChiTietHoaDon>
+<div class="row">
+    <div class="col-12 table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Sản Phẩm</th>
+                    <th>Số Lượng</th>
+                    <th>Giá</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var i in Model)
+                {
+                    <tr>
+                        <td>@i.MaSanPham</td>
+                        <td>@i.Soluong</td>
+                        <td>@string.Format("{0:#,##0}", i.DonGia)đ</td>
+                    </tr>
+
+                }
+
+            </tbody>
+        </table>
+    </div>
+    <!-- /.col -->
+</div>

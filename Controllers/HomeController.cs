@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChanhThu_Store.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,18 @@ namespace ChanhThu_Store.Controllers
 {
     public class HomeController : Controller
     {
+        private const string CartSession = "CartSession";
+        [ChildActionOnly]
+        public PartialViewResult _Header_Cart()
+        {
+            var cart = Session[CartSession];
+            var list = new List<CartItem>();
+            if (cart != null)
+            {
+                list = (List<CartItem>)cart;
+            }
+            return PartialView(list);
+        }
         public ActionResult Index()
         {
             return View();

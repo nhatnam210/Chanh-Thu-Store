@@ -71,5 +71,7 @@ namespace ChanhThu_Store.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TuongTac> TuongTacs { get; set; }
+        public bool isLogin = false;
+        public bool isLiked = false;
     }
 }

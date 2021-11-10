@@ -1,0 +1,150 @@
+﻿@model List<ChanhThu_Store.Models.CartItem>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Main_Layout.cshtml";
+}
+
+<!-- Start All Title Box -->
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Cart</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                    <li class="breadcrumb-item active">Cart</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End All Title Box -->
+<!-- Start Cart  -->
+<div class="cart-box-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-main table-responsive">
+                    <table class="table custom">
+                        @{var Total = 0; }
+                        @if (Model.Count > 0)
+                        {
+                            <thead>
+                                <tr>
+                                    <th>Hình ảnh</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Giá</th>
+                                    <th>Số lượng</th>
+                                    <th>Tổng cộng</th>
+                                    <th>Xóa</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    Total += item.Sanpham.Gia * item.Soluong;
+                                    <tr>
+                                        <td class="thumbnail-img">
+                                            <a href="#">
+                                                <div class="img-fit cart" style="background-image: url('@item.Sanpham.HinhChinh'),url(" /Content/images/default.png");">
+                                                </div>
+                                                @*<img class="img-fluid" src="@item.Sanpham.HinhChinh" alt="" />*@
+                                            </a>
+                                        </td>
+                                        <td class="name-pr">
+                                            <a href="#">
+                                                @item.Sanpham.TenSanPham
+                                            </a>
+                                        </td>
+                                        <td class="price-pr">
+                                            <p>@string.Format("{0:#,##0}", @item.Sanpham.Gia) đ</p>
+                                        </td>
+                                        <td class="quantity-box">
+                                            <div class="quantity-box-wrap">
+                                                <button class="btn decrease open" data-id="@item.Sanpham.MaSanPham"><i class="fas fa-minus"></i></button>
+                                                <input type="number" data-id="@item.Sanpham.MaSanPham" maxValue="@item.Sanpham.SoLuongTonKho" size="4" value="@item.Soluong" min="0" step="1" class="c-input-text qty text txtquantity">
+                                                <p class="message" data-id="@item.Sanpham.MaSanPham"></p>
+                                                <button class="btn increase open" data-id="@item.Sanpham.MaSanPham"><i class="fas fa-plus"></i></button>
+                                            </div>
+                                        </td>
+                                        <td class="total-pr" style="font-weight: 700;">
+                                            <p>@string.Format("{0:#,##0}", item.Sanpham.Gia * item.Soluong) đ</p>
+                                        </td>
+                                        <td class="remove-pr">
+                                            <a href="#" data-id="@item.Sanpham.MaSanPham" class="delete-product">
+                                                <i class="fas fa-times"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                }
+
+                            </tbody>
+
+                        }
+                        else
+                        {
+                            <h1>Chưa có sản phẩm nào !!!!! </h1>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="row my-5">
+            <div class="col-lg-6 col-sm-6">
+                <div class="coupon-box">
+                    <div class="input-group input-group-sm">
+                        <input class="form-control" placeholder="Nhập mã voucher" aria-label="Coupon code" type="text">
+                        <div class="input-group-append">
+                            <button class="btn btn-theme change-color" type="button">Sử dụng voucher</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-6">
+                <div class="update-box">
+                    <input   class="change-color" id="btn-update" value="Cập nhật" type="submit" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row my-5">
+            <div class="col-lg-8 col-sm-12"></div>
+            <div class="col-lg-4 col-sm-12">
+                <div class="order-box">
+                    <h3>Đơn hàng</h3>
+                    <div class="d-flex">
+                        <h4>Tiền hàng</h4>
+                        <div class="ml-auto font-weight-bold">@string.Format("{0:#,##0}", @Total) đ</div>
+                    </div>
+                    <div class="d-flex">
+                        <h4>Phí ship</h4>
+                        <div class="ml-auto font-weight-bold"> Free </div>
+                    </div>
+                    <div class="d-flex">
+                        <h4>Thuế</h4>
+                        <div class="ml-auto font-weight-bold"> $ 2 </div>
+                    </div>
+                    <hr class="my-1">
+                    <div class="d-flex">
+                        <h4>Voucher giảm giá</h4>
+                        <div class="ml-auto font-weight-bold"> $ 10 </div>
+                    </div>
+
+
+                    <hr>
+                    <div class="d-flex gr-total">
+                        <h5>Tổng cộng</h5>
+                        <div class="ml-auto h5">@string.Format("{0:#,##0}", @Total) VNĐ</div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+            <div class="col-12 d-flex shopping-box"><a href="/thanh-toan" style="font-weight: 600;" class="ml-auto btn hvr-hover">Thanh toán</a> </div>
+        </div>
+
+    </div>
+</div>
+<!-- End Cart -->

@@ -1,0 +1,57 @@
+﻿@model ChanhThu_Store.Models.Voucher
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Main_Admin.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Voucher</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenVoucher)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenVoucher)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaTriGiam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaTriGiam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiemDoi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiemDoi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HanSuDung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HanSuDung)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

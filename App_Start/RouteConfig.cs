@@ -40,12 +40,12 @@ namespace ChanhThu_Store
           );
             routes.MapRoute(
               name: "san pham theo danh muc con",
-              url: "cua-hang/danh-muc-con/id={id}",
+              url: "cua-hang/danh-muc-con",
               defaults : new { controller = "DanhMucCons", action = "Details", id = UrlParameter.Optional }
           );
             routes.MapRoute(
                name: "chi tiet san pham",
-               url: "san-pham/chi-tiet/id={id}",
+               url: "san-pham/chi-tiet",
                defaults: new { controller = "SanPhams", action = "Details", id = UrlParameter.Optional }
             );
             routes.MapRoute(
@@ -58,6 +58,36 @@ namespace ChanhThu_Store
                url: "dang-nhap",
                defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+              name: "them vao gio",
+              url: "them-vao-gio",
+              defaults: new { controller = "Cart", action = "AddItem", id = UrlParameter.Optional }
+           );
+            routes.MapRoute(
+              name: "gio hang",
+              url: "gio-hang",
+              defaults: new { controller = "Cart", action = "Index", id = UrlParameter.Optional }
+           );
+            routes.MapRoute(
+              name: "thanh toan",
+              url: "thanh-toan",
+              defaults: new { controller = "Cart", action = "Payment", id = UrlParameter.Optional }
+           );
+            routes.MapRoute(
+             name: "Thanh toan thanh cong",
+             url: "hoan-thanh",
+             defaults: new { controller = "Cart", action = "Success", id = UrlParameter.Optional }
+          );
+            routes.MapRoute(
+             name: "Thong tin ca nhan",
+             url: "thong-tin-ca-nhan",
+             defaults: new { controller = "Account", action = "Info", id = UrlParameter.Optional }
+          );
+            routes.MapRoute(
+            name: "yeu thich",
+            url: "thong-tin-ca-nhan/yeu-thich",
+            defaults: new { controller = "Account", action = "YeuThich", id = UrlParameter.Optional }
+         );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

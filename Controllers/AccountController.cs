@@ -9,12 +9,15 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ChanhThu_Store.Models;
+using System.Collections.Generic;
+using PagedList;
 
 namespace ChanhThu_Store.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        private ChanhThuStoreContext db = new ChanhThuStoreContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -422,7 +425,33 @@ namespace ChanhThu_Store.Controllers
 
             base.Dispose(disposing);
         }
+        [AllowAnonymous]
+        public ActionResult Info()
+        {
+            return View();
+        }
+        [Authorize]
+        public ActionResult YeuThich(int? page)
+        {
+            ApplicationUser currentUser = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>()
+                .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            var listFavorites = db.TuongTacs.Where(p => p.MaKhachHang == currentUser.Id).ToList();
+            var product = new List<SanPham>();
+            foreach (TuongTac temp in listFavorites)
+            {
+                SanPham objArticle = temp.Sanpham;
 
+                product.Add(objArticle);
+            }
+
+            //var articles = db.Articles.Include(a => a.Cetegory);
+
+            int pageSize = 6;
+
+            int pageNumber = (page ?? 1);
+            return View(product.ToPagedList(pageNumber, pageSize));
+
+        }
         #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";

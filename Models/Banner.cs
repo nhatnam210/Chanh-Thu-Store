@@ -10,10 +10,9 @@ namespace ChanhThu_Store.Models
     public partial class Banner
     {
         [Key]
-        [StringLength(255)]
-        public string HinhBanner1 { get; set; }
+        public int MaBanner { get; set; }
 
         [StringLength(255)]
-        public string HinhBanner2 { get; set; }
+        public string HinhBanner { get; set; }
     }
 }
