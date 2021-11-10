@@ -270,29 +270,23 @@
             $(".js-tongle-yeuthich").click(function (e) {
                
                 var element = $(e.target);
-                console.log(element)
                 $.post("/api/yeuthich", { MaSanPham: element.attr("data-product-id") })
                     .done(function (result) {
                         if (result == "cancel") {
                             showNotify('Đã xóa khỏi Yêu thích!', 'heart-dislike-outline', timeShowNotify)
-                            setTimeout(() => {
-                                element
-                                    .removeClass('user-liked')
-                                    .addClass('user-unliked')
-                                    .text("")
-                                    .append(`<i class="far fa-heart" style="margin-right: 5px;"></i>Yêu thích`)
-                            }, 0)
+                            element
+                                .removeClass('user-liked')
+                                .addClass('user-unliked')
+                                .text("")
+                                .append(`<i class="far fa-heart" style="margin-right: 5px;"></i>Yêu thích`)
                            
                         } else {
                             showNotify('Đã thêm vào Yêu thích!', 'heart-outline', timeShowNotify)
-                            setTimeout(() => {
-                                element
-                                    .removeClass('user-unliked')
-                                    .addClass('user-liked')
-                                    .text("")
-                                    .append(`<i class="fas fa-heart" style="margin-right: 5px;"></i>Đã thích`)
-                            }, 0)
-                           
+                            element
+                                .removeClass('user-unliked')
+                                .addClass('user-liked')
+                                .text("")
+                                .append(`<i class="fas fa-heart" style="margin-right: 5px;"></i>Đã thích`)
                         }
                     }).fail(function () {
                         alert("Xảy ra lỗi!");
