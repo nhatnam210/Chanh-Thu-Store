@@ -111,7 +111,7 @@ namespace ChanhThu_Store.Controllers
         {
             var userID = User.Identity.GetUserId();
             var order = new HoaDon();
-            order.NgayLap = DateTime.Now;
+            order.NgayLap = DateTime.Now.Date;
             order.Ten = name;
             order.SDT = phone;
             order.Email = email;

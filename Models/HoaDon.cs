@@ -23,7 +23,10 @@ namespace ChanhThu_Store.Models
         public string MaKhachHang { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime NgayLap { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime? NgayLap { get; set; }
 
         [StringLength(10)]
         public string MaVoucher { get; set; }

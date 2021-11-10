@@ -120,7 +120,7 @@
                                     <th>
                                         Tổng Tiền
                                     </th>
-                                    <th> Tùy chỉnh</th>
+                                    <th width="165px"> Tùy chỉnh</th>
                                 </tr>
                             </thead>
 
@@ -155,7 +155,8 @@
                                         <td>
                                             <a href="/admin/chi-tiet-hoa-don?id=@item.MaHoaDon">Chi Tiết</a> |
                                             @*@Html.ActionLink("Details", "Details", new { id = item.MaDanhMuc }) |*@
-                                            @Html.ActionLink("Xóa", "Delete", new { id = item.MaHoaDon })
+                                            @Html.ActionLink("Xóa", "Delete", new { id = item.MaHoaDon }) |<br />
+                                            @Html.ActionLink("In Hóa Đơn", "InHoaDon", new { id = item.MaHoaDon })
                                         </td>
                                     </tr>
 
