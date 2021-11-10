@@ -17,18 +17,25 @@ namespace ChanhThu_Store.Controllers
         {
             var userID = User.Identity.GetUserId();
             ChanhThuStoreContext context = new ChanhThuStoreContext();
-            if (context.TuongTacs.Any(p => p.MaKhachHang == userID && p.MaSanPham == sanpham.MaSanPham))
+            if(userID != null)
             {
-                //return BadRequest("The attendance already exist!");
+                if (context.TuongTacs.Any(p => p.MaKhachHang == userID && p.MaSanPham == sanpham.MaSanPham))
+                {
+                    //return BadRequest("The attendance already exist!");
 
-                context.TuongTacs.Remove(context.TuongTacs.SingleOrDefault(p => p.MaKhachHang == userID && p.MaSanPham == sanpham.MaSanPham));
+                    context.TuongTacs.Remove(context.TuongTacs.SingleOrDefault(p => p.MaKhachHang == userID && p.MaSanPham == sanpham.MaSanPham));
+                    context.SaveChanges();
+                    return Ok("cancel");
+                }
+                var storage = new TuongTac() { MaSanPham = sanpham.MaSanPham, MaKhachHang = User.Identity.GetUserId(), YeuThich = true };
+                context.TuongTacs.Add(storage);
                 context.SaveChanges();
-                return Ok("cancel");
+                return Ok();
             }
-            var storage = new TuongTac() { MaSanPham = sanpham.MaSanPham, MaKhachHang = User.Identity.GetUserId(), YeuThich = true };
-            context.TuongTacs.Add(storage);
-            context.SaveChanges();
-            return Ok();
+            else
+            {
+                return null;
+            }
         }
     }
 }
