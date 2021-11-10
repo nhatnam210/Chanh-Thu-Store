@@ -47,8 +47,8 @@ namespace ChanhThu_Store.Controllers
                     item.isLogin = true;
 
                     TuongTac find = db.TuongTacs.FirstOrDefault(p => p.MaSanPham == item.MaSanPham && p.MaKhachHang == userID);
-                    if (find == null)
-                        item.isShowSave = true;
+                    if (find != null)
+                        item.isLiked = true;
                 }
             }
 
