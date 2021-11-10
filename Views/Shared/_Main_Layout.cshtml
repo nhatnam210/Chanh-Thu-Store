@@ -42,7 +42,8 @@
     @Scripts.Render("~/bundles/modernizr")
 
 
-
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 
     <!--[if lt IE 9]>
@@ -119,15 +120,11 @@
     <!-- End Main Top -->
     <!-- Start Modal Add Success Notify-->
     <div class="modal">
-        <div class="add-cart__success">
-            <i class="fas fa-check-circle"></i>
-            <p>Đã thêm vào giỏ hàng!</p>
+        <div class="modal-notify">
+            <ion-icon class="notify-icon" name=""></ion-icon>
+            <p class="notify-title"></p>
         </div>
     </div>
-    @*<div class="add-cart__success">
-            <i class="fas fa-check-circle"></i>
-            <p>Đã thêm vào giỏ hàng!</p>
-        </div>*@
     <!-- End Modal Add Success Notify-->
     <!-- Start Main Top -->
     <header class="main-header">
@@ -189,7 +186,7 @@
     @RenderBody();
 
     <!-- Start Instagram Feed  -->
-    @Html.Partial("_Slider_footer",ChanhThu_Store.Models.BUS.SliderBUS.DanhSachSliderFooter())
+    @Html.Partial("_Slider_footer", ChanhThu_Store.Models.BUS.SliderBUS.DanhSachSliderFooter())
     <!-- End Instagram Feed  -->
     <!-- Start Footer  -->
     <footer>

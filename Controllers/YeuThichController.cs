@@ -13,19 +13,19 @@ namespace ChanhThu_Store.Controllers
     public class YeuThichController : ApiController
     {
         [HttpPost]
-        public IHttpActionResult Yeuthich(SanPham sanphamDto)
+        public IHttpActionResult Yeuthich(SanPham sanpham)
         {
             var userID = User.Identity.GetUserId();
             ChanhThuStoreContext context = new ChanhThuStoreContext();
-            if (context.TuongTacs.Any(p => p.MaKhachHang == userID && p.MaSanPham == sanphamDto.MaSanPham))
+            if (context.TuongTacs.Any(p => p.MaKhachHang == userID && p.MaSanPham == sanpham.MaSanPham))
             {
                 //return BadRequest("The attendance already exist!");
 
-                context.TuongTacs.Remove(context.TuongTacs.SingleOrDefault(p => p.MaKhachHang == userID && p.MaSanPham == sanphamDto.MaSanPham));
+                context.TuongTacs.Remove(context.TuongTacs.SingleOrDefault(p => p.MaKhachHang == userID && p.MaSanPham == sanpham.MaSanPham));
                 context.SaveChanges();
                 return Ok("cancel");
             }
-            var storage = new TuongTac() { MaSanPham = sanphamDto.MaSanPham, MaKhachHang = User.Identity.GetUserId() };
+            var storage = new TuongTac() { MaSanPham = sanpham.MaSanPham, MaKhachHang = User.Identity.GetUserId(), YeuThich = true };
             context.TuongTacs.Add(storage);
             context.SaveChanges();
             return Ok();

@@ -101,13 +101,21 @@ Array.from(inputQuantity).forEach((item) => {
 //Hiển thị thông báo thêm vào giỏ hàng thành công
 const listBtnShow = document.querySelectorAll('.add-cart-notify')
 const modal = document.querySelector('.modal')
+const notifyIcon = document.querySelector('.notify-icon')
+const notifyTitle = document.querySelector('.notify-title')
 
 Array.from(listBtnShow).forEach((item) => {
     item.onclick = () => {
-        modal.classList.add('show')
-
-        setTimeout(() => {
-            modal.classList.remove('show')
-        }, 1500)
+        showNotify('Đã thêm vào giỏ hàng!', 'bag-check-outline',1500)
     }
 })
+
+function showNotify(title, name, time) {
+    notifyIcon.name = name
+    notifyTitle.textContent = title
+    modal.classList.add('show')
+
+    setTimeout(() => {
+        modal.classList.remove('show')
+    }, time)
+}
