@@ -9,12 +9,6 @@ namespace ChanhThu_Store.Models
     [Table("HoaDon")]
     public partial class HoaDon
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public HoaDon()
-        {
-            ChiTietHoaDons = new HashSet<ChiTietHoaDon>();
-        }
-
         [Key]
         public int MaHoaDon { get; set; }
 
@@ -23,10 +17,7 @@ namespace ChanhThu_Store.Models
         public string MaKhachHang { get; set; }
 
         [Column(TypeName = "date")]
-
-        [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime? NgayLap { get; set; }
+        public DateTime NgayLap { get; set; }
 
         [StringLength(10)]
         public string MaVoucher { get; set; }
@@ -47,9 +38,7 @@ namespace ChanhThu_Store.Models
         [StringLength(256)]
         public string Email { get; set; }
 
+        public int Ship { get; set; }
         public virtual AspNetUser AspNetUser { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
     }
 }

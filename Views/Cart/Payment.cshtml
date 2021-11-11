@@ -159,17 +159,17 @@
                                 </div>
                                 <div class="mb-4">
                                     <div class="custom-control custom-radio">
-                                        <input id="shippingOption1" name="shipping-option" class="custom-control-input" checked="checked" type="radio">
-                                        <label class="custom-control-label" for="shippingOption1">Tiêu Chuẩn</label> <span class="float-right font-weight-bold">FREE</span>
+                                        <input id="shippingOption1" name="shipping" value="0" class="custom-control-input" checked="checked" type="radio">
+                                        <label class="custom-control-label" for="shippingOption1">Tiêu Chuẩn</label> <span class="float-right font-weight-bold">Miễn Phí</span>
                                     </div>
                                     <div class="ml-4 mb-2 small">(3-7 Ngày làm việc)</div>
                                     <div class="custom-control custom-radio">
-                                        <input id="shippingOption2" name="shipping-option" class="custom-control-input" type="radio">
+                                        <input id="shippingOption2" name="shipping"  value="20000" class="custom-control-input" type="radio">
                                         <label class="custom-control-label" for="shippingOption2">Express Delivery</label> <span class="float-right font-weight-bold">20.000 đ</span>
                                     </div>
                                     <div class="ml-4 mb-2 small">(2-4 ngày làm việc)</div>
                                     <div class="custom-control custom-radio">
-                                        <input id="shippingOption3" name="shipping-option" class="custom-control-input" type="radio">
+                                        <input id="shippingOption3" name="shipping"  value="60000" class="custom-control-input" type="radio">
                                         <label class="custom-control-label" for="shippingOption3">Ngày Hôm Sau</label> <span class="float-right font-weight-bold">60.000 đ</span>
                                     </div>
                                 </div>
@@ -231,12 +231,12 @@
                                 </div> -->
                                 <div class="d-flex">
                                     <h4>Phí Ship</h4>
-                                    <div class="ml-auto font-weight-bold"> Free </div>
+                                    <div class="ml-auto font-weight-bold ship">0 đ</div>
                                 </div>
                                 <hr>
                                 <div class="d-flex gr-total">
                                     <h5>Tổng Cộng</h5>
-                                    <div class="ml-auto h5"> @string.Format("{0:#,##0}", @Total) VNĐ </div>
+                                    <div class="ml-auto h2" style="color:red" id="final-price">@Total đ @*@string.Format("{0:#,##0}", @Total) VNĐ*@ </div>
                                 </div>
                                 <hr>
                             </div>
