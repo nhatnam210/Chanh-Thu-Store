@@ -107,47 +107,55 @@ namespace ChanhThu_Store.Controllers
         }
         [Authorize]
         [HttpPost]
-        public ActionResult Payment(string name , string phone , string email , string address)
+        public ActionResult Payment(string name , string phone , string email , string address ,string shipping)
         {
             var userID = User.Identity.GetUserId();
-            var order = new HoaDon();
-            order.NgayLap = DateTime.Now.Date;
-            order.Ten = name;
-            order.SDT = phone;
-            order.Email = email;
-            order.DiaChi = address;
-            order.MaKhachHang = userID;
+            if(userID != null)
+            {
+                var order = new HoaDon();
+                order.NgayLap = DateTime.Now.Date;
+                order.Ten = name;
+                order.SDT = phone;
+                order.Email = email;
+                order.DiaChi = address;
+                order.MaKhachHang = userID;
+                order.Ship = Convert.ToInt32(shipping);
+                var total = 0;
+                try
+                {
+                    var cart = (List<CartItem>)Session[CartSession];
+                    foreach (var item in cart)
+                    {
+                        total += item.Sanpham.Gia * item.Soluong + int.Parse(shipping);
+                    }
+                    order.TongTien = total;
+                    var id = new HoaDonDAO().Insert(order);
 
-            var total = 0;
-            try
-            {
-                var cart = (List<CartItem>)Session[CartSession];
-                foreach (var item in cart)
-                {
-                    total += item.Sanpham.Gia * item.Soluong;
+                    var detailDao = new ChitietHoaDonDAO();
+
+                    foreach (var item in cart)
+                    {
+                        var orderDetail = new ChiTietHoaDon();
+                        orderDetail.MaSanPham = item.Sanpham.MaSanPham;
+                        orderDetail.MaHoaDon = id;
+                        orderDetail.DonGia = item.Sanpham.Gia;
+                        orderDetail.Soluong = item.Soluong;
+                        detailDao.Insert(orderDetail);
+                    }
+
                 }
-                order.TongTien = total; 
-                var id = new HoaDonDAO().Insert(order);
-                
-                var detailDao = new ChitietHoaDonDAO();
-                
-                foreach (var item in cart)
+                catch (Exception Ex)
                 {
-                    var orderDetail = new ChiTietHoaDon();
-                    orderDetail.MaSanPham = item.Sanpham.MaSanPham;
-                    orderDetail.MaHoaDon = id;
-                    orderDetail.DonGia = item.Sanpham.Gia;
-                    orderDetail.Soluong = item.Soluong;                   
-                    detailDao.Insert(orderDetail);
+                    return Redirect("/loi-thanh-toan");
                 }
-                
+
+                return Redirect("/hoan-thanh");
             }
-            catch(Exception Ex)
+            else
             {
-                return Redirect("/loi-thanh-toan");
+                return null;
             }
-            
-            return Redirect("/hoan-thanh");
+          
         }
         public ActionResult Success()
         {

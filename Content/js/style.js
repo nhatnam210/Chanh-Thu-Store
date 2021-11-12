@@ -110,7 +110,7 @@ Array.from(listBtnShow).forEach((item) => {
     }
 })
 
-function showNotify(title, name, time) {
+function showNotify(title, name, time = 1500) {
     notifyIcon.name = name
     notifyTitle.textContent = title
     modal.classList.add('show')
@@ -119,3 +119,63 @@ function showNotify(title, name, time) {
         modal.classList.remove('show')
     }, time)
 }
+
+
+//Hiển thị phí ship
+
+//var ship1 = document.querySelector('#shippingOption1')
+//var ship2 = document.querySelector('#shippingOption2')
+//var ship3 = document.querySelector('#shippingOption3')
+//var money = 0
+//ship1.onclick = function () {
+//    if (ship1.checked = true) {
+//        money = 0
+//    }
+//}
+//ship2.onclick = function () {
+//    if (ship2.checked = true) {
+//        money = 20000
+//    }
+//}
+//ship3.onclick = function () {
+//    if (ship3.checked = true) {
+//        money = 60000
+        
+//    }
+//}
+var ship = document.querySelectorAll('.custom-control-input')
+var total = parseInt(document.getElementById('final-price').innerText)
+function formatCash(str) {
+    return str.split('').reverse().reduce((prev, next, index) => {
+        return ((index % 3) ? next : (next + ',')) + prev
+    })
+}
+
+
+
+ship.forEach(function (value, index) {
+    var money = 0
+    value.onclick = function () {
+        if (index == 0) {
+            money = 0
+        }
+        if (index == 1) {
+            money = 20000
+        }
+        if (index == 2) {
+            money = 60000
+        }
+        
+        document.querySelector('.ship').innerHTML = `${formatCash(money.toString())} đ`
+        final = money + total
+        document.querySelector('#final-price').innerHTML = `${formatCash(final.toString())} đ`
+    }
+    
+})
+
+//ship2.onclick = function () {
+//    if (this.checked = true) {
+//        alert('adwq')
+//    }
+//}
+
