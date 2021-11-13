@@ -102,6 +102,20 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             return View(mahoadon);
         }
 
+        public ActionResult BillChiTietHoaDon(int? id)
+        {
+            IQueryable<ChiTietHoaDon> listChiTietHoaDon = null;
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            listChiTietHoaDon = from h in db.ChiTietHoaDons
+                                where h.MaHoaDon == id
+                                select h;
+
+            return PartialView("BillChiTietHoaDon", listChiTietHoaDon);
+        }
+
         // GET: Admin/HoaDonsAdmin/Create
         public ActionResult Create()
         {

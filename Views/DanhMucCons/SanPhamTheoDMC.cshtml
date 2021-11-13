@@ -1,6 +1,5 @@
 ﻿@model IEnumerable<ChanhThu_Store.Models.SanPham>
 
-
 <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-left">
     <div class="right-product-box">
         <div class="product-item-filter row">
@@ -55,13 +54,30 @@
                                                        title="Xem chi tiết"><i class="fas fa-eye"></i></a>
                                                 </li>
                                                 <li>
-                                                   
-
-                                                            <a data-toggle="tooltip" data-placement="right"
+                                                    @if (item.isLogin)
+                                                    {
+                                                        if (item.isLiked)
+                                                        {
+                                                            <a data-product-id="@item.MaSanPham" class="heart-hover js-tongle-yeuthich" data-toggle="tooltip" data-placement="right"
                                                                title="Yêu thích">
-                                                                <i class="far fa-heart"></i>
+                                                                <i class="fas fa-heart liked-heart-icon"></i>
                                                             </a>
-                                                       
+                                                        }
+                                                        else
+                                                        {
+                                                            <a data-product-id="@item.MaSanPham" class="heart-hover js-tongle-yeuthich" data-toggle="tooltip" data-placement="right"
+                                                               title="Yêu thích">
+                                                                <i class="far fa-heart unliked-heart-icon"></i>
+                                                            </a>
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href="/dang-nhap" class="heart-hover" data-toggle="tooltip" data-placement="right"
+                                                           title="Yêu thích">
+                                                            <i class="far fa-heart unliked-heart-icon"></i>
+                                                        </a>
+                                                    }
 
                                                 </li>
                                             </ul>
@@ -74,6 +90,38 @@
                                     </div>
                                 </div>
                             </div>
+                            @*<script type="text/javascript">
+                                var timeShowNotify = 1500;
+                                var listLiked = document.querySelectorAll('.js-tongle-yeuthich')
+                                console.log(listLiked)
+                                Array.from(listLiked).forEach((item) => {
+                                    console.log(item)
+                                })
+                                $(document).ready(function () {
+                                    $(".js-tongle-yeuthich").click(function (e) {
+                                        var element = $(e.target);
+                                        $.post("/api/yeuthich", { MaSanPham: element.attr("data-product-id") })
+                                            .done(function (result) {
+                                                if (result == "cancel") {
+                                                    alert("xoas!");
+                                                    showNotify('Đã xóa khỏi Yêu thích!', 'heart-dislike-outline', timeShowNotify)
+                                                    element
+                                                        .text("")
+                                                        .append(` <i class="fas fa-heart unliked-heart-icon"></i>`)
+
+                                                } else {
+                                                    alert("xoas!");
+                                                    showNotify('Đã thêm vào Yêu thích!', 'heart-outline', timeShowNotify)
+                                                    element
+                                                        .text("")
+                                                        .append(` <i class="fas fa-heart liked-heart-icon"></i>`)
+                                                }
+                                            }).fail(function () {
+                                                alert("Xảy ra lỗi!");
+                                            });
+                                    });
+                                //});
+                            </script>*@
                         }
                     </div>
                 </div>
@@ -99,11 +147,30 @@
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="#" data-toggle="tooltip"
-                                                           data-placement="right"
-                                                           title="Yêu thích">
-                                                            <i class="far fa-heart"></i>
-                                                        </a>
+                                                        @if (item.isLogin)
+                                                        {
+                                                            if (item.isLiked)
+                                                            {
+                                                                <a data-product-id="@item.MaSanPham" class="heart-hover js-tongle-yeuthich" data-toggle="tooltip" data-placement="right"
+                                                                   title="Yêu thích">
+                                                                    <i class="fas fa-heart liked-heart-icon"></i>
+                                                                </a>
+                                                            }
+                                                            else
+                                                            {
+                                                                <a data-product-id="@item.MaSanPham" class="heart-hover js-tongle-yeuthich" data-toggle="tooltip" data-placement="right"
+                                                                   title="Yêu thích">
+                                                                    <i class="far fa-heart unliked-heart-icon"></i>
+                                                                </a>
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            <a href="/dang-nhap" class="heart-hover" data-toggle="tooltip" data-placement="right"
+                                                               title="Yêu thích">
+                                                                <i class="far fa-heart unliked-heart-icon"></i>
+                                                            </a>
+                                                        }
                                                     </li>
                                                 </ul>
 

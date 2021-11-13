@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ChanhThu_Store.Models.SanPham>
+﻿@model ChanhThu_Store.Models.DanhMucCon
 
 @{
     ViewBag.Title = "Index";
@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h2>Shop</h2>
+                <h2>Cửa hàng</h2>
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/trang-chu">Trang Chủ</a></li>
                     <li class="breadcrumb-item active">Cửa Hàng</li>
@@ -24,7 +24,9 @@
 <div class="shop-box-inner">
     <div class="container">
         <div class="row">
-            @Html.Partial("_SanPham_DMC", ChanhThu_Store.Models.BUS.SanPhamBUS.DanhSachSanPhamTheoDanhMucConMacDinh())
+            @{
+                Html.RenderAction("SanPhamTheoDMC", "DanhMucCons", new { id = Model.MaDanhMucCon });
+            }
             <div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
                 <div class="product-categori">
                     <div class="search-product">
@@ -36,17 +38,17 @@
                     @Html.Partial("_PhanLoaiDanhMuc", ChanhThu_Store.Models.BUS.DanhMucBUS.DanhSachDM())
 
                     <!-- <div class="filter-price-left">
-                        <div class="title-left">
-                            <h3>Price</h3>
-                        </div>
-                        <div class="price-box-slider">
-                            <div id="slider-range"></div>
-                            <p>
-                                <input type="text" id="amount" readonly style="border:0; color:#fbb714; font-weight:bold;">
-                                <button class="btn hvr-hover" type="submit">Filter</button>
-                            </p>
-                        </div>
-                    </div> -->
+                <div class="title-left">
+                    <h3>Price</h3>
+                </div>
+                <div class="price-box-slider">
+                    <div id="slider-range"></div>
+                    <p>
+                        <input type="text" id="amount" readonly style="border:0; color:#fbb714; font-weight:bold;">
+                        <button class="btn hvr-hover" type="submit">Filter</button>
+                    </p>
+                </div>
+            </div> -->
                 </div>
             </div>
         </div>

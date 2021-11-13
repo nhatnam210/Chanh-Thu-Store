@@ -42,7 +42,8 @@
                 <div class="col-12">
                     <h2 class="page-header">
                         <i style="margin-right:16px" class="fas fa-store"></i>ChanhThuStore
-                        <small class="float-right">Ngày: @Model.NgayLap.Value.ToShortDateString()</small>
+                        @*<small class="float-right">Ngày: @Model.NgayLap.Value.ToShortDateString()</small>*@
+                        <small class="float-right">Ngày: @Model.NgayLap</small>
                     </h2>
                 </div>
                 <!-- /.col -->
@@ -78,7 +79,10 @@
             </div>
             <!-- /.row -->
             <!-- Table row -->
-            @Html.Partial("_Table_HoaDon",ChanhThu_Store.Models.BUS.ChiTietHoaDonBUS.ChiTietHoaDon(Model.MaHoaDon))
+            @*@Html.Partial("_Table_HoaDon", ChanhThu_Store.Models.BUS.ChiTietHoaDonBUS.ChiTietHoaDon(Model.MaHoaDon))*@
+            @{
+                Html.RenderAction("BillChiTietHoaDon", "HoaDonsAdmin", new { id = Model.MaHoaDon });
+            }
             <!-- /.row -->
 
             <div class="row">
@@ -102,16 +106,16 @@
                         <table class="table">
                             <tr>
                                 <th style="width:50%">Subtotal:</th>
-                                <td>@string.Format("{0:#,##0}", @Model.TongTien)đ</td>
+                                <td>@string.Format("{0:#,##0}", @Model.TongTien) đ</td>
                             </tr>
-                           
+
                             <tr>
                                 <th>Shipping:</th>
                                 <td>0</td>
                             </tr>
                             <tr>
                                 <th>Tổng Tiền:</th>
-                                <td>@string.Format("{0:#,##0}", @Model.TongTien)đ</td>
+                                <td>@string.Format("{0:#,##0}", @Model.TongTien) đ</td>
                             </tr>
                         </table>
                     </div>

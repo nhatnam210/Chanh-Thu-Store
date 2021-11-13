@@ -25,30 +25,41 @@ namespace ChanhThu_Store.Controllers
         // GET: DanhMucCons/Details/5
         public ActionResult Details(string id)
         {
+          
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             DanhMucCon danhMucCon = db.DanhMucCons.Find(id);
-            //var objProduct = db.SanPhams.Where(p => p.MaSanPham == id);
-            //var userID = User.Identity.GetUserId();
             if (danhMucCon == null)
             {
                 return HttpNotFound();
             }
-            //foreach (SanPham item in objProduct)
-            //{
-
-            //    if (userID != null)
-            //    {
-            //        item.isLogin = true;
-
-            //        TuongTac find = db.TuongTacs.FirstOrDefault(p => p.MaSanPham == item.MaSanPham && p.MaKhachHang == userID);
-            //        if (find == null)
-            //            item.isShowSave = true;
-            //    }
-            //}
             return View(danhMucCon);
+        }
+
+        public ActionResult SanPhamTheoDMC(string id)
+        {
+            IQueryable<SanPham> listSanPham = null;
+            var userID = User.Identity.GetUserId();
+
+            listSanPham = from s in db.SanPhams
+                   where s.MaDanhMucCon == id
+                   orderby s.MaSanPham
+                   select s;
+            foreach (SanPham item in listSanPham)
+            {
+                if (userID != null)
+                {
+                    item.isLogin = true;
+
+                    TuongTac find = db.TuongTacs.FirstOrDefault(p => p.MaSanPham == item.MaSanPham && p.MaKhachHang == userID);
+                    if (find != null)
+                        item.isLiked = true;
+                }
+            }
+
+            return PartialView("SanPhamTheoDMC", listSanPham);
         }
 
         // GET: DanhMucCons/Create

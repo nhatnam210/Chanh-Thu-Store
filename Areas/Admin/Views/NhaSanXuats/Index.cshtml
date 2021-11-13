@@ -13,10 +13,10 @@
     </p>
     <table class="table">
         <tr>
-            <th>
+            <th class="text-capitalize">
                 @Html.DisplayNameFor(model => model.TenNhaSanXuat)
             </th>
-            <th></th>
+            <th class="text-capitalize"></th>
         </tr>
 
         @foreach (var item in Model)
@@ -126,13 +126,13 @@
 
                             <thead>
                                 <tr>
-                                    <th>
+                                    <th class="text-capitalize">
                                         @Html.ActionLink("Mã nhà sản xuất", "Index", new { sapxep = ViewBag.SapxepMa, loc = ViewBag.Loc })
                                     </th>
-                                    <th>
+                                    <th class="text-capitalize">
                                         @Html.ActionLink("Tên nhà sản xuất", "Index", new { sapxep = ViewBag.SapxepTen, loc = ViewBag.Loc })
                                     </th>
-                                    <th> Tùy chỉnh</th>
+                                    <th class="text-capitalize"> Tùy chỉnh</th>
                                 </tr>
                             </thead>
 

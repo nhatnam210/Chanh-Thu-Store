@@ -7,12 +7,12 @@
         @foreach (var item in Model)
         {
         <div class="list-group-collapse sub-men">
-            <a data-toggle="collapse" aria-expanded="true" aria-controls="@item.MaDanhMuc" class="list-group-item list-group-item-action" href="#@item.MaDanhMuc">
-                @item.TenDanhMuc@*<small class="text-muted">(100)</small>*@
+            <a data-toggle="collapse" aria-expanded="true" aria-controls="@item.MaDanhMuc" class="list-group-item list-group-item-action group-menu-title" href="#@item.MaDanhMuc">
+                @item.TenDanhMuc<small class="text-muted quantity-danhmuccon"></small>
                 <i class="fas fa-chevron-down arrow-down float-right"></i>
             </a>
             <div class="danh-muc collapse" id="@item.MaDanhMuc" data-parent="#list-group-men">
-                <div class="list-group">
+                <div class="list-group group-danhmucon @item.MaDanhMuc">
                    @Html.Partial("_DanhMucCon_DM",ChanhThu_Store.Models.BUS.DanhMucBUS.DanhMucConTheoMaDanhMuc(@item.MaDanhMuc))
                 </div>
             </div>
@@ -22,3 +22,11 @@
 
     </div>
 </div>
+
+<script>
+    var groupDanhMucCon = document.querySelectorAll('.group-danhmucon')
+    var quantitytDanhMucCon = document.querySelectorAll('.quantity-danhmuccon')
+    groupDanhMucCon.forEach((item, index) => {
+        quantitytDanhMucCon[index].innerText = `(${item.childElementCount} loại)`
+    })
+</script>
