@@ -47,14 +47,14 @@
                 <div class="single-product-details">
                     <h2>@Model.TenSanPham</h2>
                     <h5>@string.Format("{0:#,##0}", @Model.Gia)đ</h5>
-                    <p class="available-stock"><span> Có Sẳn @Model.SoLuongTonKho / <a href="#">@Model.SoLuongDaBan Đã bán </a></span><p>
+                    <p class="available-stock"><span> Có sẵn @Model.SoLuongTonKho / <a href="#">@Model.SoLuongDaBan Đã bán </a></span><p>
                         <h4>Mô Tả:</h4>
                     <p>@Model.Mota </p>
                     <ul>
                         <li>
                             <div class="form-group quantity-box">
                                 <label class="control-label">Số Lượng</label>
-                                <input class="form-control" value="0" min="0" max="20" type="number">
+                                <input class="form-control" value="1" min="1" max="@Model.SoLuongTonKho" type="number">
                             </div>
                         </li>
                     </ul>
@@ -265,15 +265,13 @@
 <!-- End Cart -->
 @section scripts{
     <script>
-        var timeShowNotify = 1500;
         $(document).ready(function () {
             $(".js-tongle-yeuthich").click(function (e) {
-               
                 var element = $(e.target);
                 $.post("/api/yeuthich", { MaSanPham: element.attr("data-product-id") })
                     .done(function (result) {
                         if (result == "cancel") {
-                            showNotify('Đã xóa khỏi Yêu thích!', 'heart-dislike-outline', timeShowNotify)
+                            showNotify('Đã xóa khỏi Yêu thích!', 'heart-dislike-outline')
                             element
                                 .removeClass('user-liked')
                                 .addClass('user-unliked')
@@ -281,7 +279,7 @@
                                 .append(`<i class="far fa-heart" style="margin-right: 5px;"></i>Yêu thích`)
                            
                         } else {
-                            showNotify('Đã thêm vào Yêu thích!', 'heart-outline', timeShowNotify)
+                            showNotify('Đã thêm vào Yêu thích!', 'heart-outline')
                             element
                                 .removeClass('user-unliked')
                                 .addClass('user-liked')

@@ -3209,6 +3209,7 @@
     <Content Include="Areas\Admin\Views\VouchersAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\VouchersAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\HoaDonsAdmin\InHoaDon.cshtml" />
+    <Content Include="Areas\Admin\Views\HoaDonsAdmin\BillChiTietHoaDon.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3257,13 +3258,9 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Main_Layout.cshtml" />
-    <Content Include="Views\Shared\_SanPham_DMC.cshtml" />
     <Content Include="Views\Shared\_DanhMucCon_DM.cshtml" />
     <Content Include="Views\Shared\_PhanLoaiDanhMuc.cshtml" />
-    <Content Include="Views\SanPhams\Create.cshtml" />
-    <Content Include="Views\SanPhams\Delete.cshtml" />
     <Content Include="Views\SanPhams\Details.cshtml" />
-    <Content Include="Views\SanPhams\Edit.cshtml" />
     <Content Include="Views\SanPhams\Index.cshtml" />
     <Content Include="Views\DanhMucCons\Create.cshtml" />
     <Content Include="Views\DanhMucCons\Delete.cshtml" />
@@ -3276,7 +3273,6 @@
     <Content Include="Views\DanhMucs\Edit.cshtml" />
     <Content Include="Views\DanhMucs\Index.cshtml" />
     <Content Include="Views\DanhMucs\SanPhamTheoDanhMuc.cshtml" />
-    <Content Include="Views\Shared\_BoSuuTap_Ten.cshtml" />
     <Content Include="Views\Shared\_BoSuuTap_Hinh.cshtml" />
     <Content Include="Views\AboutUs\Index.cshtml" />
     <Content Include="Views\ContactUs\Index.cshtml" />
@@ -3291,6 +3287,7 @@
     <Content Include="Views\Shared\_Slider_footer.cshtml" />
     <Content Include="Views\Account\YeuThich.cshtml" />
     <Content Include="Views\Shared\_Table_HoaDon.cshtml" />
+    <Content Include="Views\DanhMucCons\SanPhamTheoDMC.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

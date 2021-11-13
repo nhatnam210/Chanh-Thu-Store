@@ -8,10 +8,10 @@ namespace ChanhThu_Store.Models.BUS
 {
     public class ChiTietHoaDonBUS
     {
-        public static IEnumerable<ChiTietHoaDon> ChiTietHoaDon(int id)
-        {
-            var db = new ChanhThuStorePoCoDB();
-            return db.Query<ChiTietHoaDon>("select * from ChiTietHoaDon where MaHoaDon = '" + id + "' ");
-        }
+    //    public static IEnumerable<ChiTietHoaDon> ChiTietHoaDon(int id)
+    //    {
+    //        var db = new ChanhThuStorePoCoDB();
+    //        return db.Query<ChiTietHoaDon>("select * from ChiTietHoaDon where MaHoaDon = '" + id + "' ");
+    //    }
     }
 }

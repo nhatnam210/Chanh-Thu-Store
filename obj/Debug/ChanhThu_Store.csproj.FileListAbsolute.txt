@@ -679,3 +679,4 @@ C:\Users\ASUS\Desktop\ChanhThuStore\Chanh-Thu-Store\bin\System.Web.Http.xml
 C:\Users\ASUS\Desktop\ChanhThuStore\Chanh-Thu-Store\bin\System.Web.Http.WebHost.xml
 C:\Users\ASUS\Desktop\ChanhThuStore\Chanh-Thu-Store\obj\Debug\ChanhThu_Store.csproj.AssemblyReference.cache
 C:\Users\Adminss\Desktop\New folder\Chanh-Thu-Store\obj\Debug\ChanhThu_Store.csproj.AssemblyReference.cache
+D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\obj\Debug\ChanhThu_Store.csproj.AssemblyReference.cache

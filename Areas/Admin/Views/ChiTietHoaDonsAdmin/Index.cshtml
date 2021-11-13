@@ -84,7 +84,7 @@
 
             <!-- Page Heading -->
             <h1 class="h3 mb-2 text-white">Chi Tiết Hóa Đơn</h1>
-           
+
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
@@ -95,56 +95,55 @@
 
                             <thead>
                                 <tr>
-                                    <th>
+                                    <th class="text-capitalize">
                                         Mã Hóa Đơn
                                     </th>
-                                    <th>
+                                    <th class="text-capitalize">
                                         Mã Sản Phẩm
                                     </th>
-                                    <th>
-
+                                    <th class="text-capitalize">
+                                        Tên Sản Phẩm
+                                    </th>
+                                    <th class="text-capitalize">
                                         Số Lượng
                                     </th>
-                                    <th> Đơn Giá</th>
-                                    <th> Thành Tiền</th>
+                                    <th class="text-capitalize"> Đơn Giá</th>
+                                    <th class="text-capitalize"> Thành Tiền</th>
                                 </tr>
                             </thead>
 
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                   
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.MaHoaDon)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.MaSanPham)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Soluong)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.DonGia)
-                                    </td>
-                                    <td>
-                                       @(item.DonGia*item.Soluong)
-                                    </td>
 
-
-                                </tr>
-
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MaHoaDon)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MaSanPham)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.SanPham.TenSanPham)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Soluong)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DonGia)
+                                        </td>
+                                        <td>
+                                            @(item.DonGia*item.Soluong)
+                                        </td>
+                                    </tr>
                                 }
-
-
-
                             </tbody>
                         </table>
                         <br />
                         @*<span class="show-page-text text-white">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
 
-                        @Html.PagedListPager(Model, trang => Url.Action("Index",
-                            new { trang, sapxep = ViewBag.Sapxep, loc = ViewBag.Loc }))*@
+                            @Html.PagedListPager(Model, trang => Url.Action("Index",
+                                new { trang, sapxep = ViewBag.Sapxep, loc = ViewBag.Loc }))*@
                     </div>
                 </div>
             </div>

@@ -24,6 +24,8 @@
     <div class="container">
         @using (Html.BeginForm("Payment", "Cart", FormMethod.Post))
         {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="row">
                 <div class="col-sm-6 col-lg-6 mb-3">
                     <div class="checkout-address">
@@ -34,13 +36,13 @@
                             <div class="row">
 
                                 <div class="col-md-12 mb-3">
-                                    <label for="lastName">Họ và Tên *</label>
+                                    <label for="lastName">Họ và Tên <span>*</span></label>
                                     <input type="text" class="form-control" name="name" id="name" placeholder="" value="" required>
                                     <div class="invalid-feedback"> Valid last name is required. </div>
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label for="username">Số Điện Thoại *</label>
+                                <label for="username">Số Điện Thoại <span>*</span></label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" name="phone" id="phone" placeholder="" required>
                                     <div class="invalid-feedback" style="width: 100%;"> Your username is required. </div>
@@ -48,12 +50,12 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="email">Email *</label>
+                                <label for="email">Email  <span>*</span></label>
                                 <input type="email" class="form-control" name="email" id="email" placeholder="">
                                 <div class="invalid-feedback"> Please enter a valid email address for shipping updates. </div>
                             </div>
                             <div class="mb-3">
-                                <label for="address">Địa Chỉ *</label>
+                                <label for="address">Địa Chỉ <span>*</span></label>
                                 <input type="text" class="form-control" name="address" id="address" placeholder="" required>
                                 <div class="invalid-feedback"> Please enter your shipping address. </div>
                             </div>
@@ -155,7 +157,7 @@
                         <div class="col-md-12 col-lg-12">
                             <div class="shipping-method-box">
                                 <div class="title-left">
-                                    <h3>Phương Pháp Vận Chuyển</h3>
+                                    <h3>Phương pháp vận chuyển</h3>
                                 </div>
                                 <div class="mb-4">
                                     <div class="custom-control custom-radio">
@@ -164,12 +166,12 @@
                                     </div>
                                     <div class="ml-4 mb-2 small">(3-7 Ngày làm việc)</div>
                                     <div class="custom-control custom-radio">
-                                        <input id="shippingOption2" name="shipping"  value="20000" class="custom-control-input" type="radio">
+                                        <input id="shippingOption2" name="shipping" value="20000" class="custom-control-input" type="radio">
                                         <label class="custom-control-label" for="shippingOption2">Express Delivery</label> <span class="float-right font-weight-bold">20.000 đ</span>
                                     </div>
                                     <div class="ml-4 mb-2 small">(2-4 ngày làm việc)</div>
                                     <div class="custom-control custom-radio">
-                                        <input id="shippingOption3" name="shipping"  value="60000" class="custom-control-input" type="radio">
+                                        <input id="shippingOption3" name="shipping" value="60000" class="custom-control-input" type="radio">
                                         <label class="custom-control-label" for="shippingOption3">Ngày Hôm Sau</label> <span class="float-right font-weight-bold">60.000 đ</span>
                                     </div>
                                 </div>
@@ -177,12 +179,12 @@
                         </div>
                         <div class="col-md-12 col-lg-12">
                             <div class="odr-box">
-                                <div class="title-left">
-                                    <h3>Giỏ Hàng</h3>
-                                </div>
                                 @if (Model.Count > 0)
                                 {
-                                    <div class="rounded p-2 bg-light">
+                                    <div class="title-left">
+                                        <h3>Giỏ hàng</h3>
+                                    </div>
+                                    <div class="rounded p-2 bg-second final-bill">
                                         @foreach (var item in Model)
 
                                         {
@@ -200,7 +202,9 @@
                                 }
                                 else
                                 {
-                                    <h1>Chưa có sản phẩm !!!</h1>
+                                    <div class="title-left">
+                                        <h3>Giỏ hàng <span class="text-muted" style="font-weight: 500;font-size: 16px;">(Trống)</span></h3>
+                                    </div>
                                 }
 
                             </div>
@@ -208,7 +212,7 @@
                         <div class="col-md-12 col-lg-12">
                             <div class="order-box">
                                 <div class="title-left">
-                                    <h3>Đơn Đặt Hàng Của Bạn</h3>
+                                    <h3>Thống kê</h3>
                                 </div>
                                 <div class="d-flex">
                                     <div class="font-weight-bold">Sản Phẩm</div>
@@ -231,17 +235,17 @@
                                 </div> -->
                                 <div class="d-flex">
                                     <h4>Phí Ship</h4>
-                                    <div class="ml-auto font-weight-bold ship">0 đ</div>
+                                    <div class="ml-auto font-weight-bold" id="ship-fee">0 đ</div>
                                 </div>
                                 <hr>
                                 <div class="d-flex gr-total">
                                     <h5>Tổng Cộng</h5>
-                                    <div class="ml-auto h2" style="color:red" id="final-price">@Total đ @*@string.Format("{0:#,##0}", @Total) VNĐ*@ </div>
+                                    <div class="ml-auto h2" style="color:red" id="final-price">@Total</div>
                                 </div>
                                 <hr>
                             </div>
                         </div>
-                        <div class="col-12 d-flex shopping-box"> <button type="submit" class="ml-auto btn hvr-hover">Đặt Hàng</button> </div>
+                        <div class="col-12 d-flex shopping-box"> <button style="font-weight: 600" type="submit" class="ml-auto btn hvr-hover max-width-mobile">Đặt Hàng</button> </div>
                     </div>
                 </div>
             </div>

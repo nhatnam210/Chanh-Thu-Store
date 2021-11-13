@@ -24,8 +24,8 @@ namespace ChanhThu_Store
               defaults: new { controller = "SanPhams", action = "Index", id = UrlParameter.Optional }
           );
             routes.MapRoute(
-              name: "thong tin",
-              url: "thong-tin",
+              name: "gioi thieu",
+              url: "gioi-thieu",
               defaults: new { controller = "AboutUs", action = "Index", id = UrlParameter.Optional }
           );
             routes.MapRoute(

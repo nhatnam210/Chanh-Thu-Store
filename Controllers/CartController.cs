@@ -119,16 +119,17 @@ namespace ChanhThu_Store.Controllers
                 order.Email = email;
                 order.DiaChi = address;
                 order.MaKhachHang = userID;
-                order.Ship = Convert.ToInt32(shipping);
+                var shipFee = Convert.ToInt32(shipping);
+                order.Ship = shipFee;
                 var total = 0;
                 try
                 {
                     var cart = (List<CartItem>)Session[CartSession];
                     foreach (var item in cart)
                     {
-                        total += item.Sanpham.Gia * item.Soluong + int.Parse(shipping);
+                        total += item.Sanpham.Gia * item.Soluong;
                     }
-                    order.TongTien = total;
+                    order.TongTien = total + shipFee;
                     var id = new HoaDonDAO().Insert(order);
 
                     var detailDao = new ChitietHoaDonDAO();

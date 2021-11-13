@@ -14,7 +14,8 @@
         width: 100%;
     }
     .navbar-light .navbar-toggler {
-        border-color: #b0b435;
+        border: 2px solid var(--primary-color);
+        border-radius: var(--btn-corner-radius) !important; 
         color: #010101;
         border-radius: 0px;
         margin-right: 7px;
@@ -80,7 +81,8 @@
         width: 80%;
     }
     .navbar-light .navbar-toggler {
-        border-color: #b0b435;
+        border: 2px solid var(--primary-color);
+        border-radius: var(--btn-corner-radius) !important;
         color: #010101;
         border-radius: 0px;
         margin-right: 7px;
@@ -238,7 +240,8 @@
 }
 @media only screen and (min-width: 280px) and (max-width: 599px) {
     .navbar-light .navbar-toggler {
-        border-color: #b0b435;
+        border: 2px solid var(--primary-color);
+        border-radius: var(--btn-corner-radius) !important;
         color: #010101;
         border-radius: 0px;
         margin-right: 7px;
@@ -370,7 +373,7 @@
     }
 
     .list-group-tree {
-        max-height: 20px;
+        max-height: 200px;
         overflow-y: auto;
     }
 

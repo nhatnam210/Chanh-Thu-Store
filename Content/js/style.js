@@ -1,115 +1,157 @@
-﻿//lấy element cha theo selector
+﻿const getAll = document.querySelectorAll.bind(document);
+const getOne = document.querySelector.bind(document);
+//lấy element cha theo selector
 function getParent(element, selector) {
     while (element.parentElement) {
         if (element.parentElement.matches(selector))
             return element.parentElement;
-		else
+        else
             element = element.parentElement
-	}
+    }
 }
 
-//hiển thị menu danh mục con hiện tại theo URL
-const x = location.href
+/* ..............................................
+ hiển thị menu danh mục con hiện tại theo URL & href
+ ................................................. */
 
-var DanhMucCon = document.querySelectorAll('.danh-muc-con')
+const locationHref = location.href
+const DanhMucCon = getAll('.danh-muc-con')
+var DanhMucConLength
+if (DanhMucCon) {
+    DanhMucConLength = DanhMucCon.length;
+}
 
-if (DanhMucCon.length > 0) {
-    Array.from(DanhMucCon).forEach((item) => {
-
-        const y = item.dataset.code
+if (DanhMucConLength > 0) {
+    DanhMucCon.forEach((item) => {
         const parent = getParent(item, '.danh-muc')
 
-        if (x.includes(y)) {
+        if (locationHref.includes(item.href)) {
             item.classList.add('active')
             parent.classList.add('show')
         } else {
             item.classList.remove('active')
-
         }
     })
 
-    if (x.endsWith('hang') || x.endsWith('hang/')) {
-        const parent = getParent(DanhMucCon[0], '.danh-muc')
-        if (parent) {
+    if (locationHref.endsWith('hang') || locationHref.endsWith('hang/')) {
+        const parentDefault = getParent(DanhMucCon[0], '.danh-muc')
+        if (parentDefault) {
             DanhMucCon[0].classList.add('active')
-            parent.classList.add('show')
+            parentDefault.classList.add('show')
         }
     }
-
 }
 
+/* ..............................................
+Active navbar-item theo URL & href
+................................................. */
 
-//Sự kiện tăng giảm số lượng sản phẩm giỏ hàng
-const inputQuantity = document.querySelectorAll('.c-input-text')
+const navItem = getAll('ul.navbar-nav>li')
+const navItemHref = getAll('ul.navbar-nav>li>a')
 
-Array.from(inputQuantity).forEach((item) => {
-    const btnDecrease = document.querySelector(`.quantity-box .decrease[data-id="${item.dataset.id}"]`)
-    const btnIncrease = document.querySelector(`.quantity-box .increase[data-id="${item.dataset.id}"]`)
-    const message = document.querySelector(`.quantity-box .message[data-id="${item.dataset.id}"]`)
-
-    const maxValue = parseInt(item.getAttribute('maxValue'));
-
-    visibilityBtn()
-
-    btnDecrease.addEventListener('click', () => upDownValue(-1));
-    btnIncrease.addEventListener('click', () => upDownValue(1));
-    item.addEventListener('change', () => visibilityBtn())
-
-    //Thay đổi số lượng, ẩn hiện nút khi click tăng giảm
-    function upDownValue(option) {
-        let itemValue = parseInt(item.value);
-        if (option == 1) {
-            item.value = itemValue + 1;
-            itemValue = parseInt(item.value);
-        }
-        if (option == -1) {
-            item.value = itemValue - 1;
-            itemValue = parseInt(item.value);
-        }
-        visibilityBtn()
-    }
-
-    //Ẩn hiện nút theo số lượng
-    function visibilityBtn() {
-        if (parseInt(item.value) <= 1 || !item.value) {
-            item.value = 1;
-            btnDecrease.classList.remove('show')
-            btnIncrease.classList.add('show')
-            message.textContent = ""
-        } else if (parseInt(item.value) >= maxValue) {
-            item.value = parseInt(maxValue);
-            MaxValueMess()
-            btnIncrease.classList.remove('show')
-            btnDecrease.classList.add('show')
+if (navItem && navItemHref) {
+    navItem.forEach((item, index) => {
+        if (locationHref.includes(navItemHref[index].href)) {
+            item.classList.add('active')
         } else {
-            btnDecrease.classList.add('show')
-            btnIncrease.classList.add('show')
-            message.textContent = ""
+            item.classList.remove('active')
         }
-    }
+    })
 
-    //Hiện thông báo quá số lượng
-    function MaxValueMess() {
-        message.style.visibility = "visible"
-        message.textContent = "Đã đạt giới hạn tồn kho!"
-        setTimeout(() => {
-            message.style.visibility = "hidden"
-        }, 1000)
+    //trường hợp riêng cho trang chi tiết sản phẩm
+    if (locationHref.includes('san-pham')) {
+        navItem.forEach((item, index) => {
+            if (navItemHref[index].href.includes('cua-hang')) {
+                item.classList.add('active')
+            } else {
+                item.classList.remove('active')
+            }
+        })
     }
-})
+}
+
+/* ..............................................
+Sự kiện tăng giảm số lượng sản phẩm giỏ hàng
+ ................................................. */
+
+const inputQuantity = getAll('.c-input-text')
+
+if (inputQuantity) {
+    inputQuantity.forEach((item) => {
+        const btnDecrease = getOne(`.quantity-box .decrease[data-id="${item.dataset.id}"]`)
+        const btnIncrease = getOne(`.quantity-box .increase[data-id="${item.dataset.id}"]`)
+        const message = getOne(`.quantity-box .message[data-id="${item.dataset.id}"]`)
+
+        const maxValue = parseInt(item.getAttribute('maxValue'));
+
+        visibilityBtn()
+        item.addEventListener('change', () => visibilityBtn())
+
+        btnDecrease.addEventListener('click', () => upDownValue(-1));
+        btnIncrease.addEventListener('click', () => upDownValue(1));
+
+        //Thay đổi số lượng, ẩn hiện nút khi click tăng giảm
+        function upDownValue(option) {
+            let itemValue = parseInt(item.value);
+            if (option == 1) {
+                item.value = itemValue + 1;
+                itemValue = parseInt(item.value);
+            }
+            if (option == -1) {
+                item.value = itemValue - 1;
+                itemValue = parseInt(item.value);
+            }
+            visibilityBtn()
+        }
+
+        //Ẩn hiện nút theo số lượng
+        function visibilityBtn() {
+            if (parseInt(item.value) <= 1 || !item.value) {
+                item.value = 1;
+                btnDecrease.classList.remove('show')
+                btnIncrease.classList.add('show')
+                message.textContent = ""
+            } else if (parseInt(item.value) >= maxValue) {
+                item.value = parseInt(maxValue);
+                MaxValueMess()
+                btnIncrease.classList.remove('show')
+                btnDecrease.classList.add('show')
+            } else {
+                btnDecrease.classList.add('show')
+                btnIncrease.classList.add('show')
+                message.textContent = ""
+            }
+        }
+
+        //Hiện thông báo quá số lượng
+        function MaxValueMess() {
+            message.style.visibility = "visible"
+            message.innerText = "Đã đạt giới hạn tồn kho!"
+            setTimeout(() => {
+                message.style.visibility = "hidden"
+            }, 1000)
+        }
+    })
+}
+
+/* ..............................................
+Hiển thị thông báo
+................................................. */
+
+const listBtnShow = getAll('.add-cart-notify')
+const modal = getOne('.modal')
+const notifyIcon = getOne('.notify-icon')
+const notifyTitle = getOne('.notify-title')
 
 //Hiển thị thông báo thêm vào giỏ hàng thành công
-const listBtnShow = document.querySelectorAll('.add-cart-notify')
-const modal = document.querySelector('.modal')
-const notifyIcon = document.querySelector('.notify-icon')
-const notifyTitle = document.querySelector('.notify-title')
-
 Array.from(listBtnShow).forEach((item) => {
     item.onclick = () => {
-        showNotify('Đã thêm vào giỏ hàng!', 'bag-check-outline',1500)
+        showNotify('Đã thêm vào giỏ hàng!', 'bag-check-outline', 1500)
+        location.reload();
     }
 })
 
+//Custom Popup thông báo
 function showNotify(title, name, time = 1500) {
     notifyIcon.name = name
     notifyTitle.textContent = title
@@ -120,62 +162,52 @@ function showNotify(title, name, time = 1500) {
     }, time)
 }
 
+/* ..............................................
+Hiển thị phí ship
+................................................. */
 
-//Hiển thị phí ship
-
-//var ship1 = document.querySelector('#shippingOption1')
-//var ship2 = document.querySelector('#shippingOption2')
-//var ship3 = document.querySelector('#shippingOption3')
-//var money = 0
-//ship1.onclick = function () {
-//    if (ship1.checked = true) {
-//        money = 0
-//    }
-//}
-//ship2.onclick = function () {
-//    if (ship2.checked = true) {
-//        money = 20000
-//    }
-//}
-//ship3.onclick = function () {
-//    if (ship3.checked = true) {
-//        money = 60000
-        
-//    }
-//}
-var ship = document.querySelectorAll('.custom-control-input')
-var total = parseInt(document.getElementById('final-price').innerText)
 function formatCash(str) {
     return str.split('').reverse().reduce((prev, next, index) => {
         return ((index % 3) ? next : (next + ',')) + prev
     })
 }
+var total;
+var shipMoney;
 
+var finalPrice = document.getElementById('final-price')
+if (finalPrice) {
+    total = parseInt(finalPrice.innerText)
+    //Định dang tiền tệ lần đâu tiên
+    finalPrice.innerText = `${formatCash(finalPrice.innerText)} VNĐ`
 
+    var shipInput = getAll('input[name="shipping"]')
+    var shipFee = document.getElementById('ship-fee');
 
-ship.forEach(function (value, index) {
-    var money = 0
-    value.onclick = function () {
-        if (index == 0) {
-            money = 0
-        }
-        if (index == 1) {
-            money = 20000
-        }
-        if (index == 2) {
-            money = 60000
-        }
-        
-        document.querySelector('.ship').innerHTML = `${formatCash(money.toString())} đ`
-        final = money + total
-        document.querySelector('#final-price').innerHTML = `${formatCash(final.toString())} đ`
+    if (shipInput && shipFee) {
+        shipInput.forEach(function (item) {
+            item.onclick = function () {
+                shipMoney = parseInt(item.value)
+
+                shipFee.innerText = `${formatCash(shipMoney.toString())}`
+                finalMoney = shipMoney + total
+                finalPrice.innerText = `${formatCash(finalMoney.toString())} VNĐ`
+            }
+
+        })
     }
-    
-})
 
-//ship2.onclick = function () {
-//    if (this.checked = true) {
-//        alert('adwq')
-//    }
-//}
+}
+
+/* ..............................................
+Ẩn số lượng giỏ hàng khi về 0
+ ................................................. */
+const quantityCart = getOne('.badge')
+if (quantityCart) {
+    var countQuantityCart = parseInt(quantityCart.innerText)
+    if (countQuantityCart <= 0) {
+        quantityCart.style.display = "none"
+    } else {
+        quantityCart.style.display = "block"
+    }
+}
 
