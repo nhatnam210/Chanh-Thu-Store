@@ -75,7 +75,7 @@ namespace ChanhThu_Store.Controllers
                 }
                 else
                 {
-                    var item = new CartItem();
+                    CartItem item = new CartItem();
                     item.Sanpham = sanpham;
                     item.Soluong = soluong;
                     list.Add(item);
@@ -84,10 +84,10 @@ namespace ChanhThu_Store.Controllers
             }
             else
             {
-                var item = new CartItem();
+                CartItem item = new CartItem();
                 item.Sanpham = sanpham;
                 item.Soluong = soluong;
-                var list = new List<CartItem>();
+                List<CartItem> list = new List<CartItem>();
                 list.Add(item);
                 Session[CartSession] = list;
             }
@@ -107,19 +107,19 @@ namespace ChanhThu_Store.Controllers
         }
         [Authorize]
         [HttpPost]
-        public ActionResult Payment(string name , string phone , string email , string address ,string shipping)
+        public ActionResult Payment(string name , string phone , string email , string address ,string ship)
         {
             var userID = User.Identity.GetUserId();
             if(userID != null)
             {
-                var order = new HoaDon();
+                HoaDon order = new HoaDon();
                 order.NgayLap = DateTime.Now.Date;
                 order.Ten = name;
                 order.SDT = phone;
                 order.Email = email;
                 order.DiaChi = address;
                 order.MaKhachHang = userID;
-                var shipFee = Convert.ToInt32(shipping);
+                var shipFee = Convert.ToInt32(ship);
                 order.Ship = shipFee;
                 var total = 0;
                 try
@@ -129,14 +129,14 @@ namespace ChanhThu_Store.Controllers
                     {
                         total += item.Sanpham.Gia * item.Soluong;
                     }
-                    order.TongTien = total + shipFee;
+                    order.TongTien = total;
                     var id = new HoaDonDAO().Insert(order);
 
                     var detailDao = new ChitietHoaDonDAO();
 
                     foreach (var item in cart)
                     {
-                        var orderDetail = new ChiTietHoaDon();
+                        ChiTietHoaDon orderDetail = new ChiTietHoaDon();
                         orderDetail.MaSanPham = item.Sanpham.MaSanPham;
                         orderDetail.MaHoaDon = id;
                         orderDetail.DonGia = item.Sanpham.Gia;
@@ -145,7 +145,7 @@ namespace ChanhThu_Store.Controllers
                     }
 
                 }
-                catch (Exception Ex)
+                catch
                 {
                     return Redirect("/loi-thanh-toan");
                 }
@@ -156,13 +156,10 @@ namespace ChanhThu_Store.Controllers
             {
                 return null;
             }
-          
         }
         public ActionResult Success()
         {
             Session.Clear();
-            
-            
             return View();
         }
 

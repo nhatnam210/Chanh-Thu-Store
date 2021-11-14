@@ -62,90 +62,17 @@ namespace ChanhThu_Store.Controllers
             return PartialView("SanPhamTheoDMC", listSanPham);
         }
 
-        // GET: DanhMucCons/Create
-        public ActionResult Create()
-        {
-            ViewBag.MaDanhMuc = new SelectList(db.DanhMucs, "MaDanhMuc", "TenDanhMuc");
-            return View();
+        public ActionResult _BoSuTap_DM()
+        { 
+            IQueryable<DanhMuc> listDanhMuc = null;
+
+             listDanhMuc = from d in db.DanhMucs
+                          orderby d.MaDanhMuc
+                          select d;
+            return PartialView("_BoSuTap_DM", listDanhMuc);
         }
 
-        // POST: DanhMucCons/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaDanhMucCon,MaDanhMuc,TenDanhMucCon,Hinh")] DanhMucCon danhMucCon)
-        {
-            if (ModelState.IsValid)
-            {
-                db.DanhMucCons.Add(danhMucCon);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.MaDanhMuc = new SelectList(db.DanhMucs, "MaDanhMuc", "TenDanhMuc", danhMucCon.MaDanhMuc);
-            return View(danhMucCon);
-        }
-
-        // GET: DanhMucCons/Edit/5
-        public ActionResult Edit(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DanhMucCon danhMucCon = db.DanhMucCons.Find(id);
-            if (danhMucCon == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.MaDanhMuc = new SelectList(db.DanhMucs, "MaDanhMuc", "TenDanhMuc", danhMucCon.MaDanhMuc);
-            return View(danhMucCon);
-        }
-
-        // POST: DanhMucCons/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaDanhMucCon,MaDanhMuc,TenDanhMucCon,Hinh")] DanhMucCon danhMucCon)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(danhMucCon).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.MaDanhMuc = new SelectList(db.DanhMucs, "MaDanhMuc", "TenDanhMuc", danhMucCon.MaDanhMuc);
-            return View(danhMucCon);
-        }
-
-        // GET: DanhMucCons/Delete/5
-        public ActionResult Delete(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DanhMucCon danhMucCon = db.DanhMucCons.Find(id);
-            if (danhMucCon == null)
-            {
-                return HttpNotFound();
-            }
-            return View(danhMucCon);
-        }
-
-        // POST: DanhMucCons/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
-        {
-            DanhMucCon danhMucCon = db.DanhMucCons.Find(id);
-            db.DanhMucCons.Remove(danhMucCon);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
+          
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -55,6 +55,7 @@ if (navItem && navItemHref) {
             item.classList.add('active')
         } else {
             item.classList.remove('active')
+            navItem[0].classList.add('active')
         }
     })
 
@@ -180,7 +181,7 @@ if (finalPrice) {
     //Định dang tiền tệ lần đâu tiên
     finalPrice.innerText = `${formatCash(finalPrice.innerText)} VNĐ`
 
-    var shipInput = getAll('input[name="shipping"]')
+    var shipInput = getAll('input[name="ship"]')
     var shipFee = document.getElementById('ship-fee');
 
     if (shipInput && shipFee) {

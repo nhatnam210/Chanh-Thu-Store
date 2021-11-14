@@ -71,6 +71,11 @@ namespace ChanhThu_Store.Areas.Admin
                new { controller = "ChiTietHoaDonsAdmin", action = "Index", id = UrlParameter.Optional }
            );
             context.MapRoute(
+             "Xuat hoa don admin",
+             "admin/xuat-hoa-don",
+             new { controller = "ChiTietHoaDonsAdmin", action = "InHoaDon", id = UrlParameter.Optional }
+         );
+            context.MapRoute(
                "Slider header admin",
                "admin/slider-header",
                new { controller = "SlideHeadersAdmin", action = "Index", id = UrlParameter.Optional }

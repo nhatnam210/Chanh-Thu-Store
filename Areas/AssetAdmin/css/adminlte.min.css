@@ -36,7 +36,7 @@ row invoice-info /*!
     --breakpoint-lg: 992px;
     --breakpoint-xl: 1200px;
     --font-family-sans-serif: "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace
+    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
 }
 
 *, ::after, ::before {
@@ -33358,6 +33358,7 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
     background-color: #fff;
     position: relative;
     margin: 10px;
+    color: var( --text-color);
 }
 
 .invoice-title {

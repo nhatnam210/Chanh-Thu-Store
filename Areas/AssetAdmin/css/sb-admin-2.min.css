@@ -10,8 +10,6 @@
  */
 
 :root {
-    --primary-color: #f3bf16;
-    --second-color: #fff0b3;
     --blue: #4e73df;
     --indigo: #6610f2;
     --purple: #6f42c1;
@@ -39,7 +37,7 @@
     --breakpoint-lg: 992px;
     --breakpoint-xl: 1200px;
     --font-family-sans-serif: "Nunito",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace
+    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
 }
 
 *, ::after, ::before {
@@ -10443,7 +10441,9 @@ a:focus {
 
 .sidebar {
     width: 6.5rem;
-    min-height: 100vh
+    min-height: 100vh;
+    box-shadow: 0px 2px 2px var(--primary-color);
+    z-index: 1
 }
 
     .sidebar .nav-item {
@@ -10821,7 +10821,8 @@ a:focus {
 }
 
 .sidebar-dark hr.sidebar-divider {
-    border-top: 1px solid var(--second-color);
+    border-top: 1px solid var(--primary-color);
+    opacity: 0.5;
 }
 
 .sidebar-dark .sidebar-heading {
@@ -10829,23 +10830,60 @@ a:focus {
 }
 
 .sidebar-dark .nav-item .nav-link {
-    color: rgba(255,255,255,.8)
+    color: rgba(255,255,255,.8);
+    transition:all linear .1s;
+    position: relative;
 }
 
     .sidebar-dark .nav-item .nav-link i {
-        color: rgba(255,255,255.3)
-    }
-
-    .sidebar-dark .nav-item .nav-link:active, .sidebar-dark .nav-item .nav-link:focus, .sidebar-dark .nav-item .nav-link:hover {
-        background-color: var(--primary-color);
-        color: #111;
+        color: rgba(255,255,255.3);
         transition: all linear .1s;
     }
 
-        .sidebar-dark .nav-item .nav-link:active i, .sidebar-dark .nav-item .nav-link:focus i, .sidebar-dark .nav-item .nav-link:hover i {
-            transition: all linear .1s;
-            color: #111;
+    .sidebar-dark .nav-item .nav-link span {
+        display: inline-block;
+        transition: all linear .1s;
+    }
+ 
+    .sidebar-dark .nav-item .nav-link.active {
+        background-color: var(--primary-color);
+        color: #111 !important;
+        transition: all linear .1s;
+    }
+    .sidebar-dark .nav-item .nav-link.active i {
+        color: #111 !important;
+    }
+
+        .sidebar-dark .nav-item .nav-link:hover {
+            color: var(--primary-color) ;
         }
+
+            .sidebar-dark .nav-item .nav-link:hover i,
+            .sidebar-dark .nav-item .nav-link:hover span {
+                transform: translateX(5px);
+            }
+
+            .sidebar-dark .nav-item .nav-link::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+    .sidebar-dark .nav-item .nav-link:hover::before {
+        background-color: currentColor;
+        opacity: 0.2;
+    }
+
+    .sidebar-dark .nav-item .nav-link:hover i {
+        color: var(--primary-color);
+    }
+
+    .sidebar-dark .nav-item .nav-link.active:hover i {
+        color: #111;
+    }
 
     .sidebar-dark .nav-item .nav-link[data-toggle=collapse]::after {
         color: rgba(255,255,255.5)
@@ -11538,7 +11576,7 @@ body.sidebar-toggled footer.sticky-footer {
     margin: 20px 0 !important;
 }
 #content-manage {
-    background: #111;
+    background: #222;
     display: flex;
     height:100%;
 }
