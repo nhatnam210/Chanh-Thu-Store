@@ -1,0 +1,21 @@
+﻿:root {
+    /*color*/
+    --primary-color: #f3bf16;
+    --second-color: #f3bf168c;
+    --red: #ff1a1a;
+    --gray: #666666;
+    --selection-background: #f3bf16c7;
+    --selection-text: #fff;
+    --border-input-color: #00000040;
+    /*text*/
+    --text-color: #333;
+    --title-color: #333;
+    /*background*/
+    --background-color: #fff;
+    --background-font: #ffc10724;
+    /*style*/
+    --btn-corner-radius: 5px;
+    --input-corner-radius: 5px;
+    --table-corner-radius: 5px;
+}
+

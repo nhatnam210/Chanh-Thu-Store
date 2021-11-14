@@ -1,0 +1,14 @@
+﻿@model IEnumerable<ChanhThu_Store.Models.DanhMuc>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="special-menu text-center">
+            <div class="button-group filter-button-group">
+                <button class="active" data-filter="*">Tất cả</button>
+                @foreach (var item in Model)
+                {
+                    <button data-filter=".@item.MaDanhMuc">@item.TenDanhMuc</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>

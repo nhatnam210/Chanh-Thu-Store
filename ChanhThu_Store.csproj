@@ -219,7 +219,6 @@
     <Compile Include="Models\AspNetUserLogin.cs" />
     <Compile Include="Models\Banner.cs" />
     <Compile Include="Models\BUS\BannerBUS.cs" />
-    <Compile Include="Models\BUS\ChiTietHoaDonBUS.cs" />
     <Compile Include="Models\BUS\DanhMucBUS.cs" />
     <Compile Include="Models\BUS\SanPhamBUS.cs" />
     <Compile Include="Models\BUS\SliderBUS.cs" />
@@ -1120,6 +1119,7 @@
     <Content Include="Areas\AssetAdmin\js\demo\datatables-demo.js" />
     <Content Include="Areas\AssetAdmin\js\sb-admin-2.js" />
     <Content Include="Areas\AssetAdmin\js\sb-admin-2.min.js" />
+    <Content Include="Areas\AssetAdmin\js\styleAdmin.js" />
     <Content Include="Areas\AssetAdmin\vendor\bootstrap\js\bootstrap.bundle.js" />
     <Content Include="Areas\AssetAdmin\vendor\bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="Areas\AssetAdmin\vendor\bootstrap\js\bootstrap.js" />
@@ -2807,6 +2807,7 @@
     <Content Include="Content\css\responsive.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\superslides.css" />
+    <Content Include="Content\css\value.css" />
     <Content Include="Content\images\about-img.jpg" />
     <Content Include="Content\images\add-img-01.jpg" />
     <Content Include="Content\images\add-img-02.jpg" />
@@ -3273,7 +3274,6 @@
     <Content Include="Views\DanhMucs\Edit.cshtml" />
     <Content Include="Views\DanhMucs\Index.cshtml" />
     <Content Include="Views\DanhMucs\SanPhamTheoDanhMuc.cshtml" />
-    <Content Include="Views\Shared\_BoSuuTap_Hinh.cshtml" />
     <Content Include="Views\AboutUs\Index.cshtml" />
     <Content Include="Views\ContactUs\Index.cshtml" />
     <Content Include="Views\Shared\_SanPhamMoiNhat.cshtml" />
@@ -3288,6 +3288,7 @@
     <Content Include="Views\Account\YeuThich.cshtml" />
     <Content Include="Views\Shared\_Table_HoaDon.cshtml" />
     <Content Include="Views\DanhMucCons\SanPhamTheoDMC.cshtml" />
+    <Content Include="Views\DanhMucCons\_BoSuTap_DM.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -26,14 +26,16 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="title-all text-center">
-                    <h1>Các Danh Mục</h1>
-                    <p>Các sản phẩm luôn mới nhất , rẻ nhất  và chất lượng nhất.</p>
+                    <h1>Danh Mục</h1>
+                    <p>Các sản phẩm luôn mới nhất, rẻ nhất  và chất lượng nhất.</p>
                 </div>
             </div>
         </div>
-        @Html.Partial("_BoSuuTap_Ten", ChanhThu_Store.Models.BUS.DanhMucBUS.DanhSachDM())
+        @{
+            Html.RenderAction("_BoSuTap_DM", "DanhMucCons");
+        }
+
         <div class="row special-list">
-            @*@Html.Partial("_BoSuuTap_Hinh", ChanhThu_Store.Models.BUS.DanhMucBUS.DanhSachDMC());*@
             @foreach (var item in Model)
             {
                 <div class="col-lg-3 col-md-6 special-grid @item.MaDanhMuc">

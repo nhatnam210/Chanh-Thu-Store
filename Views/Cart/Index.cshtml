@@ -85,7 +85,7 @@
                         }
                         else
                         {
-                            <h1>Chưa có sản phẩm nào !!!!! </h1>
+                            <h3>Giỏ hàng trống!!! </h3>
                         }
                     </table>
                 </div>
@@ -105,7 +105,7 @@
             </div>
             <div class="col-lg-6 col-sm-6">
                 <div class="update-box">
-                    <input   class="change-color" id="btn-update" value="Cập nhật" type="submit" />
+                    <input class="change-color" id="btn-update" value="Cập nhật" type="submit" />
                 </div>
             </div>
         </div>
@@ -119,18 +119,18 @@
                         <h4>Tiền hàng</h4>
                         <div class="ml-auto font-weight-bold">@string.Format("{0:#,##0}", @Total) đ</div>
                     </div>
-                    <div class="d-flex">
-                        <h4>Phí ship</h4>
-                        <div class="ml-auto font-weight-bold"> Free </div>
-                    </div>
-                    <div class="d-flex">
-                        <h4>Thuế</h4>
-                        <div class="ml-auto font-weight-bold"> $ 2 </div>
-                    </div>
+                    @*<div class="d-flex">
+                    <h4>Phí ship</h4>
+                    <div class="ml-auto font-weight-bold"> Free </div>
+                </div>
+                <div class="d-flex">
+                    <h4>Thuế</h4>
+                    <div class="ml-auto font-weight-bold"> $ 2 </div>
+                </div>*@
                     <hr class="my-1">
                     <div class="d-flex">
                         <h4>Voucher giảm giá</h4>
-                        <div class="ml-auto font-weight-bold"> $ 10 </div>
+                        <div class="ml-auto font-weight-bold">0 đ</div>
                     </div>
 
 
@@ -142,7 +142,19 @@
                     <hr>
                 </div>
             </div>
-            <div class="col-12 d-flex shopping-box"><a href="/thanh-toan" style="font-weight: 600;" class="ml-auto btn hvr-hover">Thanh toán</a> </div>
+            @if (Model.Count > 0)
+            {
+                <div class="col-12 d-flex shopping-box">
+                    <a href="/thanh-toan" style="font-weight: 600;" class="ml-auto btn hvr-hover">Thanh toán</a>
+                </div>
+            }
+            else
+            {
+                <div class="col-12 d-flex shopping-box">
+                    <a onclick="showNotify('Giỏ hàng trống!','bag-handle-outline')" style="font-weight: 600;" class="ml-auto btn hvr-hover">Thanh toán</a>
+                </div>
+            }
+
         </div>
 
     </div>

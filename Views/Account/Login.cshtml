@@ -8,11 +8,11 @@
     <div class="container">
         <div class="row new-account-login">
             <div class="col-sm-12 col-lg-12 mb-3">
-                <div class="title-left">
+                <div class="title-left account">
                     <h3>Đăng Nhập Tài Khoản</h3>
                 </div>
-                <h5><a data-toggle="collapse" href="#formLogin" role="button" aria-expanded="false">Nhấn Vào Đây Để Đăng Nhập</a></h5>
-                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal mt-3 collapse review-form-box", role = "form", id = "formLogin" }))
+                @*<h5><a data-toggle="collapse" href="#formLogin" role="button" aria-expanded="false">Nhấn Vào Đây Để Đăng Nhập</a></h5>*@
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal mt-3 review-form-box", role = "form", id = "formLogin" }))
                 {
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -29,23 +29,18 @@
                         </div>
                     </div>
                     <button type="submit" class="btn hvr-hover">Đăng Nhập</button>
-                    <p>
-                        @Html.ActionLink("Bạn chưa có tài khoản ? Đăng ký ngay !", "Register")
-                    </p>
+                    <a href="/dang-ky" class="ask-register text-muted">Bạn chưa có tài khoản? Đăng ký ngay!</a>
+                    @*@Html.ActionLink("Bạn chưa có tài khoản? Đăng ký ngay !", "Register")*@
                     @*<div class="col-md-4">
-                    <section id="socialLoginForm">
-                        @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-                    </section>
-                </div>*@
+                <section id="socialLoginForm">
+                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                </section>
+            </div>*@
                 }
             </div>
         </div>
     </div>
 </div>
-
-
-        
-
         @section Scripts {
             @Scripts.Render("~/bundles/jqueryval")
         }
