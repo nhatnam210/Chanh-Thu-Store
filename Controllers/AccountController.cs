@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using ChanhThu_Store.Models;
 using System.Collections.Generic;
 using PagedList;
+using System.Data.Entity;
 
 namespace ChanhThu_Store.Controllers
 {
@@ -24,7 +25,42 @@ namespace ChanhThu_Store.Controllers
         public AccountController()
         {
         }
+        public ActionResult ThongTinCaNhan()
+        {
+            var user = System.Web.HttpContext.Current.User.Identity.GetUserId();
+            AspNetUser aspuser = db.AspNetUsers.Find(user);
+            if (aspuser == null)
+            {
+                return HttpNotFound();
+            }
+            return View(aspuser);
 
+
+        }
+        [HttpPost]
+        public ActionResult SuaThongTinCaNhan([Bind(Include = "Id,Ten,UserName,Email,EmailConfirmed,PasswordHash,PhoneNumber,DiaChi,DiemTichLuy,SecurityStamp,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount")] AspNetUser aspNetUser)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(aspNetUser).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Info", "Account");
+            }
+            return View(aspNetUser);
+        }
+        [HttpGet]
+        public ActionResult SuaThongTinCaNhan()
+        {
+            var user = System.Web.HttpContext.Current.User.Identity.GetUserId();
+            AspNetUser aspuser = db.AspNetUsers.Find(user);
+            if (aspuser == null)
+            {
+                return HttpNotFound();
+            }
+            return View(aspuser);
+
+
+        }
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
             UserManager = userManager;

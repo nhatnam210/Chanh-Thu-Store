@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
@@ -8,11 +9,13 @@ using ChanhThu_Store.Models;
 using ChanhThu_Store.Models.DAO;
 using Microsoft.AspNet.Identity;
 
+
 namespace ChanhThu_Store.Controllers
 {
     
     public class CartController : Controller
     {
+      
         private const string CartSession = "CartSession";
 
         // GET: Cart
@@ -162,7 +165,5 @@ namespace ChanhThu_Store.Controllers
             Session.Clear();
             return View();
         }
-
-
     }
 }
