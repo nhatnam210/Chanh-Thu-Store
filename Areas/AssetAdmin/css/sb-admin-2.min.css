@@ -10831,7 +10831,7 @@ a:focus {
 
 .sidebar-dark .nav-item .nav-link {
     color: rgba(255,255,255,.8);
-    transition:all linear .1s;
+    transition:all ease-in .1s;
     position: relative;
 }
 

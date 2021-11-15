@@ -11256,9 +11256,11 @@ body.sidebar-toggled footer.sticky-footer {
     text-align: center;
     font-weight: bold;
     font-size: 25px;
+    user-select: none;
 }
 
     .print-bill-id span {
         color: var(--primary-color);
         font-size: 28px;
+        user-select: text;
     }

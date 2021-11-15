@@ -55,7 +55,6 @@ if (navItem && navItemHref) {
             item.classList.add('active')
         } else {
             item.classList.remove('active')
-            navItem[0].classList.add('active')
         }
     })
 
