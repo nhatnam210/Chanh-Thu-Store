@@ -218,6 +218,8 @@ p {
     transition: opacity 0.2s ease-out;
     font-size: 28px;
     padding-top: 10px;
+    border-radius: var(--btn-corner-radius);
+    box-shadow: 0px 0px 5px #999;
 }
 /*------------------------------------------------------------------ HEADER -------------------------------------------------------------------*/
 .main-top {
@@ -1017,6 +1019,7 @@ ul.cart-list > li.total > .btn:hover {
 
     .slides-navigation a:hover {
         background: #222;
+        color: var(--primary-color);
     }
 
 .cover-slides .container {
@@ -1207,12 +1210,13 @@ ul.cart-list > li.total > .btn:hover {
     overflow: hidden;
     position: relative;
     margin-bottom: 30px;
+    border-radius: var(--img-corner-radius);
 }
 
     .products-single .box-img-hover {
         overflow: hidden;
         position: relative;
-        border-radius: var(--input-corner-radius);
+        border-radius: var(--img-corner-radius);
     }
 
 .box-img-hover img {
@@ -1237,7 +1241,7 @@ ul.cart-list > li.total > .btn:hover {
     }
 
     .type-lb .new {
-        background: #222;
+        background: var(--primary-color);
         color: #ffffff;
         padding: 2px 10px;
         font-weight: 700;
@@ -1426,6 +1430,7 @@ ul.cart-list > li.total > .btn:hover {
     box-shadow: 0px 5px 35px 0px rgba(148, 146, 245, 0.15);
     background: #ffffff;
     margin-bottom: 30px;
+    overflow: hidden;
 }
 
 .blog-content {
@@ -1620,7 +1625,7 @@ ul.cart-list > li.total > .btn:hover {
 /*------------------------------------------------------------------ Footer Main -------------------------------------------------------------------*/
 .footer-main {
     padding: 70px 0px;
-    background: #010101;
+    background: #222;
 }
 
     .footer-main hr {
@@ -1694,6 +1699,7 @@ ul.cart-list > li.total > .btn:hover {
         color: #222;
         font-size: 16px;
         font-weight: 500;
+        font-weight: 600;
     }
 
         .newsletter-box button:hover {
@@ -1883,7 +1889,7 @@ ul.cart-list > li.total > .btn:hover {
             }
 /*------------------------------------------------------------------ Copyright -------------------------------------------------------------------*/
 .footer-copyright {
-    background: #060606;
+    background: #111;
     padding: 20px 0px;
     position: relative;
 }
@@ -1941,6 +1947,7 @@ ul.cart-list > li.total > .btn:hover {
         display: inline-block;
         border-radius: 0px;
         float: right;
+        border-radius: 2px;
     }
 
         .all-title-box .breadcrumb li {
@@ -2216,6 +2223,7 @@ ul.cart-list > li.total > .btn:hover {
         width: 100%;
         outline: 0;
         font-weight: 500;
+        border-radius: var(--input-corner-radius);
     }
 
         .search-product input[type="text"]::-webkit-input-placeholder {
@@ -2244,6 +2252,8 @@ ul.cart-list > li.total > .btn:hover {
         cursor: pointer;
         height: 100%;
         transition: all ease-in-out .2s;
+        border-top-right-radius: var(--input-corner-radius);
+        border-bottom-right-radius: var(--input-corner-radius);
     }
 
         .search-product button:hover {
@@ -2286,6 +2296,7 @@ ul.cart-list > li.total > .btn:hover {
     padding: 5px 20px;
     font-size: 14px;
     font-weight: 500;
+    transition: all linear .1s;
 }
 
 .text-muted {
@@ -2331,6 +2342,10 @@ ul.cart-list > li.total > .btn:hover {
     width: 8px;
     height: 1px;
     background-color: #ced4da;
+}
+
+.list-group-tree .list-group-item {
+    transition: all linear .1s;
 }
 
 .list-group-tree .list-group-item:hover {
@@ -2455,13 +2470,6 @@ ul.cart-list > li.total > .btn:hover {
     background-color: #ced4da;
 }
 
-.list-group-tree .list-group-item:hover {
-    color: var(--primary-color);
-    background-color: #fff;
-    outline: 0;
-    font-weight: 700;
-}
-
 .filter-price-left {
     margin-bottom: 20px;
 }
@@ -2558,6 +2566,7 @@ ul.cart-list > li.total > .btn:hover {
         padding: 0px;
         border-radius: 0px;
         border: none;
+        border-radius: var(--input-corner-radius);
     }
 
     .toolbar-sorter-right .bootstrap-select.btn-group .dropdown-toggle .filter-option {
@@ -3541,7 +3550,6 @@ ul.cart-list > li.total > .btn:hover {
 .img-fit {
     width: 100%;
     height: 250px;
-
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -3549,7 +3557,6 @@ ul.cart-list > li.total > .btn:hover {
 
     .img-fit.gallery {
         height: 200px;
-        background-size: cover;
     }
 
     .img-fit.detail {
@@ -3879,13 +3886,14 @@ ul.cart-list > li.total > .btn:hover {
     border-radius: 8px;
     background-color: transparent;
     display: none;
+    border-radius: var(--btn-corner-radius);
 }
 
 .user-unliked {
     background-color: transparent;
     color: var(--gray) !important;
     border: 2px solid var(--gray) !important;
-    border-radius: 8px;
+    border-radius: var(--btn-corner-radius);
 }
     .user-unliked:hover,
     .user-liked:hover {
@@ -3965,3 +3973,15 @@ ul.cart-list > li.total > .btn:hover {
 .custom-control-label {
     cursor: pointer !important;
 }
+
+/*slider buton*/
+.slides-navigation a.prev {
+    border-top-right-radius: var(--btn-corner-radius);
+    border-bottom-right-radius: var(--btn-corner-radius);
+}
+
+.slides-navigation a.next {
+    border-top-left-radius: var(--btn-corner-radius);
+    border-bottom-left-radius: var(--btn-corner-radius);
+}
+

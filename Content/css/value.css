@@ -14,8 +14,59 @@
     --background-color: #fff;
     --background-font: #ffc10724;
     /*style*/
-    --btn-corner-radius: 5px;
+    --btn-corner-radius: 3px;
     --input-corner-radius: 5px;
+    --img-corner-radius: 5px;
     --table-corner-radius: 5px;
+}
+
+.none-radius {
+    border-radius: 0px !important;
+}
+
+.full-radius {
+    border-radius: var(--img-corner-radius);
+}
+
+.top-left-radius {
+    border-top-left-radius: var(--img-corner-radius);
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.top-right-radius {
+    border-top-left-radius: var(--img-corner-radius);
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.bottom-left-radius {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: var(--img-corner-radius);
+    border-bottom-right-radius: 0px;
+}
+
+.bottom-right-radius {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: var(--img-corner-radius);
+}
+
+.top-radius {
+    border-top-left-radius: var(--img-corner-radius);
+    border-top-right-radius: var(--img-corner-radius);
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.bottom-radius {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: var(--img-corner-radius);
+    border-bottom-right-radius: var(--img-corner-radius);
 }
 
