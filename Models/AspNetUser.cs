@@ -24,11 +24,17 @@ namespace ChanhThu_Store.Models
         [StringLength(30)]
         public string Ten { get; set; }
 
-        [Required]
+        
         [StringLength(256)]
+        [Required(ErrorMessage = "Hay Nhap UserName")]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress]
         public string UserName { get; set; }
 
         [StringLength(256)]
+        [Required(ErrorMessage = "Please enter Social Email id")]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress]
         public string Email { get; set; }
 
         public bool EmailConfirmed { get; set; }

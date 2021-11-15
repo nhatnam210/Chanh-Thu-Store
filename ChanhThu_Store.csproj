@@ -208,6 +208,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SanPhamsController.cs" />
+    <Compile Include="Controllers\TimKiemController.cs" />
     <Compile Include="Controllers\YeuThichController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -3289,6 +3290,9 @@
     <Content Include="Views\Shared\_Table_HoaDon.cshtml" />
     <Content Include="Views\DanhMucCons\SanPhamTheoDMC.cshtml" />
     <Content Include="Views\DanhMucCons\_BoSuTap_DM.cshtml" />
+    <Content Include="Views\Account\SuaThongTinCaNhan.cshtml" />
+    <Content Include="Views\Account\ThongTinCaNhan.cshtml" />
+    <Content Include="Views\TimKiem\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
