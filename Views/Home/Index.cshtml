@@ -60,94 +60,10 @@
         </div>
 
         <div class="row special-list">
-            <div class="col-lg-3 col-md-6 special-grid best-seller">
-                <div class="products-single fix shadow">
-                    <div class="box-img-hover none-radius">
-                        <div class="type-lb">
-                            <p class="sale">Mới</p>
-                        </div>
-                        <img src="~/Content/images/banh1.png" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                            </ul>
-                            <a class="cart" href="#">Thêm Vào Giỏ</a>
-                        </div>
-                    </div>
-                    <div class="why-text">
-                        <h4>Bánh Trứng</h4>
-                        <h5> $7.79</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 special-grid top-featured">
-                <div class="products-single fix">
-                    <div class="box-img-hover">
-                        <div class="type-lb">
-                            <p class="sale">Mới</p>
-                        </div>
-                        <img src="~/Content/images/banh1.png" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                            </ul>
-                            <a class="cart" href="#">Thêm Vào Giỏ</a>
-                        </div>
-                    </div>
-                    <div class="why-text">
-                        <h4>Bánh Trứng</h4>
-                        <h5> $7.79</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 special-grid top-featured">
-                <div class="products-single fix">
-                    <div class="box-img-hover">
-                        <div class="type-lb">
-                            <p class="sale">Mới</p>
-                        </div>
-                        <img src="~/Content/images/banh1.png" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                            </ul>
-                            <a class="cart" href="#">Thêm Vào Giỏ</a>
-                        </div>
-                    </div>
-                    <div class="why-text">
-                        <h4>Bánh Trứng</h4>
-                        <h5> $7.79</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 special-grid best-seller">
-                <div class="products-single fix">
-                    <div class="box-img-hover">
-                        <div class="type-lb">
-                            <p class="sale">Mới</p>
-                        </div>
-                        <img src="~/Content/images/banh1.png" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                            </ul>
-                            <a class="cart" href="#">Thêm Vào Giỏ</a>
-                        </div>
-                    </div>
-                    <div class="why-text">
-                        <h4>Bánh Trứng</h4>
-                        <h5> $7.79</h5>
-                    </div>
-                </div>
-            </div>
+
+            @Html.Partial("_Sanphamnoibat", ChanhThu_Store.Models.BUS.SanPhamBUS.Sanphamnoibat())
+
+            @Html.Partial("_Sanphambanchay", ChanhThu_Store.Models.BUS.SanPhamBUS.Sanphambanchay())
 
 
         </div>

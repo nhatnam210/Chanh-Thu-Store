@@ -38,5 +38,15 @@ namespace ChanhThu_Store.Models.BUS
             var db = new ChanhThuStorePoCoDB();
             return db.Query<SanPham>("select top 3 * from Sanpham order by Masanpham desc");
         }
+        public static IEnumerable<SanPham> Sanphambanchay()
+        {
+            var db = new ChanhThuStorePoCoDB();
+            return db.Query<SanPham>("select top 4 * from Sanpham order by SoLuongDaBan desc");
+        }
+        public static IEnumerable<SanPham> Sanphamnoibat()
+        {
+            var db = new ChanhThuStorePoCoDB();
+            return db.Query<SanPham>("select top 4 * from Sanpham order by LuotYeuThich desc");
+        }
     }
 }
