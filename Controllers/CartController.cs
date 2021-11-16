@@ -134,23 +134,22 @@ namespace ChanhThu_Store.Controllers
                         total += item.Sanpham.Gia * item.Soluong;
                     }
                     order.TongTien = total;
+
                     var id = new HoaDonDAO().Insert(order);
 
-                    var detailDao = new ChitietHoaDonDAO();
-
+                    ChitietHoaDonDAO detailDao = new ChitietHoaDonDAO();
                     foreach (var item in cart)
                     {
                         SanPham sanphamDB = context.SanPhams.Find(item.Sanpham.MaSanPham);
                         
                         sanphamDB.SoLuongDaBan += item.Soluong;
-                        var tonkho = sanphamDB.SoLuongTonKho;
-                        tonkho -= item.Soluong;
-                        if(tonkho < 0)
+                        var tonkhomoi = sanphamDB.SoLuongTonKho - item.Soluong;
+                        if(tonkhomoi < 0)
                         {
-                            tonkho = 0;
-
+                            tonkhomoi = 0;
                         }
-                        sanphamDB.SoLuongTonKho = tonkho;
+                        sanphamDB.SoLuongTonKho = tonkhomoi;
+
                         ChiTietHoaDon orderDetail = new ChiTietHoaDon();
                         orderDetail.MaSanPham = item.Sanpham.MaSanPham;
                         orderDetail.MaHoaDon = id;
@@ -158,12 +157,12 @@ namespace ChanhThu_Store.Controllers
                         orderDetail.Soluong = item.Soluong;
                         detailDao.Insert(orderDetail);
                     }
-
                 }
                 catch
                 {
                     return Redirect("/loi-thanh-toan");
                 }
+
                 context.SaveChanges();
                 return Redirect("/hoan-thanh");
             }
