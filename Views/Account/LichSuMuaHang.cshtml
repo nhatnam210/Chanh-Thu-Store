@@ -1,0 +1,92 @@
+﻿@*@model IEnumerable<ChanhThu_Store.Models.HoaDon>*@
+@model PagedList.IPagedList<ChanhThu_Store.Models.HoaDon>
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "LichSuMuaHang";
+    Layout = "~/Views/Shared/_Main_Layout.cshtml";
+}
+
+<h2>LichSuMuaHang</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Ngày đặt
+        </th>
+        <th>
+            Người nhận
+        </th>
+        <th>
+            Địa chỉ
+        </th>
+        <th>
+            SDT
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Phí Ship
+        </th>
+        <th>
+            Tổng tiền
+        </th>
+        <th>
+            Voucher
+        </th>
+        <th>
+            Tổng thanh toán
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    @*<td>
+            @Html.DisplayFor(modelItem => item.AspNetUser.Ten)
+        </td>*@
+    <td>
+        @item.NgayLap.ToString("dd-MM-yyyy")
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Ten)
+    </td>
+    <td style="max-width:200px">
+        @Html.DisplayFor(modelItem => item.DiaChi)
+    </td>
+
+
+
+    <td>
+        @Html.DisplayFor(modelItem => item.SDT)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Email)
+    </td>
+    <td>
+        @string.Format("{0:#,##0}", @item.Ship) đ
+    </td>
+    <td>
+        @string.Format("{0:#,##0}", @item.TongTien) đ
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MaVoucher)
+    </td>
+    <td>
+        @string.Format("{0:#,##0}", (item.TongTien + item.Ship)) đ
+        
+    </td>
+    <td>
+        <a href="/thong-tin-ca-nhan/lich-su-mua-hang/chi-tiet-hoa-don?id=@item.MaHoaDon">Chi Tiết</a> 
+    </td>
+</tr>
+    }
+
+</table>
+<span class="show-page-text">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
+
+@Html.PagedListPager(Model, page => Url.Action("LichSuMuaHang",
+    new { page }))

@@ -144,10 +144,10 @@
                                 Cửa Hàng
                             </a>
                             <ul class="dropdown-menu custom">
-                                    <li><a href="cart.html">Giỏ Hàng</a></li>
-                                    <li><a href="checkout.html">Thanh Toán</a></li>
-                                    <li><a href="my-account.html">Tài Khoản Của Tôi</a></li>
-                                    <li><a href="wishlist.html">Danh Sách Ước</a></li>
+                                    <li><a href="/gio-hang">Giỏ Hàng</a></li>
+                                    <li><a href="/thanh-toan">Thanh Toán</a></li>
+                                    <li><a href="/thong-tin-ca-nhan">Tài Khoản Của Tôi</a></li>
+                                   
                                 </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="/bo-suu-tap">Bộ Sưu Tập</a></li>
@@ -157,6 +157,7 @@
                 <!-- /.navbar-collapse -->
                 <!-- Start Atribute Navigation -->
                 @{ Html.RenderAction("_Header_Cart", "Home");}
+                </div>
         </nav>
         <!-- End Navigation -->
     </header>
@@ -167,7 +168,7 @@
             <div class="container">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                    <input type="text" name="timkiem" class="form-control" placeholder="Search">
+                    <input type="text" name="timkiem" class="form-control" placeholder="Tìm kiếm">
                     <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
                 </div>
             </div>

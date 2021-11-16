@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ChanhThu_Store.Models.ChiTietHoaDon>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Main_Layout.cshtml";
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            Tên sản phẩm
+        </th>
+        <th>
+            Đơn giá
+        </th>
+        <th>
+            Số lượng
+        </th>
+
+        <th>
+            Tổng tiền
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.SanPham.TenSanPham)
+    </td>
+    <td>
+        @string.Format("{0:#,##0}", @item.DonGia) đ
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Soluong)
+    </td>
+
+    <td>
+        @string.Format("{0:#,##0}", (item.DonGia * item.Soluong)) đ
+        
+    </td>
+
+</tr>
+}
+
+</table>
