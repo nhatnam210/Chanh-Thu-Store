@@ -27,6 +27,10 @@ namespace ChanhThu_Store.Controllers
                 {
                     //return BadRequest("The attendance already exist!");
                     sanphamthich.LuotYeuThich--;
+                    if(sanphamthich.LuotYeuThich < 0)
+                    {
+                        sanphamthich.LuotYeuThich = 0;
+                    }
                     context.TuongTacs.Remove(context.TuongTacs.SingleOrDefault(p => p.MaKhachHang == userID && p.MaSanPham == sanpham.MaSanPham));
                     context.SaveChanges();
                     return Ok("cancel");
