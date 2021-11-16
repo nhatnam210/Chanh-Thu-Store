@@ -2282,7 +2282,7 @@ ul.cart-list > li.total > .btn:hover {
     }
 
 .ask-register {
-    display: block;
+    display: inline-block;
     padding: 5px 0px;
     transition: all linear .1s;
 }
