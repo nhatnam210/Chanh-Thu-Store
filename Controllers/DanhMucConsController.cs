@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ChanhThu_Store.Models;
 using Microsoft.AspNet.Identity;
+using PagedList;
 
 namespace ChanhThu_Store.Controllers
 {
@@ -38,8 +39,14 @@ namespace ChanhThu_Store.Controllers
             return View(danhMucCon);
         }
 
-        public ActionResult SanPhamTheoDMC(string id)
+        public ActionResult SanPhamTheoDMC(string id , int? trang , string sapxep)
         {
+            ViewBag.Sapxep = sapxep;
+            
+            ViewBag.SapxepTen = sapxep == "Ten";
+            ViewBag.SapxepTenGiam = sapxep == "Ten_desc";
+            ViewBag.SapxepGia = sapxep == "Gia";
+            ViewBag.SapxepGiaGiam = sapxep == "Gia_desc";
             IQueryable<SanPham> listSanPham = null;
             var userID = User.Identity.GetUserId();
 
@@ -58,8 +65,29 @@ namespace ChanhThu_Store.Controllers
                         item.isLiked = true;
                 }
             }
-
-            return PartialView("SanPhamTheoDMC", listSanPham);
+            //sắp xếp 
+            switch (sapxep)
+            {
+                case "Ten":
+                    listSanPham = listSanPham.OrderBy(s => s.TenSanPham);
+                    break;
+                case "Ten_desc":
+                    listSanPham = listSanPham.OrderByDescending(s => s.TenSanPham);
+                    break;
+                case "Gia":
+                    listSanPham = listSanPham.OrderBy(s => s.Gia);
+                    break;
+                case "Gia_desc":
+                    listSanPham = listSanPham.OrderByDescending(s => s.Gia);
+                    break;
+                default:
+                    listSanPham = listSanPham.OrderBy(s => s.MaSanPham);
+                    break;
+            }
+            //var articles = db.Articles.Include(a => a.Cetegory);
+            int pageSize = 5;
+            int pageNumber = (trang ?? 1);
+            return PartialView("SanPhamTheoDMC", listSanPham.ToPagedList(pageNumber, pageSize));
         }
 
         public ActionResult _BoSuTap_DM()

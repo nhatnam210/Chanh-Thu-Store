@@ -112,6 +112,7 @@ namespace ChanhThu_Store.Controllers
         [HttpPost]
         public ActionResult Payment(string name , string phone , string email , string address ,string ship)
         {
+            ChanhThuStoreContext context = new ChanhThuStoreContext();
             var userID = User.Identity.GetUserId();
             if(userID != null)
             {
@@ -139,6 +140,17 @@ namespace ChanhThu_Store.Controllers
 
                     foreach (var item in cart)
                     {
+                        SanPham sanphamDB = context.SanPhams.Find(item.Sanpham.MaSanPham);
+                        
+                        sanphamDB.SoLuongDaBan += item.Soluong;
+                        var tonkho = sanphamDB.SoLuongTonKho;
+                        tonkho -= item.Soluong;
+                        if(tonkho < 0)
+                        {
+                            tonkho = 0;
+
+                        }
+                        sanphamDB.SoLuongTonKho = tonkho;
                         ChiTietHoaDon orderDetail = new ChiTietHoaDon();
                         orderDetail.MaSanPham = item.Sanpham.MaSanPham;
                         orderDetail.MaHoaDon = id;
@@ -152,7 +164,7 @@ namespace ChanhThu_Store.Controllers
                 {
                     return Redirect("/loi-thanh-toan");
                 }
-
+                context.SaveChanges();
                 return Redirect("/hoan-thanh");
             }
             else

@@ -36,8 +36,8 @@
                                     @foreach (var item in Model)
                                     {
                                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                            <div class="products-single fix">
-                                                <div class="box-img-hover">
+                                            <div class="products-single fix shadow full-radius">
+                                                <div class="box-img-hover none-radius">
                                                     <div class="type-lb">
                                                         <p class="sale">Sale</p>
                                                     </div>
@@ -123,8 +123,7 @@
                             </div>
                             <span class="show-page-text">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
 
-                            @Html.PagedListPager(Model, trang => Url.Action("Index",
-                                new { trang, sapxep = ViewBag.Sapxep, loc = ViewBag.Loc }))
+                            @Html.PagedListPager(Model, page => Url.Action("YeuThich", new { page }))
                         </div>
                     </div>
                 </div>

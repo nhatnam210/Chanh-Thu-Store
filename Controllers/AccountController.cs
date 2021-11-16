@@ -488,6 +488,15 @@ namespace ChanhThu_Store.Controllers
             return View(product.ToPagedList(pageNumber, pageSize));
 
         }
+        public ActionResult LichSuMuaHang(int? page)
+        {
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            var userID = User.Identity.GetUserId();
+            var ds = Models.BUS.HoaDonBUS.DanhSachHoaDon(userID).ToPagedList(pageNumber, pageSize);
+            return View(ds);
+        }
+        
         #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";

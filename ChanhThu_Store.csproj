@@ -201,6 +201,7 @@
     <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\ChitietHoaDonController.cs" />
     <Compile Include="Controllers\ContactUsController.cs" />
     <Compile Include="Controllers\DanhMucConsController.cs" />
     <Compile Include="Controllers\DanhMucsController.cs" />
@@ -221,6 +222,7 @@
     <Compile Include="Models\Banner.cs" />
     <Compile Include="Models\BUS\BannerBUS.cs" />
     <Compile Include="Models\BUS\DanhMucBUS.cs" />
+    <Compile Include="Models\BUS\HoaDonBUS.cs" />
     <Compile Include="Models\BUS\SanPhamBUS.cs" />
     <Compile Include="Models\BUS\SliderBUS.cs" />
     <Compile Include="Models\CartItem.cs" />
@@ -3293,6 +3295,8 @@
     <Content Include="Views\Account\SuaThongTinCaNhan.cshtml" />
     <Content Include="Views\Account\ThongTinCaNhan.cshtml" />
     <Content Include="Views\TimKiem\Index.cshtml" />
+    <Content Include="Views\Account\LichSuMuaHang.cshtml" />
+    <Content Include="Views\ChitietHoaDon\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

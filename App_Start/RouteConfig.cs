@@ -99,6 +99,16 @@ namespace ChanhThu_Store
            defaults: new { controller = "Account", action = "SuaThongTinCaNhan", id = UrlParameter.Optional }
         );
             routes.MapRoute(
+           name: "lich su mua hang",
+           url: "thong-tin-ca-nhan/lich-su-mua-hang",
+           defaults: new { controller = "Account", action = "LichSuMuaHang", id = UrlParameter.Optional }
+        );
+            routes.MapRoute(
+           name: "chi tiet hoa don",
+           url: "thong-tin-ca-nhan/lich-su-mua-hang/chi-tiet-hoa-don",
+           defaults: new { controller = "ChitietHoaDon", action = "Index", id = UrlParameter.Optional }
+        );
+            routes.MapRoute(
          name: "tim kiem",
          url: "timkiem",
          defaults: new { controller = "TimKiem", action = "Index", id = UrlParameter.Optional }
