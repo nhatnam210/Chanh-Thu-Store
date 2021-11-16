@@ -3297,6 +3297,8 @@
     <Content Include="Views\TimKiem\Index.cshtml" />
     <Content Include="Views\Account\LichSuMuaHang.cshtml" />
     <Content Include="Views\ChitietHoaDon\Index.cshtml" />
+    <Content Include="Views\Shared\_Sanphambanchay.cshtml" />
+    <Content Include="Views\Shared\_Sanphamnoibat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
