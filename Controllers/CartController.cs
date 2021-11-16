@@ -166,10 +166,7 @@ namespace ChanhThu_Store.Controllers
                 context.SaveChanges();
                 return Redirect("/hoan-thanh");
             }
-            else
-            {
                 return null;
-            }
         }
         public ActionResult Success()
         {

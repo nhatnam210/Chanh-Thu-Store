@@ -12,15 +12,23 @@ namespace WebApplication1.Controllers
     {
         private ChanhThuStoreContext db = new ChanhThuStoreContext();
         // GET: ChitietHoaDon
+        [Authorize]
         public ActionResult Index(int? id)
         {
             var userID = User.Identity.GetUserId();
             IQueryable<ChiTietHoaDon> chitiet = null;
-            chitiet = from c in db.ChiTietHoaDons
-                      join h in db.HoaDons on c.MaHoaDon equals h.MaHoaDon
-                      where c.MaHoaDon == id && h.MaKhachHang == userID
-                      select c;
-            return View(chitiet);
+            if(userID != null)
+            {
+                chitiet = from c in db.ChiTietHoaDons
+                          join h in db.HoaDons on c.MaHoaDon equals h.MaHoaDon
+                          where c.MaHoaDon == id && h.MaKhachHang == userID
+                          select c;
+                return View(chitiet);
+            }
+
+            return null;
+            
+            
         }
     }
 }
