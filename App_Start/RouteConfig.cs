@@ -45,7 +45,7 @@ namespace ChanhThu_Store
           );
             routes.MapRoute(
                name: "chi tiet san pham",
-               url: "san-pham/chi-tiet",
+               url: "cua-hang/san-pham",
                defaults: new { controller = "SanPhams", action = "Details", id = UrlParameter.Optional }
             );
             routes.MapRoute(

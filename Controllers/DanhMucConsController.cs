@@ -43,10 +43,10 @@ namespace ChanhThu_Store.Controllers
         {
             ViewBag.Sapxep = sapxep;
             
-            ViewBag.SapxepTen = sapxep == "Ten";
-            ViewBag.SapxepTenGiam = sapxep == "Ten_desc";
-            ViewBag.SapxepGia = sapxep == "Gia";
-            ViewBag.SapxepGiaGiam = sapxep == "Gia_desc";
+            //ViewBag.SapxepTen = sapxep == "Ten";
+            //ViewBag.SapxepTenGiam = sapxep == "Ten_desc";
+            //ViewBag.SapxepGia = sapxep == "Gia";
+            //ViewBag.SapxepGiaGiam = sapxep == "Gia_desc";
             IQueryable<SanPham> listSanPham = null;
             var userID = User.Identity.GetUserId();
 
@@ -71,13 +71,13 @@ namespace ChanhThu_Store.Controllers
                 case "Ten":
                     listSanPham = listSanPham.OrderBy(s => s.TenSanPham);
                     break;
-                case "Ten_desc":
+                case "TenGiam":
                     listSanPham = listSanPham.OrderByDescending(s => s.TenSanPham);
                     break;
                 case "Gia":
                     listSanPham = listSanPham.OrderBy(s => s.Gia);
                     break;
-                case "Gia_desc":
+                case "GiaGiam":
                     listSanPham = listSanPham.OrderByDescending(s => s.Gia);
                     break;
                 default:

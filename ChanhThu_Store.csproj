@@ -225,9 +225,11 @@
     <Compile Include="Models\BUS\HoaDonBUS.cs" />
     <Compile Include="Models\BUS\SanPhamBUS.cs" />
     <Compile Include="Models\BUS\SliderBUS.cs" />
+    <Compile Include="Models\BUS\UserBUS.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\ChanhThuStoreContext.cs" />
     <Compile Include="Models\ChiTietHoaDon.cs" />
+    <Compile Include="Models\ChiTietVoucher.cs" />
     <Compile Include="Models\C__MigrationHistory.cs" />
     <Compile Include="Models\DanhMuc.cs" />
     <Compile Include="Models\DanhMucCon.cs" />
@@ -247,7 +249,6 @@
     <Compile Include="Models\SanPham.cs" />
     <Compile Include="Models\SlideFooter.cs" />
     <Compile Include="Models\SlideHeader.cs" />
-    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\ThongTinCuaHang.cs" />
     <Compile Include="Models\TuongTac.cs" />
     <Compile Include="Models\Voucher.cs" />
@@ -3266,10 +3267,7 @@
     <Content Include="Views\Shared\_PhanLoaiDanhMuc.cshtml" />
     <Content Include="Views\SanPhams\Details.cshtml" />
     <Content Include="Views\SanPhams\Index.cshtml" />
-    <Content Include="Views\DanhMucCons\Create.cshtml" />
-    <Content Include="Views\DanhMucCons\Delete.cshtml" />
     <Content Include="Views\DanhMucCons\Details.cshtml" />
-    <Content Include="Views\DanhMucCons\Edit.cshtml" />
     <Content Include="Views\DanhMucCons\Index.cshtml" />
     <Content Include="Views\DanhMucs\Create.cshtml" />
     <Content Include="Views\DanhMucs\Delete.cshtml" />
@@ -3279,7 +3277,7 @@
     <Content Include="Views\DanhMucs\SanPhamTheoDanhMuc.cshtml" />
     <Content Include="Views\AboutUs\Index.cshtml" />
     <Content Include="Views\ContactUs\Index.cshtml" />
-    <Content Include="Views\Shared\_SanPhamMoiNhat.cshtml" />
+    <Content Include="Views\Shared\_SanPham_MoiNhat.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Shared\_Header_Cart.cshtml" />
     <Content Include="Views\Cart\Payment.cshtml" />
@@ -3297,8 +3295,9 @@
     <Content Include="Views\TimKiem\Index.cshtml" />
     <Content Include="Views\Account\LichSuMuaHang.cshtml" />
     <Content Include="Views\ChitietHoaDon\Index.cshtml" />
-    <Content Include="Views\Shared\_Sanphambanchay.cshtml" />
-    <Content Include="Views\Shared\_Sanphamnoibat.cshtml" />
+    <Content Include="Views\Shared\_SanPham_BanChay.cshtml" />
+    <Content Include="Views\Shared\_SanPham_NoiBat.cshtml" />
+    <Content Include="Views\Account\_DoiVoucher.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

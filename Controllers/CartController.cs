@@ -140,6 +140,7 @@ namespace ChanhThu_Store.Controllers
                     ChitietHoaDonDAO detailDao = new ChitietHoaDonDAO();
                     foreach (var item in cart)
                     {
+                        /*Thay đổi số lượng tồn kho*/
                         SanPham sanphamDB = context.SanPhams.Find(item.Sanpham.MaSanPham);
                         
                         sanphamDB.SoLuongDaBan += item.Soluong;
@@ -149,6 +150,10 @@ namespace ChanhThu_Store.Controllers
                             tonkhomoi = 0;
                         }
                         sanphamDB.SoLuongTonKho = tonkhomoi;
+
+                        /*Thay đổi điểm tích lũy*/
+                        AspNetUser user = context.AspNetUsers.Find(userID);
+                        user.DiemTichLuy += item.Sanpham.Diem * item.Soluong;
 
                         ChiTietHoaDon orderDetail = new ChiTietHoaDon();
                         orderDetail.MaSanPham = item.Sanpham.MaSanPham;

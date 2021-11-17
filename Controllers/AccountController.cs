@@ -34,8 +34,6 @@ namespace ChanhThu_Store.Controllers
                 return HttpNotFound();
             }
             return View(aspuser);
-
-
         }
         [HttpPost]
         public ActionResult SuaThongTinCaNhan([Bind(Include = "Id,Ten,UserName,Email,EmailConfirmed,PasswordHash,PhoneNumber,DiaChi,DiemTichLuy,SecurityStamp,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount")] AspNetUser aspNetUser)
@@ -58,9 +56,9 @@ namespace ChanhThu_Store.Controllers
                 return HttpNotFound();
             }
             return View(aspuser);
-
-
         }
+
+
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
             UserManager = userManager;

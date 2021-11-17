@@ -25,17 +25,17 @@ namespace ChanhThu_Store.Models
         public virtual DbSet<SanPham> SanPhams { get; set; }
         public virtual DbSet<SlideFooter> SlideFooters { get; set; }
         public virtual DbSet<SlideHeader> SlideHeaders { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<ThongTinCuaHang> ThongTinCuaHangs { get; set; }
         public virtual DbSet<TuongTac> TuongTacs { get; set; }
         public virtual DbSet<Voucher> Vouchers { get; set; }
+        //public virtual DbSet<ChiTietVoucher> ChiTietVouchers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<AspNetRole>()
-               .HasMany(e => e.AspNetUsers)
-               .WithMany(e => e.AspNetRoles)
-               .Map(m => m.ToTable("AspNetUserRoles").MapLeftKey("RoleId").MapRightKey("UserId"));
+              .HasMany(e => e.AspNetUsers)
+              .WithMany(e => e.AspNetRoles)
+              .Map(m => m.ToTable("AspNetUserRoles").MapLeftKey("RoleId").MapRightKey("UserId"));
 
             modelBuilder.Entity<AspNetUser>()
                 .HasMany(e => e.AspNetUserClaims)
@@ -59,10 +59,11 @@ namespace ChanhThu_Store.Models
                 .HasForeignKey(e => e.MaKhachHang)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<AspNetUser>()
-                .HasMany(e => e.Vouchers)
-                .WithMany(e => e.AspNetUsers)
-                .Map(m => m.ToTable("ChiTietVoucher").MapLeftKey("MaKhachHang").MapRightKey("MaVoucher"));
+            //modelBuilder.Entity<AspNetUser>()
+            //    .HasMany(e => e.Vouchers)
+            //    .WithMany(e => e.AspNetUsers)
+            //    .Map(m => m.ToTable("ChiTietVoucher").MapLeftKey("MaKhachHang").MapRightKey("MaVoucher"));
+
 
             modelBuilder.Entity<ThongTinCuaHang>()
                 .Property(e => e.SDT)

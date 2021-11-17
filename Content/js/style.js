@@ -58,16 +58,16 @@ if (navItem && navItemHref) {
         }
     })
 
-    //trường hợp riêng cho trang chi tiết sản phẩm
-    if (locationHref.includes('san-pham')) {
-        navItem.forEach((item, index) => {
-            if (navItemHref[index].href.includes('cua-hang')) {
-                item.classList.add('active')
-            } else {
-                item.classList.remove('active')
-            }
-        })
-    }
+    ////trường hợp riêng cho trang chi tiết sản phẩm
+    //if (locationHref.includes('san-pham')) {
+    //    navItem.forEach((item, index) => {
+    //        if (navItemHref[index].href.includes('cua-hang')) {
+    //            item.classList.add('active')
+    //        } else {
+    //            item.classList.remove('active')
+    //        }
+    //    })
+    //}
 }
 
 /* ..............................................

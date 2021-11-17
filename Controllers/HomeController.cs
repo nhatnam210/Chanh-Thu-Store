@@ -39,5 +39,23 @@ namespace ChanhThu_Store.Controllers
 
             return View();
         }
+
+        //public ActionResult DoiMaVoucher()
+        //{
+        //    //var userID = System.Web.HttpContext.Current.User.Identity.GetUserId();
+        //    //AspNetUser aspuser = db.AspNetUsers.Find(user);
+        //    //if (aspuser == null)
+        //    //{
+        //    //    return HttpNotFound();
+        //    //}
+        //    var userID = User.Identity.GetUserId();
+        //    Voucher listVoucherDoi = from v in db.Vouchers
+        //                             join u in db.AspNetUsers on
+        //                             where v.MaVoucher = "VC"
+        //                             select v
+
+
+        //    return PartialView("DoiMaVoucher", listVoucherDoi);
+        //}
     }
 }
