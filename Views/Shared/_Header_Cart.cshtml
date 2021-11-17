@@ -27,11 +27,11 @@
             {
                 Total += item.Sanpham.Gia*item.Soluong; 
                 <li>
-                    <a href="/san-pham/chi-tiet?id=@item.Sanpham.MaSanPham" class="photo">
+                    <a href="/cua-hang/san-pham?id=@item.Sanpham.MaSanPham" class="photo">
                         @*<img src="@item.Sanpham.HinhChinh" class="cart-thumb" alt="" />*@
                         <div class="img-fit cart--mini" style="background-image: url('@item.Sanpham.HinhChinh'),url('/Content/images/default.png');"></div>
                     </a>
-                    <h6><a href="/san-pham/chi-tiet?id=@item.Sanpham.MaSanPham">@item.Sanpham.TenSanPham</a></h6>
+                    <h6><a href="/cua-hang/san-pham?id=@item.Sanpham.MaSanPham">@item.Sanpham.TenSanPham</a></h6>
                     <p>@item.Soluong x <span class="price">@string.Format("{0:#,##0}",@item.Sanpham.Gia) đ</span></p>
                 </li>
             }

@@ -42,7 +42,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="title-all text-center">
-                    <h1>Bánh & Kẹo</h1>
+                    <h1 class="text-capitalize">Sản phẩm tiêu biểu</h1>
                     <p>Chất lượng hàng đầu chúng tôi số 2 không ai số 1</p>
                 </div>
             </div>
@@ -61,9 +61,9 @@
 
         <div class="row special-list">
 
-            @Html.Partial("_Sanphamnoibat", ChanhThu_Store.Models.BUS.SanPhamBUS.Sanphamnoibat())
+            @Html.Partial("_SanPham_NoiBat", ChanhThu_Store.Models.BUS.SanPhamBUS.SPNoiBat())
 
-            @Html.Partial("_Sanphambanchay", ChanhThu_Store.Models.BUS.SanPhamBUS.Sanphambanchay())
+            @Html.Partial("_SanPham_BanChay", ChanhThu_Store.Models.BUS.SanPhamBUS.SPBanChay())
 
 
         </div>
@@ -76,12 +76,12 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="title-all text-center">
-                    <h1>Sản phẩm Mới Nhất</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>
+                    <h1 class="text-capitalize">Sản Phẩm Mới Nhất</h1>
+                    <p>Sản phẩm mới nhập về của Chánh Thu Store</p>
                 </div>
             </div>
         </div>
-        @Html.Partial("_SanPhamMoiNhat",ChanhThu_Store.Models.BUS.SanPhamBUS.Top3Sanphammoi())
+        @Html.Partial("_SanPham_MoiNhat", ChanhThu_Store.Models.BUS.SanPhamBUS.Top3SPMoi())
     </div>
 </div>
 <!-- End Blog  -->

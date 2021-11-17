@@ -99,8 +99,10 @@
                             <thead>
                                 <tr>
                                     <th class="text-capitalize">
+                                        Mã Voucher
+                                    </th>
+                                    <th class="text-capitalize">
                                         @Html.ActionLink("Tên Voucher", "Index", new { sapxep = ViewBag.SapxepTen, loc = ViewBag.Loc })
-
                                     </th>
                                     <th class="text-capitalize">
                                         Giá Trị Giảm
@@ -119,26 +121,29 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.TenVoucher)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.GiaTriGiam)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.DiemDoi)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.HanSuDung)
-                                        </td>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.MaVoucher)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TenVoucher)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GiaTriGiam)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DiemDoi)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.HanSuDung)
+                                    </td>
 
-                                        <td>
-                                            @Html.ActionLink("Edit", "Edit", new { id = item.MaVoucher }) |
-                                            @Html.ActionLink("Details", "Details", new { id = item.MaVoucher }) |
-                                            @Html.ActionLink("Delete", "Delete", new { id = item.MaVoucher })
-                                        </td>
-                                    </tr>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.MaVoucher }) |
+                                        @*@Html.ActionLink("Details", "Details", new { id = item.MaVoucher }) |*@
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.MaVoucher })
+                                    </td>
+                                </tr>
 
                                 }
 
