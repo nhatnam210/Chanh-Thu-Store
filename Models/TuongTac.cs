@@ -25,7 +25,9 @@ namespace ChanhThu_Store.Models
         public DateTime? NgayBinhLuan { get; set; }
 
         public bool? YeuThich { get; set; }
+
         public virtual AspNetUser AspNetUser { get; set; }
-        public virtual SanPham Sanpham { get; set; }
+
+        public virtual SanPham SanPham { get; set; }
     }
 }

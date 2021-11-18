@@ -87,9 +87,9 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             return View();
         }
 
-        // POST: Admin/SanPhamsAdmin/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //POST: Admin/SanPhamsAdmin/Create
+        //To protect from overposting attacks, enable the specific properties you want to bind to, for 
+         //more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MaSanPham,MaDanhMucCon,MaNhaSanXuat,TenSanPham,Gia,HinhChinh,Hinh1,Hinh2,Mota,SoLuongTonKho,SoLuongDaBan,LuotYeuThich,NgaySanXuat,HanSuDung,Diem,TinhTrang")] SanPham sanPham)
@@ -104,6 +104,26 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             ViewBag.MaDanhMucCon = new SelectList(db.DanhMucCons, "MaDanhMucCon", "MaDanhMuc", sanPham.MaDanhMucCon);
             ViewBag.MaNhaSanXuat = new SelectList(db.NhaSanXuats, "MaNhaSanXuat", "TenNhaSanXuat", sanPham.MaNhaSanXuat);
             return View(sanPham);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateSanPham()
+        {
+            //SanPham sanpham = new SanPham()
+            //{
+                
+            //}
+            //if (ModelState.IsValid)
+            //{
+            //    db.SanPhams.Add(sanpham);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
+
+            //ViewBag.MaDanhMucCon = new SelectList(db.DanhMucCons, "MaDanhMucCon", "MaDanhMuc", sanPham.MaDanhMucCon);
+            //ViewBag.MaNhaSanXuat = new SelectList(db.NhaSanXuats, "MaNhaSanXuat", "TenNhaSanXuat", sanPham.MaNhaSanXuat);
+            return View();
         }
 
         // GET: Admin/SanPhamsAdmin/Edit/5

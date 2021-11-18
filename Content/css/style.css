@@ -1197,10 +1197,12 @@ ul.cart-list > li.total > .btn:hover {
 
 .special-menu {
     margin-bottom: 40px;
+    user-select: none;
 }
 
 .filter-button-group {
     display: inline-block;
+    user-select: none;
 }
 
     .filter-button-group button {
@@ -1212,6 +1214,7 @@ ul.cart-list > li.total > .btn:hover {
         font-size: 18px;
         font-weight: 500;
         border-radius: var(--btn-corner-radius);
+        user-select: none;
     }
 
         .filter-button-group button.active {
@@ -1513,6 +1516,10 @@ ul.cart-list > li.total > .btn:hover {
         margin: 0px;
     }
 
+.option-account {
+    user-select: none;
+}
+
 .option-blog {
     position: absolute;
     bottom: 0px;
@@ -1520,6 +1527,7 @@ ul.cart-list > li.total > .btn:hover {
     right: 0px;
     margin: 0 auto;
     text-align: center;
+    user-select: none;
 }
 
     .option-blog li {
@@ -3619,6 +3627,10 @@ ul.cart-list > li.total > .btn:hover {
     background-size: cover;
 }
 
+    .col-single-product__description {
+        min-height: 250px;
+    }
+
     .img-fit.gallery {
         height: 200px;
     }
@@ -3656,15 +3668,18 @@ ul.cart-list > li.total > .btn:hover {
 .view-column-content p {
     --column-num: 3;
     --height: 27px;
+    font-size: calc(var(--height) - 13px);
 }
 
 .view-row-content h4 {
     --column-num: 2;
     --height: 20px;
+    font-size: calc(var(--height) - 4px);
 }
 
 .title-blog h4 {
     --height: 25px;
+    font-size: calc(var(--height) - 4px);
 }
 
 .cart-list h6 a {
@@ -4053,3 +4068,24 @@ ul.cart-list > li.total > .btn:hover {
     border-bottom-left-radius: var(--btn-corner-radius);
 }
 
+/* Trang voucher*/
+
+.user-point {
+    color: var(--text-color);
+    text-align: center;
+    font-weight: 600;
+    border-top: 1px solid var(--gray);
+    border-bottom: 1px solid var(--gray);
+}
+
+.user-point__title {
+    color: var(--primary-color);
+    font-size: 20px;
+}
+
+.user-point__value {
+    font-size: 40px;
+    display: inline-block;
+    color: var(--text-color);
+    line-height: 1;
+}

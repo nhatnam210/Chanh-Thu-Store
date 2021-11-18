@@ -19,5 +19,11 @@ namespace ChanhThu_Store.Models
         public string MaKhachHang { get; set; }
 
         public bool? TinhTrang { get; set; }
+
+        public int? SoLuong { get; set; }
+
+        public virtual AspNetUser AspNetUser { get; set; }
+
+        public virtual Voucher Voucher { get; set; }
     }
 }

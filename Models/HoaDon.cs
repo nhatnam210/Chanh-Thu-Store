@@ -9,6 +9,12 @@ namespace ChanhThu_Store.Models
     [Table("HoaDon")]
     public partial class HoaDon
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public HoaDon()
+        {
+            ChiTietHoaDons = new HashSet<ChiTietHoaDon>();
+        }
+
         [Key]
         public int MaHoaDon { get; set; }
 
@@ -35,10 +41,15 @@ namespace ChanhThu_Store.Models
         [StringLength(100)]
         public string DiaChi { get; set; }
 
+        [Required]
         [StringLength(256)]
         public string Email { get; set; }
 
         public int Ship { get; set; }
+
         public virtual AspNetUser AspNetUser { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
     }
 }
