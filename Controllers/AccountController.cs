@@ -463,7 +463,8 @@ namespace ChanhThu_Store.Controllers
 
             base.Dispose(disposing);
         }
-        [AllowAnonymous]
+        
+        [Authorize]
         public ActionResult Info()
         {
             return View();
@@ -496,8 +497,14 @@ namespace ChanhThu_Store.Controllers
             int pageSize = 6;
             int pageNumber = (page ?? 1);
             var userID = User.Identity.GetUserId();
-            var ds = Models.BUS.HoaDonBUS.DanhSachHoaDon(userID).ToPagedList(pageNumber, pageSize);
-            return View(ds);
+            IQueryable<HoaDon> hoadon = null;
+
+             hoadon = from h in db.HoaDons
+                      where h.MaKhachHang == userID
+                      orderby h.NgayLap descending, h.MaHoaDon descending
+                      select h;
+
+            return View(hoadon.ToPagedList(pageNumber, pageSize));
         }
         
         #region Helpers
