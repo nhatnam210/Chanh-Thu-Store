@@ -58,7 +58,7 @@ namespace ChanhThu_Store.Controllers
                 status = true
             });
         }
-            public ActionResult AddItem(string masanpham, int soluong)
+        public ActionResult AddItem(string masanpham, int soluong)
         {
             var sanpham = new SanPhamModel().ViewDetail(masanpham);
             var cart = Session[CartSession];
@@ -94,7 +94,8 @@ namespace ChanhThu_Store.Controllers
                 list.Add(item);
                 Session[CartSession] = list;
             }
-            return new HttpStatusCodeResult(204);
+            //return new HttpStatusCodeResult(204);
+            return Redirect(Request.UrlReferrer.ToString());
         }
         [Authorize]
         [HttpGet]

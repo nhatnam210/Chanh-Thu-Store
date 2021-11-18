@@ -225,7 +225,6 @@
     <Compile Include="Models\BUS\HoaDonBUS.cs" />
     <Compile Include="Models\BUS\SanPhamBUS.cs" />
     <Compile Include="Models\BUS\SliderBUS.cs" />
-    <Compile Include="Models\BUS\UserBUS.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\ChanhThuStoreContext.cs" />
     <Compile Include="Models\ChiTietHoaDon.cs" />
@@ -3239,8 +3238,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -3298,6 +3295,8 @@
     <Content Include="Views\Shared\_SanPham_BanChay.cshtml" />
     <Content Include="Views\Shared\_SanPham_NoiBat.cshtml" />
     <Content Include="Views\Account\_DoiVoucher.cshtml" />
+    <Content Include="Views\Home\DanhSachVoucher.cshtml" />
+    <Content Include="Views\Home\LayDiemUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

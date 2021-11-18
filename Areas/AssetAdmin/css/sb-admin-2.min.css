@@ -1859,6 +1859,15 @@ pre {
         .table-responsive-sm > .table-bordered {
             border: 0
         }
+    .sidebar-dark .nav-item .nav-link {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between
+    }
+
+        .sidebar-dark .nav-item .nav-link:hover i, .sidebar-dark .nav-item .nav-link:hover span {
+            transform: translateX(0px) !important;
+        }
 }
 
 @media (max-width:767.98px) {

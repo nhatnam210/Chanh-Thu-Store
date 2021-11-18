@@ -12,7 +12,7 @@ namespace ChanhThu_Store.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Voucher()
         {
-            AspNetUsers = new HashSet<AspNetUser>();
+            ChiTietVouchers = new HashSet<ChiTietVoucher>();
         }
 
         [Key]
@@ -31,6 +31,6 @@ namespace ChanhThu_Store.Models
         public DateTime HanSuDung { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
+        public virtual ICollection<ChiTietVoucher> ChiTietVouchers { get; set; }
     }
 }

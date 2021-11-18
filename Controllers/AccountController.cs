@@ -25,6 +25,8 @@ namespace ChanhThu_Store.Controllers
         public AccountController()
         {
         }
+
+        [Authorize]
         public ActionResult ThongTinCaNhan()
         {
             var user = System.Web.HttpContext.Current.User.Identity.GetUserId();
@@ -35,7 +37,9 @@ namespace ChanhThu_Store.Controllers
             }
             return View(aspuser);
         }
+
         [HttpPost]
+        [Authorize]
         public ActionResult SuaThongTinCaNhan([Bind(Include = "Id,Ten,UserName,Email,EmailConfirmed,PasswordHash,PhoneNumber,DiaChi,DiemTichLuy,SecurityStamp,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount")] AspNetUser aspNetUser)
         {
             if (ModelState.IsValid)
@@ -47,6 +51,7 @@ namespace ChanhThu_Store.Controllers
             return View(aspNetUser);
         }
         [HttpGet]
+        [Authorize]
         public ActionResult SuaThongTinCaNhan()
         {
             var user = System.Web.HttpContext.Current.User.Identity.GetUserId();
@@ -57,7 +62,6 @@ namespace ChanhThu_Store.Controllers
             }
             return View(aspuser);
         }
-
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
@@ -473,9 +477,9 @@ namespace ChanhThu_Store.Controllers
             var product = new List<SanPham>();
             foreach (TuongTac temp in listFavorites)
             {
-                SanPham objArticle = temp.Sanpham;
+                SanPham sabpham = temp.SanPham;
 
-                product.Add(objArticle);
+                product.Add(sabpham);
             }
 
             //var articles = db.Articles.Include(a => a.Cetegory);
@@ -486,6 +490,7 @@ namespace ChanhThu_Store.Controllers
             return View(product.ToPagedList(pageNumber, pageSize));
 
         }
+        [Authorize]
         public ActionResult LichSuMuaHang(int? page)
         {
             int pageSize = 6;

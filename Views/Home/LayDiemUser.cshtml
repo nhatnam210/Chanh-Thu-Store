@@ -1,0 +1,16 @@
+﻿@model ChanhThu_Store.Models.AspNetUser
+@using Microsoft.AspNet.Identity
+
+@if (Request.IsAuthenticated)
+{
+    <div class="user-point">
+        <div class="user-point__title">Điểm của bạn</div>
+        <div class="user-point__value">@Model.DiemTichLuy</div>
+    </div>
+}
+else
+{
+    <div class="user-point">
+        <div class="user-point__title">Vui lòng đăng nhập để xem điểm!</div>
+    </div>
+}

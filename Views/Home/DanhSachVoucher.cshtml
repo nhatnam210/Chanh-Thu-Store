@@ -1,0 +1,92 @@
+﻿@model IEnumerable<ChanhThu_Store.Models.Voucher>
+
+@{
+    ViewBag.Title = "DanhSachVoucher";
+    Layout = "~/Views/Shared/_Main_Layout.cshtml";
+}
+
+<!-- Start All Title Box -->
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="text-capitalize">Voucher</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Trang Chủ</a></li>
+                    <li class="breadcrumb-item active">Voucher</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End All Title Box -->
+<!-- Start Shop Page  -->
+<div class="shop-box-inner">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-sm-12 col-xs-12 shop-content-left">
+                <div class="right-product-box">
+                    <!-- <div class="product-item-filter row">
+        <div class="col-12 col-sm-8 text-center text-sm-left">
+            <div class="toolbar-sorter-right">
+                <span>Sort by </span>
+                <select id="basic" class="selectpicker show-tick form-control"
+                    data-placeholder="$ USD">
+                    <option data-display="Select">Không</option>
+                    <option value="1">Phổ Biến</option>
+                    <option value="2">Giá Cao → Giá Thấp</option>
+                    <option value="3">Giá Thấp → Giá Cao</option>
+                    <option value="4">Bán Chạy</option>
+                </select>
+            </div>
+        </div>
+    </div> -->
+                    @{
+                        Html.RenderAction("LayDiemUser", "Home");
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Shop Page -->
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenVoucher)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GiaTriGiam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiemDoi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HanSuDung)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenVoucher)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GiaTriGiam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiemDoi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HanSuDung)
+            </td>
+            <td>
+                @Html.ActionLink("Đổi thôi!", "DoiVoucher", new { idVoucher = item.MaVoucher })
+            </td>
+        </tr>
+    }
+
+</table>

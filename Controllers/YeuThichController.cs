@@ -9,15 +9,12 @@ using System.Web.Http;
 
 namespace ChanhThu_Store.Controllers
 {
-    [Authorize]
     public class YeuThichController : ApiController
     {
-        
         [HttpPost]
+        [Authorize]
         public IHttpActionResult Yeuthich(SanPham sanpham)
         {
-
-            
             var userID = User.Identity.GetUserId();
             ChanhThuStoreContext context = new ChanhThuStoreContext();
             if(userID != null)

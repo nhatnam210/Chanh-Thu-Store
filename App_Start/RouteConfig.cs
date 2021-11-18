@@ -41,7 +41,7 @@ namespace ChanhThu_Store
             routes.MapRoute(
               name: "san pham theo danh muc con",
               url: "cua-hang/danh-muc-con",
-              defaults : new { controller = "DanhMucCons", action = "Details", id = UrlParameter.Optional }
+              defaults: new { controller = "DanhMucCons", action = "Details", id = UrlParameter.Optional }
           );
             routes.MapRoute(
                name: "chi tiet san pham",
@@ -112,8 +112,13 @@ namespace ChanhThu_Store
          name: "tim kiem",
          url: "timkiem",
          defaults: new { controller = "TimKiem", action = "Index", id = UrlParameter.Optional }
-      );
-            routes.MapRoute(
+        );
+        routes.MapRoute(
+              name: "voucher",
+              url: "voucher",
+              defaults: new { controller = "Home", action = "DanhSachVoucher", id = UrlParameter.Optional }
+            );      
+         routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

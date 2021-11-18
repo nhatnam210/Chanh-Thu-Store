@@ -13,10 +13,10 @@ namespace ChanhThu_Store.Models
         {
             AspNetUserClaims = new HashSet<AspNetUserClaim>();
             AspNetUserLogins = new HashSet<AspNetUserLogin>();
+            ChiTietVouchers = new HashSet<ChiTietVoucher>();
             HoaDons = new HashSet<HoaDon>();
             TuongTacs = new HashSet<TuongTac>();
             AspNetRoles = new HashSet<AspNetRole>();
-            Vouchers = new HashSet<Voucher>();
         }
 
         public string Id { get; set; }
@@ -24,17 +24,11 @@ namespace ChanhThu_Store.Models
         [StringLength(30)]
         public string Ten { get; set; }
 
-        
+        [Required]
         [StringLength(256)]
-        [Required(ErrorMessage = "Hay Nhap UserName")]
-        [DataType(DataType.EmailAddress)]
-        [EmailAddress]
         public string UserName { get; set; }
 
         [StringLength(256)]
-        [Required(ErrorMessage = "Please enter Social Email id")]
-        [DataType(DataType.EmailAddress)]
-        [EmailAddress]
         public string Email { get; set; }
 
         public bool EmailConfirmed { get; set; }
@@ -67,6 +61,9 @@ namespace ChanhThu_Store.Models
         public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChiTietVoucher> ChiTietVouchers { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HoaDon> HoaDons { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -74,8 +71,5 @@ namespace ChanhThu_Store.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Voucher> Vouchers { get; set; }
     }
 }
