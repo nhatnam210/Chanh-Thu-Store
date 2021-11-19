@@ -1,28 +1,28 @@
 ﻿@model IEnumerable<ChanhThu_Store.Models.SanPham>
 @foreach (var item in Model)
 {
-    <div class="col-lg-3 col-md-6 special-grid best-seller">
+    <div class="col-lg-3 col-md-6 col-sm-6 special-grid top-featured flex-column">
         <div class="products-single fix shadow full-radius">
             <div class="box-img-hover none-radius">
                 <div class="type-lb">
-                    <p class="hot bottom-left-radius">HOT</p>
+                    <p class="like bottom-left-radius text-capitalize">Yêu Thích</p>
                 </div>
                 @*<img src="@item.HinhChinh" class="img-fluid" alt="Image">*@
-                <div class="img-fit " style="background-image: url('@item.HinhChinh'),url('/Content/images/default.png');">
+                <div class="img-fit product-mobile " style="background-image: url('@item.HinhChinh'),url('/Content/images/default.png');">
                 </div>
                 <div class="mask-icon">
                     <ul>
                         <li><a href="/cua-hang/san-pham?id=@item.MaSanPham" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                         <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                     </ul>
-                    <a class="cart" href="#">Thêm Vào Giỏ</a>
+                    <a class="cart add-cart-notify text-capitalize hide-in-mobile font-weight-bold" href="/them-vao-gio?masanpham=@item.MaSanPham&soluong=1">Thêm Vào Giỏ</a>
                 </div>
             </div>
             <div class="why-text view-row-content">
                 <h4>@item.TenSanPham</h4>
                 <h5>@string.Format("{0:#,##0}", @item.Gia) đ</h5>
+                <a style="margin-top: 10px;" href="/them-vao-gio?masanpham=@item.MaSanPham&soluong=1" class="btn register hvr-hover text-capitalize add-cart-notify max-width-mobile show-in-mobile font-weight-bold font-size-mobile">Thêm vào giỏ</a>
             </div>
         </div>
     </div>
 }
-

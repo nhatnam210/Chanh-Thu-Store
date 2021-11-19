@@ -28,13 +28,13 @@ namespace ChanhThu_Store
             {
 
                 // first we create Admin rool    
-                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                IdentityRole role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
                 role.Name = "Admin";
                 roleManager.Create(role);
 
                 //Here we create a Admin super user who will maintain the website                   
 
-                var user = new ApplicationUser();
+                ApplicationUser user = new ApplicationUser();
                 user.UserName = "admin@gmail.com";
                 user.Email = "admin@gmail.com";
 

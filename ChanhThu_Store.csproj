@@ -210,6 +210,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SanPhamsController.cs" />
     <Compile Include="Controllers\TimKiemController.cs" />
+    <Compile Include="Controllers\VouchersController.cs" />
     <Compile Include="Controllers\YeuThichController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -3274,17 +3275,16 @@
     <Content Include="Views\DanhMucs\SanPhamTheoDanhMuc.cshtml" />
     <Content Include="Views\AboutUs\Index.cshtml" />
     <Content Include="Views\ContactUs\Index.cshtml" />
-    <Content Include="Views\Shared\_SanPham_MoiNhat.cshtml" />
+    <Content Include="Views\Home\SanPhamMoiNhat.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
-    <Content Include="Views\Shared\_Header_Cart.cshtml" />
+    <Content Include="Views\Shared\HeaderCart.cshtml" />
     <Content Include="Views\Cart\Payment.cshtml" />
     <Content Include="Views\Cart\Success.cshtml" />
     <Content Include="Views\Account\Info.cshtml" />
-    <Content Include="Views\Shared\_Slider_header.cshtml" />
+    <Content Include="Views\Home\_Slider_home.cshtml" />
     <Content Include="Views\Shared\_Banner.cshtml" />
     <Content Include="Views\Shared\_Slider_footer.cshtml" />
     <Content Include="Views\Account\YeuThich.cshtml" />
-    <Content Include="Views\Shared\_Table_HoaDon.cshtml" />
     <Content Include="Views\DanhMucCons\SanPhamTheoDMC.cshtml" />
     <Content Include="Views\DanhMucCons\_BoSuTap_DM.cshtml" />
     <Content Include="Views\Account\SuaThongTinCaNhan.cshtml" />
@@ -3292,11 +3292,11 @@
     <Content Include="Views\TimKiem\Index.cshtml" />
     <Content Include="Views\Account\LichSuMuaHang.cshtml" />
     <Content Include="Views\ChitietHoaDon\Index.cshtml" />
-    <Content Include="Views\Shared\_SanPham_BanChay.cshtml" />
-    <Content Include="Views\Shared\_SanPham_NoiBat.cshtml" />
+    <Content Include="Views\Home\SanPhamBanChay.cshtml" />
+    <Content Include="Views\Home\SanPhamNoiBat.cshtml" />
     <Content Include="Views\Account\_DoiVoucher.cshtml" />
-    <Content Include="Views\Home\DanhSachVoucher.cshtml" />
-    <Content Include="Views\Home\LayDiemUser.cshtml" />
+    <Content Include="Views\Vouchers\LayDiemUser.cshtml" />
+    <Content Include="Views\Vouchers\DanhSachVoucher.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

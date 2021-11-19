@@ -18,7 +18,7 @@ namespace ChanhThu_Store.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        private ChanhThuStoreContext db = new ChanhThuStoreContext();
+        private readonly ChanhThuStoreContext db = new ChanhThuStoreContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -120,6 +120,7 @@ namespace ChanhThu_Store.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    //return Redirect(Request.Headers["Referer"].ToString());
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -127,7 +128,7 @@ namespace ChanhThu_Store.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "Invalid login attempt.");                     
                     return View(model);
             }
         }

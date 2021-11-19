@@ -23,6 +23,7 @@ namespace ChanhThu_Store.Controllers
             listDanhMucCon = from s in db.DanhMucCons
                           orderby s.MaDanhMucCon
                           select s;
+
             return View(listDanhMucCon.FirstOrDefault());
         }
 

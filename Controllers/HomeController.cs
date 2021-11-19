@@ -13,8 +13,14 @@ namespace ChanhThu_Store.Controllers
     {
         private ChanhThuStoreContext db = new ChanhThuStoreContext();
         private const string CartSession = "CartSession";
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         [ChildActionOnly]
-        public PartialViewResult _Header_Cart()
+        public PartialViewResult HeaderCart()
         {
             var cart = Session[CartSession];
             var list = new List<CartItem>();
@@ -24,130 +30,43 @@ namespace ChanhThu_Store.Controllers
             }
             return PartialView(list);
         }
-        public ActionResult Index()
+
+        public IQueryable<SanPham> ListBanChay()
         {
-            return View();
+            IQueryable<SanPham> listBanChay = null;
+
+            listBanChay = (from b in db.SanPhams
+                          orderby b.SoLuongDaBan descending
+                          select b).Take(4);
+
+            return listBanChay;
         }
 
-
-        public ActionResult DanhSachVoucher()
+        public PartialViewResult SanPhamBanChay()
         {
-            DateTime thisDay = DateTime.Today;
-            var userID = User.Identity.GetUserId();
-
-            IQueryable<Voucher> listVoucher = null;
-            //IQueryable<Voucher> listVoucherByUser = null;
-
-                listVoucher = from v in db.Vouchers
-                          where v.HanSuDung >= thisDay
-                          orderby v.MaVoucher 
-                          select v;
-
-            //AspNetUser currentUser = db.AspNetUsers.Find(userID);
-
-            //foreach (var item in listVoucher)
-            //{
-            //    if (currentUser.DiemTichLuy >= item.DiemDoi)
-            //    {
-            //        if (item.HanSuDung >= thisDay)
-            //        {
-            //            var chitietVoucher = new ChiTietVoucher() { MaVoucher = item.MaVoucher, MaKhachHang = currentUser.Id, TinhTrang = true };
-            //            db.ChiTietVouchers.Add(chitietVoucher);
-            //            //var diemHienTai = currentUser.DiemTichLuy;
-            //            //diemHienTai -= item.DiemDoi;
-            //            //    if(diemHienTai <= 0)
-            //            //    {
-            //            //        diemHienTai = 0;
-            //            //    }
-            //            //currentUser.DiemTichLuy = diemHienTai;
-            //        }
-            //        else
-            //        {
-            //            var chitietVoucher = new ChiTietVoucher() { MaVoucher = item.MaVoucher, MaKhachHang = currentUser.Id, TinhTrang = false };
-            //            db.ChiTietVouchers.Add(chitietVoucher);
-            //            //var diemHienTai = currentUser.DiemTichLuy;
-            //            //diemHienTai -= item.DiemDoi;
-            //            //if (diemHienTai <= 0)
-            //            //{
-            //            //    diemHienTai = 0;
-            //            //}
-            //            //currentUser.DiemTichLuy = diemHienTai;
-            //        }
-            //    }
-            //}
-
-            //db.SaveChanges();
-
-            //listVoucherByUser = from vou in db.Vouchers
-            //                    join chi in db.ChiTietVouchers on vou.MaVoucher equals chi.MaVoucher
-            //                    where vou.MaVoucher == chi.MaVoucher && chi.MaKhachHang == userID && chi.TinhTrang == true
-            //                    select vou;
-
-            return View(listVoucher);
+            return PartialView(ListBanChay());
         }
 
-        [Authorize]
-        public ActionResult DoiVoucher(String idVoucher)
+        public PartialViewResult SanPhamNoiBat()
         {
-            DateTime thisDay = DateTime.Today;
-            var userID = User.Identity.GetUserId();
-            AspNetUser currentUser = db.AspNetUsers.Find(userID);
+            IQueryable<SanPham> listNoiBat = null;
 
-            Voucher voucher = db.Vouchers.Find(idVoucher);
+            listNoiBat = (from n in db.SanPhams
+                          orderby n.LuotYeuThich descending
+                          select n).Except(ListBanChay()).Take(4);
 
-            /*Nếu đủ điểm*/
-            if (currentUser.DiemTichLuy >= voucher.DiemDoi)
-            {
-                /*Nếu trùng*/
-                if (db.ChiTietVouchers.Any(p => p.MaKhachHang == userID && p.MaVoucher == idVoucher))
-                {
-                    var updateCTVC = db.ChiTietVouchers.SingleOrDefault(p => p.MaKhachHang == userID && p.MaVoucher == idVoucher);
-                    /*Cập nhật số lượng*/
-                    updateCTVC.SoLuong++;
-                    db.Entry(updateCTVC).State = EntityState.Modified;
-
-                    var diemHienTai = currentUser.DiemTichLuy;
-                    diemHienTai -= voucher.DiemDoi;
-                    if (diemHienTai <= 0)
-                    {
-                        diemHienTai = 0;
-                    }
-                    currentUser.DiemTichLuy = diemHienTai;
-                }
-                /*Nếu không trùng*/
-                else
-                {
-                    if (voucher.HanSuDung >= thisDay)
-                    {
-                        var chitietVoucher = new ChiTietVoucher()
-                        { MaVoucher = voucher.MaVoucher, MaKhachHang = currentUser.Id, TinhTrang = true, SoLuong = 1 };
-                        db.ChiTietVouchers.Add(chitietVoucher);
-                        var diemHienTai = currentUser.DiemTichLuy;
-                        diemHienTai -= voucher.DiemDoi;
-                        if (diemHienTai <= 0)
-                        {
-                            diemHienTai = 0;
-                        }
-                        currentUser.DiemTichLuy = diemHienTai;
-                    }
-                }
-            }
-
-            db.SaveChanges();
-            return RedirectToAction("DanhSachVoucher", "Home");
+            return PartialView(listNoiBat);
         }
 
-        public ActionResult LayDiemUser()
+        public PartialViewResult SanPhamMoiNhat()
         {
+            IQueryable<SanPham> listMoiNhat = null;
 
-            var userID = User.Identity.GetUserId();
-            AspNetUser currentUser = new AspNetUser();
-            if (userID != null)
-            {
-                currentUser = db.AspNetUsers.Find(userID);
-            }
+            listMoiNhat = (from m in db.SanPhams
+                          orderby m.MaSanPham descending
+                          select m).Take(3);
 
-            return PartialView("LayDiemUser", currentUser);
+            return PartialView(listMoiNhat);
         }
     }
 }

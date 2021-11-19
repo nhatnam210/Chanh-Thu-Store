@@ -26,12 +26,16 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
-    <!-- Site CSS -->
-    <link rel="stylesheet" href="~/Content/css/style.css">
-    <!-- Responsive CSS -->
-    <link rel="stylesheet" href="~/Content/css/responsive.css">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="~/Content/css/custom.css">
+    <!-- PageList CSS -->
+    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="~/Content/css/style.css">
+
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="~/Content/css/responsive.css">
 
     <link rel="stylesheet" href="~/Content/css/all.css">
     <link rel="stylesheet" href="~/Content/css/animate.css">
@@ -129,7 +133,7 @@
                     <a class="navbar-brand" href="/trang-chu"><img src="~/Content/images/logo.png" class="logo" alt=""></a>
                 </div>
                 <!-- End Header Navigation -->
-                <!-- Collect the nav links, forms, and other content for toggling -->
+                <!-- Collect the nav links, forms, and other content for toggling --> 
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                         <li class="nav-item active">
@@ -139,7 +143,7 @@
                             <a class="nav-link" href="/gioi-thieu">Giới thiệu</a>
                         </li>
                         <li class="dropdown">
-                            <a class="nav-link dropdown-toggle arrow" data-toggle="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">
                                 <i class="fas fa-chevron-down arrow-down float-right "></i>
                                 Cửa Hàng
                             </a>
@@ -157,14 +161,14 @@
                 </div>
                 <!-- /.navbar-collapse -->
                 <!-- Start Atribute Navigation -->
-                @{ Html.RenderAction("_Header_Cart", "Home");}
+                @{ Html.RenderAction("HeaderCart", "Home");}
                 </div>
         </nav>
         <!-- End Navigation -->
     </header>
     <!-- End Main Top -->
     <!-- Start Top Search -->
-    <form method="post" action="/TimKiem/Index">
+    <form method="post" action="/tim-kiem">
         <div class="top-search">
             <div class="container">
                 <div class="input-group">
@@ -178,7 +182,7 @@
     </form>
     <!-- End Top Search -->
 
-    @RenderBody();
+    @RenderBody()
 
     <!-- Start Instagram Feed  -->
     @Html.Partial("_Slider_footer", ChanhThu_Store.Models.BUS.SliderBUS.DanhSachSliderFooter())

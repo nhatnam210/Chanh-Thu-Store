@@ -10,7 +10,7 @@ namespace ChanhThu_Store.Controllers
 {
     public class ChitietHoaDonController : Controller
     {
-        private ChanhThuStoreContext db = new ChanhThuStoreContext();
+        private readonly ChanhThuStoreContext db = new ChanhThuStoreContext();
         // GET: ChitietHoaDon
         [Authorize]
         public ActionResult Index(int? id)

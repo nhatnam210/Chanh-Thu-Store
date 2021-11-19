@@ -50,24 +50,20 @@ const navItem = getAll('ul.navbar-nav>li')
 const navItemHref = getAll('ul.navbar-nav>li>a')
 
 if (navItem && navItemHref) {
-    navItem.forEach((item, index) => {
-        if (locationHref.includes(navItemHref[index].href)) {
-            item.classList.add('active')
-        } else {
+    if (locationHref.includes('cua-hang')) {
+        navItem.forEach((item, index) => {
             item.classList.remove('active')
-        }
-    })
-
-    ////trường hợp riêng cho trang chi tiết sản phẩm
-    //if (locationHref.includes('san-pham')) {
-    //    navItem.forEach((item, index) => {
-    //        if (navItemHref[index].href.includes('cua-hang')) {
-    //            item.classList.add('active')
-    //        } else {
-    //            item.classList.remove('active')
-    //        }
-    //    })
-    //}
+        })
+        navItem[2].classList.add('active')
+    } else {
+        navItem.forEach((item, index) => {
+            if (locationHref.includes(navItemHref[index].href)) {
+                item.classList.add('active')
+            } else {
+                item.classList.remove('active')
+            }
+        })
+    }
 }
 
 /* ..............................................
