@@ -43,7 +43,7 @@
                     </ol> -->
                 </div>
             </div>
-            <div class="col-xl-7 col-lg-7 col-md-6" style="overflow-x: hidden;">
+            <div class="col-xl-7 col-lg-7 col-md-6">
                 <div class="single-product-details">
                     <h2>@Model.TenSanPham</h2>
                     <h5>@string.Format("{0:#,##0}", @Model.Gia)đ</h5>
@@ -73,20 +73,20 @@
                         if (@Model.isLiked)
                         {
                             <div class="cart-and-bay-btn max-btn">
-                                <a data-product-id="@Model.MaSanPham" class="btn user-liked js-tongle-yeuthich"><i class="fas fa-heart" style="margin-right: 5px;"></i>Đã thích</a>
+                                <a data-product-id="@Model.MaSanPham" class="btn user-liked js-tongle-yeuthich"><i class="fas fa-heart"></i>Đã thích</a>
                             </div>
                         }
                         else
                         {
                             <div class="cart-and-bay-btn max-btn">
-                                <a data-product-id="@Model.MaSanPham" class="btn user-unliked js-tongle-yeuthich"><i class="far fa-heart" style="margin-right: 5px;"></i>Yêu thích</a>
+                                <a data-product-id="@Model.MaSanPham" class="btn user-not-like js-tongle-yeuthich"><i class="far fa-heart"></i>Yêu thích</a>
                             </div>
                         }
                     }
                     @*else
                     {
                         <div class="cart-and-bay-btn max-btn">
-                            <a href="/dang-nhap" class="btn user-unliked"><i class="far fa-heart" style="margin-right: 5px;"></i>Yêu thích </a>
+                            <a href="/dang-nhap" class="btn user-not-like"><i class="far fa-heart" style="margin-right: 5px;"></i>Yêu thích </a>
                         </div>
                     }*@
                 </div> 
@@ -274,17 +274,17 @@
                             showNotify('Đã xóa khỏi Yêu thích!', 'heart-dislike-outline')
                             element
                                 .removeClass('user-liked')
-                                .addClass('user-unliked')
+                                .addClass('user-not-like')
                                 .text("")
-                                .append(`<i class="far fa-heart" style="margin-right: 5px;"></i>Yêu thích`)
+                                .append(`<i class="far fa-heart"></i>Yêu thích`)
                            
                         } else {
                             showNotify('Đã thêm vào Yêu thích!', 'heart-outline')
                             element
-                                .removeClass('user-unliked')
+                                .removeClass('user-not-like')
                                 .addClass('user-liked')
                                 .text("")
-                                .append(`<i class="fas fa-heart" style="margin-right: 5px;"></i>Đã thích`)
+                                .append(`<i class="fas fa-heart"></i>Đã thích`)
                         }
                     }).fail(function () {
                         alert("Xảy ra lỗi!");

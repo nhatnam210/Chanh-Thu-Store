@@ -1,9 +1,7 @@
 ﻿@model IEnumerable<ChanhThu_Store.Models.DanhMucCon>
 
-@*@{var i = 0}*@
 @foreach (var item in Model)
 {
-    //i++;
     <a href="/cua-hang/danh-muc-con?id=@item.MaDanhMucCon" class="danh-muc-con list-group-item list-group-item-action">
         @item.TenDanhMucCon
         @*<small class="text-muted">(@i)</small>*@

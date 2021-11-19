@@ -39,33 +39,16 @@ namespace ChanhThu_Store.Controllers
 
             Voucher voucher = db.Vouchers.Find(idVoucher);
 
-            /*Nếu đủ điểm*/
-            if (currentUser.DiemTichLuy >= voucher.DiemDoi)
+            if(voucher != null)
             {
-                /*Nếu trùng*/
-                if (db.ChiTietVouchers.Any(p => p.MaKhachHang == userID && p.MaVoucher == idVoucher))
+                /*Nếu đủ điểm*/
+                if (currentUser.DiemTichLuy >= voucher.DiemDoi)
                 {
-                    var updateCTVC = db.ChiTietVouchers.SingleOrDefault(p => p.MaKhachHang == userID && p.MaVoucher == idVoucher);
-                    /*Cập nhật số lượng*/
-                    updateCTVC.SoLuong++;
-                    //db.Entry(updateCTVC).State = EntityState.Modified;
-
-                    diemHienTai -= voucher.DiemDoi;
-                    if (diemHienTai <= 0)
+                    /*Nếu trùng*/
+                    if (db.ChiTietVouchers.Any(p => p.MaKhachHang == userID && p.MaVoucher == idVoucher))
                     {
-                        diemHienTai = 0;
-                    }
-                    currentUser.DiemTichLuy = diemHienTai;
-                }
-                /*Nếu không trùng*/
-                else
-                {
-                    if (voucher.HanSuDung >= thisDay)
-                    {
-                        var chitietVoucher = new ChiTietVoucher()
-                        { MaVoucher = voucher.MaVoucher, MaKhachHang = currentUser.Id, TinhTrang = true, SoLuong = 1 };
-                        db.ChiTietVouchers.Add(chitietVoucher);
-
+                        var updateCTVC = db.ChiTietVouchers.SingleOrDefault(p => p.MaKhachHang == userID && p.MaVoucher == idVoucher);
+                        /*Cập nhật số lượng*/
                         diemHienTai -= voucher.DiemDoi;
                         if (diemHienTai <= 0)
                         {
@@ -73,10 +56,28 @@ namespace ChanhThu_Store.Controllers
                         }
                         currentUser.DiemTichLuy = diemHienTai;
                     }
-                }
-            }
+                    /*Nếu không trùng*/
+                    else
+                    {
+                        if (voucher.HanSuDung >= thisDay)
+                        {
+                            var chitietVoucher = new ChiTietVoucher()
+                            { MaVoucher = voucher.MaVoucher, MaKhachHang = currentUser.Id, TinhTrang = true, SoLuong = 1 };
+                            db.ChiTietVouchers.Add(chitietVoucher);
 
-            db.SaveChanges();
+                            diemHienTai -= voucher.DiemDoi;
+                            if (diemHienTai <= 0)
+                            {
+                                diemHienTai = 0;
+                            }
+                            currentUser.DiemTichLuy = diemHienTai;
+                        }
+                    }
+                }
+
+                db.SaveChanges();
+            }
+           
             return RedirectToAction("DanhSachVoucher", "Vouchers");
         }
 
