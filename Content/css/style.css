@@ -2267,7 +2267,7 @@ ul.cart-list > li.total > .btn:hover {
 }
 
 .shop-box-inner {
-    padding-top: 70px;
+    padding-top: 30px;
 }
 
 .search-product {
@@ -3975,28 +3975,34 @@ ul.cart-list > li.total > .btn:hover {
     border-radius: var(--btn-corner-radius);
 }
 
-.user-unliked {
+.user-not-like {
     background-color: transparent;
     color: var(--gray) !important;
     border: 2px solid var(--gray) !important;
     border-radius: var(--btn-corner-radius);
 }
-    .user-unliked:hover,
-    .user-liked:hover {
-        transform: scale(1.02);
-    }
 
-.user-unliked,
+.user-not-like,
 .user-liked {
     padding: 8px 20px !important;
+    transition: all linear .1s;
 }
+    .user-not-like:hover,
+    .user-liked:hover {
+        opacity: 0.7;
+    }
+
+    .user-liked i,
+    .user-not-like i {
+        margin-right: 5px;
+    }
 
 
-.unliked-heart-icon,
-.liked-heart-icon {
-    color: var(--red);
-    text-shadow: 0 0 5px #fff;
-}
+    .unliked-heart-icon,
+    .liked-heart-icon {
+        color: var(--red);
+        text-shadow: 0 0 5px #fff;
+    }
 
 .heart-hover:hover {
     background: var(--primary-color) !important;
@@ -4110,14 +4116,19 @@ ul.cart-list > li.total > .btn:hover {
         font-weight: 600;
     }
 
-.btn-mobile {
-    display: none;
-}
-
+    /*nút thêm giỏ hang mobile*/
 .hide-in-mobile {
     display: block;
 }
 
 .show-in-mobile {
     display: none;
+}
+
+.none {
+    display: none;
+}
+
+.full-container {
+    max-width: 100%
 }

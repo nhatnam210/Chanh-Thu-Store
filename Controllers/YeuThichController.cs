@@ -15,11 +15,13 @@ namespace ChanhThu_Store.Controllers
         [Authorize]
         public IHttpActionResult Yeuthich(SanPham sanpham)
         {
-            var userID = User.Identity.GetUserId();
             ChanhThuStoreContext context = new ChanhThuStoreContext();
-            if(userID != null)
+
+            var userID = User.Identity.GetUserId();
+            SanPham sanphamthich = context.SanPhams.Find(sanpham.MaSanPham);
+
+            if (userID != null && sanphamthich != null)
             {
-                SanPham sanphamthich = context.SanPhams.Find(sanpham.MaSanPham);
                 if (context.TuongTacs.Any(p => p.MaKhachHang == userID && p.MaSanPham == sanpham.MaSanPham))
                 {
                     //return BadRequest("The attendance already exist!");

@@ -204,7 +204,6 @@
     <Compile Include="Controllers\ChitietHoaDonController.cs" />
     <Compile Include="Controllers\ContactUsController.cs" />
     <Compile Include="Controllers\DanhMucConsController.cs" />
-    <Compile Include="Controllers\DanhMucsController.cs" />
     <Compile Include="Controllers\GetUserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -224,7 +223,6 @@
     <Compile Include="Models\BUS\BannerBUS.cs" />
     <Compile Include="Models\BUS\DanhMucBUS.cs" />
     <Compile Include="Models\BUS\HoaDonBUS.cs" />
-    <Compile Include="Models\BUS\SanPhamBUS.cs" />
     <Compile Include="Models\BUS\SliderBUS.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\ChanhThuStoreContext.cs" />
@@ -2793,10 +2791,6 @@
     <Content Include="Areas\AssetAdmin\vendor\jquery\jquery.min.js" />
     <Content Include="Areas\AssetAdmin\vendor\jquery\jquery.slim.js" />
     <Content Include="Areas\AssetAdmin\vendor\jquery\jquery.slim.min.js" />
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\all.css" />
     <Content Include="Content\css\animate.css" />
     <Content Include="Content\css\baguetteBox.min.css" />
@@ -3267,12 +3261,6 @@
     <Content Include="Views\SanPhams\Index.cshtml" />
     <Content Include="Views\DanhMucCons\Details.cshtml" />
     <Content Include="Views\DanhMucCons\Index.cshtml" />
-    <Content Include="Views\DanhMucs\Create.cshtml" />
-    <Content Include="Views\DanhMucs\Delete.cshtml" />
-    <Content Include="Views\DanhMucs\Details.cshtml" />
-    <Content Include="Views\DanhMucs\Edit.cshtml" />
-    <Content Include="Views\DanhMucs\Index.cshtml" />
-    <Content Include="Views\DanhMucs\SanPhamTheoDanhMuc.cshtml" />
     <Content Include="Views\AboutUs\Index.cshtml" />
     <Content Include="Views\ContactUs\Index.cshtml" />
     <Content Include="Views\Home\SanPhamMoiNhat.cshtml" />
@@ -3307,10 +3295,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />

@@ -55,7 +55,12 @@ if (navItem && navItemHref) {
             item.classList.remove('active')
         })
         navItem[2].classList.add('active')
-    } else {
+    } else if (locationHref.endsWith('44340') || locationHref.endsWith('44340/')) {
+        navItem.forEach((item, index) => {
+            item.classList.remove('active')
+        })
+        navItem[0].classList.add('active')
+    }  else {
         navItem.forEach((item, index) => {
             if (locationHref.includes(navItemHref[index].href)) {
                 item.classList.add('active')
