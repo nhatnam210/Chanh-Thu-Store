@@ -543,7 +543,7 @@ nav.navbar.bootsnav ul.dropdown-menu.megamenu-content .content ul.menu-col li a:
         width: 200px;
         background: #222;
 		border: none;
-		padding: 30px 0;
+		padding: 15px 0;
     }
     
     nav.navbar.bootsnav li.dropdown ul.dropdown-menu > li a:hover,
@@ -1390,7 +1390,6 @@ nav.navbar.bootsnav ul.dropdown-menu.megamenu-content .content ul.menu-col li a:
     
     .attr-nav > ul > li > a{
         padding: 16px 10px 15px;
-        padding-left: 0 !important;
     }
     
     .attr-nav > ul > li.dropdown ul.dropdown-menu{

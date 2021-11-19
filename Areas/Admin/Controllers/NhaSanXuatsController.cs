@@ -7,7 +7,6 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using ChanhThu_Store.Models;
 using PagedList;
 
 namespace ChanhThu_Store.Areas.Admin.Controllers
@@ -15,7 +14,7 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
     [Authorize(Roles = "Admin")]
     public class NhaSanXuatsController : Controller
     {
-        private ChanhThuStoreContext db = new ChanhThuStoreContext();
+        private readonly ChanhThuStoreContext db = new ChanhThuStoreContext();
         
         // GET: Admin/NhaSanXuats
         public ActionResult Index(string sapxep, string loc, string timkiem, int? trang)

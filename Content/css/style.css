@@ -306,7 +306,7 @@ p {
     overflow: hidden;
     color: var(--text-color);
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     line-height: 20px
 }
@@ -1509,7 +1509,6 @@ ul.cart-list > li.total > .btn:hover {
         color: #222;
         text-align: center;
         margin-bottom: 10px !important;
-        padding-top: 5px;
     }
 
     .title-blog p {
@@ -2350,6 +2349,10 @@ ul.cart-list > li.total > .btn:hover {
         font-size: 25px;
     }
 
+.service-desc {
+    user-select: none;
+}
+
 .ask-register {
     display: inline-block;
     padding: 5px 0px;
@@ -2387,8 +2390,8 @@ ul.cart-list > li.total > .btn:hover {
 }*/
 
 .arrow-down {
-    transform: translateY(50%);
-    padding-left: 15px;
+    transform: translateY(40%);
+    padding-left: 10px;
     font-size: 13px;
 }
 
@@ -3679,7 +3682,7 @@ ul.cart-list > li.total > .btn:hover {
 
 .title-blog h4 {
     --height: 25px;
-    font-size: calc(var(--height) - 4px);
+    font-size: calc(var(--height) - 6px);
 }
 
 .cart-list h6 a {
@@ -4074,6 +4077,7 @@ ul.cart-list > li.total > .btn:hover {
     color: var(--text-color);
     text-align: center;
     font-weight: 600;
+    padding-bottom: 10px;
     border-top: 1px solid var(--gray);
     border-bottom: 1px solid var(--gray);
 }
@@ -4088,4 +4092,32 @@ ul.cart-list > li.total > .btn:hover {
     display: inline-block;
     color: var(--text-color);
     line-height: 1;
+}
+
+/*Phân trang*/
+.pagination {
+    margin-left: 50% !important;
+    transform: translateX(-50%);
+}
+
+.pagelist_custom {
+    display: flex;
+    justify-content: center;
+}
+
+    .pagelist_custom .show-page-text {
+        color: var(--text-color);
+        font-weight: 600;
+    }
+
+.btn-mobile {
+    display: none;
+}
+
+.hide-in-mobile {
+    display: block;
+}
+
+.show-in-mobile {
+    display: none;
 }
