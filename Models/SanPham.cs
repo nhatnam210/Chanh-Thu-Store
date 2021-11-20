@@ -29,7 +29,7 @@ namespace ChanhThu_Store.Models
         public string MaNhaSanXuat { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(200)]
         public string TenSanPham { get; set; }
 
         public int Gia { get; set; }
@@ -45,6 +45,9 @@ namespace ChanhThu_Store.Models
         public string Hinh2 { get; set; }
 
         public string Mota { get; set; }
+
+        [StringLength(20)]
+        public string DonViTinh { get; set; }
 
         public int SoLuongTonKho { get; set; }
 

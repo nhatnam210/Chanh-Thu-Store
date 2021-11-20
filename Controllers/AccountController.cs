@@ -505,6 +505,13 @@ namespace ChanhThu_Store.Controllers
                       orderby h.NgayLap descending, h.MaHoaDon descending
                       select h;
 
+            //foreach(var item in hoadon)
+            //{
+            //    if(item.MaVoucher == null)
+            //    {
+            //        item.
+            //    }
+            //}
             return View(hoadon.ToPagedList(pageNumber, pageSize));
         }
         
