@@ -1,0 +1,5 @@
+﻿@model ChanhThu_Store.Models.DanhMucCon
+@Html.DropDownListFor(model => model.MaDanhMucCon, new SelectList(Model.DMCColection,
+"TenDanhMucCon", "TenDanhMucCon"), new { @class = "form-control" })
+@Html.ValidationMessageFor(model => model.MaDanhMucCon, "", new { @class = "text-danger" })
+

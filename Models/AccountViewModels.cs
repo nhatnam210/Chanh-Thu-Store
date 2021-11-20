@@ -83,6 +83,7 @@ namespace ChanhThu_Store.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "Mật khẩu nhập lại không trùng khớp.")]
         public string ConfirmPassword { get; set; }
+        public string Phone { get; set; }
     }
 
     public class ResetPasswordViewModel

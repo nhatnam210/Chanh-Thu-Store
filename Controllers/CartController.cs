@@ -219,5 +219,18 @@ namespace ChanhThu_Store.Controllers
 
             return PartialView("VoucherTheoUser", listVoucher);
         }
+        public ActionResult ThongTinKhachDatHang()
+        {
+            var userID = User.Identity.GetUserId();
+            IQueryable<AspNetUser> thongtin = null;
+            if (userID != null)
+            {
+                thongtin = (from tt in db.AspNetUsers
+                            where tt.Id == userID
+                            select tt).Distinct();
+            }
+
+            return PartialView("ThongTinKhachDatHang", thongtin);
+        }
     }
 }
