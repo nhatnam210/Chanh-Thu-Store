@@ -4143,3 +4143,14 @@ ul.cart-list > li.total > .btn:hover {
     font-weight:700;
     margin-bottom: 25px;
 }
+.btnDisable{
+    background:var(--gray);
+    color: #fff !important;
+    cursor:not-allowed!important;
+}
+.btnDisable:hover{
+    color: #fff !important;
+}
+.btnDisable::after {
+    display:none;
+}

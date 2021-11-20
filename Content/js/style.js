@@ -1,4 +1,6 @@
-﻿const getAll = document.querySelectorAll.bind(document);
+﻿
+
+const getAll = document.querySelectorAll.bind(document);
 const getOne = document.querySelector.bind(document);
 //lấy element cha theo selector
 function getParent(element, selector) {
@@ -234,3 +236,25 @@ if (quantityCart) {
     }
 }
 
+
+
+
+var btnGetVoucher = getAll('.voucher-point')
+var userPoint = getOne('.user-point__value')
+if (btnGetVoucher && userPoint) {
+    btnGetVoucher.forEach(function (item, index) {
+        var point = parseInt(item.dataset.point)
+        if (parseInt(userPoint.innerText) < point) {
+            item.classList.add('btnDisable')
+            item.href = ""
+            item.innerText = "Chưa đủ điểm"
+        }
+        else {
+            item.onclick = function () {
+                alert('Đổi voucher thành công !')
+            }
+        }
+       
+    
+})
+}

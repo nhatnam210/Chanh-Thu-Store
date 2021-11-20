@@ -66,9 +66,7 @@
                 <th>
                     Hạn sử dụng
                 </th>
-                <th>
-
-                </th>
+                
             </tr>
         </thead>
         <tbody>
@@ -90,7 +88,7 @@
                     </td>
                     <td>
                         @*@Html.ActionLink("Đổi thôi!", "DoiVoucher", new { idVoucher = item.MaVoucher })*@
-                        <a class="btn login hvr-hover" data-point="@item.DiemDoi" href="/Vouchers/DoiVoucher?idVoucher=@item.MaVoucher">Nút đổi</a>
+                        <a class="btn login hvr-hover voucher-point" style="min-width:130px;" data-point="@item.DiemDoi" href="/Vouchers/DoiVoucher?idVoucher=@item.MaVoucher">Đổi điểm</a>
                         @*item.dataset.point*@
                         @*item.herf=""*@
                     </td>

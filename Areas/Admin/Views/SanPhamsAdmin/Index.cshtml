@@ -137,7 +137,7 @@
                                             @Html.DisplayFor(modelItem => item.TenSanPham)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Gia)
+                                            @string.Format("{0:#,##0}", item.Gia) đ
                                         </td>
                                         <td>
                                             <div class="img-fit cart" style="background-image: url('@item.HinhChinh'),url(" /Content/images/default.png");">
