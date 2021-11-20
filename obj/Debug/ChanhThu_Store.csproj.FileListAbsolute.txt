@@ -679,6 +679,7 @@ C:\Users\ASUS\Desktop\ChanhThuStore\Chanh-Thu-Store\bin\System.Web.Http.xml
 C:\Users\ASUS\Desktop\ChanhThuStore\Chanh-Thu-Store\bin\System.Web.Http.WebHost.xml
 C:\Users\Adminss\Desktop\New folder\Chanh-Thu-Store\obj\Debug\ChanhThu_Store.csproj.AssemblyReference.cache
 D:\.IT\DO AN\Do An Chuyen Nganh\ChanhThuStore\obj\Debug\ChanhThu_Store.csproj.AssemblyReference.cache
+C:\Users\ASUS\Desktop\ChanhThuStore\Chanh-Thu-Store\obj\Debug\ChanhThu_Store.csproj.AssemblyReference.cache
 D:\.IT\DO AN\#4 Do An Chuyen Nganh\ChanhThuStore\bin\WebApplication1.dll.config
 D:\.IT\DO AN\#4 Do An Chuyen Nganh\ChanhThuStore\bin\WebApplication1.dll
 D:\.IT\DO AN\#4 Do An Chuyen Nganh\ChanhThuStore\bin\WebApplication1.pdb
@@ -797,4 +798,3 @@ D:\.IT\DO AN\#4 Do An Chuyen Nganh\ChanhThuStore\obj\Debug\ChanhThu_Store.csproj
 D:\.IT\DO AN\#4 Do An Chuyen Nganh\ChanhThuStore\obj\Debug\WebApplication1.dll
 D:\.IT\DO AN\#4 Do An Chuyen Nganh\ChanhThuStore\obj\Debug\WebApplication1.pdb
 D:\.IT\DO AN\#4 Do An Chuyen Nganh\ChanhThuStore\obj\Debug\ChanhThu_Store.csproj.AssemblyReference.cache
-C:\Users\ASUS\Desktop\ChanhThuStore\Chanh-Thu-Store\obj\Debug\ChanhThu_Store.csproj.AssemblyReference.cache

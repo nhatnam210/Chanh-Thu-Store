@@ -4132,3 +4132,14 @@ ul.cart-list > li.total > .btn:hover {
 .full-container {
     max-width: 100%
 }
+.main{
+    width:1500px;
+    margin:auto;
+    margin-top:50px;
+    margin-bottom:50px;
+}
+.title-table {
+    font-size: 36px;
+    font-weight:700;
+    margin-bottom: 25px;
+}

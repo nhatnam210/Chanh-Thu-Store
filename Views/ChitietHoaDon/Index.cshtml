@@ -4,43 +4,53 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Main_Layout.cshtml";
 }
+     
+
+<div class="main">
+    <h2 class="text-center title-table">Thông tin hóa đơn</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th> 
+                    Tên sản phẩm
+                </th>
+                <th>
+                    Đơn giá
+                </th>
+                <th>
+                    Số lượng
+                </th>
+                <th>
+                    Thành tiền
+                </th>
+                
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SanPham.TenSanPham)
+                    </td>
+                    <td>
+                        @string.Format("{0:#,##0}", @item.DonGia) đ
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Soluong)
+                    </td>
+
+                    <td>
+                        @string.Format("{0:#,##0}", (item.DonGia * item.Soluong)) đ
+
+                    </td>
+
+                </tr>
+            }
+        </tbody>
 
 
-<table class="table">
-    <tr>
-        <th>
-            Tên sản phẩm
-        </th>
-        <th>
-            Đơn giá
-        </th>
-        <th>
-            Số lượng
-        </th>
-        <th>
-            Thành tiền
-        </th>
-        <th></th>
-    </tr>
+    </table>    
+</div>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.SanPham.TenSanPham)
-    </td>
-    <td>
-        @string.Format("{0:#,##0}", @item.DonGia) đ
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Soluong)
-    </td>
-
-    <td>
-        @string.Format("{0:#,##0}", (item.DonGia * item.Soluong)) đ
-        
-    </td>
-
-</tr>
-}
-
-</table>
