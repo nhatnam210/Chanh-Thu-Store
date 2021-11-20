@@ -82,7 +82,8 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         // GET: Admin/SanPhamsAdmin/Create
         public ActionResult Create()
         {
-            ViewBag.MaDanhMucCon = new SelectList(db.DanhMucCons, "MaDanhMucCon", "MaDanhMuc");
+            
+            ViewBag.MaDanhMucCon = new SelectList(db.DanhMucCons, "MaDanhMucCon", "TenDanhMucCon");
             ViewBag.MaNhaSanXuat = new SelectList(db.NhaSanXuats, "MaNhaSanXuat", "TenNhaSanXuat");
             return View();
         }
@@ -138,7 +139,7 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.MaDanhMucCon = new SelectList(db.DanhMucCons, "MaDanhMucCon", "MaDanhMuc", sanPham.MaDanhMucCon);
+            ViewBag.MaDanhMucCon = new SelectList(db.DanhMucCons, "MaDanhMucCon", "TenDanhMucCon");
             ViewBag.MaNhaSanXuat = new SelectList(db.NhaSanXuats, "MaNhaSanXuat", "TenNhaSanXuat", sanPham.MaNhaSanXuat);
             return View(sanPham);
         }

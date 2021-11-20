@@ -76,14 +76,14 @@
     <div class="form-group">
         <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Ngày Sản Xuất</span>
         <div class="col-md-12">
-            @Html.EditorFor(model => model.NgaySanXuat, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.TextBoxFor(m => m.NgaySanXuat, new { type = "date", id = "datepicker", name = "DueDate", @class = "form-control" })
             @Html.ValidationMessageFor(model => model.NgaySanXuat, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
         <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Hạn Sử Dụng</span>
         <div class="col-md-12">
-            @Html.EditorFor(model => model.HanSuDung, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.TextBoxFor(m => m.HanSuDung, new { type = "date", id = "datepicker", name = "DueDate" , @class = "form-control" })
             @Html.ValidationMessageFor(model => model.HanSuDung, "", new { @class = "text-danger" })
         </div>
     </div>
