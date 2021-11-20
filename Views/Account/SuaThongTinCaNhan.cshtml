@@ -18,61 +18,68 @@
         </div>
     </div>
 </div>
+<div class="main">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+        <div class="form-horizontal">
 
-<div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
 
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.Id)
+            <div class="form-group">
+                @Html.LabelFor(model => model.Ten, htmlAttributes: new { @class = "control-label col-md-" })
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.Ten, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Ten, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Ten, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Ten, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Ten, "", new { @class = "text-danger" })
+
+            @Html.HiddenFor(model => model.UserName)
+
+            @Html.HiddenFor(Model => Model.Email)
+
+            @Html.HiddenFor(Model => Model.EmailConfirmed)
+
+            @Html.HiddenFor(Model => Model.PasswordHash)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">
+                </div>
+
+                @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-3">
+                </div>
+            </div>
+
+            @Html.HiddenFor(Model => Model.DiemTichLuy)
+
+            @Html.HiddenFor(Model => Model.SecurityStamp)
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
         </div>
-    </div>
-
-
-    @Html.HiddenFor(model => model.UserName)
-
-    @Html.HiddenFor(Model => Model.Email)
-
-    @Html.HiddenFor(Model => Model.EmailConfirmed)
-
-    @Html.HiddenFor(Model => Model.PasswordHash)
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    @Html.HiddenFor(Model => Model.DiemTichLuy)
-
-    @Html.HiddenFor(Model => Model.SecurityStamp)
-
-
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
-        </div>
-    </div>
+    }
 </div>
-}
+
 
 

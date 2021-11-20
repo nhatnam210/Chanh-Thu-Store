@@ -50,46 +50,56 @@
     </div>
 </div>
 <!-- End Shop Page -->
+<div class="main">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Tên voucher
+                </th>
+                <th>
+                    Giá trị giảm
+                </th>
+                <th>
+                    Điểm đổi
+                </th>
+                <th>
+                    Hạn sử dụng
+                </th>
+                <th>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TenVoucher)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GiaTriGiam)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DiemDoi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HanSuDung)
-        </th>
-        <th></th>
-    </tr>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenVoucher)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GiaTriGiam)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DiemDoi)
+                    </td>
+                    <td>
+                        @item.HanSuDung.ToString("dd-MM-yyyy")
+                    
+                    </td>
+                    <td>
+                        @*@Html.ActionLink("Đổi thôi!", "DoiVoucher", new { idVoucher = item.MaVoucher })*@
+                        <a class="btn login hvr-hover" data-point="@item.DiemDoi" href="/Vouchers/DoiVoucher?idVoucher=@item.MaVoucher">Nút đổi</a>
+                        @*item.dataset.point*@
+                        @*item.herf=""*@
+                    </td>
+                </tr>
+            }
+        </tbody>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TenVoucher)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GiaTriGiam)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DiemDoi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HanSuDung)
-            </td>
-            <td>
-                @*@Html.ActionLink("Đổi thôi!", "DoiVoucher", new { idVoucher = item.MaVoucher })*@
-                <a class="btn login hvr-hover" data-point="@item.DiemDoi" href="/Vouchers/DoiVoucher?idVoucher=@item.MaVoucher">Nút đổi</a>
-                @*item.dataset.point*@
-                @*item.herf=""*@
-            </td>
-        </tr>
-    }
 
-</table>
+
+    </table>
+</div>
+

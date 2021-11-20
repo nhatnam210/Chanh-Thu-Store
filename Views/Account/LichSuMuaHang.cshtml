@@ -6,95 +6,103 @@
     Layout = "~/Views/Shared/_Main_Layout.cshtml";
 }
 
-<h2>LichSuMuaHang</h2>
 
-<table class="table">
-    <tr>
-        <th>
-            Ngày đặt
-        </th>
-        <th>
-            Người nhận
-        </th>
-        <th>
-            Địa chỉ
-        </th>
-        <th>
-            SDT
-        </th>
-        <th>
-            Email
-        </th>
-        <th>
-            Giảm giá
-        </th>
-        <th>
-            Tổng tiền
-        </th>
-        <th>
-            Phí Ship
-        </th>
-        <th>
-            Tổng thanh toán
-        </th>
-        <th>
-            Xem
-        </th>
-    </tr>
+<div class="main">
+    <h2 class="text-center title-table">Lịch sử mua hàng</h2>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            @*<td>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Ngày đặt
+                </th>
+                <th>
+                    Người nhận
+                </th>
+                <th>
+                    Địa chỉ
+                </th>
+                <th>
+                    SDT
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Giảm giá
+                </th>
+                <th>
+                    Tổng tiền
+                </th>
+                <th>
+                    Phí Ship
+                </th>
+                <th>
+                    Tổng thanh toán
+                </th>
+                <th>
+                    Xem
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @*<td>
                     @Html.DisplayFor(modelItem => item.AspNetUser.Ten)
                 </td>*@
-            <td>
-                @item.NgayLap.ToString("dd-MM-yyyy")
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ten)
-            </td>
-            <td style="max-width:200px">
-                @Html.DisplayFor(modelItem => item.DiaChi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SDT)
-            </td>
+                    <td>
+                        @item.NgayLap.ToString("dd-MM-yyyy")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ten)
+                    </td>
+                    <td style="max-width:200px">
+                        @Html.DisplayFor(modelItem => item.DiaChi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SDT)
+                    </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            @if (item.Voucher != null)
-            {
-                <td>
-                    @item.Voucher.GiaTriGiam%
-                </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    @if (item.Voucher != null)
+                    {
+                        <td>
+                            @item.Voucher.GiaTriGiam%
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            0%
+                        </td>
+                    }
+                    <td>
+                        @string.Format("{0:#,##0}", @item.TongTien) đ
+                    </td>
+                    <td>
+                        @string.Format("{0:#,##0}", @item.Ship) đ
+                    </td>
+                    <td>
+                        @string.Format("{0:#,##0}", item.TongTien + item.Ship) đ
+                    </td>
+                    <td>
+                        <a href="/thong-tin-ca-nhan/lich-su-mua-hang/chi-tiet-hoa-don?id=@item.MaHoaDon">Chi Tiết</a>
+                    </td>
+                </tr>
             }
-            else
-            {
-                <td>
-                    0%
-                </td>
-            }
-            <td>
-                @string.Format("{0:#,##0}", @item.TongTien) đ
-            </td>
-            <td>
-                @string.Format("{0:#,##0}", @item.Ship) đ
-            </td>
-            <td>
-                @string.Format("{0:#,##0}", item.TongTien + item.Ship) đ
-            </td>
-            <td>
-                <a href="/thong-tin-ca-nhan/lich-su-mua-hang/chi-tiet-hoa-don?id=@item.MaHoaDon">Chi Tiết</a>
-            </td>
-        </tr>
-    }
+        </tbody>
 
-</table>
-<div class="pagelist_custom">
-    <span class="show-page-text">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
+        
+
+    </table>
+    <div class="pagelist_custom">
+        <span class="show-page-text">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
+    </div>
+
+    @Html.PagedListPager(Model, page => Url.Action("LichSuMuaHang",
+        new { page }))
 </div>
-
-@Html.PagedListPager(Model, page => Url.Action("LichSuMuaHang",
-    new { page }))

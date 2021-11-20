@@ -20,30 +20,30 @@
     </div>
 </div>
 
-<div>
+<div class="main text-center">
 
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal h5">
         <dt>
-            @Html.DisplayNameFor(model => model.Ten)
+             Họ và Tên
         </dt>
 
-        <dd>
+        <dd class="mb-3">
             @Html.DisplayFor(model => model.Ten)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.UserName)
         </dt>
 
-        <dd>
+        <dd class="mb-3">
             @Html.DisplayFor(model => model.UserName)
-        </dd>
+        </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.Email)
         </dt>
 
-        <dd>
+        <dd class="mb-3">
             @Html.DisplayFor(model => model.Email)
         </dd>
 
@@ -64,18 +64,18 @@
             </dd>*@
 
         <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
+            Số điện thoại
         </dt>
 
-        <dd>
+        <dd class="mb-3">
             @Html.DisplayFor(model => model.PhoneNumber)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DiaChi)
+            Địa chỉ
         </dt>
 
-        <dd>
+        <dd class="mb-3">
             @Html.DisplayFor(model => model.DiaChi)
         </dd>
 
@@ -136,7 +136,7 @@
             </dd>*@
 
     </dl>
+    <a href="/thong-tin-ca-nhan/chinh-sua" class="btn login hvr-hover text-center">Chỉnh Sửa</a>
 </div>
-<p>
-    <a href="/thong-tin-ca-nhan/chinh-sua">Chỉnh Sửa</a>
-</p>
+
+
