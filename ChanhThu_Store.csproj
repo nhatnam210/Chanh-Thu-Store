@@ -3209,6 +3209,7 @@
     <Content Include="Areas\Admin\Views\VouchersAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\HoaDonsAdmin\InHoaDon.cshtml" />
     <Content Include="Areas\Admin\Views\HoaDonsAdmin\BillChiTietHoaDon.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPhamsAdmin\DanhMucConDS.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3287,6 +3288,7 @@
     <Content Include="Views\Vouchers\DanhSachVoucher.cshtml" />
     <Content Include="Views\Shared\DemSP_DMC.cshtml" />
     <Content Include="Views\Cart\VoucherTheoUser.cshtml" />
+    <Content Include="Views\Cart\ThongTinKhachDatHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -33,69 +33,46 @@
                         <h3>Địa Chỉ Thanh Toán</h3>
                     </div>
                     <div class="needs-validation" novalidate>
-                        <div class="row">
-
-                            <div class="col-md-12 mb-3">
-                                <label for="lastName">Họ và Tên <span>*</span></label>
-                                <input type="text" class="form-control" name="name" id="name" placeholder="" value="" required>
-                                <div class="invalid-feedback"> Vui lòng nhập họ tên. </div>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="username">Số Điện Thoại <span>*</span></label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="phone" id="phone" placeholder="" required>
-                                <div class="invalid-feedback"> Vui lòng nhập số điện thoại. </div>
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="email">Email  <span>*</span></label>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="" required>
-                            <div class="invalid-feedback"> Vui lòng nhập email. </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="address">Địa Chỉ <span>*</span></label>
-                            <input type="text" class="form-control" name="address" id="address" placeholder="" required>
-                            <div class="invalid-feedback"> Vui lòng nhập địa chỉ nhận hàng. </div>
-                        </div>
+                        @{
+                            Html.RenderAction("ThongTinKhachDatHang", "Cart");
+                        }
                         @*<div class="mb-3">
-                            <label for="address2">Địa Chỉ 2 *</label>
-                            <input type="text" class="form-control" id="Địa Chỉ" placeholder="">
-                        </div>
-                        <div class="row">
-                        <div class="col-md-5 mb-3">
-                            <label for="country">Tỉnh *</label>
-                            <select class="wide w-100" id="country">
-                                <option value="Choose..." data-display="Select">Chọn...</option>
-                                <option value="United States">Tiền Giang</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label for="state">Huyện *</label>
-                            <select class="wide w-100" id="state">
-                                <option data-display="Select">Chọn...</option>
-                                <option>Cái Bè</option>
-                            </select>
+                <label for="address2">Địa Chỉ 2 *</label>
+                <input type="text" class="form-control" id="Địa Chỉ" placeholder="">
+            </div>
+            <div class="row">
+            <div class="col-md-5 mb-3">
+                <label for="country">Tỉnh *</label>
+                <select class="wide w-100" id="country">
+                    <option value="Choose..." data-display="Select">Chọn...</option>
+                    <option value="United States">Tiền Giang</option>
+                </select>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="state">Huyện *</label>
+                <select class="wide w-100" id="state">
+                    <option data-display="Select">Chọn...</option>
+                    <option>Cái Bè</option>
+                </select>
 
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="zip">Xã *</label>
-                            <select class="wide w-100" id="state">
-                                <option data-display="Select">Chọn...</option>
-                                <option>Hậu Mỹ Trinh</option>
-                            </select>
-                        </div>
-                    </div>
-                        <hr class="mb-4">
-                        <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="same-Địa Chỉ">
-                        <label class="custom-control-label" for="same-address">Địa chỉ giao hàng giống với địa chỉ thanh toán của tôi</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="save-info">
-                        <label class="custom-control-label" for="save-info">Lưu thông tin này cho lần sau</label>
-                    </div>*@
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="zip">Xã *</label>
+                <select class="wide w-100" id="state">
+                    <option data-display="Select">Chọn...</option>
+                    <option>Hậu Mỹ Trinh</option>
+                </select>
+            </div>
+        </div>
+            <hr class="mb-4">
+            <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="same-Địa Chỉ">
+            <label class="custom-control-label" for="same-address">Địa chỉ giao hàng giống với địa chỉ thanh toán của tôi</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="save-info">
+            <label class="custom-control-label" for="save-info">Lưu thông tin này cho lần sau</label>
+        </div>*@
                         <hr class="mb-4">
                         <div class="d-block my-3">
                             @{
@@ -103,40 +80,40 @@
                             }
                         </div>
                         @*<div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="cc-name">Tên Trên Thẻ</label>
-                                <input type="text" class="form-control" id="cc-name" placeholder="" required> <small class="text-muted">Full name as displayed on card</small>
-                                <div class="invalid-feedback"> Name on card is required </div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="cc-number">Số Thẻ</label>
-                                <input type="text" class="form-control" id="cc-number" placeholder="" required>
-                                <div class="invalid-feedback"> Credit card number is required </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3 mb-3">
-                                <label for="cc-expiration">Hết Hạn</label>
-                                <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-                                <div class="invalid-feedback"> Expiration date required </div>
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <label for="cc-expiration">CVV</label>
-                                <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-                                <div class="invalid-feedback"> Security code required </div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <div class="payment-icon">
-                                    <ul>
-                                        <li><img class="img-fluid" src="images/payment-icon/1.png" alt=""></li>
-                                        <li><img class="img-fluid" src="images/payment-icon/2.png" alt=""></li>
-                                        <li><img class="img-fluid" src="images/payment-icon/3.png" alt=""></li>
-                                        <li><img class="img-fluid" src="images/payment-icon/5.png" alt=""></li>
-                                        <li><img class="img-fluid" src="images/payment-icon/7.png" alt=""></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>*@
+            <div class="col-md-6 mb-3">
+                <label for="cc-name">Tên Trên Thẻ</label>
+                <input type="text" class="form-control" id="cc-name" placeholder="" required> <small class="text-muted">Full name as displayed on card</small>
+                <div class="invalid-feedback"> Name on card is required </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="cc-number">Số Thẻ</label>
+                <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                <div class="invalid-feedback"> Credit card number is required </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 mb-3">
+                <label for="cc-expiration">Hết Hạn</label>
+                <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                <div class="invalid-feedback"> Expiration date required </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="cc-expiration">CVV</label>
+                <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                <div class="invalid-feedback"> Security code required </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="payment-icon">
+                    <ul>
+                        <li><img class="img-fluid" src="images/payment-icon/1.png" alt=""></li>
+                        <li><img class="img-fluid" src="images/payment-icon/2.png" alt=""></li>
+                        <li><img class="img-fluid" src="images/payment-icon/3.png" alt=""></li>
+                        <li><img class="img-fluid" src="images/payment-icon/5.png" alt=""></li>
+                        <li><img class="img-fluid" src="images/payment-icon/7.png" alt=""></li>
+                    </ul>
+                </div>
+            </div>
+        </div>*@
                         <hr class="mb-1">
                     </div>
                 </div>
