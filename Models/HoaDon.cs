@@ -28,7 +28,7 @@ namespace ChanhThu_Store.Models
         [StringLength(10)]
         public string MaVoucher { get; set; }
 
-        public int TongTien { get; set; }
+        public double TongTien { get; set; }
 
         [Required]
         [StringLength(30)]
@@ -51,5 +51,6 @@ namespace ChanhThu_Store.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
+        public int GiamGia;
     }
 }

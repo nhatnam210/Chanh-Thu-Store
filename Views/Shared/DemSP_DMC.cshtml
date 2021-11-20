@@ -1,0 +1,9 @@
+﻿@model IEnumerable<ChanhThu_Store.Models.SanPham>
+
+@{ var i = 0;}
+@foreach (var item in Model)
+{
+    i++;
+}
+<small class="text-muted quantity-small">(@i)</small>
+

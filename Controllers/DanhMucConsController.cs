@@ -100,7 +100,16 @@ namespace ChanhThu_Store.Controllers
             return PartialView("_BoSuTap_DM", listDanhMuc);
         }
 
-          
+        public ActionResult DemSP_DMC(String id)
+        {
+            IQueryable<SanPham> listSanPham = null;
+
+            listSanPham = (from s in db.SanPhams
+                          where s.MaDanhMucCon == id
+                          select s).Distinct();
+            return PartialView("DemSP_DMC", listSanPham);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

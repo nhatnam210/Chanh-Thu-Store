@@ -26,117 +26,106 @@
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="row">
-                <div class="col-sm-6 col-lg-6 mb-3">
-                    <div class="checkout-address">
-                        <div class="title-left">
-                            <h3>Địa Chỉ Thanh Toán</h3>
+        <div class="row">
+            <div class="col-sm-6 col-lg-6 mb-3">
+                <div class="checkout-address">
+                    <div class="title-left">
+                        <h3>Địa Chỉ Thanh Toán</h3>
+                    </div>
+                    <div class="needs-validation" novalidate>
+                        <div class="row">
+
+                            <div class="col-md-12 mb-3">
+                                <label for="lastName">Họ và Tên <span>*</span></label>
+                                <input type="text" class="form-control" name="name" id="name" placeholder="" value="" required>
+                                <div class="invalid-feedback"> Valid last name is required. </div>
+                            </div>
                         </div>
-                        <div class="needs-validation" novalidate>
-                            <div class="row">
+                        <div class="mb-3">
+                            <label for="username">Số Điện Thoại <span>*</span></label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="phone" id="phone" placeholder="" required>
+                                <div class="invalid-feedback"> Your username is required. </div>
+                            </div>
+                        </div>
 
-                                <div class="col-md-12 mb-3">
-                                    <label for="lastName">Họ và Tên <span>*</span></label>
-                                    <input type="text" class="form-control" name="name" id="name" placeholder="" value="" required>
-                                    <div class="invalid-feedback"> Valid last name is required. </div>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="username">Số Điện Thoại <span>*</span></label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" name="phone" id="phone" placeholder="" required>
-                                    <div class="invalid-feedback"> Your username is required. </div>
-                                </div>
-                            </div>
+                        <div class="mb-3">
+                            <label for="email">Email  <span>*</span></label>
+                            <input type="email" class="form-control" name="email" id="email" placeholder="" required>
+                            <div class="invalid-feedback"> Please enter a valid email address for shipping updates. </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="address">Địa Chỉ <span>*</span></label>
+                            <input type="text" class="form-control" name="address" id="address" placeholder="" required>
+                            <div class="invalid-feedback"> Please enter your shipping address. </div>
+                        </div>
+                        @*<div class="mb-3">
+                            <label for="address2">Địa Chỉ 2 *</label>
+                            <input type="text" class="form-control" id="Địa Chỉ" placeholder="">
+                        </div>
+                        <div class="row">
+                        <div class="col-md-5 mb-3">
+                            <label for="country">Tỉnh *</label>
+                            <select class="wide w-100" id="country">
+                                <option value="Choose..." data-display="Select">Chọn...</option>
+                                <option value="United States">Tiền Giang</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="state">Huyện *</label>
+                            <select class="wide w-100" id="state">
+                                <option data-display="Select">Chọn...</option>
+                                <option>Cái Bè</option>
+                            </select>
 
-                            <div class="mb-3">
-                                <label for="email">Email  <span>*</span></label>
-                                <input type="email" class="form-control" name="email" id="email" placeholder="" required>
-                                <div class="invalid-feedback"> Please enter a valid email address for shipping updates. </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="zip">Xã *</label>
+                            <select class="wide w-100" id="state">
+                                <option data-display="Select">Chọn...</option>
+                                <option>Hậu Mỹ Trinh</option>
+                            </select>
+                        </div>
+                    </div>
+                        <hr class="mb-4">
+                        <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="same-Địa Chỉ">
+                        <label class="custom-control-label" for="same-address">Địa chỉ giao hàng giống với địa chỉ thanh toán của tôi</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="save-info">
+                        <label class="custom-control-label" for="save-info">Lưu thông tin này cho lần sau</label>
+                    </div>*@
+                        <hr class="mb-4">
+                        <div class="d-block my-3">
+                            @{
+                                Html.RenderAction("VoucherTheoUser", "Cart");
+                            }
+                        </div>
+                        @*<div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="cc-name">Tên Trên Thẻ</label>
+                                <input type="text" class="form-control" id="cc-name" placeholder="" required> <small class="text-muted">Full name as displayed on card</small>
+                                <div class="invalid-feedback"> Name on card is required </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="address">Địa Chỉ <span>*</span></label>
-                                <input type="text" class="form-control" name="address" id="address" placeholder="" required>
-                                <div class="invalid-feedback"> Please enter your shipping address. </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="cc-number">Số Thẻ</label>
+                                <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                                <div class="invalid-feedback"> Credit card number is required </div>
                             </div>
-
-                            @*<div class="mb-3">
-                                    <label for="address2">Địa Chỉ 2 *</label>
-                                    <input type="text" class="form-control" id="Địa Chỉ" placeholder="">
-                                </div>*@
-                            @*<div class="row">
-                                    <div class="col-md-5 mb-3">
-                                        <label for="country">Tỉnh *</label>
-                                        <select class="wide w-100" id="country">
-                                            <option value="Choose..." data-display="Select">Chọn...</option>
-                                            <option value="United States">Tiền Giang</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label for="state">Huyện *</label>
-                                        <select class="wide w-100" id="state">
-                                            <option data-display="Select">Chọn...</option>
-                                            <option>Cái Bè</option>
-                                        </select>
-
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <label for="zip">Xã *</label>
-                                        <select class="wide w-100" id="state">
-                                            <option data-display="Select">Chọn...</option>
-                                            <option>Hậu Mỹ Trinh</option>
-                                        </select>
-                                    </div>
-                                </div>*@
-                            @*<hr class="mb-4">*@
-                            @*<div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="same-Địa Chỉ">
-                                    <label class="custom-control-label" for="same-address">Địa chỉ giao hàng giống với địa chỉ thanh toán của tôi</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="save-info">
-                                    <label class="custom-control-label" for="save-info">Lưu thông tin này cho lần sau</label>
-                                </div>
-                                <hr class="mb-4">
-                                <div class="title"> <span>Thanh Toán</span> </div>
-                                <div class="d-block my-3">
-                                    <div class="custom-control custom-radio">
-                                        <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
-                                        <label class="custom-control-label" for="credit">PayPal</label>
-                                    </div>
-                                    <div class="custom-control custom-radio">
-                                        <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
-                                        <label class="custom-control-label" for="debit">MoMo</label>
-                                    </div>
-                                    <div class="custom-control custom-radio">
-                                        <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
-                                        <label class="custom-control-label" for="paypal">Khi Nhận Hàng</label>
-                                    </div>
-                                </div>*@
-                            <!--<div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="cc-name">Tên Trên Thẻ</label>
-                                    <input type="text" class="form-control" id="cc-name" placeholder="" required> <small class="text-muted">Full name as displayed on card</small>
-                                    <div class="invalid-feedback"> Name on card is required </div>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="cc-number">Số Thẻ</label>
-                                    <input type="text" class="form-control" id="cc-number" placeholder="" required>
-                                    <div class="invalid-feedback"> Credit card number is required </div>
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <label for="cc-expiration">Hết Hạn</label>
+                                <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                                <div class="invalid-feedback"> Expiration date required </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-3 mb-3">
-                                    <label for="cc-expiration">Hết Hạn</label>
-                                    <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-                                    <div class="invalid-feedback"> Expiration date required </div>
-                                </div>-->
-                            <!-- <div class="col-md-3 mb-3">
+                            <div class="col-md-3 mb-3">
                                 <label for="cc-expiration">CVV</label>
                                 <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
                                 <div class="invalid-feedback"> Security code required </div>
-                            </div> -->
-                            <!-- <div class="col-md-6 mb-3">
+                            </div>
+                            <div class="col-md-6 mb-3">
                                 <div class="payment-icon">
                                     <ul>
                                         <li><img class="img-fluid" src="images/payment-icon/1.png" alt=""></li>
@@ -146,112 +135,119 @@
                                         <li><img class="img-fluid" src="images/payment-icon/7.png" alt=""></li>
                                     </ul>
                                 </div>
-                            </div> -->
-                            <!--</div>-->
-                            <hr class="mb-1">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-6 mb-3">
-                    <div class="row">
-                        <div class="col-md-12 col-lg-12">
-                            <div class="shipping-method-box">
-                                <div class="title-left">
-                                    <h3>Phương pháp vận chuyển</h3>
-                                </div>
-                                <div class="mb-4">
-                                    <div class="custom-control custom-radio">
-                                        <input id="shippingOption1" name="ship" value="0" class="custom-control-input" checked="checked" type="radio">
-                                        <label class="custom-control-label" for="shippingOption1">Tiêu Chuẩn</label> <span class="float-right font-weight-bold">Miễn Phí</span>
-                                    </div>
-                                    <div class="ml-4 mb-2 small">(3-7 Ngày làm việc)</div>
-                                    <div class="custom-control custom-radio">
-                                        <input id="shippingOption2" name="ship" value="20000" class="custom-control-input" type="radio">
-                                        <label class="custom-control-label" for="shippingOption2">Express Delivery</label> <span class="float-right font-weight-bold">20.000 đ</span>
-                                    </div>
-                                    <div class="ml-4 mb-2 small">(2-4 ngày làm việc)</div>
-                                    <div class="custom-control custom-radio">
-                                        <input id="shippingOption3" name="ship" value="60000" class="custom-control-input" type="radio">
-                                        <label class="custom-control-label" for="shippingOption3">Ngày Hôm Sau</label> <span class="float-right font-weight-bold">60.000 đ</span>
-                                    </div>
-                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-12 col-lg-12">
-                            <div class="odr-box">
-                                @if (Model.Count > 0)
-                                {
-                                    <div class="title-left">
-                                        <h3>Giỏ hàng</h3>
-                                    </div>
-                                    <div class="rounded p-2 bg-second final-bill">
-                                        @foreach (var item in Model)
-
-                                        {
-                                            Total += item.Sanpham.Gia * item.Soluong;
-                                            <div class="media mb-2 border-bottom">
-                                                <div class="media-body">
-                                                    <a href="/cua-hang/san-pham?id=@item.Sanpham.MaSanPham">@item.Sanpham.TenSanPham</a>
-                                                    <div class="small text-muted"> @string.Format("{0:#,##0}", @item.Sanpham.Gia) đ<span class="mx-2">|</span> @item.Soluong cái <span class="mx-2">|</span> Tổng : <strong> @string.Format("{0:#,##0}", item.Sanpham.Gia * item.Soluong) đ</strong></div>
-                                                </div>
-                                            </div>
-                                        }
-
-
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div class="title-left">
-                                        <h3>Giỏ hàng <span class="text-muted" style="font-weight: 500;font-size: 16px;">(Trống)</span></h3>
-                                    </div>
-                                }
-
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-lg-12">
-                            <div class="order-box">
-                                <div class="title-left">
-                                    <h3>Thống kê</h3>
-                                </div>
-                                <div class="d-flex">
-                                    <div class="font-weight-bold">Sản Phẩm</div>
-                                    <div class="ml-auto font-weight-bold">Tổng</div>
-                                </div>
-                                <hr class="my-1">
-                                <div class="d-flex">
-                                    <h4>Tổng tiền</h4>
-                                    <div class="ml-auto font-weight-bold">  @string.Format("{0:#,##0}", @Total) đ </div>
-                                </div>
-
-                                <hr class="my-1">
-                                <div class="d-flex">
-                                    <h4>Voucher</h4>
-                                    <div class="ml-auto font-weight-bold">0 đ</div>
-                                </div>
-                                <!-- <div class="d-flex">
-                                    <h4>Thuế</h4>
-                                    <div class="ml-auto font-weight-bold"> $ 2 </div>
-                                </div> -->
-                                <div class="d-flex">
-                                    <h4>Phí ship</h4>
-                                    <div class="ml-auto font-weight-bold" id="ship-fee">0 đ</div>
-                                </div>
-                                <hr>
-                                <div class="d-flex gr-total">
-                                    <h5>Tổng thanh toán</h5>
-                                    <div class="ml-auto h2" style="color:red" id="final-price">@Total</div>
-                                </div>
-                                <hr>
-                            </div>
-                        </div>
-                        <div class="col-12 d-flex shopping-box"> <button style="font-weight: 600" type="submit" class="ml-auto btn hvr-hover max-width-mobile">Đặt Hàng</button> </div>
+                        </div>*@
+                        <hr class="mb-1">
                     </div>
                 </div>
             </div>
-        }
+
+            @*<div class="col-sm-6 col-lg-6 mb-3">
+            <div class="row">
+                @{
+                    Html.RenderAction("VoucherTheoUser", "Cart");
+                }
+            </div>
+        </div>*@
+
+            <div class="col-sm-6 col-lg-6 mb-3">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <div class="shipping-method-box">
+                            <div class="title-left">
+                                <h3>Phương pháp vận chuyển</h3>
+                            </div>
+                            <div class="mb-4">
+                                <div class="custom-control custom-radio">
+                                    <input id="shippingOption1" name="ship" value="0" class="custom-control-input" checked="checked" type="radio">
+                                    <label class="custom-control-label" for="shippingOption1">Tiêu Chuẩn</label> <span class="float-right font-weight-bold">Miễn Phí</span>
+                                </div>
+                                <div class="ml-4 mb-2 small">(3-7 Ngày làm việc)</div>
+                                <div class="custom-control custom-radio">
+                                    <input id="shippingOption2" name="ship" value="20000" class="custom-control-input" type="radio">
+                                    <label class="custom-control-label" for="shippingOption2">Express Delivery</label> <span class="float-right font-weight-bold">20.000 đ</span>
+                                </div>
+                                <div class="ml-4 mb-2 small">(2-4 ngày làm việc)</div>
+                                <div class="custom-control custom-radio">
+                                    <input id="shippingOption3" name="ship" value="60000" class="custom-control-input" type="radio">
+                                    <label class="custom-control-label" for="shippingOption3">Ngày Hôm Sau</label> <span class="float-right font-weight-bold">60.000 đ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-12">
+                        <div class="odr-box">
+                            @if (Model.Count > 0)
+                            {
+                                <div class="title-left">
+                                    <h3>Giỏ hàng</h3>
+                                </div>
+                                <div class="rounded p-2 bg-second final-bill">
+                                    @foreach (var item in Model)
+
+                                    {
+                                        Total += item.Sanpham.Gia * item.Soluong;
+                                        <div class="media mb-2 border-bottom">
+                                            <div class="media-body">
+                                                <a href="/cua-hang/san-pham?id=@item.Sanpham.MaSanPham">@item.Sanpham.TenSanPham</a>
+                                                <div class="small text-muted"> @string.Format("{0:#,##0}", @item.Sanpham.Gia) đ<span class="mx-2">|</span> @item.Soluong cái <span class="mx-2">|</span> Tổng : <strong> @string.Format("{0:#,##0}", item.Sanpham.Gia * item.Soluong) đ</strong></div>
+                                            </div>
+                                        </div>
+                                    }
 
 
-    </div>
-</div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="title-left">
+                                    <h3>Giỏ hàng <span class="text-muted" style="font-weight: 500;font-size: 16px;">(Trống)</span></h3>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-12">
+                        <div class="order-box">
+                            <div class="title-left">
+                                <h3>Thống kê</h3>
+                            </div>
+                            <div class="d-flex">
+                                <div class="font-weight-bold">Sản Phẩm</div>
+                                <div class="ml-auto font-weight-bold">Tổng</div>
+                            </div>
+                            <hr class="my-1">
+                            <div class="d-flex">
+                                <h4>Tổng tiền</h4>
+                                <div class="ml-auto font-weight-bold">  @string.Format("{0:#,##0}", @Total) đ </div>
+                            </div>
+
+                            <hr class="my-1">
+                            <div class="d-flex">
+                                <h4>Voucher</h4>
+                                <div id="voucher-fee" class="ml-auto font-weight-bold">0 %</div>
+                            </div>
+                            <!-- <div class="d-flex">
+                        <h4>Thuế</h4>
+                        <div class="ml-auto font-weight-bold"> $ 2 </div>
+                    </div> -->
+                            <div class="d-flex">
+                                <h4>Phí ship</h4>
+                                <div class="ml-auto font-weight-bold" id="ship-fee">0 đ</div>
+                            </div>
+                            <hr>
+                            <div class="d-flex gr-total">
+                                <h5>Tổng thanh toán</h5>
+                                <div class="ml-auto h2" style="color:red" id="final-price">@Total</div>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="col-12 d-flex shopping-box"> <button style="font-weight: 600" type="submit" class="ml-auto btn hvr-hover max-width-mobile">Đặt Hàng</button> </div>
+                </div>
+            </div>
+        </div>
+                }
+            </div>
+        </div>
 <!-- End Cart -->

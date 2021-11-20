@@ -797,4 +797,3 @@ D:\.IT\DO AN\#4 Do An Chuyen Nganh\ChanhThuStore\obj\Debug\ChanhThu_Store.csproj
 D:\.IT\DO AN\#4 Do An Chuyen Nganh\ChanhThuStore\obj\Debug\ChanhThu_Store.csproj.CopyComplete
 D:\.IT\DO AN\#4 Do An Chuyen Nganh\ChanhThuStore\obj\Debug\WebApplication1.dll
 D:\.IT\DO AN\#4 Do An Chuyen Nganh\ChanhThuStore\obj\Debug\WebApplication1.pdb
-D:\.IT\DO AN\#4 Do An Chuyen Nganh\ChanhThuStore\obj\Debug\ChanhThu_Store.csproj.AssemblyReference.cache

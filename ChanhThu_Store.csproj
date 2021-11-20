@@ -3285,6 +3285,8 @@
     <Content Include="Views\Account\_DoiVoucher.cshtml" />
     <Content Include="Views\Vouchers\LayDiemUser.cshtml" />
     <Content Include="Views\Vouchers\DanhSachVoucher.cshtml" />
+    <Content Include="Views\Shared\DemSP_DMC.cshtml" />
+    <Content Include="Views\Cart\VoucherTheoUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
