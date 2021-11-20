@@ -2,9 +2,13 @@
 
 @foreach (var item in Model)
 {
-    <a href="/cua-hang/danh-muc-con?id=@item.MaDanhMucCon" class="danh-muc-con list-group-item list-group-item-action">
-        @item.TenDanhMucCon
-        @*<small class="text-muted">(@i)</small>*@
-    </a>
+<a href="/cua-hang/danh-muc-con?id=@item.MaDanhMucCon" class="danh-muc-con list-group-item list-group-item-action">
+    @item.TenDanhMucCon
+
+    @*<small class="text-muted">(@i)</small>*@
+    @{
+        Html.RenderAction("DemSP_DMC", "DanhMucCons", new { id = item.MaDanhMucCon });
+    }
+</a>
 }
 

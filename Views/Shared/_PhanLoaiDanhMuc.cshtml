@@ -8,7 +8,7 @@
         {
         <div class="list-group-collapse sub-men">
             <a data-toggle="collapse" aria-expanded="true" aria-controls="@item.MaDanhMuc" class="list-group-item list-group-item-action group-menu-title" href="#@item.MaDanhMuc">
-                @item.TenDanhMuc<small class="text-muted quantity-danhmuccon"></small>
+                @item.TenDanhMuc<small class="text-muted quantity-small"></small>
                 <i class="fas fa-chevron-down arrow-down float-right"></i>
             </a>
             <div class="danh-muc collapse" id="@item.MaDanhMuc" data-parent="#list-group-men">
@@ -25,8 +25,8 @@
 
 <script>
     var groupDanhMucCon = document.querySelectorAll('.group-danhmucon')
-    var quantitytDanhMucCon = document.querySelectorAll('.quantity-danhmuccon')
+    var quantitytSmall = document.querySelectorAll('.quantity-small')
     groupDanhMucCon.forEach((item, index) => {
-        quantitytDanhMucCon[index].innerText = `(${item.childElementCount})`
+        quantitytSmall[index].innerText = `(${item.childElementCount})`
     })
 </script>

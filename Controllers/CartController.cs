@@ -12,10 +12,9 @@ using Microsoft.AspNet.Identity;
 
 namespace ChanhThu_Store.Controllers
 {
-    
     public class CartController : Controller
     {
-      
+        ChanhThuStoreContext db = new ChanhThuStoreContext();
         private const string CartSession = "CartSession";
 
         // GET: Cart
@@ -111,22 +110,27 @@ namespace ChanhThu_Store.Controllers
         }
         [Authorize]
         [HttpPost]
-        public ActionResult Payment(string name , string phone , string email , string address ,string ship)
+        public ActionResult Payment(string name , string phone , string email , string address ,string ship, string mavoucher)
         {
             ChanhThuStoreContext context = new ChanhThuStoreContext();
             var userID = User.Identity.GetUserId();
-            if(userID != null)
+            Voucher dungvoucher = db.Vouchers.Find(mavoucher);
+
+            if (userID != null && dungvoucher != null)
             {
                 HoaDon order = new HoaDon();
+
                 order.NgayLap = DateTime.Now.Date;
                 order.Ten = name;
                 order.SDT = phone;
                 order.Email = email;
                 order.DiaChi = address;
+                order.MaVoucher = mavoucher;
+                order.GiamGia = dungvoucher.GiaTriGiam;
                 order.MaKhachHang = userID;
                 var shipFee = Convert.ToInt32(ship);
                 order.Ship = shipFee;
-                var total = 0;
+                var total = 0.0;
                 try
                 {
                     var cart = (List<CartItem>)Session[CartSession];
@@ -134,6 +138,9 @@ namespace ChanhThu_Store.Controllers
                     {
                         total += item.Sanpham.Gia * item.Soluong;
                     }
+                    /*Lấy voucher*/
+                    total -= total * Convert.ToDouble(dungvoucher.GiaTriGiam) / 100;
+
                     order.TongTien = total;
 
                     var id = new HoaDonDAO().Insert(order);
@@ -178,6 +185,21 @@ namespace ChanhThu_Store.Controllers
         {
             Session.Clear();
             return View();
+        }
+
+        public ActionResult VoucherTheoUser()
+        {
+            var userID = User.Identity.GetUserId();
+            IQueryable<Voucher> listVoucher = null;
+            if(userID!=null)
+            {
+                listVoucher = (from vc in db.Vouchers
+                               join ctvc in db.ChiTietVouchers on vc.MaVoucher equals ctvc.MaVoucher
+                               where vc.MaVoucher == ctvc.MaVoucher && ctvc.MaKhachHang == userID
+                               select vc).Distinct();
+            }
+
+            return PartialView("VoucherTheoUser", listVoucher);
         }
     }
 }

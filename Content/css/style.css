@@ -1228,7 +1228,7 @@ ul.cart-list > li.total > .btn:hover {
 .products-single {
     overflow: hidden;
     position: relative;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     border-radius: var(--img-corner-radius);
 }
 
@@ -3998,7 +3998,7 @@ ul.cart-list > li.total > .btn:hover {
     }
 
 
-    .unliked-heart-icon,
+    .not-like-heart-icon,
     .liked-heart-icon {
         color: var(--red);
         text-shadow: 0 0 5px #fff;
@@ -4035,13 +4035,13 @@ ul.cart-list > li.total > .btn:hover {
     color: var(--title-color);
 }
 
-    .group-menu-title .quantity-danhmuccon {
-        margin-left: 5px;
-        font-weight: 500;
-        color: var(--gray) !important;
-        text-transform: capitalize;
-        font-size: 13px;
-    }
+.quantity-small {
+    margin-left: 5px;
+    font-weight: 500;
+    color: var(--gray) !important;
+    text-transform: capitalize;
+    font-size: 13px;
+}
 
 .bg-second {
     background-color: var(--background-font);

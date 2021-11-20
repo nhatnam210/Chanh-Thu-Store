@@ -50,19 +50,19 @@ const navItem = getAll('ul.navbar-nav>li')
 const navItemHref = getAll('ul.navbar-nav>li>a')
 
 if (navItem && navItemHref) {
-    if (locationHref.includes('cua-hang')) {
-        navItem.forEach((item, index) => {
-            item.classList.remove('active')
-        })
-        navItem[2].classList.add('active')
-    } else if (locationHref.endsWith('44340') || locationHref.endsWith('44340/')) {
+    if (locationHref.endsWith('44340') || locationHref.endsWith('44340/') ) {
         navItem.forEach((item, index) => {
             item.classList.remove('active')
         })
         navItem[0].classList.add('active')
+    } else if (locationHref.includes('cua-hang')) {
+        navItem.forEach((item, index) => {
+            item.classList.remove('active')
+        })
+        navItem[2].classList.add('active')
     }  else {
         navItem.forEach((item, index) => {
-            if (locationHref.includes(navItemHref[index].href)) {
+            if (locationHref.includes(navItemHref[index].href) && navItemHref[index].href.length > 0) {
                 item.classList.add('active')
             } else {
                 item.classList.remove('active')
@@ -173,7 +173,9 @@ function formatCash(str) {
     })
 }
 var total;
-var shipMoney;
+var shipMoney = 0;
+var voucherPercent = 0;
+var finalMoney;
 
 var finalPrice = document.getElementById('final-price')
 if (finalPrice) {
@@ -184,19 +186,39 @@ if (finalPrice) {
     var shipInput = getAll('input[name="ship"]')
     var shipFee = document.getElementById('ship-fee');
 
-    if (shipInput && shipFee) {
+
+    var voucherInput = getAll('input[name="mavoucher"]')
+    var voucherFee = document.getElementById('voucher-fee');
+
+
+    if (shipInput && shipFee || voucherInput && voucherFee) {
+
+        function TinhToanGiaCuoi() {
+            shipFee.innerText = `${formatCash(shipMoney.toString())} đ`
+            voucherFee.innerText = `${voucherPercent} %`
+            finalMoney = total + shipMoney - total * (voucherPercent / 100)
+            finalPrice.innerText = `${formatCash(finalMoney.toString())} VNĐ`
+        }
+
+        // SHIP
         shipInput.forEach(function (item) {
             item.onclick = function () {
                 shipMoney = parseInt(item.value)
 
-                shipFee.innerText = `${formatCash(shipMoney.toString())}`
-                finalMoney = shipMoney + total
-                finalPrice.innerText = `${formatCash(finalMoney.toString())} VNĐ`
+                TinhToanGiaCuoi()
             }
-
         })
-    }
 
+        //// VOUCHER
+        voucherInput.forEach(function (itemVoucher) {
+            itemVoucher.onclick = function () {
+                voucherPercent = parseInt(itemVoucher.dataset.voucher)
+
+                TinhToanGiaCuoi()
+            }
+        })
+
+    }
 }
 
 /* ..............................................
