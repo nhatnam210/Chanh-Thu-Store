@@ -13,6 +13,7 @@ namespace ChanhThu_Store.Models
         public Voucher()
         {
             ChiTietVouchers = new HashSet<ChiTietVoucher>();
+            HoaDons = new HashSet<HoaDon>();
         }
 
         [Key]
@@ -32,5 +33,8 @@ namespace ChanhThu_Store.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietVoucher> ChiTietVouchers { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HoaDon> HoaDons { get; set; }
     }
 }

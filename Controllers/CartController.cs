@@ -16,6 +16,7 @@ namespace ChanhThu_Store.Controllers
     {
         ChanhThuStoreContext db = new ChanhThuStoreContext();
         private const string CartSession = "CartSession";
+        DateTime thisDay = DateTime.Today;
 
         // GET: Cart
         public ActionResult Index()
@@ -110,13 +111,12 @@ namespace ChanhThu_Store.Controllers
         }
         [Authorize]
         [HttpPost]
-        public ActionResult Payment(string name , string phone , string email , string address ,string ship, string mavoucher)
+        public ActionResult Payment(string name, string email, string phone,string address ,string ship = "0", string mavoucher = null)
         {
-            ChanhThuStoreContext context = new ChanhThuStoreContext();
             var userID = User.Identity.GetUserId();
-            Voucher dungvoucher = db.Vouchers.Find(mavoucher);
+            var giatrigiam = 0;
 
-            if (userID != null && dungvoucher != null)
+            if (userID != null)
             {
                 HoaDon order = new HoaDon();
 
@@ -126,7 +126,14 @@ namespace ChanhThu_Store.Controllers
                 order.Email = email;
                 order.DiaChi = address;
                 order.MaVoucher = mavoucher;
-                order.GiamGia = dungvoucher.GiaTriGiam;
+
+                if (db.ChiTietVouchers.Any(p => p.MaKhachHang == userID && p.MaVoucher == mavoucher))
+                {
+                    order.MaVoucher = mavoucher;
+                    Voucher dungvoucher = db.Vouchers.Find(mavoucher);
+                        giatrigiam = dungvoucher.GiaTriGiam;
+                }
+                //order.GiamGia = giatrigiam;
                 order.MaKhachHang = userID;
                 var shipFee = Convert.ToInt32(ship);
                 order.Ship = shipFee;
@@ -139,9 +146,8 @@ namespace ChanhThu_Store.Controllers
                         total += item.Sanpham.Gia * item.Soluong;
                     }
                     /*Lấy voucher*/
-                    total -= total * Convert.ToDouble(dungvoucher.GiaTriGiam) / 100;
-
-                    order.TongTien = total;
+                    total -= total * Convert.ToDouble(giatrigiam) / 100;
+                    order.TongTien = Convert.ToInt32(total);
 
                     var id = new HoaDonDAO().Insert(order);
 
@@ -149,7 +155,7 @@ namespace ChanhThu_Store.Controllers
                     foreach (var item in cart)
                     {
                         /*Thay đổi số lượng tồn kho*/
-                        SanPham sanphamDB = context.SanPhams.Find(item.Sanpham.MaSanPham);
+                        SanPham sanphamDB = db.SanPhams.Find(item.Sanpham.MaSanPham);
                         
                         sanphamDB.SoLuongDaBan += item.Soluong;
                         var tonkhomoi = sanphamDB.SoLuongTonKho - item.Soluong;
@@ -160,9 +166,10 @@ namespace ChanhThu_Store.Controllers
                         sanphamDB.SoLuongTonKho = tonkhomoi;
 
                         /*Thay đổi điểm tích lũy*/
-                        AspNetUser user = context.AspNetUsers.Find(userID);
+                        AspNetUser user = db.AspNetUsers.Find(userID);
                         user.DiemTichLuy += item.Sanpham.Diem * item.Soluong;
 
+                        /*Thêm vào chitiethoadon*/
                         ChiTietHoaDon orderDetail = new ChiTietHoaDon();
                         orderDetail.MaSanPham = item.Sanpham.MaSanPham;
                         orderDetail.MaHoaDon = id;
@@ -170,13 +177,24 @@ namespace ChanhThu_Store.Controllers
                         orderDetail.Soluong = item.Soluong;
                         detailDao.Insert(orderDetail);
                     }
+
+                    /*Cập nhật số lượng voucher của User*/
+                    ChiTietVoucher ctvcUser = db.ChiTietVouchers.SingleOrDefault(p => p.MaKhachHang == userID && p.MaVoucher == mavoucher);
+                    if(ctvcUser != null)
+                    {
+                        ctvcUser.SoLuong--;
+                        if (ctvcUser.SoLuong == 0)
+                        {
+                            db.ChiTietVouchers.Remove(ctvcUser);
+                        }
+                    }
                 }
                 catch
                 {
                     return Redirect("/loi-thanh-toan");
                 }
 
-                context.SaveChanges();
+                db.SaveChanges();
                 return Redirect("/hoan-thanh");
             }
                 return null;
@@ -195,7 +213,7 @@ namespace ChanhThu_Store.Controllers
             {
                 listVoucher = (from vc in db.Vouchers
                                join ctvc in db.ChiTietVouchers on vc.MaVoucher equals ctvc.MaVoucher
-                               where vc.MaVoucher == ctvc.MaVoucher && ctvc.MaKhachHang == userID
+                               where vc.MaVoucher == ctvc.MaVoucher && ctvc.MaKhachHang == userID && vc.HanSuDung > thisDay
                                select vc).Distinct();
             }
 
