@@ -66,33 +66,48 @@
                 <th>
                     Hạn sử dụng
                 </th>
-                
+                <th>
+                   Đổi mã
+                </th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TenVoucher)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.GiaTriGiam)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DiemDoi)
-                    </td>
-                    <td>
-                        @item.HanSuDung.ToString("dd-MM-yyyy")
-                    
-                    </td>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenVoucher)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GiaTriGiam)%
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiemDoi)
+                </td>
+                <td>
+                    @item.HanSuDung.ToString("dd-MM-yyyy")
+
+                </td>
+                @if (Request.IsAuthenticated)
+                {
                     <td>
                         @*@Html.ActionLink("Đổi thôi!", "DoiVoucher", new { idVoucher = item.MaVoucher })*@
                         <a class="btn login hvr-hover voucher-point" style="min-width:130px;" data-point="@item.DiemDoi" href="/Vouchers/DoiVoucher?idVoucher=@item.MaVoucher">Đổi điểm</a>
                         @*item.dataset.point*@
                         @*item.herf=""*@
                     </td>
-                </tr>
+                }
+                else
+                {
+                    <td>
+                        @*@Html.ActionLink("Đổi thôi!", "DoiVoucher", new { idVoucher = item.MaVoucher })*@
+                        <a class="btn login hvr-hover voucher-point btnDisable" style="min-width:130px;" data-point="@item.DiemDoi">Buộc đăng nhập</a>
+                        @*item.dataset.point*@
+                        @*item.herf=""*@
+                    </td>
+                }
+
+            </tr>
             }
         </tbody>
 
