@@ -17,7 +17,7 @@
                 <tr>
                     <td>@item.MaSanPham</td>
                     <td>@item.SanPham.TenSanPham</td>
-                    <td>@item.Soluong</td>
+                    <td>@item.Soluong @item.SanPham.DonViTinh</td>
                     <td>@string.Format("{0:#,##0}", item.DonGia) đ</td>
                     <td>@string.Format("{0:#,##0}", item.DonGia* item.Soluong) đ</td>
                 </tr>

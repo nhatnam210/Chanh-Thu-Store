@@ -12,7 +12,13 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.AspNetUser.Ten)
+            Ngày lập
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NgayLap)
+        </dd>
+        <dt>
+            Người đặt
         </dt>
 
         <dd>
@@ -20,35 +26,34 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NgayLap)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NgayLap)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MaVoucher)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MaVoucher)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TongTien)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TongTien)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Ten)
+            Người nhận
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Ten)
+        </dd>
+
+        <dt>
+            Địa chỉ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dd>
+            Giảm giá
+        </dd>
+        <dt>
+            @Model.Voucher.GiaTriGiam%
+        </dt>
+
+        <dt>
+            Tổng tiền
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TongTien)
         </dd>
 
         <dt>
@@ -57,14 +62,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.SDT)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DiaChi)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DiaChi)
         </dd>
 
         <dt>

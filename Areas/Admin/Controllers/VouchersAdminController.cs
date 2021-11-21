@@ -37,7 +37,9 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
                           select s;
             if (!String.IsNullOrEmpty(timkiem))
             {
-                voucher = voucher.Where(s => s.TenVoucher.Contains(timkiem));
+                voucher = voucher.Where(s => s.TenVoucher.Contains(timkiem)
+                || s.MaVoucher.Contains(timkiem)
+                );
                 //|| s.author.Contains(timkiem)
 
             }

@@ -118,7 +118,15 @@
                         <table class="table">
                             <tr>
                                 <th>Giảm giá:</th>
-                                <td>@Model.Voucher.GiaTriGiam%</td>
+                                @if (Model.Voucher != null)
+                                {
+                                    <td>@Model.Voucher.GiaTriGiam%</td>
+                                }
+                                else
+                                {
+                                    <td>0%</td>
+                                }
+
                             </tr>
                             <tr>
                                 <th style="width:50%">Tổng tiền hàng:</th>

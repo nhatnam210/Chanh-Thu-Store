@@ -38,7 +38,12 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
                              select s;
             if (!String.IsNullOrEmpty(timkiem))
             {
-                hoadon = hoadon.Where(s => (s.MaHoaDon).ToString().Contains(timkiem));
+                hoadon = hoadon.Where(s => s.MaHoaDon.ToString().Contains(timkiem)
+                || s.Ten.Contains(timkiem)
+                || s.SDT.Contains(timkiem)
+                || s.Email.Contains(timkiem)
+                || s.NgayLap.ToString().Contains(timkiem)
+                );
                 //|| s.author.Contains(timkiem)
 
             }

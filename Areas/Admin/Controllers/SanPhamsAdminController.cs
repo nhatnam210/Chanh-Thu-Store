@@ -38,7 +38,9 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
                           select s;
             if (!String.IsNullOrEmpty(timkiem))
             {
-                sanpham = sanpham.Where(s => s.TenSanPham.Contains(timkiem));
+                sanpham = sanpham.Where(s => s.TenSanPham.Contains(timkiem) 
+                || s.DanhMucCon.TenDanhMucCon.Contains(timkiem)
+                || s.MaSanPham.Contains(timkiem));
                 //|| s.author.Contains(timkiem)
 
             }
