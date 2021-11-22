@@ -22,6 +22,7 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             ViewBag.Sapxep = sapxep;
             ViewBag.SapxepMa = String.IsNullOrEmpty(sapxep) ? "Id" : "";
             ViewBag.SapxepTen = sapxep == "Ten" ? "Ten_desc" : "Ten";
+            ViewBag.SapxepTonKho = sapxep == "Tonkho" ? "Tonkho_desc" : "Tonkho";
 
             //phan trang
             if (timkiem != null)
@@ -38,7 +39,9 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
                           select s;
             if (!String.IsNullOrEmpty(timkiem))
             {
-                sanpham = sanpham.Where(s => s.TenSanPham.Contains(timkiem));
+                sanpham = sanpham.Where(s => s.TenSanPham.Contains(timkiem) 
+                || s.DanhMucCon.TenDanhMucCon.Contains(timkiem)
+                || s.MaSanPham.Contains(timkiem));
                 //|| s.author.Contains(timkiem)
 
             }
@@ -53,6 +56,12 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
                     break;
                 case "Ten_desc":
                     sanpham = sanpham.OrderByDescending(s => s.TenSanPham);
+                    break;
+                case "Tonkho":
+                    sanpham = sanpham.OrderBy(s => s.SoLuongTonKho);
+                    break;
+                case "Tonkho_desc":
+                    sanpham = sanpham.OrderByDescending(s => s.SoLuongTonKho);
                     break;
                 default:
                     sanpham = sanpham.OrderBy(s => s.MaSanPham);

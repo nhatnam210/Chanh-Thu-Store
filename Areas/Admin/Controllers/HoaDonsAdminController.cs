@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ChanhThu_Store.Models;
 using PagedList;
+
 
 namespace ChanhThu_Store.Areas.Admin.Controllers
 {
@@ -38,7 +40,13 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
                              select s;
             if (!String.IsNullOrEmpty(timkiem))
             {
-                hoadon = hoadon.Where(s => (s.MaHoaDon).ToString().Contains(timkiem));
+                CultureInfo VN = new CultureInfo("vi-VN"); 
+                hoadon = hoadon.Where(s => s.MaHoaDon.ToString().Contains(timkiem)
+                || s.Ten.Contains(timkiem)
+                || s.SDT.Contains(timkiem)
+                || s.Email.Contains(timkiem)
+                || s.NgayLap.ToString().Contains(timkiem)
+                );
                 //|| s.author.Contains(timkiem)
 
             }
@@ -46,7 +54,7 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             switch (sapxep)
             {
                 case "Id":
-                    hoadon = hoadon.OrderByDescending(s => s.MaHoaDon);
+                    hoadon = hoadon.OrderBy(s => s.MaHoaDon);
                     break;
                 case "Id desc":
                     hoadon = hoadon.OrderByDescending(s => s.MaHoaDon);
@@ -73,20 +81,20 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             return View(hoadon.ToPagedList(pageNumber, pageSize));
         }
 
-        // GET: Admin/HoaDonsAdmin/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            HoaDon hoaDon = db.HoaDons.Find(id);
-            if (hoaDon == null)
-            {
-                return HttpNotFound();
-            }
-            return View(hoaDon);
-        }
+        //// GET: Admin/HoaDonsAdmin/Details/5
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    HoaDon hoaDon = db.HoaDons.Find(id);
+        //    if (hoaDon == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(hoaDon);
+        //}
 
         public ActionResult InHoaDon(int? id)
         {
@@ -117,62 +125,62 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         }
 
         // GET: Admin/HoaDonsAdmin/Create
-        public ActionResult Create()
-        {
-            ViewBag.MaKhachHang = new SelectList(db.AspNetUsers, "Id", "Ten");
-            return View();
-        }
+        //public ActionResult Create()
+        //{
+        //    ViewBag.MaKhachHang = new SelectList(db.AspNetUsers, "Id", "Ten");
+        //    return View();
+        //}
 
-        // POST: Admin/HoaDonsAdmin/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaHoaDon,MaKhachHang,NgayLap,MaVoucher,TongTien,Ten,SDT,DiaChi,Email")] HoaDon hoaDon)
-        {
-            if (ModelState.IsValid)
-            {
-                db.HoaDons.Add(hoaDon);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+        //// POST: Admin/HoaDonsAdmin/Create
+        //// To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create([Bind(Include = "MaHoaDon,MaKhachHang,NgayLap,MaVoucher,TongTien,Ten,SDT,DiaChi,Email")] HoaDon hoaDon)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.HoaDons.Add(hoaDon);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
 
-            ViewBag.MaKhachHang = new SelectList(db.AspNetUsers, "Id", "Ten", hoaDon.MaKhachHang);
-            return View(hoaDon);
-        }
+        //    ViewBag.MaKhachHang = new SelectList(db.AspNetUsers, "Id", "Ten", hoaDon.MaKhachHang);
+        //    return View(hoaDon);
+        //}
 
-        // GET: Admin/HoaDonsAdmin/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            HoaDon hoaDon = db.HoaDons.Find(id);
-            if (hoaDon == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.MaKhachHang = new SelectList(db.AspNetUsers, "Id", "Ten", hoaDon.MaKhachHang);
-            return View(hoaDon);
-        }
+        //// GET: Admin/HoaDonsAdmin/Edit/5
+        //public ActionResult Edit(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    HoaDon hoaDon = db.HoaDons.Find(id);
+        //    if (hoaDon == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    ViewBag.MaKhachHang = new SelectList(db.AspNetUsers, "Id", "Ten", hoaDon.MaKhachHang);
+        //    return View(hoaDon);
+        //}
 
-        // POST: Admin/HoaDonsAdmin/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaHoaDon,MaKhachHang,NgayLap,MaVoucher,TongTien,Ten,SDT,DiaChi,Email")] HoaDon hoaDon)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(hoaDon).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.MaKhachHang = new SelectList(db.AspNetUsers, "Id", "Ten", hoaDon.MaKhachHang);
-            return View(hoaDon);
-        }
+        //// POST: Admin/HoaDonsAdmin/Edit/5
+        //// To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit([Bind(Include = "MaHoaDon,MaKhachHang,NgayLap,MaVoucher,TongTien,Ten,SDT,DiaChi,Email")] HoaDon hoaDon)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Entry(hoaDon).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    ViewBag.MaKhachHang = new SelectList(db.AspNetUsers, "Id", "Ten", hoaDon.MaKhachHang);
+        //    return View(hoaDon);
+        //}
 
         // GET: Admin/HoaDonsAdmin/Delete/5
         public ActionResult Delete(int? id)

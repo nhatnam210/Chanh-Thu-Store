@@ -105,7 +105,7 @@ namespace ChanhThu_Store
             );
             routes.MapRoute(
                 name: "chi tiet hoa don",
-                url: "thong-tin-ca-nhan/lich-su-mua-hang/chi-tiet-hoa-don",
+                url: "thong-tin-ca-nhan/lich-su-mua-hang/hoa-don",
                 defaults: new { controller = "ChitietHoaDon", action = "Index", id = UrlParameter.Optional }
             );
             routes.MapRoute(
