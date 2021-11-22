@@ -12,6 +12,7 @@ namespace ChanhThu_Store.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SanPham()
         {
+            BinhLuans = new HashSet<BinhLuan>();
             ChiTietHoaDons = new HashSet<ChiTietHoaDon>();
             TuongTacs = new HashSet<TuongTac>();
         }
@@ -65,6 +66,8 @@ namespace ChanhThu_Store.Models
 
         public bool TinhTrang { get; set; }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BinhLuan> BinhLuans { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }

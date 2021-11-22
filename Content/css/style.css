@@ -4222,4 +4222,10 @@ ul.cart-list > li.total > .btn:hover {
     100% {
         transform: rotate(360deg);
     }
-} 
+}
+.avatar-info {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 25px 0;
+}

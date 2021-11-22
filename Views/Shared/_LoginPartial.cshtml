@@ -7,8 +7,8 @@
         {
             @Html.AntiForgeryToken()
 
-                <a href="/admin" class="btn login hvr-hover">Admin Page</a>
-                <a class="btn login hvr-hover" href="javascript:document.getElementById('logoutForm').submit()">Đăng Xuất</a>        
+            <a href="/admin" class="btn login hvr-hover">Admin Page</a>
+            <a class="btn login hvr-hover" href="javascript:document.getElementById('logoutForm').submit()">Đăng Xuất</a>
         }
     }
     else
@@ -16,7 +16,15 @@
         using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
         {
             @Html.AntiForgeryToken()
-            <a href="/thong-tin-ca-nhan" class="name-account" routeValues: null> Xin chào @User.Identity.GetUserName()</a>
+            <a href="/thong-tin-ca-nhan" class="name-account" routeValues: null>
+                Xin chào
+                <span>
+                    @{
+                        Html.RenderAction("GetAvatar", "Account");
+                    }
+                </span>
+                @User.Identity.GetUserName()
+            </a>
             <a class="btn login hvr-hover" href="javascript:document.getElementById('logoutForm').submit()">Đăng xuất</a>
         }
     }
