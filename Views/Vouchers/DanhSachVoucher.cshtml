@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<ChanhThu_Store.Models.Voucher>
+@using System.Globalization;
+@{ CultureInfo VN = new CultureInfo("vi-VN");}
 
 @{
     ViewBag.Title = "DanhSachVoucher";
@@ -67,7 +69,7 @@
                     Hạn sử dụng
                 </th>
                 <th>
-                   Đổi mã
+                   Tùy chọn
                 </th>
             </tr>
         </thead>
@@ -85,25 +87,19 @@
                     @Html.DisplayFor(modelItem => item.DiemDoi)
                 </td>
                 <td>
-                    @item.HanSuDung.ToString("dd-MM-yyyy")
-
+                    @item.HanSuDung.ToString("d", VN)
                 </td>
                 @if (Request.IsAuthenticated)
                 {
                     <td>
-                        @*@Html.ActionLink("Đổi thôi!", "DoiVoucher", new { idVoucher = item.MaVoucher })*@
-                        <a class="btn login hvr-hover voucher-point" style="min-width:130px;" data-point="@item.DiemDoi" href="/Vouchers/DoiVoucher?idVoucher=@item.MaVoucher">Đổi điểm</a>
-                        @*item.dataset.point*@
-                        @*item.herf=""*@
+                        <a class="btn login hvr-hover voucher-point" style="min-width:130px;" data-point="@item.DiemDoi" href="/Vouchers/DoiVoucher?idVoucher=@item.MaVoucher">Đổi mã</a>
+                       
                     </td>
                 }
                 else
                 {
                     <td>
-                        @*@Html.ActionLink("Đổi thôi!", "DoiVoucher", new { idVoucher = item.MaVoucher })*@
                         <a class="btn login hvr-hover voucher-point btnDisable" style="min-width:130px;" data-point="@item.DiemDoi">Buộc đăng nhập</a>
-                        @*item.dataset.point*@
-                        @*item.herf=""*@
                     </td>
                 }
 

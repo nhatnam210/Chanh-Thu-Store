@@ -58,6 +58,11 @@
 </head>
 
 <body>
+    <!-- Start Loader -->
+    <div id="loader__wrap" class="loader__wrap">
+        <span id="loader__effect"></span>
+    </div>
+    <!-- End Loader -->
     <!-- Start Main Top -->
     <div class="main-top">
         <div class="container-fluid">
@@ -133,7 +138,7 @@
                     <a class="navbar-brand" href="/trang-chu"><img src="~/Content/images/logo.png" class="logo" alt=""></a>
                 </div>
                 <!-- End Header Navigation -->
-                <!-- Collect the nav links, forms, and other content for toggling --> 
+                <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                         <li class="nav-item active">
@@ -162,7 +167,7 @@
                 <!-- /.navbar-collapse -->
                 <!-- Start Atribute Navigation -->
                 @{ Html.RenderAction("HeaderCart", "Home");}
-                </div>
+            </div>
         </nav>
         <!-- End Navigation -->
     </header>
@@ -273,7 +278,7 @@
     <div class="footer-copyright">
         <p class="footer-company">
             Cung cấp những sản phẩm tốt nhất. &copy; 2021 <a href="/trang-chu">ChanhThuStore</a> @*Thiết kế bởi :
-            <a href="https://html.design/">html design</a>*@
+                <a href="https://html.design/">html design</a>*@
         </p>
     </div>
     <!-- End copyright  -->

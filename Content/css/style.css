@@ -4133,10 +4133,9 @@ ul.cart-list > li.total > .btn:hover {
 .full-container {
     max-width: 100%
 }
-.main {
+.table-container {
     width: 1500px;
     margin: auto;
-    margin-top: 50px;
     margin-bottom: 50px;
     overflow-y: auto;
     max-width: 100vw;
@@ -4144,7 +4143,8 @@ ul.cart-list > li.total > .btn:hover {
 .title-table {
     font-size: 36px;
     font-weight:700;
-    margin-bottom: 25px;
+    margin-top: 25px;
+    color: var(--primary-color);
 }
 
 /*Nút đổi voucher*/
@@ -4175,3 +4175,51 @@ ul.cart-list > li.total > .btn:hover {
     margin-bottom: 20px;
     text-align: justify;
 }
+
+/*Loader*/
+.loader__wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 99999;
+}
+
+#loader__effect {
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+    position: relative;
+}
+
+    #loader__effect::after,
+    #loader__effect::before {
+        content: '';
+        box-sizing: border-box;
+        width: 48px;
+        height: 48px;
+        border: 3px solid #222;
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-radius: 2px;
+        animation: rotation 2s ease-in-out infinite alternate;
+    }
+
+    #loader__effect::after {
+        border-color: var(--primary-color);
+        animation-direction: alternate-reverse;
+    }
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+} 

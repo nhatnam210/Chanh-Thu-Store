@@ -244,20 +244,25 @@ if (quantityCart) {
 
 var btnGetVoucher = getAll('.voucher-point')
 var userPoint = getOne('.user-point__value')
+
 if (btnGetVoucher && userPoint) {
-    btnGetVoucher.forEach(function (item, index) {
-        var point = parseInt(item.dataset.point)
-        if (parseInt(userPoint.innerText) < point) {
+    var currentUserPoint = parseInt(userPoint.innerText)
+
+    btnGetVoucher.forEach(function (item) {
+        var voucherPoint = parseInt(item.dataset.point)
+
+        if (currentUserPoint < voucherPoint) {
             item.classList.add('btnDisable')
-            item.href = ""
+            item.removeAttribute("href")
             item.innerText = "Chưa đủ điểm"
         }
         else {
             item.onclick = function () {
-                alert('Đổi voucher thành công !')
+                //alert('Đổi voucher thành công !')
+                currentUserPoint -= voucherPoint
+                userPoint.innerText = currentUserPoint.toString();
             }
         }
-       
-    
+
 })
 }

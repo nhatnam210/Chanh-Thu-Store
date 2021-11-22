@@ -49,6 +49,8 @@ namespace ChanhThu_Store.Controllers
                     {
                         var updateCTVC = db.ChiTietVouchers.SingleOrDefault(p => p.MaKhachHang == userID && p.MaVoucher == idVoucher);
                         /*Cập nhật số lượng*/
+                        updateCTVC.SoLuong++;
+
                         diemHienTai -= voucher.DiemDoi;
                         if (diemHienTai <= 0)
                         {
@@ -77,8 +79,9 @@ namespace ChanhThu_Store.Controllers
 
                 db.SaveChanges();
             }
-           
-            return RedirectToAction("DanhSachVoucher", "Vouchers");
+
+            return new HttpStatusCodeResult(204);
+            //return RedirectToAction("DanhSachVoucher", "Vouchers");
         }
 
         public ActionResult LayDiemUser()
