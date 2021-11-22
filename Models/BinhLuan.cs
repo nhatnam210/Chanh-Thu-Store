@@ -6,19 +6,25 @@ namespace ChanhThu_Store.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("TuongTac")]
-    public partial class TuongTac
+    [Table("BinhLuan")]
+    public partial class BinhLuan
     {
         [Key]
-        [Column(Order = 0)]
+        public int MaBinhLuan { get; set; }
+
+        [Required]
+        [StringLength(128)]
         public string MaKhachHang { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
+        [Required]
         [StringLength(10)]
         public string MaSanPham { get; set; }
 
-        public bool? YeuThich { get; set; }
+        [Required]
+        public string NoiDungBinhLuan { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime NgayBinhLuan { get; set; }
 
         public virtual AspNetUser AspNetUser { get; set; }
 

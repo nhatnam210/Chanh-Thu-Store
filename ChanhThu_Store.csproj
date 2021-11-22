@@ -220,6 +220,7 @@
     <Compile Include="Models\AspNetUserClaim.cs" />
     <Compile Include="Models\AspNetUserLogin.cs" />
     <Compile Include="Models\Banner.cs" />
+    <Compile Include="Models\BinhLuan.cs" />
     <Compile Include="Models\BUS\BannerBUS.cs" />
     <Compile Include="Models\BUS\DanhMucBUS.cs" />
     <Compile Include="Models\BUS\HoaDonBUS.cs" />
@@ -3287,6 +3288,9 @@
     <Content Include="Views\Vouchers\DanhSachVoucher.cshtml" />
     <Content Include="Views\Shared\DemSP_DMC.cshtml" />
     <Content Include="Views\Cart\VoucherTheoUser.cshtml" />
+    <Content Include="Views\SanPhams\ShowDanhSachBinhLuan.cshtml" />
+    <Content Include="Views\Account\GetAvatar.cshtml" />
+    <Content Include="Views\Account\GetAvatarComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

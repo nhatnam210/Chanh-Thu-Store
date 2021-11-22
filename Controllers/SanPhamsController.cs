@@ -58,7 +58,43 @@ namespace ChanhThu_Store.Controllers
 
             return View(sanpham);
         }
+        [Authorize]
+        public ActionResult Binhluan(string masanpham, string noidung = "")
+        {
 
+            DateTime thisDay = DateTime.Today;
+            var userID = User.Identity.GetUserId();
+            SanPham find = db.SanPhams.FirstOrDefault(p => p.MaSanPham == masanpham);
+            if (find != null)
+            {
+                if(noidung.Trim().Length >= 0)
+                {
+                    var binhluan = new BinhLuan() { MaSanPham = masanpham, MaKhachHang = userID, NoiDungBinhLuan = noidung.Trim(), NgayBinhLuan = thisDay };
+
+                    db.BinhLuans.Add(binhluan);
+                    db.SaveChanges();
+                }
+            }
+
+            return Redirect(Request.UrlReferrer.ToString());
+        }
+        public ActionResult ShowDanhSachBinhLuan(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            SanPham sanpham = db.SanPhams.Find(id);
+            if (sanpham == null)
+            {
+                return HttpNotFound();
+            }
+            var objBinhLuan = db.BinhLuans.Where(p => p.MaSanPham == id);
+
+
+            return PartialView("ShowDanhSachBinhLuan", objBinhLuan);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

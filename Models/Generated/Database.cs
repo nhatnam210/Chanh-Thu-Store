@@ -298,6 +298,18 @@ namespace ChanhThuStorePoCo
 		[Column] public string MoTaSliderHeader { get; set; }
 	}
     
+	[TableName("dbo.sysdiagrams")]
+	[PrimaryKey("diagram_id")]
+	[ExplicitColumns]
+    public partial class sysdiagram : ChanhThuStorePoCoDB.Record<sysdiagram>  
+    {
+		[Column] public string name { get; set; }
+		[Column] public int principal_id { get; set; }
+		[Column] public int diagram_id { get; set; }
+		[Column] public int? version { get; set; }
+		[Column] public byte[] definition { get; set; }
+	}
+    
 	[TableName("dbo.ThongTinCuaHang")]
 	[PrimaryKey("TenCuaHang", AutoIncrement=false)]
 	[ExplicitColumns]
@@ -315,10 +327,11 @@ namespace ChanhThuStorePoCo
 	}
     
 	[TableName("dbo.TuongTac")]
-	[PrimaryKey("MaKhachHang", AutoIncrement=false)]
+	[PrimaryKey("MaBinhLuan")]
 	[ExplicitColumns]
     public partial class TuongTac : ChanhThuStorePoCoDB.Record<TuongTac>  
     {
+		[Column] public int MaBinhLuan { get; set; }
 		[Column] public string MaKhachHang { get; set; }
 		[Column] public string MaSanPham { get; set; }
 		[Column] public string NoiDungBinhLuan { get; set; }

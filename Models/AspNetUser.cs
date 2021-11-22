@@ -15,6 +15,7 @@ namespace ChanhThu_Store.Models
             AspNetUserLogins = new HashSet<AspNetUserLogin>();
             ChiTietVouchers = new HashSet<ChiTietVoucher>();
             HoaDons = new HashSet<HoaDon>();
+            BinhLuans = new HashSet<BinhLuan>();
             TuongTacs = new HashSet<TuongTac>();
             AspNetRoles = new HashSet<AspNetRole>();
         }
@@ -54,6 +55,8 @@ namespace ChanhThu_Store.Models
 
         public int AccessFailedCount { get; set; }
 
+        public string Avatar { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }
 
@@ -65,6 +68,9 @@ namespace ChanhThu_Store.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HoaDon> HoaDons { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BinhLuan> BinhLuans { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TuongTac> TuongTacs { get; set; }
