@@ -149,8 +149,8 @@ const notifyTitle = getOne('.notify-title')
 //Hiển thị thông báo thêm vào giỏ hàng thành công
 Array.from(listBtnShow).forEach((item) => {
     item.onclick = () => {
-        showNotify('Đã thêm vào giỏ hàng!', 'bag-check-outline', 1500)
-        location.reload();
+        showNotify('Đã thêm vào giỏ hàng!', 'bag-check-outline')
+        //location.reload();
     }
 })
 
@@ -226,6 +226,7 @@ if (finalPrice) {
 /* ..............................................
 Ẩn số lượng giỏ hàng khi về 0
  ................................................. */
+
 const quantityCart = getOne('.badge')
 if (quantityCart) {
     var countQuantityCart = parseInt(quantityCart.innerText)
@@ -237,7 +238,9 @@ if (quantityCart) {
 }
 
 
-
+/* ..............................................
+Ẩn hiện nút đổi voucher theo điểm
+ ................................................. */
 
 var btnGetVoucher = getAll('.voucher-point')
 var userPoint = getOne('.user-point__value')

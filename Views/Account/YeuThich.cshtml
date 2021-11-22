@@ -119,7 +119,9 @@
                                     </div>
                                 }
                             </div>
-                            <span class="show-page-text">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
+                            <div class="pagelist_custom">
+                                <span class="show-page-text">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
+                            </div>
 
                             @Html.PagedListPager(Model, page => Url.Action("YeuThich", new { page }))
                         </div>
