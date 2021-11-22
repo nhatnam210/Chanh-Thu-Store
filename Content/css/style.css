@@ -4154,6 +4154,3 @@ ul.cart-list > li.total > .btn:hover {
 .btnDisable::after {
     display:none;
 }
-.powr-comments #appView .powrMark {
-    display: none !important;
-}

@@ -10,151 +10,124 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h2 class="admin-title text-white text-center">Thêm Sản Phẩm</h2>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="form-horizontal">
+    <h2 class="admin-title text-white text-center">Thêm Sản Phẩm</h2>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group">
-            <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Tên Danh Mục Con</span>
-            <div class="col-md-10">
-                @Html.DropDownList("MaDanhMucCon", null, htmlAttributes: new { @class = "form-control" })
-
-            </div>
-        </div>
-        <div class="form-group">
-            <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Tên Nhà Sản Xuất</span>
-            <div class="col-md-10">
-                @Html.DropDownList("MaNhaSanXuat", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.NhaSanXuat.TenNhaSanXuat, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Mã Sản Phẩm</span>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MaSanPham, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MaSanPham, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Tên Sản Phẩm</span>
-            <div class="col-md-12">
-                @Html.EditorFor(model => model.TenSanPham, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TenSanPham, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Giá</span>
-            <div class="col-md-12">
-                @Html.EditorFor(model => model.Gia, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Gia, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Hình Chính</span>
-            <div class="col-md-12">
-                @Html.EditorFor(model => model.HinhChinh, new { htmlAttributes = new { @class = "form-control", @id = "linkImg" } })
-                @Html.ValidationMessageFor(model => model.HinhChinh, "", new { @class = "text-danger" })
-                <input type="text" size="48" name="url" id="url" /> <button id="ckfinder-popup-1" onclick="selectFileWithCKFinder()">Select file</button>
-            </div>
-        </div>
-        <div class="form-group">
-            <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Hình 1</span>
-            <div class="col-md-12">
-                @Html.EditorFor(model => model.Hinh1, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Hinh1, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Hình 2</span>
-            <div class="col-md-12">
-                @Html.EditorFor(model => model.Hinh2, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Hinh2, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Mô Tả</span>
-            <div class="col-md-12">
-                @Html.EditorFor(model => model.Mota, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Mota, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Số Lượng Tồn Kho</span>
-            <div class="col-md-12">
-                @Html.EditorFor(model => model.SoLuongTonKho, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SoLuongTonKho, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Số Lượng Đã Bán</span>
-            <div class="col-md-12">
-                @Html.EditorFor(model => model.SoLuongDaBan, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SoLuongDaBan, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Ngày Sản Xuất</span>
-            <div class="col-md-12">
-                @Html.TextBoxFor(m => m.NgaySanXuat, new { type = "date", id = "datepicker", name = "DueDate", @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.NgaySanXuat, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Hạn Sử Dụng</span>
-            <div class="col-md-12">
-                @Html.TextBoxFor(m => m.HanSuDung, new { type = "date", id = "datepicker", name = "DueDate", @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.HanSuDung, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Điểm</span>
-            <div class="col-md-12">
-                @Html.EditorFor(model => model.Diem, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Diem, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Tình Trạng</span>
-            <div class="col-md-12">
-                @Html.EditorFor(model => model.TinhTrang, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TinhTrang, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group col-md-12">
-            <div class="col-md-offset-2 btn-touch">
-                <input type="submit" value="Create" class="btn btn-success" />
-            </div>
-        </div>
-        <div class="col-md-12 back-to-list">
-            @Html.ActionLink("Trở về", "Index")
+    <div class="form-group">
+        <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Tên Danh Mục Con</span>
+        <div class="col-md-10">
+            @Html.DropDownList("MaDanhMucCon", null, htmlAttributes: new { @class = "form-control" })
+           
         </div>
     </div>
+    <div class="form-group">
+        <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Tên Nhà Sản Xuất</span>
+        <div class="col-md-10">
+            @Html.DropDownList("MaNhaSanXuat", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.NhaSanXuat.TenNhaSanXuat, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Mã Sản Phẩm</span>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.MaSanPham, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.MaSanPham, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Tên Sản Phẩm</span>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.TenSanPham, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TenSanPham, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Giá</span>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.Gia, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Gia, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Hình Chính</span>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.HinhChinh, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.HinhChinh, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Hình 1</span>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.Hinh1, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Hinh1, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Hình 2</span>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.Hinh2, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Hinh2, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Mô Tả</span>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.Mota, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Mota, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Số Lượng Tồn Kho</span>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.SoLuongTonKho, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SoLuongTonKho, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Số Lượng Đã Bán</span>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.SoLuongDaBan, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SoLuongDaBan, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Ngày Sản Xuất</span>
+        <div class="col-md-12">
+            @Html.TextBoxFor(m => m.NgaySanXuat, new { type = "date", id = "datepicker", name = "DueDate", @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.NgaySanXuat, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Hạn Sử Dụng</span>
+        <div class="col-md-12">
+            @Html.TextBoxFor(m => m.HanSuDung, new { type = "date", id = "datepicker", name = "DueDate", @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.HanSuDung, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Điểm</span>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.Diem, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Diem, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Tình Trạng</span>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.TinhTrang, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TinhTrang, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-md-12">
+        <div class="col-md-offset-2 btn-touch">
+            <input type="submit" value="Create" class="btn btn-success" />
+        </div>
+    </div>
+    <div class="col-md-12 back-to-list">
+        @Html.ActionLink("Trở về", "Index")
+    </div>
+</div>
 }
-
-<script>
-    var button1 = document.getElementById('ckfinder-popup-1');
-    button1.onclick = function () {
-        selectFileWithCKFinder('ckfinder-input-1');
-    };
-    function selectFileWithCKFinder(linkImg) {
-        CKFinder.popup({
-            chooseFiles: true,
-            width: 800,
-            height: 600,
-            onInit: function (finder) {
-                finder.on('files:choose', function (evt) {
-                    var file = evt.data.files.first();
-                    var output = document.getElementById(linkImg);
-                    output.value = file.getUrl();
-                });
-
-                finder.on('file:choose:resizedImage', function (evt) {
-                    var output = document.getElementById(linkImg);
-                    output.value = evt.data.resizedUrl;
-                });
-            }
-        });
-    }
-</script>
