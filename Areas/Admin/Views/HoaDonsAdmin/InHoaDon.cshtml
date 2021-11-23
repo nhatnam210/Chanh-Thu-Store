@@ -1,4 +1,6 @@
 ﻿@model ChanhThu_Store.Models.HoaDon
+@using System.Globalization;
+@{ CultureInfo VN = new CultureInfo("vi-VN");}
 @{
     Layout = null;
 }
@@ -54,7 +56,9 @@
                         <i style="margin-right:16px" class="fas fa-store"></i>
                         <span>ChanhThuStore</span>
                         @*<small class="float-right">Ngày: @Model.NgayLap.Value.ToShortDateString()</small>*@
-                        <small class="float-right">Ngày: @Model.NgayLap.ToString("dd-MM-yyyy")</small>
+                        <small class="float-right">
+                            Ngày: @Model.NgayLap.ToString("d", VN)
+                        </small>
                     </h2>
                 </div>
                 <!-- /.col -->
@@ -84,7 +88,7 @@
                 <!--<div class="col-sm-4 invoice-col">
                     <b>Mã Hóa Đơn: @Model.MaHoaDon</b><br>
                     <br>-->
-                    @*<b>Mã Người Dùng:</b> @Model.MaKhachHang*@
+                @*<b>Mã Người Dùng:</b> @Model.MaKhachHang*@
                 <!--</div>-->
                 <!-- /.col -->
             </div>
@@ -118,7 +122,15 @@
                         <table class="table">
                             <tr>
                                 <th>Giảm giá:</th>
-                                <td>@Model.Voucher.GiaTriGiam%</td>
+                                @if (Model.Voucher != null)
+                                {
+                                    <td>@Model.Voucher.GiaTriGiam%</td>
+                                }
+                                else
+                                {
+                                    <td>0%</td>
+                                }
+
                             </tr>
                             <tr>
                                 <th style="width:50%">Tổng tiền hàng:</th>

@@ -114,7 +114,7 @@
                                        Hình
                                     </th>
                                     <th class="text-capitalize">
-                                        Số Lượng Tồn Kho
+                                        @Html.ActionLink("Tồn kho", "Index", new { sapxep = ViewBag.SapxepTonKho, loc = ViewBag.Loc })
                                     </th>
                                     <th class="text-capitalize">
                                   Tình Trạng
@@ -144,7 +144,7 @@
                                             </div>
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.SoLuongTonKho)
+                                            @Html.DisplayFor(modelItem => item.SoLuongTonKho) @item.DonViTinh
                                         </td>
                                         
                                         <td>

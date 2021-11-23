@@ -40,7 +40,7 @@ namespace ChanhThu_Store.Controllers
 
         [HttpPost]
         [Authorize]
-        public ActionResult SuaThongTinCaNhan([Bind(Include = "Id,Ten,UserName,Email,EmailConfirmed,PasswordHash,PhoneNumber,DiaChi,DiemTichLuy,SecurityStamp,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount")] AspNetUser aspNetUser)
+        public ActionResult SuaThongTinCaNhan([Bind(Include = "Id,Ten,UserName,Email,EmailConfirmed,PasswordHash,PhoneNumber,DiaChi,DiemTichLuy,SecurityStamp,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,Avatar")] AspNetUser aspNetUser)
         {
             if (ModelState.IsValid)
             {
@@ -62,7 +62,26 @@ namespace ChanhThu_Store.Controllers
             }
             return View(aspuser);
         }
-
+        public ActionResult GetAvatar()
+        {
+            var userID = User.Identity.GetUserId();
+            AspNetUser aspuser = db.AspNetUsers.Find(userID);
+            if (aspuser == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView("GetAvatar", aspuser);
+        }
+        public ActionResult GetAvatarComment()
+        {
+            var userID = User.Identity.GetUserId();
+            AspNetUser aspuser = db.AspNetUsers.Find(userID);
+            if (aspuser == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView("GetAvatarComment", aspuser);
+        }
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
             UserManager = userManager;

@@ -4,11 +4,18 @@
 	/* ..............................................
 	   Loader 
 	   ................................................. */
-	$(window).on('load', function() {
-		$('.preloader').fadeOut();
-		$('#preloader').delay(550).fadeOut('slow');
-		$('body').delay(450).css({
-			'overflow': 'visible'
+	//$(window).on('load', function() {
+	//	$('.preloader').fadeOut();
+	//	$('#preloader').delay(550).fadeOut('slow');
+	//	$('body').delay(450).css({
+	//		'overflow': 'visible'
+	//	});
+	//});
+	$(window).load(function () {
+		$('#loader__effect').delay(1000).fadeOut('fast', function () {
+			$('#loader__wrap').removeClass('loader__wrap');
+			// $('.loader__wrap')[0].classList.add('hide')
+
 		});
 	});
 
@@ -215,14 +222,3 @@
 	
 }(jQuery));
 
-// var navItems = document.querySelectorAll('.nav-item')
-
-// // console.log(...navlinks)
-// Array.from(navItems).forEach(navItem => {
-// 	console.log(navItem)
-// 	navItem.onclick = () => {
-// 		document.querySelector('.nav-item.active').classList.remove('active')
-// 		// navItem.classList.add('active')
-// 		console.log(123)
-// 	}
-// })

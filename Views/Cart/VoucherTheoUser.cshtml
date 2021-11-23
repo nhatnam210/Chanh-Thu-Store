@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<ChanhThu_Store.Models.Voucher>
+@using System.Globalization;
+@{ CultureInfo VN = new CultureInfo("vi-VN");}
 
 <div class="col-md-12 col-lg-12">
     <div class="shipping-method-box">
@@ -16,13 +18,13 @@
                 <div class="ml-4 mb-2 small"></div>
                 foreach (var item in Model)
                 {
-                    i++;
+                        i++;
                     <div class="custom-control custom-radio">
                         <input id="voucher__@i" name="mavoucher" value="@item.MaVoucher" data-voucher="@item.GiaTriGiam" class="custom-control-input" type="radio">
-                        <label class="custom-control-label" for="voucher__@i">@item.TenVoucher</label> <span class="float-right font-weight-bold">@item.GiaTriGiam%</span>
+                        <label class="custom-control-label" for="voucher__@i">@item.TenVoucher</label><span class="float-right font-weight-bold">@item.GiaTriGiam%</span>
                     </div>
-                    <div class="ml-4 mb-2 small">*HSD: @item.HanSuDung.ToString("dd-MM-yyyy") 
-            
+                    <div class="ml-4 mb-2 small">
+                        *HSD:@item.HanSuDung.ToString("d", VN)
                     </div>
                 }
             }
