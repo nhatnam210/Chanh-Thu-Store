@@ -2896,6 +2896,7 @@
     <Content Include="Content\js\jquery.superslides.min.js" />
     <Content Include="Content\js\owl.carousel.min.js" />
     <Content Include="Content\js\popper.min.js" />
+    <Content Include="Content\js\ScriptImg.js" />
     <Content Include="Content\js\style.js" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\php\form-process.php" />

@@ -4,7 +4,34 @@
     ViewBag.Title = "Create";
     Layout = "~/Areas/Admin/Views/Shared/_Main_Admin.cshtml";
 }
-
+@section jsFooter{
+    <script>
+        $('#selectImg').on('click', function (e) {
+            e.preventDefault();
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $('#linkImg').val(fileUrl);
+            };
+            finder.popup();
+        })
+        $('#selectImg1').on('click', function (e) {
+            e.preventDefault();
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $('#linkImg1').val(fileUrl);
+            };
+            finder.popup();
+        })
+        $('#selectImg2').on('click', function (e) {
+            e.preventDefault();
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $('#linkImg2').val(fileUrl);
+            };
+            finder.popup();
+        })
+    </script>
+ }
 
 @using (Html.BeginForm("Create", "SanPhamsAdmin", FormMethod.Post, new { @class = "form" }))
 {
@@ -53,21 +80,24 @@
     <div class="form-group">
         <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Hình Chính</span>
         <div class="col-md-12">
-            @Html.EditorFor(model => model.HinhChinh, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.TextBoxFor(model => model.HinhChinh, new { htmlAttributes = new { @class = "form-control" }, id= "linkImg" })
+            <a href="#" id="selectImg">Chọn ảnh</a>
             @Html.ValidationMessageFor(model => model.HinhChinh, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
         <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Hình 1</span>
         <div class="col-md-12">
-            @Html.EditorFor(model => model.Hinh1, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.TextBoxFor(model => model.Hinh1, new { htmlAttributes = new { @class = "form-control" }, id = "linkImg1" })
+            <a href="#" id="selectImg1">Chọn ảnh</a>
             @Html.ValidationMessageFor(model => model.Hinh1, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
         <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Hình 2</span>
         <div class="col-md-12">
-            @Html.EditorFor(model => model.Hinh2, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.TextBoxFor(model => model.Hinh2, new { htmlAttributes = new { @class = "form-control" }, id = "linkImg2" })
+            <a href="#" id="selectImg2">Chọn ảnh</a>
             @Html.ValidationMessageFor(model => model.Hinh2, "", new { @class = "text-danger" })
         </div>
     </div>

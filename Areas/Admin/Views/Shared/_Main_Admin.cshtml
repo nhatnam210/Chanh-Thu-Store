@@ -22,13 +22,14 @@
     <!-- Custom styles for this template-->
     <link href="~/Areas/AssetAdmin/css/sb-admin-2.css" rel="stylesheet" />
     <link href="~/Areas/AssetAdmin/css/sb-admin-2.min.css" rel="stylesheet">
-
+    <script type="text/javascript" src="~/Scripts/Ck.js"></script>
     <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
     <!-- jQuery UI CSS Reference -->
     <link href="@Url.Content("~/Content/themes/base/minified/jquery-ui.min.css")" rel="stylesheet" />
     <!-- Required jQuery and jQuery UI Javascript references -->
     <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")"></script>
     <script src="@Url.Content("~/Scripts/jquery-ui-1.10.4.min.js")"></script>
+
     <link href="~/Content/css/value.css" rel="stylesheet" />
 </head>
 <body>
@@ -43,17 +44,22 @@
 <script src="~/Areas/AssetAdmin/js/styleAdmin.js"></script>
 </html>
 <!-- Code to wire up your DatePicker -->
-<script type="text/javascript">
-    $(function () {
-        // This will make every element with the class "date-picker" into a DatePicker element
-        $('.date-picker').datepicker();
-    })
-</script>
+@*<script type="text/javascript">
+        $(function () {
+            // This will make every element with the class "date-picker" into a DatePicker element
+            $('.date-picker').datepicker();
+        })
+    </script>*@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.css" rel="stylesheet">
-<script type="text/javascript">
-    $(function () {
-        $("#datepicker").datepicker();
-    });
-</script>
+<script src="~/Content/js/ScriptImg.js"></script>
+<script src="~/Scripts/jquery-3.6.0.js"></script>
+<script src="~/Scripts/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="~/Content/ckfinder/ckfinder.js"></script>
+@RenderSection("jsFooter",required: false)
+@*<script type="text/javascript">
+        $(function () {
+            $("#datepicker").datepicker();
+        });
+    </script>*@
