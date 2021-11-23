@@ -1,6 +1,5 @@
-﻿<%@ Control Language="C#" EnableViewState="false" AutoEventWireup="false" Inherits="CKFinder.Settings.ConfigFile" %>
+<%@ Control Language="C#" EnableViewState="false" AutoEventWireup="false" Inherits="CKFinder.Settings.ConfigFile" %>
 <%@ Import Namespace="CKFinder.Settings" %>
-<%@ Import Namespace="System.Security.Principal" %>
 <script runat="server">
 
     /**
@@ -13,12 +12,12 @@
         // "anyone" to upload and list the files in your server. You must implement
         // some kind of session validation here. Even something very simple as...
         //
-        return  Request.IsAuthenticated;
+        //		return ( Session[ "IsAuthorized" ] != null && (bool)Session[ "IsAuthorized" ] == true );
         //
         // ... where Session[ "IsAuthorized" ] is set to "true" as soon as the
         // user logs on your system.
 
-        //return true;
+        return true;
     }
 
     /**
@@ -28,21 +27,21 @@
     {
         // Paste your license name and key here. If left blank, CKFinder will
         // be fully functional, in Demo Mode.
-        LicenseName = "Kiên Đinh";
-        LicenseKey = "AE177D8VU718KF2RLR7MJS6NMQR8UJHR";
+        LicenseName = "";
+        LicenseKey = "";
 
         // The base URL used to reach files in CKFinder through the browser.
-        BaseUrl = "/Upload/Files/";
-        BaseDir = HttpContext.Current.Server.MapPath("~/Upload/Files/");
+        BaseUrl = "/UploadedFiles/";
 
         // The phisical directory in the server where the file will end up. If
         // blank, CKFinder attempts to resolve BaseUrl.
+        BaseDir = HttpContext.Current.Server.MapPath("~/UploadedFiles/");
 
         // Optional: enable extra plugins (remember to copy .dll files first).
         Plugins = new string[] {
 			// "CKFinder.Plugins.FileEditor, CKFinder_FileEditor",
-			 //"CKFinder.Plugins.ImageResize, CKFinder_ImageResize",
-			 //"CKFinder.Plugins.Watermark, CKFinder_Watermark"
+			// "CKFinder.Plugins.ImageResize, CKFinder_ImageResize",
+			// "CKFinder.Plugins.Watermark, CKFinder_Watermark"
 		};
         // Settings for extra plugins.
         PluginSettings = new Hashtable();
@@ -74,7 +73,7 @@
         // feature.
         Images.MaxWidth = 1600;
         Images.MaxHeight = 1200;
-        Images.Quality = 100;
+        Images.Quality = 80;
 
         // Indicates that the file size (MaxSize) for images must be checked only
         // after scaling them. Otherwise, it is checked right after uploading.
@@ -113,6 +112,14 @@
         // Perform additional checks for image files.
         SecureImageUploads = true;
 
+        // Enables protection in the connector.
+        // The default CSRF protection mechanism is based on double submit cookies, where
+        // connector checks if the request contains a valid token that matches the token
+        // sent in the cookie
+        //
+        // https://www.owasp.org/index.php/Cross-Site_Request_Forgery_%28CSRF%29_Prevention_Cheat_Sheet#Double_Submit_Cookies
+        //EnableCsrfProtection = true;
+
         // The session variable name that CKFinder must use to retrieve the
         // "role" of the current user. The "role" is optional and can be used
         // in the "AccessControl" settings (bellow in this file).
@@ -137,18 +144,12 @@
         acl.FolderView = true;
         acl.FolderCreate = true;
         acl.FolderRename = true;
-        acl.FolderDelete = false;
+        acl.FolderDelete = true;
 
         acl.FileView = true;
         acl.FileUpload = true;
         acl.FileRename = true;
-        acl.FileDelete = false;
-        //acl.FolderCreate = true;
-        // acl.FolderRename = true;
-        // acl.FolderDelete = true;
-        // acl.FileDelete = true;
-
-
+        acl.FileDelete = true;
 
         // Resource Type settings.
         // A resource type is nothing more than a way to group files under
@@ -169,6 +170,14 @@
         DefaultResourceTypes = "";
 
         ResourceType type;
+
+        type = ResourceType.Add( "Files" );
+        type.Url = BaseUrl + "files/";
+        type.Dir = BaseDir == "" ? "" : BaseDir + "files/";
+        type.MaxSize = 0;
+        type.AllowedExtensions = new string[] { "7z", "aiff", "asf", "avi", "bmp", "csv", "doc", "docx", "fla", "flv", "gif", "gz", "gzip", "jpeg", "jpg", "mid", "mov", "mp3", "mp4", "mpc", "mpeg", "mpg", "ods", "odt", "pdf", "png", "ppt", "pptx", "pxd", "qt", "ram", "rar", "rm", "rmi", "rmvb", "rtf", "sdc", "sitd", "swf", "sxc", "sxw", "tar", "tgz", "tif", "tiff", "txt", "vsd", "wav", "wma", "wmv", "xls", "xlsx", "zip" };
+        type.DeniedExtensions = new string[] { };
+
         type = ResourceType.Add( "Images" );
         type.Url = BaseUrl + "images/";
         type.Dir = BaseDir == "" ? "" : BaseDir + "images/";
@@ -176,21 +185,12 @@
         type.AllowedExtensions = new string[] { "bmp", "gif", "jpeg", "jpg", "png" };
         type.DeniedExtensions = new string[] { };
 
-        type = ResourceType.Add("Files");
-        type.Url = BaseUrl + "Files/";
-        type.Dir = BaseDir == "" ? "" : BaseDir + "Files/";
+        type = ResourceType.Add( "Flash" );
+        type.Url = BaseUrl + "flash/";
+        type.Dir = BaseDir == "" ? "" : BaseDir + "flash/";
         type.MaxSize = 0;
-        type.AllowedExtensions = new string[] { "7z", "aiff", "asf", "avi", "bmp", "csv", "doc", "docx", "fla", "flv", "gif", "gz", "gzip", "jpeg", "jpg", "mid", "mov", "mp3", "mp4", "mpc", "mpeg", "mpg", "ods", "odt", "pdf", "png", "ppt", "pptx", "pxd", "qt", "ram", "rar", "rm", "rmi", "rmvb", "rtf", "sdc", "sitd", "swf", "sxc", "sxw", "tar", "tgz", "tif", "tiff", "txt", "vsd", "wav", "wma", "wmv", "xls", "xlsx", "zip" };
-        type.DeniedExtensions = new string[] { "exe","msi" };
-
-
-
-        //type = ResourceType.Add( "Flash" );
-        //type.Url = BaseUrl + "flash/";
-        //type.Dir = BaseDir == "" ? "" : BaseDir + "flash/";
-        //type.MaxSize = 0;
-        //type.AllowedExtensions = new string[] { "swf", "flv" };
-        //type.DeniedExtensions = new string[] { };
+        type.AllowedExtensions = new string[] { "swf", "flv" };
+        type.DeniedExtensions = new string[] { };
     }
 
 </script>
