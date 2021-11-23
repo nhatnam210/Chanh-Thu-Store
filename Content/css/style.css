@@ -4330,4 +4330,15 @@ textarea {
     background-color: var(--primary-color);
     padding: 2px !important;
 }
+#linkImg {
+    position: relative;
+    width: 85rem;
+}
+
+#selectImg {
+    position: absolute;
+    top: 45px;
+    left: 9px;
+    right: 0;
+}
 
