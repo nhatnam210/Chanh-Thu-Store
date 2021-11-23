@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!--
-Copyright (c) 2003-2013, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2016, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckfinder.com/license
 
- Defines the object, for the Turkish language. Turkish translation by Abdullah M CEYLAN a.k.a. Kenan Balamir. Updated.
+ Defines the object, for the Turkish language. Turkish translation by Abdullah M CEYLAN a.k.a. Kenan Balamir. Updated. Günce BEKTAŞ update tr.js file and translate help folder.
 -->
 <messages>
 	<errorUnknown>İsteğinizi yerine getirmek mümkün değil. (Hata %1)</errorUnknown>
@@ -17,7 +17,7 @@ For licensing, see LICENSE.html or http://ckfinder.com/license
 		<error number="105">Geçersiz dosya uzantısı.</error>
 		<error number="109">Geçersiz istek.</error>
 		<error number="110">Bilinmeyen hata.</error>
-		<error number="111">It was not possible to complete the request due to resulting file size.</error>
+		<error number="111">Dosya boyutundan dolayı bu işlemin yapılması mümkün değil.</error>
 		<error number="115">Aynı isimde bir dosya ya da klasör zaten var.</error>
 		<error number="116">Klasör bulunamadı. Lütfen yenileyin ve tekrar deneyin.</error>
 		<error number="117">Dosya bulunamadı. Lütfen dosya listesini yenileyin ve tekrar deneyin.</error>
