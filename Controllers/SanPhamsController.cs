@@ -90,8 +90,9 @@ namespace ChanhThu_Store.Controllers
             {
                 return HttpNotFound();
             }
-            var objBinhLuan = db.BinhLuans.Where(p => p.MaSanPham == id);
-
+            var objBinhLuan = db.BinhLuans.Where(p => p.MaSanPham == id)
+                                           .OrderByDescending(p=> p.NgayBinhLuan)
+                                           .OrderByDescending(p=>p.MaBinhLuan);
 
             return PartialView("ShowDanhSachBinhLuan", objBinhLuan);
         }

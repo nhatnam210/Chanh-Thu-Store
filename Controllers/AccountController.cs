@@ -62,7 +62,7 @@ namespace ChanhThu_Store.Controllers
             }
             return View(aspuser);
         }
-        public ActionResult GetAvatar()
+        public ActionResult GetAvatarLogin()
         {
             var userID = User.Identity.GetUserId();
             AspNetUser aspuser = db.AspNetUsers.Find(userID);
@@ -70,8 +70,9 @@ namespace ChanhThu_Store.Controllers
             {
                 return HttpNotFound();
             }
-            return PartialView("GetAvatar", aspuser);
+            return PartialView("GetAvatarLogin", aspuser);
         }
+
         public ActionResult GetAvatarComment()
         {
             var userID = User.Identity.GetUserId();
@@ -82,6 +83,57 @@ namespace ChanhThu_Store.Controllers
             }
             return PartialView("GetAvatarComment", aspuser);
         }
+
+        [Authorize]
+        public ActionResult Info()
+        {
+            return View();
+        }
+        [Authorize]
+        public ActionResult YeuThich(int? page)
+        {
+            ApplicationUser currentUser = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>()
+                .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            var listFavorites = db.TuongTacs.Where(p => p.MaKhachHang == currentUser.Id).ToList();
+            var product = new List<SanPham>();
+            foreach (TuongTac temp in listFavorites)
+            {
+                SanPham sabpham = temp.SanPham;
+
+                product.Add(sabpham);
+            }
+
+            //var articles = db.Articles.Include(a => a.Cetegory);
+
+            int pageSize = 6;
+
+            int pageNumber = (page ?? 1);
+            return View(product.ToPagedList(pageNumber, pageSize));
+
+        }
+        [Authorize]
+        public ActionResult LichSuMuaHang(int? page)
+        {
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            var userID = User.Identity.GetUserId();
+            IQueryable<HoaDon> hoadon = null;
+
+            hoadon = from h in db.HoaDons
+                     where h.MaKhachHang == userID
+                     orderby h.NgayLap descending, h.MaHoaDon descending
+                     select h;
+
+            //foreach(var item in hoadon)
+            //{
+            //    if(item.MaVoucher == null)
+            //    {
+            //        item.
+            //    }
+            //}
+            return View(hoadon.ToPagedList(pageNumber, pageSize));
+        }
+
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
             UserManager = userManager;
@@ -483,58 +535,7 @@ namespace ChanhThu_Store.Controllers
 
             base.Dispose(disposing);
         }
-        
-        [Authorize]
-        public ActionResult Info()
-        {
-            return View();
-        }
-        [Authorize]
-        public ActionResult YeuThich(int? page)
-        {
-            ApplicationUser currentUser = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>()
-                .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            var listFavorites = db.TuongTacs.Where(p => p.MaKhachHang == currentUser.Id).ToList();
-            var product = new List<SanPham>();
-            foreach (TuongTac temp in listFavorites)
-            {
-                SanPham sabpham = temp.SanPham;
-
-                product.Add(sabpham);
-            }
-
-            //var articles = db.Articles.Include(a => a.Cetegory);
-
-            int pageSize = 6;
-
-            int pageNumber = (page ?? 1);
-            return View(product.ToPagedList(pageNumber, pageSize));
-
-        }
-        [Authorize]
-        public ActionResult LichSuMuaHang(int? page)
-        {
-            int pageSize = 6;
-            int pageNumber = (page ?? 1);
-            var userID = User.Identity.GetUserId();
-            IQueryable<HoaDon> hoadon = null;
-
-             hoadon = from h in db.HoaDons
-                      where h.MaKhachHang == userID
-                      orderby h.NgayLap descending, h.MaHoaDon descending
-                      select h;
-
-            //foreach(var item in hoadon)
-            //{
-            //    if(item.MaVoucher == null)
-            //    {
-            //        item.
-            //    }
-            //}
-            return View(hoadon.ToPagedList(pageNumber, pageSize));
-        }
-        
-        #region Helpers
+     #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 

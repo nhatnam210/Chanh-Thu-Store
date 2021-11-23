@@ -2678,6 +2678,7 @@
     <Content Include="Content\images\smp-img-01.jpg" />
     <Content Include="Content\images\smp-img-02.jpg" />
     <Content Include="Content\images\smp-img-03.jpg" />
+    <Content Include="Content\images\user-default.png" />
     <Content Include="Content\js\baguetteBox.min.js" />
     <Content Include="Content\js\bootsnav.js" />
     <Content Include="Content\js\bootstrap-select.js" />
@@ -3093,7 +3094,7 @@
     <Content Include="Views\Shared\DemSP_DMC.cshtml" />
     <Content Include="Views\Cart\VoucherTheoUser.cshtml" />
     <Content Include="Views\SanPhams\ShowDanhSachBinhLuan.cshtml" />
-    <Content Include="Views\Account\GetAvatar.cshtml" />
+    <Content Include="Views\Account\GetAvatarLogin.cshtml" />
     <Content Include="Views\Account\GetAvatarComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
