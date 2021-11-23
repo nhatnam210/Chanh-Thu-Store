@@ -72,7 +72,7 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
                     hoadon = hoadon.OrderByDescending(s => s.NgayLap);
                     break;
                 default:
-                    hoadon = hoadon.OrderBy(s => s.MaHoaDon);
+                    hoadon = hoadon.OrderByDescending(s => s.NgayLap).OrderByDescending(s => s.MaHoaDon);
                     break;
             }
             //var articles = db.Articles.Include(a => a.Cetegory);

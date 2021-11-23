@@ -17,13 +17,13 @@
         {
             @Html.AntiForgeryToken()
             <a href="/thong-tin-ca-nhan" class="name-account" routeValues: null>
-                Xin chào
+                @*@User.Identity.GetUserName()*@
                 <span>
                     @{
-                        Html.RenderAction("GetAvatar", "Account");
+                        Html.RenderAction("GetAvatarLogin", "Account");
                     }
                 </span>
-                @User.Identity.GetUserName()
+
             </a>
             <a class="btn login hvr-hover" href="javascript:document.getElementById('logoutForm').submit()">Đăng xuất</a>
         }

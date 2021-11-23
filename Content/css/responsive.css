@@ -273,6 +273,15 @@
     .why-text h5 {
         font-size: 16px;
     }
+
+    /*title comment table*/
+    .table-comment__title-text {
+        text-align: center;
+    }
+
+    .user-avatar__comment {
+        --size: 50px;
+    }
 }
 @media only screen and (min-width: 280px) and (max-width: 599px) {
     .navbar-light .navbar-toggler {

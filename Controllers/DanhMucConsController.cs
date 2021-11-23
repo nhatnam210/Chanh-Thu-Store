@@ -24,19 +24,69 @@ namespace ChanhThu_Store.Controllers
         }
 
         // GET: DanhMucCons/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(string id, int? trang, int? spTrang, string sapxep)
         {
-          
+            ViewBag.Sapxep = sapxep;
+            //ViewBag.SapxepTen = sapxep == "Ten";
+            //ViewBag.SapxepTenGiam = sapxep == "Ten_desc";
+            //ViewBag.SapxepGia = sapxep == "Gia";
+            //ViewBag.SapxepGiaGiam = sapxep == "Gia_desc";
+
+            IQueryable<SanPham> listSanPham = null;
+            var userID = User.Identity.GetUserId();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DanhMucCon danhMucCon = db.DanhMucCons.Find(id);
-            if (danhMucCon == null)
+
+            listSanPham = from s in db.SanPhams
+                          where s.MaDanhMucCon == id
+                          orderby s.MaSanPham
+                          select s;
+            /*Check yêu thích*/
+            if(listSanPham != null)
             {
+                foreach (SanPham item in listSanPham)
+                {
+                    if (userID != null)
+                    {
+                        item.isLogin = true;
+
+                        TuongTac find = db.TuongTacs.FirstOrDefault(p => p.MaSanPham == item.MaSanPham && p.MaKhachHang == userID);
+                        if (find != null)
+                            item.isLiked = true;
+                    }
+                }
+            }else {
                 return HttpNotFound();
             }
-            return View(danhMucCon);
+
+            //sắp xếp 
+            switch (sapxep)
+            {
+                case "ten-A-Z":
+                    listSanPham = listSanPham.OrderBy(s => s.TenSanPham);
+                    break;
+                case "ten-Z-A":
+                    listSanPham = listSanPham.OrderByDescending(s => s.TenSanPham);
+                    break;
+                case "gia-tang-dan":
+                    listSanPham = listSanPham.OrderBy(s => s.Gia);
+                    break;
+                case "gia-giam-dan":
+                    listSanPham = listSanPham.OrderByDescending(s => s.Gia);
+                    break;
+                default:
+                    listSanPham = listSanPham.OrderByDescending(s => s.MaSanPham);
+                    break;
+            }
+
+            int pageNumber = (trang ?? 1);
+            int pageSize = (spTrang ?? 6); 
+
+            var showListSanPham = listSanPham.ToPagedList(pageNumber, pageSize);
+            return View(showListSanPham);
         }
 
         public ActionResult SanPhamTheoDMC(string id , int? trang , string sapxep)

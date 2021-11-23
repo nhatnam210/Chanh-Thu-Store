@@ -114,33 +114,29 @@
         </div>
 
         <div class="row my-5">
-            <div class="card card-outline-secondary my-4" style="width:100%">
-                <div class="card-header">
-                    <h2>Đánh Giá Sản Phẩm</h2>
+            <div class="card card-outline-secondary my-4 shadow" style="width:100%">
+                <div class="card-header table-comment__title">
+                    <h2 class="text-capitalize font-weight-bold table-comment__title-text">Đánh Giá Sản Phẩm</h2>
                 </div>
-                <div class="card-body">
+                <div class="card-body list-comment__product-detail">
                     @{
                         Html.RenderAction("ShowDanhSachBinhLuan", "SanPhams", new { id = @Model.MaSanPham });
                     }
-
-
-                    <div class="media mb-3">
-                        <div class="mr-2">
-                            @{
-                                Html.RenderAction("GetAvatarComment", "Account");
-                            }
-                        </div>
-                        <div class="media-body">
-                            <form method="post" action="/Sanphams/Binhluan">
-                                <input hidden name="masanpham" value="@Model.MaSanPham" />
-                                
-                                <textarea name="noidung" placeholder="Nhập bình luận" style="width:100%;padding:5px 10px;"></textarea>
-                                <button style="font-weight: 600;display:flex;" type="submit" class="ml-auto btn hvr-hover max-width-mobile">Đăng bình luận</button>
-                            </form>
-                        </div>
+                </div>
+                <div class="media mb-3 curent-user-comment">
+                    <div class="mr-2">
+                        @{
+                            Html.RenderAction("GetAvatarComment", "Account");
+                        }
                     </div>
+                    <div class="media-body">
+                        <form method="post" action="/Sanphams/Binhluan">
+                            <input hidden name="masanpham" value="@Model.MaSanPham" />
 
-
+                            <input name="noidung" placeholder="Nhập bình luận..." class="user-comment-input"></input>
+                            <button type="submit" class="ml-auto btn hvr-hover max-width-mobile font-weight-bold float-lg-right float-md-right">Đăng bình luận</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

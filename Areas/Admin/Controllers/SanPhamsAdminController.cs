@@ -49,7 +49,7 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             switch (sapxep)
             {
                 case "Id":
-                    sanpham = sanpham.OrderByDescending(s => s.MaSanPham);
+                    sanpham = sanpham.OrderBy(s => s.MaSanPham);
                     break;
                 case "Ten":
                     sanpham = sanpham.OrderBy(s => s.TenSanPham);
@@ -64,7 +64,7 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
                     sanpham = sanpham.OrderByDescending(s => s.SoLuongTonKho);
                     break;
                 default:
-                    sanpham = sanpham.OrderBy(s => s.MaSanPham);
+                    sanpham = sanpham.OrderByDescending(s => s.MaSanPham);
                     break;
             }
             //var articles = db.Articles.Include(a => a.Cetegory);
