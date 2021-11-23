@@ -80,7 +80,8 @@
     <div class="form-group">
         <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Hình Chính</span>
         <div class="col-md-12">
-            @Html.TextBoxFor(model => model.HinhChinh, new { htmlAttributes = new { @class = "form-control" }, id= "linkImg" })
+            @*@Html.TextBoxFor(model => model.HinhChinh, new { htmlAttributes = new { @class = "form-control", @readonly = moduleEditModel.Content.ReadOnly }, id= "linkImg" })*@
+            <input id="linkImg" class="form-control"  name="HinhChinh" value="" readonly="readonly" />
             <a href="#" id="selectImg">Chọn ảnh</a>
             @Html.ValidationMessageFor(model => model.HinhChinh, "", new { @class = "text-danger" })
         </div>
@@ -88,7 +89,8 @@
     <div class="form-group">
         <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Hình 1</span>
         <div class="col-md-12">
-            @Html.TextBoxFor(model => model.Hinh1, new { htmlAttributes = new { @class = "form-control" }, id = "linkImg1" })
+            @*@Html.TextBoxFor(model => model.Hinh1, new { htmlAttributes = new { @class = "form-control" }, id = "linkImg1" })*@
+            <input id="linkImg1" class="form-control" name="Hinh1" value="" readonly="readonly" />
             <a href="#" id="selectImg1">Chọn ảnh</a>
             @Html.ValidationMessageFor(model => model.Hinh1, "", new { @class = "text-danger" })
         </div>
@@ -96,7 +98,8 @@
     <div class="form-group">
         <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Hình 2</span>
         <div class="col-md-12">
-            @Html.TextBoxFor(model => model.Hinh2, new { htmlAttributes = new { @class = "form-control" }, id = "linkImg2" })
+            @*@Html.TextBoxFor(model => model.Hinh2, new { htmlAttributes = new { @class = "form-control" }, id = "linkImg2" })*@
+            <input id="linkImg2" class="form-control" name="Hinh2" value="" readonly="readonly" />
             <a href="#" id="selectImg2">Chọn ảnh</a>
             @Html.ValidationMessageFor(model => model.Hinh2, "", new { @class = "text-danger" })
         </div>
