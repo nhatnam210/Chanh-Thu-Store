@@ -119,6 +119,11 @@ namespace ChanhThu_Store
                 defaults: new { controller = "Vouchers", action = "DanhSachVoucher", id = UrlParameter.Optional }
             );
             routes.MapRoute(
+                name: "Loginconfirm",
+                url: "Loginconfirm",
+                defaults: new { controller = "Account", action = "LoginConfirm", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
