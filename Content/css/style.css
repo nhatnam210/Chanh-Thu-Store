@@ -4257,6 +4257,10 @@ textarea {
     margin-bottom: 0px !important;
 }
 
+.btn-comment {
+    margin-top: 10px !important;
+}
+
 .media-body > p {
     color: var(--text-color);
     padding-right: 20px;
@@ -4299,11 +4303,13 @@ textarea {
     border: 0px solid transparent;
 }
 
+
 .none-notify {
     font-size: 16px;
     font-style: italic;
     user-select: none;
 }
+
 /*avatar user*/
 .avatar-info,
 .user-avatar__login,
@@ -4347,6 +4353,7 @@ textarea {
     padding: 2px !important;
 }
 
+/*edit user detail*/
 .form-user {
     display: flex;
     flex-direction: column;
@@ -4426,14 +4433,14 @@ textarea {
     background-color: #333;
     color: var(--primary-color);
 }
-/*payment voucher*/
+
+/*fix payment voucher*/
 .checkout-voucher {
     margin-right: -10px;
     margin-left: -10px;
 }
 
-
-/*danh muc con trong*/
+/*empty submenu*/
 .empty-product{
     display: flex;
     flex-direction:column;
