@@ -3398,24 +3398,23 @@ ul.cart-list > li.total > .btn:hover {
         color: #999999;
     }
 
-.user-comment-input,
-.contact-form-right .form-group .form-control {
-    border-radius: var(--input-corner-radius);
-    border-color: var(--border-input-color);
-    min-height: 40px;
-}
+    .user-input,
+    .contact-form-right .form-group .form-control {
+        border-radius: var(--input-corner-radius);
+        border-color: var(--border-input-color);
+        min-height: 40px;
+    }
 
-    .user-comment-input,
     .contact-form-right .form-group {
         margin-bottom: 30px;
         position: relative;
     }
 
-.user-comment-input:focus,
-.contact-form-right .form-group .form-control:focus {
-    border: 1px solid var(--primary-color);
-    box-shadow: none;
-}
+        .user-input:focus,
+        .contact-form-right .form-group .form-control:focus {
+            border: 1px solid var(--primary-color);
+            box-shadow: none;
+        }
 
 .submit-button button {
     padding: 10px 20px;
@@ -4230,10 +4229,9 @@ textarea {
     resize: none;
 }
 
-.user-comment-input {
+.user-input {
     width: 100%;
     padding: 5px 10px;
-    margin-bottom: 10px;
     border: 1px solid var(--gray);
     border-color: var(--border-input-color);
 }
@@ -4261,6 +4259,8 @@ textarea {
 
 .media-body > p {
     color: var(--text-color);
+    padding-right: 20px;
+    word-break: break-all;
 }
 
 .table-comment__title {
@@ -4324,11 +4324,12 @@ textarea {
 
 .user-avatar__comment--type {
     --size: 40px;
+    margin-right: 10px;
 }
 
 .user-avatar__login {
     --size: 30px;
-    padding: 1px !important;
+    padding: 1.5px !important;
     background-color: var(--primary-color);
     transition: all ease-in .1s;
 }
@@ -4389,7 +4390,12 @@ textarea {
 }
 
     #user-avatar__edit:hover {
-        transform: scale(1.1);
+        border: 2px solid var(--primary-color);
+        box-shadow: 0 0 5px var(--primary-color);
+    }
+
+    #user-avatar__edit:active {
+        background-color: rgba(0,0,0,0.5);
         box-shadow: 0 0 3px var(--primary-color);
     }
 
@@ -4399,11 +4405,13 @@ textarea {
         width: var(--size);
         height: var(--size);
         object-fit: cover;
+        color: #333;
     }
 
-.btn-update-info__wrap {
-    display: flex;
-}
+
+        .btn-update-info__wrap {
+            display: flex;
+        }
 
 .btn-update-info {
     transition: all ease-in .1s;
@@ -4444,6 +4452,7 @@ textarea {
     height: auto;
     object-fit: cover;
     filter: drop-shadow(0px 6px 3px var(--shadow-object));
+}
 
 .showmore{
     display:flex;

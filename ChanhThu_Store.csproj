@@ -3751,6 +3751,7 @@
     <Content Include="Views\SanPhams\ShowDanhSachBinhLuan.cshtml" />
     <Content Include="Views\Account\GetAvatarLogin.cshtml" />
     <Content Include="Views\Account\GetAvatarComment.cshtml" />
+    <Content Include="Views\Cart\ThongTinKhachDatHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
