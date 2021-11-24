@@ -1,8 +1,8 @@
 ﻿@using ChanhThu_Store.Models
 @model LoginViewModel
 @{
-    ViewBag.Title = "Log in";
-    Layout = "~/Views/Shared/_Main_Layout.cshtml";
+    ViewBag.Title = "LoginConfirm";
+    Layout = "~/Views/Shared/_Main_Layout2.cshtml";
 }
 <div class="cart-box-main">
     <div class="container">
@@ -39,15 +39,18 @@
                     </p>
                     @*@Html.ActionLink("Bạn chưa có tài khoản? Đăng ký ngay !", "Register")*@
                     @*<div class="col-md-4">
-                <section id="socialLoginForm">
-                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-                </section>
-            </div>*@
+                            <section id="socialLoginForm">
+                                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                            </section>
+                        </div>*@
                 }
             </div>
         </div>
     </div>
 </div>
-        @section Scripts {
-            @Scripts.Render("~/bundles/jqueryval")
-        }
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
