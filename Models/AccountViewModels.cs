@@ -88,7 +88,7 @@ namespace ChanhThu_Store.Models
 
     public class ResetPasswordViewModel
     {
-        [Required]
+        public string Id { get; set; }
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }

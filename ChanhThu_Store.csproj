@@ -3752,6 +3752,11 @@
     <Content Include="Views\Account\GetAvatarLogin.cshtml" />
     <Content Include="Views\Account\GetAvatarComment.cshtml" />
     <Content Include="Views\Cart\ThongTinKhachDatHang.cshtml" />
+    <Content Include="Views\Account\RegisterSuccess.cshtml" />
+    <Content Include="Views\Account\LoginConfirm.cshtml" />
+    <Content Include="Views\Shared\_Layout_Noti.cshtml" />
+    <Content Include="Views\Shared\_Main_Layout2.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial_Conform.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
