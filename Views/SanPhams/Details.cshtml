@@ -133,7 +133,7 @@
                         <form method="post" action="/Sanphams/Binhluan">
                             <input hidden name="masanpham" value="@Model.MaSanPham" />
 
-                            <input name="noidung" placeholder="Nhập bình luận..." class="user-comment-input"></input>
+                            <input name="noidung" placeholder="Nhập bình luận..." class="user-input"></input>
                             <button type="submit" class="ml-auto btn hvr-hover max-width-mobile font-weight-bold float-lg-right float-md-right">Đăng bình luận</button>
                         </form>
                     </div>
@@ -305,6 +305,8 @@
                         alert("Xảy ra lỗi!");
                     });
             });
+
+            /*Load more comment*/
             size_li = $("#myList li").length;
             x = 3;
             $('#showLess').hide();

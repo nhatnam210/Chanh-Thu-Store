@@ -105,6 +105,7 @@ namespace ChanhThu_Store.Controllers
 
             return View(sanpham);
         }
+
         [Authorize]
         public ActionResult Binhluan(string masanpham, string noidung = "")
         {

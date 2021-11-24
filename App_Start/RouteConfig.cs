@@ -80,32 +80,32 @@ namespace ChanhThu_Store
           );
             routes.MapRoute(
                  name: "Thong tin ca nhan",
-                 url: "thong-tin-ca-nhan",
+                 url: "nguoi-dung",
                  defaults: new { controller = "Account", action = "Info", id = UrlParameter.Optional }
           );
             routes.MapRoute(
                 name: "yeu thich",
-                url: "thong-tin-ca-nhan/yeu-thich",
+                url: "nguoi-dung/yeu-thich",
                 defaults: new { controller = "Account", action = "YeuThich", id = UrlParameter.Optional }
          );
-            routes.MapRoute(
-               name: "chi tiet thong tin ca nhan",
-               url: "thong-tin-ca-nhan/chi-tiet",
-               defaults: new { controller = "Account", action = "ThongTinCaNhan", id = UrlParameter.Optional }
-            );
+            //routes.MapRoute(
+            //   name: "chi tiet thong tin ca nhan",
+            //   url: "nguoi-dung/thong-tin-ca-nhan",
+            //   defaults: new { controller = "Account", action = "ThongTinCaNhan", id = UrlParameter.Optional }
+            //);
             routes.MapRoute(
                name: "chinh sua thong tin ca nhan",
-               url: "thong-tin-ca-nhan/chinh-sua",
+               url: "nguoi-dung/thong-tin-ca-nhan",
                defaults: new { controller = "Account", action = "SuaThongTinCaNhan", id = UrlParameter.Optional }
             );
             routes.MapRoute(
                name: "lich su mua hang",
-               url: "thong-tin-ca-nhan/lich-su-mua-hang",
+               url: "nguoi-dung/lich-su-mua-hang",
                defaults: new { controller = "Account", action = "LichSuMuaHang", id = UrlParameter.Optional }
             );
             routes.MapRoute(
                 name: "chi tiet hoa don",
-                url: "thong-tin-ca-nhan/lich-su-mua-hang/hoa-don",
+                url: "nguoi-dung/lich-su-mua-hang/hoa-don",
                 defaults: new { controller = "ChitietHoaDon", action = "Index", id = UrlParameter.Optional }
             );
             routes.MapRoute(

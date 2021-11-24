@@ -61,7 +61,8 @@
                                 <img id="user-avatar__show" src="~/Content/images/user-default.png" />
                             }
                             <div id="user-avatar__edit" class="user-avatar__edit">
-                                <img class="user-camera-img" src="~/Content/images/camera.png" />
+                                @*<img class="user-camera-img" src="~/Content/images/camera.png" />*@
+                                <ion-icon class="user-camera-img" name="camera"></ion-icon>
                             </div>
                         </div>
                     </div>
@@ -69,13 +70,19 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12 user-input-info">Tên khách hàng</div>
             <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12 user-input-info">
-                @Html.EditorFor(model => model.Ten, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Ten, "", new { @class = "text-danger" })
+                <div>Email</div>
+                <input class="form-control user-input" value="@Model.Email" readonly />
             </div>
         </div>
 
+        <div class="form-group">
+            <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12 user-input-info">
+                <div>Tên khách hàng</div>
+                @Html.EditorFor(model => model.Ten, new { htmlAttributes = new { @class = "form-control user-input", placeholder = "Nhập tên của bạn" } })
+                @Html.ValidationMessageFor(model => model.Ten, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
         @Html.HiddenFor(model => model.UserName)
         @Html.HiddenFor(Model => Model.Email)
@@ -83,17 +90,17 @@
         @Html.HiddenFor(Model => Model.PasswordHash)
 
         <div class="form-group">
-            <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12 user-input-info">Số điện thoại</div>
             <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12 user-input-info">
-                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                <div>Số điện thoại</div>
+                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control user-input", placeholder = "Nhập số điện thoại của bạn" } })
                 @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12 user-input-info">Địa chỉ</div>
             <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12 user-input-info">
-                @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                <div>Địa chỉ</div>
+                @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control user-input", placeholder = "Nhập địa chỉ của bạn" } })
                 @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
             </div>
         </div>
