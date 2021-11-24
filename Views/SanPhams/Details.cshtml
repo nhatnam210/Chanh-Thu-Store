@@ -123,24 +123,43 @@
                         Html.RenderAction("ShowDanhSachBinhLuan", "SanPhams", new { id = @Model.MaSanPham });
                     }
                 </div>
-                <div class="media mb-3 curent-user-comment">
+                @if (Request.IsAuthenticated)
+                {
+                    <div class="media mb-3 curent-user-comment">
+                        @{
+                            Html.RenderAction("GetAvatarComment", "Account");
+                        }
+                        <div class="media-body">
+                            <form method="post" action="/Sanphams/Binhluan">
+                                <input hidden name="masanpham" value="@Model.MaSanPham" />
 
-                    @{
-                        Html.RenderAction("GetAvatarComment", "Account");
-                    }
-
-                    <div class="media-body">
-                        <form method="post" action="/Sanphams/Binhluan">
-                            <input hidden name="masanpham" value="@Model.MaSanPham" />
-
-                            <input name="noidung" placeholder="Nhập bình luận..." class="user-input"></input>
-                            <button type="submit" class="btn hvr-hover max-width-mobile font-weight-bold
+                                <input name="noidung" placeholder="Nhập bình luận..." class="user-input"></input>
+                                <button type="submit" class="btn hvr-hover max-width-mobile font-weight-bold
                                     float-lg-right float-md-right btn-comment">
-                                Đăng bình luận
-                            </button>
-                        </form>
+                                    Đăng bình luận
+                                </button>
+                            </form>
+                        </div>
                     </div>
-                </div>
+                }
+                else
+                {
+                    <div class="media mb-3 curent-user-comment">
+                        <img class="rounded-circle p-1 user-avatar__comment--type" src="~/Content/images/user-default.png" />
+                        <div class="media-body">
+                            <form >
+                                <input hidden name="masanpham" value="@Model.MaSanPham" />
+                                <input readonly name="noidung" placeholder="Đăng nhập để bình luận..." class="user-input"></input>
+                                <button type="submit" class="btn hvr-hover max-width-mobile font-weight-bold
+                                    float-lg-right float-md-right btn-comment">
+                                    <a href="/Sanphams/Binhluan">
+                                        Đăng nhập
+                                    </a>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
 

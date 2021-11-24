@@ -6,6 +6,9 @@
 
 
     <h2>
-        Cảm ơn bạn đã xác nhạn email. @Html.ActionLink("ẤN VÀO ĐÂY ĐỂ ĐĂNG NHẬP", "LoginConfirm", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+        Cảm ơn bạn đã xác nhận email.</br>
+    </h2>
+    <h2>
+        @Html.ActionLink("Đăng nhập tại đây", "LoginConfirm", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "go-to-login-link" })
     </h2>
 
