@@ -279,8 +279,8 @@
         text-align: center;
     }
 
-    .user-avatar__comment {
-        --size: 50px;
+    #user-avatar__show {
+        --size: 150px;
     }
 }
 @media only screen and (min-width: 280px) and (max-width: 599px) {

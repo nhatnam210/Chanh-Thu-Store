@@ -287,6 +287,7 @@
                                 .append(`<i class="far fa-heart"></i>Yêu thích`)
 
                             curentLike--;
+                            curentLike = curentLike < 0 ? 0 : curentLike;
                             luotyeuthich.innerText = (curentLike).toString();
 
                         } else {

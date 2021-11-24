@@ -35,7 +35,7 @@ if (DanhMucConLength > 0) {
         }
     })
 
-    if (locationHref.endsWith('hang') || locationHref.endsWith('hang/')) {
+    if (!locationHref.includes('san-pham') && !locationHref.includes('danh-muc-con') && locationHref.includes('cua-hang')) {
         const parentDefault = getParent(DanhMucCon[0], '.danh-muc')
         if (parentDefault) {
             DanhMucCon[0].classList.add('active')
