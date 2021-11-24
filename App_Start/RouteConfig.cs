@@ -122,7 +122,11 @@ namespace ChanhThu_Store
                 name: "Loginconfirm",
                 url: "Loginconfirm",
                 defaults: new { controller = "Account", action = "LoginConfirm", id = UrlParameter.Optional }
-            );
+            ); routes.MapRoute(
+                 name: "Forgot Pass",
+                 url: "quen-mat-khau",
+                 defaults: new { controller = "Account", action = "ForgotPassword", id = UrlParameter.Optional }
+             );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
