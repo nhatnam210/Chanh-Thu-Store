@@ -5,36 +5,46 @@
 
 @if (Model.Count() > 0)
 {
-    foreach (var item in Model)
-    {
-        <div class="media mb-3 comment-item">
-            <div class="mr-2">
-                @if (item.AspNetUser.Avatar != null)
-                {
-                    <img class="rounded-circle p-1 user-avatar__comment" src="@item.AspNetUser.Avatar" />
-                }
-                else
-                {
-                    <img class="rounded-circle p-1 user-avatar__comment" src="~/Content/images/user-default.png" />
-                }
-            </div>
-            <div class="media-body">
-                <p>@item.NoiDungBinhLuan</p>
-                @if (@item.AspNetUser.Ten != null)
-                {
-                    <small class="text-muted user-comment__day">Đăng bởi @item.AspNetUser.Ten - @item.NgayBinhLuan.ToString("d", VN)</small>
-                }
-                else
-                {
-                    <small class="text-muted user-comment__day">Đăng bởi @item.AspNetUser.Email - @item.NgayBinhLuan.ToString("d", VN)</small>
-                }
+    <ul class="mr-2" id="myList">
+        @foreach (var item in Model)
+        {
 
-            </div>
-        </div>
-    }
+            <li class="media mb-3 comment-item">
+                <div class="mr-2">
+                    @if (item.AspNetUser.Avatar != null)
+                    {
+                        <img class="rounded-circle p-1 user-avatar__comment" src="@item.AspNetUser.Avatar" />
+                    }
+                    else
+                    {
+                        <img class="rounded-circle p-1 user-avatar__comment" src="~/Content/images/user-default.png" />
+                    }
+                </div>
+                <div class="media-body">
+                    <p>@item.NoiDungBinhLuan</p>
+                    @if (@item.AspNetUser.Ten != null)
+                    {
+                        <small class="text-muted user-comment__day">Đăng bởi @item.AspNetUser.Ten - @item.NgayBinhLuan.ToString("d", VN)</small>
+                    }
+                    else
+                    {
+                        <small class="text-muted user-comment__day">Đăng bởi @item.AspNetUser.Email - @item.NgayBinhLuan.ToString("d", VN)</small>
+                    }
+
+                </div>
+            </li>
+        }
+    </ul>
+    <div class="showmore">
+        <div id="loadMore" class="btn hvr-hover">Xem Thêm</div>
+        <div id="showLess" class="btn hvr-hover">Thu Gọn</div>
+    </div>
+    
 }
 else
 {
     <div class="text-center none-notify">Chưa có đánh giá nào!</div>
 }
+
+
 

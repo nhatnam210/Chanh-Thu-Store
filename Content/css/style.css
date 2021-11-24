@@ -4238,14 +4238,24 @@ textarea {
     border-color: var(--border-input-color);
 }
 
-.list-comment__product-detail {
+#myList {
     max-height: 30vh;
-    overflow-y:auto;
+    overflow-y: auto;
+}
+#myList::-webkit-scrollbar {
+    width: 4px;
+    background-color: transparent;
+    /* background của thanh cuộn */
 }
 
+#myList::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    /* màu của thanh cuộn*/
+    /* border-radius: 10px; */
+}
 .curent-user-comment {
     padding: 10px;
-    border-top: 1px solid rgba(0, 0, 0, 0.125);
+    /*border-top: 1px solid rgba(0, 0, 0, 0.125);*/
     margin-bottom: 0px !important;
 }
 
@@ -4273,6 +4283,15 @@ textarea {
     display: inline-block;
     padding: 0;
 }
+
+.comment-item:nth-child(n+4) {
+    display:none;
+}
+    .comment-item:last-of-type {
+        padding-bottom: 0px;
+        margin-bottom: 0px !important;
+        border: 0px solid transparent;
+    }
 
 .comment-item:last-of-type {
     padding-bottom: 0px;
@@ -4405,6 +4424,7 @@ textarea {
     margin-left: -10px;
 }
 
+
 /*danh muc con trong*/
 .empty-product{
     display: flex;
@@ -4424,4 +4444,11 @@ textarea {
     height: auto;
     object-fit: cover;
     filter: drop-shadow(0px 6px 3px var(--shadow-object));
+
+.showmore{
+    display:flex;
+    justify-content:center;
+}
+#loadMore{
+    margin-right:12px;
 }
