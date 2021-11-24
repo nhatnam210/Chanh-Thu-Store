@@ -35,16 +35,16 @@
                         <span class="sr-only">Next</span>
                     </a>
                     <!-- <ol class="carousel-indicators">
-                <li data-target="#carousel-example-1" data-slide-to="0" class="active">
-                    <img class="d-block w-100 img-fluid" src="~/Content/images/smp-img-01.jpg" alt="" />
-                </li>
-                <li data-target="#carousel-example-1" data-slide-to="1">
-                    <img class="d-block w-100 img-fluid" src="~/Content/images/smp-img-02.jpg" alt="" />
-                </li>
-                <li data-target="#carousel-example-1" data-slide-to="2">
-                    <img class="d-block w-100 img-fluid" src="~/Content/images/smp-img-03.jpg" alt="" />
-                </li>
-            </ol> -->
+                        <li data-target="#carousel-example-1" data-slide-to="0" class="active">
+                            <img class="d-block w-100 img-fluid" src="~/Content/images/smp-img-01.jpg" alt="" />
+                        </li>
+                        <li data-target="#carousel-example-1" data-slide-to="1">
+                            <img class="d-block w-100 img-fluid" src="~/Content/images/smp-img-02.jpg" alt="" />
+                        </li>
+                        <li data-target="#carousel-example-1" data-slide-to="2">
+                            <img class="d-block w-100 img-fluid" src="~/Content/images/smp-img-03.jpg" alt="" />
+                        </li>
+                    </ol> -->
                 </div>
             </div>
             <div class="col-xl-7 col-lg-7 col-md-6">
@@ -70,19 +70,19 @@
                         <h4>Mô Tả:</h4>
                     <p class="description-detail__product">@Model.Mota </p>
                     @*<ul>
-                    <li>
-                        <div class="form-group quantity-box">
-                            <label class="control-label">Số Lượng</label>
-                            <input class="form-control" value="1" min="1" max="@Model.SoLuongTonKho" type="number">
-                        </div>
-                    </li>
-                </ul>*@
+                            <li>
+                                <div class="form-group quantity-box">
+                                    <label class="control-label">Số Lượng</label>
+                                    <input class="form-control" value="1" min="1" max="@Model.SoLuongTonKho" type="number">
+                                </div>
+                            </li>
+                        </ul>*@
 
                     @*<div class="price-box-bar">
-                    <div class="cart-and-bay-btn">
-                        <a class="btn hvr-hover add-cart-notify" data-fancybox-close="" href="/them-vao-gio?masanpham=@Model.MaSanPham&soluong=1">Thêm Vào Giỏ</a>
-                    </div>
-                </div>*@
+                            <div class="cart-and-bay-btn">
+                                <a class="btn hvr-hover add-cart-notify" data-fancybox-close="" href="/them-vao-gio?masanpham=@Model.MaSanPham&soluong=1">Thêm Vào Giỏ</a>
+                            </div>
+                        </div>*@
                     <div class="price-box-bar">
                         <div class="cart-and-bay-btn max-btn">
                             <a class="btn hvr-hover add-cart-notify" href="/them-vao-gio?masanpham=@Model.MaSanPham&soluong=1">Thêm Vào Giỏ</a>
@@ -103,11 +103,11 @@
                             }
                         }
                         @*else
-                    {
-                        <div class="cart-and-bay-btn max-btn">
-                            <a href="/dang-nhap" class="btn user-not-like"><i class="far fa-heart" style="margin-right: 5px;"></i>Yêu thích </a>
-                        </div>
-                    }*@
+                            {
+                                <div class="cart-and-bay-btn max-btn">
+                                    <a href="/dang-nhap" class="btn user-not-like"><i class="far fa-heart" style="margin-right: 5px;"></i>Yêu thích </a>
+                                </div>
+                            }*@
                     </div>
                 </div>
             </div>
@@ -124,11 +124,11 @@
                     }
                 </div>
                 <div class="media mb-3 curent-user-comment">
-                    <div class="mr-2">
-                        @{
-                            Html.RenderAction("GetAvatarComment", "Account");
-                        }
-                    </div>
+
+                    @{
+                        Html.RenderAction("GetAvatarComment", "Account");
+                    }
+
                     <div class="media-body">
                         <form method="post" action="/Sanphams/Binhluan">
                             <input hidden name="masanpham" value="@Model.MaSanPham" />
@@ -285,10 +285,10 @@
                                 .addClass('user-not-like')
                                 .text("")
                                 .append(`<i class="far fa-heart"></i>Yêu thích`)
-                            
+
                             curentLike--;
                             luotyeuthich.innerText = (curentLike).toString();
-                           
+
                         } else {
                             showNotify('Đã thêm vào Yêu thích!', 'heart-outline')
                             element
@@ -304,6 +304,31 @@
                         alert("Xảy ra lỗi!");
                     });
             });
+            size_li = $("#myList li").length;
+            x = 3;
+            $('#showLess').hide();
+            $('#loadMore').click(function () {
+                x = (x + 3 <= size_li) ? x + 3 : size_li;
+                $('#myList li:lt(' + x + ')').show();
+                $('#myList li:lt(' + x + ')').css("display", "flex")
+                $('#showLess').show();
+                if (x == size_li) {
+                    $('#loadMore').hide();
+                }
+            });
+            $('#showLess').click(function () {
+                x = (x - 3 < 0) ? 3 : x - 3;
+                if (x < 3) {
+                    x = 3;
+                }
+                $('#myList li').not(':lt(' + x + ')').hide();
+                $('#loadMore').show();
+                $('#showLess').show();
+                if (x == 3) {
+                    $('#showLess').hide();
+                }
+            });
         });
     </script>
+
 }
