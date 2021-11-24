@@ -205,7 +205,14 @@ namespace ChanhThu_Store.Controllers
         public ActionResult Success()
         {
             Session.Clear();
-            return View();
+            var userID = User.Identity.GetUserId();
+            IQueryable<HoaDon> hoadon = null;
+
+            hoadon = (from m in db.HoaDons
+                      where m.MaKhachHang == userID
+                      orderby m.MaHoaDon descending
+                      select m).Take(1);
+            return View(hoadon);
         }
 
         public ActionResult VoucherTheoUser()
