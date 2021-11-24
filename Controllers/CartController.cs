@@ -141,51 +141,54 @@ namespace ChanhThu_Store.Controllers
                 try
                 {
                     var cart = (List<CartItem>)Session[CartSession];
-                    foreach (var item in cart)
+                    if(cart.Count() > 0)
                     {
-                        total += item.Sanpham.Gia * item.Soluong;
-                    }
-                    /*Lấy voucher*/
-                    total -= total * Convert.ToDouble(giatrigiam) / 100;
-                    order.TongTien = Convert.ToInt32(total);
-
-                    var id = new HoaDonDAO().Insert(order);
-
-                    ChitietHoaDonDAO detailDao = new ChitietHoaDonDAO();
-                    foreach (var item in cart)
-                    {
-                        /*Thay đổi số lượng tồn kho*/
-                        SanPham sanphamDB = db.SanPhams.Find(item.Sanpham.MaSanPham);
-                        
-                        sanphamDB.SoLuongDaBan += item.Soluong;
-                        var tonkhomoi = sanphamDB.SoLuongTonKho - item.Soluong;
-                        if(tonkhomoi < 0)
+                        foreach (var item in cart)
                         {
-                            tonkhomoi = 0;
+                            total += item.Sanpham.Gia * item.Soluong;
                         }
-                        sanphamDB.SoLuongTonKho = tonkhomoi;
+                        /*Lấy voucher*/
+                        total -= total * Convert.ToDouble(giatrigiam) / 100;
+                        order.TongTien = Convert.ToInt32(total);
 
-                        /*Thay đổi điểm tích lũy*/
-                        AspNetUser user = db.AspNetUsers.Find(userID);
-                        user.DiemTichLuy += item.Sanpham.Diem * item.Soluong;
+                        var id = new HoaDonDAO().Insert(order);
 
-                        /*Thêm vào chitiethoadon*/
-                        ChiTietHoaDon orderDetail = new ChiTietHoaDon();
-                        orderDetail.MaSanPham = item.Sanpham.MaSanPham;
-                        orderDetail.MaHoaDon = id;
-                        orderDetail.DonGia = item.Sanpham.Gia;
-                        orderDetail.Soluong = item.Soluong;
-                        detailDao.Insert(orderDetail);
-                    }
-
-                    /*Cập nhật số lượng voucher của User*/
-                    ChiTietVoucher ctvcUser = db.ChiTietVouchers.SingleOrDefault(p => p.MaKhachHang == userID && p.MaVoucher == mavoucher);
-                    if(ctvcUser != null)
-                    {
-                        ctvcUser.SoLuong--;
-                        if (ctvcUser.SoLuong == 0)
+                        ChitietHoaDonDAO detailDao = new ChitietHoaDonDAO();
+                        foreach (var item in cart)
                         {
-                            db.ChiTietVouchers.Remove(ctvcUser);
+                            /*Thay đổi số lượng tồn kho*/
+                            SanPham sanphamDB = db.SanPhams.Find(item.Sanpham.MaSanPham);
+
+                            sanphamDB.SoLuongDaBan += item.Soluong;
+                            var tonkhomoi = sanphamDB.SoLuongTonKho - item.Soluong;
+                            if (tonkhomoi < 0)
+                            {
+                                tonkhomoi = 0;
+                            }
+                            sanphamDB.SoLuongTonKho = tonkhomoi;
+
+                            /*Thay đổi điểm tích lũy*/
+                            AspNetUser user = db.AspNetUsers.Find(userID);
+                            user.DiemTichLuy += item.Sanpham.Diem * item.Soluong;
+
+                            /*Thêm vào chitiethoadon*/
+                            ChiTietHoaDon orderDetail = new ChiTietHoaDon();
+                            orderDetail.MaSanPham = item.Sanpham.MaSanPham;
+                            orderDetail.MaHoaDon = id;
+                            orderDetail.DonGia = item.Sanpham.Gia;
+                            orderDetail.Soluong = item.Soluong;
+                            detailDao.Insert(orderDetail);
+                        }
+
+                        /*Cập nhật số lượng voucher của User*/
+                        ChiTietVoucher ctvcUser = db.ChiTietVouchers.SingleOrDefault(p => p.MaKhachHang == userID && p.MaVoucher == mavoucher);
+                        if (ctvcUser != null)
+                        {
+                            ctvcUser.SoLuong--;
+                            if (ctvcUser.SoLuong == 0)
+                            {
+                                db.ChiTietVouchers.Remove(ctvcUser);
+                            }
                         }
                     }
                 }

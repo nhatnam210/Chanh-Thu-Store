@@ -60,7 +60,6 @@
                             </ul>
                         </div>
                     </div>
-
                     <!--Start product by submenu-->
                     <div class="product-categorie-box">
                         <div class="tab-content">
@@ -202,19 +201,30 @@
                             </div>
                         </div>
                     </div>
-                    <div class="pagelist_custom">
-                        <span class="show-page-text">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
-                    </div>
+                    @if (Model.Count() > 0)
+                    {
+                        <div class="pagelist_custom">
+                            <span class="show-page-text">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="empty-product">
+                            <div class="none-notify text-center empty-product__title">Các sản phẩm của loại này hiện đang được cập nhật!<br>Xin vui lòng quay lại sau!</div>
+                            <img class="empty-product__img" src="~/Content/images/empty-product.png" />
+                        </div>
+                    }
                     @{
                         try
                         {
-                            @Html.PagedListPager(Model, trang => "/cua-hang/danh-muc-con?id=" + Model[0].MaDanhMucCon + "&trang=" + trang)
+                            //@Html.PagedListPager(Model, trang => "/cua-hang/danh-muc-con?id=" + Model[0].MaDanhMucCon, new { trang })
+                            @Html.PagedListPager(Model, trang => Url.Action("danh-muc-con", "cua-hang", new { id = Model[0].MaDanhMucCon, trang }))
                         }
                         catch { }
                     }
                     <!--End product by submenu-->
                 </div>
-            </div>
+                </div>
             <div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
                 <div class="product-categori">
                     <div class="search-product">
