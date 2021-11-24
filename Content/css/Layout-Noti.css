@@ -10,7 +10,7 @@ body {
 
 h1 {
     font-size: 2.5rem;
-    font-family: 'Permanent Marker', cursive;
+    font-family: 'Fira Mono', monospace;
 }
 
 div {
@@ -72,4 +72,14 @@ svg {
 a {
     color: #F66947;
     text-decoration: none;
+}
+
+.go-to-login-link,
+.go-to-mail {
+    color: var(--primary-color);
+}
+
+.go-to-login-link:hover,
+.go-to-mail:hover {
+    text-decoration: underline;
 }

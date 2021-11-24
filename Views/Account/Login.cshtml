@@ -2,7 +2,7 @@
 @model LoginViewModel
 @{
     ViewBag.Title = "Log in";
-    Layout = "~/Views/Shared/_Main_Layout2.cshtml";
+    Layout = "~/Views/Shared/_Main_Layout.cshtml";
 }
 <div class="cart-box-main">
     <div class="container">
@@ -29,14 +29,12 @@
                         </div>
                     </div>
                     <button type="submit" class="btn hvr-hover">Đăng Nhập</button>
-                    <div>
-                        <a href="/dang-ky" class="ask-register text-muted">Bạn chưa có tài khoản? Đăng ký ngay!</a>
-                    </div>
-                    <p>
+                    <div><a href="/dang-ky" class="text-muted ask-register">Bạn chưa có tài khoản? Đăng ký ngay!</a></div>
+                    <div><a href="/quen-mat-khau" class="text-muted ask-forgot-pass">Quên mật khẩu?</a></div>
+                    @*<p>
+                @Html.ActionLink("Quên mật khẩu?", "ForgotPassword")
+            </p>*@
 
-                        <a href="/quen-mat-khau">Quên mật khẩu ?</a>
-
-                    </p>
                     @*@Html.ActionLink("Bạn chưa có tài khoản? Đăng ký ngay !", "Register")*@
                     @*<div class="col-md-4">
                 <section id="socialLoginForm">

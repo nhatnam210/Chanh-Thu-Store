@@ -126,6 +126,8 @@ namespace ChanhThu_Store.Controllers
 
             return Redirect(Request.UrlReferrer.ToString());
         }
+
+        [AllowAnonymous]
         public ActionResult ShowDanhSachBinhLuan(string id)
         {
             if (id == null)

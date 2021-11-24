@@ -120,13 +120,38 @@ namespace ChanhThu_Store
             );
             routes.MapRoute(
                 name: "Loginconfirm",
-                url: "Loginconfirm",
+                url: "xac-nhan-dang-nhap",
                 defaults: new { controller = "Account", action = "LoginConfirm", id = UrlParameter.Optional }
             ); routes.MapRoute(
                  name: "Forgot Pass",
                  url: "quen-mat-khau",
                  defaults: new { controller = "Account", action = "ForgotPassword", id = UrlParameter.Optional }
              );
+            routes.MapRoute(
+               name: "quen mat khau",
+               url: "quen-mat-khau",
+               defaults: new { controller = "Account", action = "ForgotPassword", id = UrlParameter.Optional }
+           );
+            routes.MapRoute(
+               name: "xac nhan lay lai mat khau",
+               url: "xac-nhan-lay-lai-mat-khau",
+               defaults: new { controller = "Account", action = "ForgotPasswordConfirmation", id = UrlParameter.Optional }
+           );
+            routes.MapRoute(
+               name: "dat lai mat mat khau",
+               url: "dat-lai-mat-khau", 
+               defaults: new { controller = "Account", action = "ResetPassword", id = UrlParameter.Optional }
+           );
+            routes.MapRoute(
+                name: "dat lai mat khau thanh cong",
+                url: "dat-lai-mat-khau-thanh-cong",
+                defaults: new { controller = "Account", action = "ResetPasswordConfirmation", id = UrlParameter.Optional }
+      );
+            routes.MapRoute(
+                name: "xac nhan tai khoan thanh cong",
+                url: "xac-nhan-tai-khoan-thanh-cong", 
+                defaults: new { controller = "Account", action = "ConfirmEmail", id = UrlParameter.Optional }
+      );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
