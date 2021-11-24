@@ -134,7 +134,10 @@
                             <input hidden name="masanpham" value="@Model.MaSanPham" />
 
                             <input name="noidung" placeholder="Nhập bình luận..." class="user-input"></input>
-                            <button type="submit" class="ml-auto btn hvr-hover max-width-mobile font-weight-bold float-lg-right float-md-right">Đăng bình luận</button>
+                            <button type="submit" class="btn hvr-hover max-width-mobile font-weight-bold
+                                    float-lg-right float-md-right btn-comment">
+                                Đăng bình luận
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -308,6 +311,9 @@
 
             /*Load more comment*/
             size_li = $("#myList li").length;
+            if (size_li <= 3) {
+                $('#loadMore').hide();
+            }
             x = 3;
             $('#showLess').hide();
             $('#loadMore').click(function () {
@@ -315,7 +321,7 @@
                 $('#myList li:lt(' + x + ')').show();
                 $('#myList li:lt(' + x + ')').css("display", "flex")
                 $('#showLess').show();
-                if (x == size_li) {
+                if (x >= size_li) {
                     $('#loadMore').hide();
                 }
             });
