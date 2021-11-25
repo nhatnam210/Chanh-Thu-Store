@@ -13,6 +13,7 @@ namespace ChanhThu_Store.Controllers
     {
         private ChanhThuStoreContext db = new ChanhThuStoreContext();
         private const string CartSession = "CartSession";
+        DateTime thisDay = DateTime.Today;
 
         public ActionResult Index()
         {
@@ -36,9 +37,19 @@ namespace ChanhThu_Store.Controllers
             IQueryable<SanPham> listBanChay = null;
 
             listBanChay = (from b in db.SanPhams
-                          orderby b.SoLuongDaBan descending
-                          select b).Take(4);
+                           orderby b.SoLuongDaBan descending
+                           select b).Take(4);
 
+            //listBanChay = db.ChiTietHoaDons
+            //    .Where(c => c.HoaDon.NgayLap.Month == thisDay.Month)
+            //    .GroupBy(c => c.HoaDon.NgayLap.Month)
+            //    .Select(s => new SanPham
+            //    {
+            //        SoLuongDaBan = s.Sum(c => c.Soluong),
+            //    })
+            //    .OrderByDescending(s => s.SoLuongDaBan)
+            //    .Take(4);
+                
             return listBanChay;
         }
 

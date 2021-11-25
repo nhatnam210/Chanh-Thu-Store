@@ -3,26 +3,25 @@
 {
     <div class="row">
         <div class="col-md-12 mb-3">
-            <label for="lastName">Họ và Tên <span>*</span></label>
+            <label for="lastName">Họ và Tên (<span class="text-red">*</span>)</label>
             <input type="text" class="form-control" name="name" id="name" placeholder="Nhập tên người nhận" value="@i.Ten" required>
-            <div class="invalid-feedback"> Valid last name is required. </div>
         </div>
     </div>
     <div class="mb-3">
-        <label for="username">Số Điện Thoại <span>*</span></label>
+        <label for="username">Số Điện Thoại (<span class="text-red">*</span>)</label>
         <div class="input-group">
             <input type="text" class="form-control" name="phone" id="phone" placeholder="Nhập số điện thoại người nhận" value="@i.PhoneNumber" required>
-            <div class="invalid-feedback"> Your username is required. </div>
         </div>
     </div>
 
     <div class="mb-3">
-        <label for="email">Email  <span>*</span></label>
+        <label for="email">Email</label>
         <input type="email" class="form-control" name="email" id="email" placeholder="Nhập email người nhận" value="@i.Email" required>
-        <div class="invalid-feedback"> Please enter a valid email address for shipping updates. </div>
+        @*<div class="invalid-feedback"> Please enter a valid email address for shipping updates. </div>*@
+
     </div>
     <div class="mb-3">
-        <label for="address">Địa Chỉ <span>*</span></label>
+        <label for="address">Địa Chỉ (<span class="text-red">*</span>)</label>
         <input type="text" class="form-control" name="address" id="address" placeholder="Nhập địa chỉ người nhận" value="@i.DiaChi" required>
         <div class="invalid-feedback"> Please enter your shipping address. </div>
     </div>

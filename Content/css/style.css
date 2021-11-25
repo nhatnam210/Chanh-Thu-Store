@@ -892,6 +892,7 @@ ul.cart-list p .price {
     box-shadow: none;
     color: #222 !important;
     border-radius: var(--btn-corner-radius);
+    border: 2px solid var(--primary-color);
 }
 
     .hvr-hover:hover {
@@ -2353,12 +2354,18 @@ ul.cart-list > li.total > .btn:hover {
     user-select: none;
 }
 
+.ask-forgot-pass,
 .ask-register {
     display: inline-block;
-    padding: 5px 0px;
+    padding: 5px 0px !important;
     transition: all linear .1s;
 }
 
+.ask-forgot-pass {
+    line-height: 1;
+}
+
+.ask-forgot-pass:hover,
 .ask-register:hover {
     color: var(--primary-color) !important;
 }
@@ -3131,7 +3138,7 @@ ul.cart-list > li.total > .btn:hover {
 .review-form-box button {
     padding: 10px 20px;
     color: #ffffff;
-    font-size: 18px;
+    font-size: 1rem;
     border: none;
 }
 
@@ -3964,9 +3971,6 @@ ul.cart-list > li.total > .btn:hover {
     filter: brightness(0.8);
 }
 
-.media-body a:hover{
-    color: var(--primary-color) !important;
-}
 
 /*User like*/
 .user-liked {
@@ -4261,6 +4265,10 @@ textarea {
     margin-top: 10px !important;
 }
 
+.btn-comment:hover a {
+    color: var(--primary-color) !important;
+}
+
 .media-body > p {
     color: var(--text-color);
     padding-right: 20px;
@@ -4468,6 +4476,10 @@ textarea {
 #loadMore{
     margin-right:12px;
 }
+
+.text-red {
+    color: var(--red);
+=======
 .title-forgot{
     font-size:35px;
     margin-top:20px;

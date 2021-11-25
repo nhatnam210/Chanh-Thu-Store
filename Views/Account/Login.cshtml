@@ -9,7 +9,7 @@
         <div class="row new-account-login">
             <div class="col-sm-12 col-lg-12 mb-3">
                 <div class="title-left account">
-                    <h3>Đăng Nhập Tài Khoản</h3>
+                    <h3 class="text-capitalize">Đăng Nhập Tài Khoản</h3>
                 </div>
                 @*<h5><a data-toggle="collapse" href="#formLogin" role="button" aria-expanded="false">Nhấn Vào Đây Để Đăng Nhập</a></h5>*@
                 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal mt-3 review-form-box", role = "form", id = "formLogin" }))
@@ -18,12 +18,12 @@
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="InputEmail" class="mb-0">Email</label>
+                            <label for="InputEmail" class="mb-0">Email (<span class="text-red">*</span>)</label>
                             @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email", id = "InputEmail", placeholder = "Nhập email" })
                             @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="InputPassword" class="mb-0">Mật Khẩu</label>
+                            <label for="InputPassword" class="mb-0">Mật Khẩu (<span class="text-red">*</span>)</label>
                             @Html.PasswordFor(m => m.Password, new { @class = "form-control", type = "password", id = "InputPassword", placeholder = "Nhập mật khẩu" })
                             @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                         </div>
