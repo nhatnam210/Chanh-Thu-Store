@@ -1,16 +1,18 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Fira+Mono:wght@500&display=swap');
 
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 body {
     height: 95vh;
     background: #000000;
     text-align: center;
     color: #E0E0E0;
-    font-family: 'Fira Mono', monospace;
 }
 
 h1 {
     font-size: 2.5rem;
-    font-family: 'Fira Mono', monospace;
 }
 
 div {
@@ -74,12 +76,31 @@ a {
     text-decoration: none;
 }
 
-.go-to-login-link,
-.go-to-mail {
+.notify__title {
     color: var(--primary-color);
+    font-size: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: -20px;
+    filter: drop-shadow(0px 0px 11px var(--red));
+    text-shadow: 0 0 5px red;
 }
 
-.go-to-login-link:hover,
-.go-to-mail:hover {
-    text-decoration: underline;
+.notify__text {
+    letter-spacing: 1px;
+    color: #fff;
+    font-weight: 600;
+    margin: 5px 0px 0px 0px;
+    font-style: italic;
 }
+
+.go-to-link {
+    /*color: var(--primary-color);*/
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px px;
+}
+
+    .go-to-link:hover {
+        /*text-decoration: underline;*/
+    }

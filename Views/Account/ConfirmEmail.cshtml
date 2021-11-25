@@ -5,10 +5,11 @@
 }
 
 
-    <h2>
-        Cảm ơn bạn đã xác nhận email.</br>
-    </h2>
-    <h2>
-        @Html.ActionLink("Đăng nhập tại đây", "LoginConfirm", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "go-to-login-link" })
-    </h2>
+<h2 class="text-center notify__title">Xác thực tài khoản thành công!</br></h2>
+<h2 class="text-center notify__text">Tài khoản của bạn đã HỢP LỆ!</h2>
+@*<h2>
+    @Html.ActionLink("Đăng nhập tại đây", "LoginConfirm", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "go-to-login-link" })
+</h2>*@
+<h3><a class="text-center btn hvr-hover go-to-link" href="/trang-chu">Về trang chủ</a></h3>
+
 

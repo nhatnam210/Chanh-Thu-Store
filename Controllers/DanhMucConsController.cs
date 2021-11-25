@@ -29,16 +29,17 @@ namespace ChanhThu_Store.Controllers
             IQueryable<SanPham> listSanPham = null;
             var userID = User.Identity.GetUserId();
 
-            ViewBag.Sapxep = sapxep;
-            //ViewBag.SapxepTen = sapxep == "Ten";
-            //ViewBag.SapxepTenGiam = sapxep == "Ten_desc";
-            //ViewBag.SapxepGia = sapxep == "Gia";
-            //ViewBag.SapxepGiaGiam = sapxep == "Gia_desc";
+            ViewBag.SapXepHienTai = sapxep;
+            ViewBag.SapXepTen = "ten-A-Z";
+            ViewBag.SapXepTenGiam = "ten-Z-A";
+            ViewBag.SapXepGia = "gia-tang-dan";
+            ViewBag.SapXepGiaGiam = "gia-tang-dan";
 
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             listSanPham = from s in db.SanPhams
                           where s.MaDanhMucCon == id
                           orderby s.MaSanPham
@@ -78,7 +79,7 @@ namespace ChanhThu_Store.Controllers
             }
 
             int pageNumber = (trang ?? 1);
-            int pageSize = 6;
+            int pageSize = 9;
 
             var showListSanPham = listSanPham.ToPagedList(pageNumber, pageSize);
             return View(showListSanPham);

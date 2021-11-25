@@ -5,7 +5,7 @@ namespace ChanhThu_Store.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Vui lòng nhập Email!")]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
@@ -41,20 +41,21 @@ namespace ChanhThu_Store.Models
 
     public class ForgotViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Vui lòng nhập Email!")]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
 
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Vui lòng nhập Email!")]
         [Display(Name = "Email")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Email không đúng định dạng!")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vui lòng nhập mật khẩu!")]
         [DataType(DataType.Password)]
+        [StringLength(100, ErrorMessage = "Mật khẩu phải có ít nhất {2} ký tự!", MinimumLength = 6)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
@@ -64,16 +65,16 @@ namespace ChanhThu_Store.Models
 
     public class RegisterViewModel
     {
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "Vui lòng nhập Email!")]
+        [EmailAddress(ErrorMessage = "Email không đúng định dạng!")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vui lòng nhập Tên khách hàng!")]
         [Display(Name = "Ten")]
         public string Ten { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vui lòng nhập mật khẩu!")]
         [StringLength(100, ErrorMessage = "Mật khẩu phải có ít nhất {2} ký tự!", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
@@ -89,11 +90,11 @@ namespace ChanhThu_Store.Models
     public class ResetPasswordViewModel
     {
         public string Id { get; set; }
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Email không đúng định dạng!")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vui lòng nhập mật khẩu!")]
         [StringLength(100, ErrorMessage = "Mật khẩu phải chứa ít nhât {2} ký tự!", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
@@ -101,7 +102,7 @@ namespace ChanhThu_Store.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "Mật khẩu nhập lại không trùng khớp!.")]
+        [Compare("Password", ErrorMessage = "Mật khẩu nhập lại không trùng khớp!")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }
@@ -109,8 +110,8 @@ namespace ChanhThu_Store.Models
 
     public class ForgotPasswordViewModel
     {
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "Vui lòng nhập Email!")]
+        [EmailAddress(ErrorMessage = "Email không đúng định dạng!")]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }

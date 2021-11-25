@@ -210,21 +210,28 @@
                     else
                     {
                         <div class="empty-product">
-                            <div class="none-notify text-center empty-product__title">Các sản phẩm của loại này hiện đang được cập nhật!<br>Xin vui lòng quay lại sau!</div>
+                            <div class="none-notify text-center empty-product__title">Các sản phẩm của loại này hiện đang được cập nhật!
+                            <br>Xin vui lòng quay lại sau!</div>
                             <img class="empty-product__img" src="~/Content/images/empty-product.png" />
                         </div>
                     }
-                    @{
-                        try
+                    @try
+                    {
+                        if (ViewBag.SapXepHienTai != null)
                         {
-                            //@Html.PagedListPager(Model, trang => "/cua-hang/danh-muc-con?id=" + Model[0].MaDanhMucCon, new { trang })
-                            @Html.PagedListPager(Model, trang => Url.Action("danh-muc-con", "cua-hang", new { id = Model[0].MaDanhMucCon, trang }))
+                            @Html.PagedListPager(Model, trang =>
+                      "/cua-hang/danh-muc-con?id=" + Model[0].MaDanhMucCon + "&trang=" + trang + "&sapxep=" + ViewBag.SapXepHienTai);
                         }
-                        catch { }
+                        else
+                        {
+                            @Html.PagedListPager(Model, trang =>
+                         "/cua-hang/danh-muc-con?id=" + Model[0].MaDanhMucCon + "&trang=" + trang);
+                        }
                     }
+                    catch { }
                     <!--End product by submenu-->
                 </div>
-                </div>
+            </div>
             <div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
                 <div class="product-categori">
                     <div class="search-product">

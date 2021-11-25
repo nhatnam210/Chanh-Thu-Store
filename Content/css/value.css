@@ -72,3 +72,7 @@
     border-bottom-right-radius: var(--img-corner-radius);
 }
 
+*::selection {
+    color: #fff;
+    background-color: var(--second-color);
+}

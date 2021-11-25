@@ -209,16 +209,19 @@
                     }
                     else
                     {
-                        <div class="none-notify text-muted text-center">Các sản phẩm của loại này hiện đang được cập nhật!<br>Xin vui lòng quay lại sau!</div>
-                        <img class="empty-product__img" src="~/Content/images/empty-product.png" />
+                <div class="empty-product">
+                    <div class="none-notify text-center empty-product__title">
+                        Các sản phẩm hiện đang được cập nhật!
+                        <br>Xin vui lòng quay lại sau!
+                    </div>
+                    <img class="empty-product__img" src="~/Content/images/empty-product.png" />
+                </div>
                     }
-                    @{
-                        try
-                        {
-                            @Html.PagedListPager(Model, trang => Url.Action("", "cua-hang", new { trang, sapxep = ViewBag.Sapxep }))
-                        }
-                        catch { }
+                    @try
+                    {
+                        @Html.PagedListPager(Model, trang => Url.Action("", "cua-hang", new { trang, sapxep = ViewBag.Sapxep }))
                     }
+                    catch { }
                     <!--End product by submenu-->
                 </div>
             </div>
