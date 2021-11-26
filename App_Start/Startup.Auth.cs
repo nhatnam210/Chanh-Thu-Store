@@ -54,9 +54,9 @@ namespace ChanhThu_Store
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "878741952842181",
-            //   appSecret: "6395958275f0daebbdd0257c392d0f04");
+            app.UseFacebookAuthentication(
+               appId: "594776814967559",
+               appSecret: "e66227529104f8d86cbf5adc71bb0e00");
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
