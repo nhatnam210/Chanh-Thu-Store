@@ -1,4 +1,5 @@
 ﻿@model ChanhThu_Store.Models.RegisterViewModel
+@using ChanhThu_Store.Models
 
 @{
     ViewBag.Title = "Register";
@@ -81,9 +82,15 @@
                     </div>
 
                     <button type="submit" value="Register" class="btn hvr-hover">Đăng Kí</button>
-                    <button type="submit" class="btn hvr-hover">Dùng tài khoản Google</button>
+
                 }
+
             </div>
+            <div class="regis-social">
+                <a style="display:block; margin-left:10px;" class="text-muted mt-2">Đăng ký với Google hoặc Facebook</a>
+                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+            </div>
+            
         </div>
     </div>
 </div>

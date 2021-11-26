@@ -32,7 +32,7 @@ namespace ChanhThu_Store
                     // This is a security feature which is used when you change a password or add an external login to your account.  
                     OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, ApplicationUser>(
                         validateInterval: TimeSpan.FromMinutes(30),
-                        regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
+                        regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager,DefaultAuthenticationTypes.ApplicationCookie))
                 }
             });            
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
@@ -55,14 +55,14 @@ namespace ChanhThu_Store
             //   consumerSecret: "");
 
             //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            //   appId: "878741952842181",
+            //   appSecret: "6395958275f0daebbdd0257c392d0f04");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "196019591740-6qindqqcm7aaa66tt6g94tkha9b8lb8n.apps.googleusercontent.com",
+                ClientSecret = "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"
+            });
         }
     }
 }
