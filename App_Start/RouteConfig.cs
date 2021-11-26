@@ -34,6 +34,11 @@ namespace ChanhThu_Store
                       defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
           );
             routes.MapRoute(
+                      name: "khong tim thay",
+                      url: "khong-tim-thay-trang",
+                      defaults: new { controller = "Home", action = "NotFound", id = UrlParameter.Optional }
+          );
+            routes.MapRoute(
                   name: "bo suu tap",
                   url: "bo-suu-tap",
                   defaults: new { controller = "DanhMucCons", action = "Index", id = UrlParameter.Optional }
@@ -82,6 +87,11 @@ namespace ChanhThu_Store
                  name: "Thong tin ca nhan",
                  url: "nguoi-dung",
                  defaults: new { controller = "Account", action = "Info", id = UrlParameter.Optional }
+          );
+            routes.MapRoute(
+                 name: "Chinh sua mat khau",
+                 url: "chinh-sua-mat-khau",
+                 defaults: new { controller = "Manage", action = "Index", id = UrlParameter.Optional }
           );
             routes.MapRoute(
                 name: "yeu thich",
