@@ -4512,3 +4512,8 @@ textarea {
     width: 50px;
     height: 50px;
 }
+.regis-social{
+    width:100%;
+    display:flex;
+    align-items:center;
+}
