@@ -1,6 +1,4 @@
-﻿
-
-const getAll = document.querySelectorAll.bind(document);
+﻿const getAll = document.querySelectorAll.bind(document);
 const getOne = document.querySelector.bind(document);
 //lấy element cha theo selector
 function getParent(element, selector) {
@@ -52,7 +50,7 @@ const navItem = getAll('ul.navbar-nav>li')
 const navItemHref = getAll('ul.navbar-nav>li>a')
 
 if (navItem && navItemHref) {
-    if (locationHref.endsWith('44340') || locationHref.endsWith('44340/') ) {
+    if (locationHref.endsWith('44340') || locationHref.endsWith('44340/')) {
         navItem.forEach((item, index) => {
             item.classList.remove('active')
         })
@@ -62,7 +60,7 @@ if (navItem && navItemHref) {
             item.classList.remove('active')
         })
         navItem[2].classList.add('active')
-    }  else {
+    } else {
         navItem.forEach((item, index) => {
             if (locationHref.includes(navItemHref[index].href) && navItemHref[index].href.length > 0) {
                 item.classList.add('active')
@@ -237,32 +235,114 @@ if (quantityCart) {
     }
 }
 
-
 /* ..............................................
-Ẩn hiện nút đổi voucher theo điểm
+Hàm Count up number
  ................................................. */
 
-var btnGetVoucher = getAll('.voucher-point')
-var userPoint = getOne('.user-point__value')
+function countUpElement(element, delay = 2000, unit = 10) {
+    $(document).ready(function () {
+        $(element).counterUp({
+            //* đơn vị nhảy
+            delay: unit,
+            //* delay time
+            time: delay
+        });
+    });
+};
 
-if (btnGetVoucher && userPoint) {
-    var currentUserPoint = parseInt(userPoint.innerText)
+/* ..............................................
+Bật tắt bảng Ask Options
+ ................................................. */
 
-    btnGetVoucher.forEach(function (item) {
-        var voucherPoint = parseInt(item.dataset.point)
+const btnShowAskOptions = getAll(".show-ask-options");
+const askOptions = getAll(".ask-options");
+const askOptionsNo = getAll(".ask-options--no");
+const askOptionsYes = getAll(".ask-options--yes");
 
-        if (currentUserPoint < voucherPoint) {
-            item.classList.add('btnDisable')
-            item.removeAttribute("href")
-            item.innerText = "Chưa đủ điểm"
-        }
-        else {
-            item.onclick = function () {
-                //alert('Đổi voucher thành công !')
-                currentUserPoint -= voucherPoint
-                userPoint.innerText = currentUserPoint.toString();
-            }
-        }
-
-})
+//tắt bảng options
+function closeAskOptionsShow() {
+    const askOptionsShow = getOne(".ask-options.show");
+    if (askOptionsShow) {
+        askOptionsShow.classList.remove("show");
+    }
 }
+
+//mở bảng options tại vị trí chỉ định
+function openAskOptions(index) {
+    if (askOptions) {
+        askOptions[index].classList.add("show");
+    }
+}
+
+//click ra ngoài để tắt bảng options
+window.onclick = (e) => {
+    if (!e.target.closest(".show-ask-options") && !e.target.closest(".ask-options")) {
+        closeAskOptionsShow();
+    }
+};
+
+/* ..............................................
+So sánh điểm user và voucher
+ ................................................. */
+
+var voucherContainer = getAll(".voucher__container");
+var voucherPoint = getAll(".voucher__point");
+var userPoint = getOne(".user-point__value");
+
+//Load các giá trị điểm khi tải trang
+countUpElement('.user-point__value', 2000)
+countUpElement('.voucher__point span', 1500)
+countUpElement('.voucher__value-percent', 2000)
+
+
+if (userPoint && voucherPoint && voucherContainer
+    && btnShowAskOptions && askOptionsYes && askOptionsNo) {
+
+    /*----Hàm cập nhật trạng thái voucher-----*/
+
+    function updateVoucherState() {
+        var currentUserPoint = parseInt(userPoint.dataset.point);
+        voucherContainer.forEach((item, index) => {
+            var voucherPointIndex = parseInt(voucherPoint[index].dataset.point);
+            //không đủ điểm
+            if (currentUserPoint < voucherPointIndex) {
+                item.classList.add("disable-voucher");
+                askOptionsYes[index].removeAttribute("href");
+            }
+        });
+
+        return currentUserPoint;
+    }
+
+    //lấy điểm hiện tải sau khi cập nhật
+    var currentUserPoint = updateVoucherState();
+
+    //xử lý logic ẩn/hiện voucher
+    voucherContainer.forEach((item, index) => {
+        var voucherPointIndex = parseInt(voucherPoint[index].dataset.point);
+        // đủ điểm
+        if (currentUserPoint > voucherPointIndex) {
+            //Ấn mở bảng
+            btnShowAskOptions[index].addEventListener("click", () => {
+                closeAskOptionsShow();
+                openAskOptions(index);
+            });
+            //Ấn "Hủy"
+            askOptionsNo[index].addEventListener("click", closeAskOptionsShow);
+            //Ấn "Đồng ý"
+            askOptionsYes[index].addEventListener("click", () => {
+                //Trừ điểm
+                currentUserPoint -= voucherPointIndex;
+                //Kiêm tra điểm < 0;
+                var getCurrentUserPoint = currentUserPoint < 0 ? 0 : currentUserPoint;
+                //Gán giá trị sau khi trừ
+                userPoint.innerHTML = getCurrentUserPoint;
+                userPoint.dataset.point = getCurrentUserPoint;
+                closeAskOptionsShow();
+                updateVoucherState();
+                countUpElement('.user-point__value', 2000);
+            });
+        }
+    });
+}
+
