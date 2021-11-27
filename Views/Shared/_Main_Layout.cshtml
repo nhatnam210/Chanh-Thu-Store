@@ -26,17 +26,16 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="~/Content/css/custom.css">
     <!-- PageList CSS -->
-    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+    @*<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />*@
+    <link href="~/Content/css/PagedList.css" rel="stylesheet" />
+    <!-- Value CSS -->
+    <link href="~/Content/css/value.css" rel="stylesheet" />
     <!-- Style CSS -->
-    @*<link rel="stylesheet" href="~/Content/css/style.css">*@
     <link href="~/Content/css/style.css" rel="stylesheet" />
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="~/Content/css/responsive.css">
-
+    <!-- Other CSS -->
     <link rel="stylesheet" href="~/Content/css/all.css">
     <link rel="stylesheet" href="~/Content/css/animate.css">
     <link rel="stylesheet" href="~/Content/css/baguetteBox.min.css">
@@ -44,17 +43,9 @@
     <link rel="stylesheet" href="~/Content/css/bootstrap-select.css">
     <link rel="stylesheet" href="~/Content/css/carousel-ticker.css">
     @Scripts.Render("~/bundles/modernizr")
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <link href="~/Content/css/value.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -157,7 +148,7 @@
                                 <li><a href="/gio-hang">Giỏ Hàng</a></li>
                                 <li><a href="/thanh-toan">Thanh Toán</a></li>
                                 <li><a href="/nguoi-dung">Tài Khoản Của Tôi</a></li>
-                                <li><a href="/voucher">Mã giảm giá</a></li>
+                                <li><a href="/voucher">Phiếu giảm giá</a></li>
                             </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="/bo-suu-tap">Bộ Sưu Tập</a></li>
@@ -200,8 +191,8 @@
                         <div class="footer-top-box">
                             <h3>Thời Gian Hoạt Động</h3>
                             <ul class="list-time">
-                                <li> Thứ 2 - Thứ 7:<span> 08.00am to 05.00pm</span> </li>
-                                <li>Chủ Nhật: <span>Closed</span></li>
+                                <li> Thứ 2 - Thứ 7:<span> 07:00 đến 21:00</span> </li>
+                                <li>Chủ Nhật: <span>08:00 đến 19:00</span></li>
                             </ul>
                         </div>
                     </div>
@@ -245,23 +236,23 @@
                         <div class="footer-link">
                             <h4>Thông Tin</h4>
                             <ul>
-                                <li><a href="#">Giới thiệu</a></li>
-                                <li><a href="#">Dịch Vụ Khách Hàng</a></li>
-                                <li><a href="#">Điều Khoản &amp; Điều Kiện</a></li>
-                                <li><a href="#">Chính Sách Bảo Mật</a></li>
-                                <li><a href="#">Thông Tin Giao Hàng</a></li>
+                                <li><a href="/gioi-thieu" class="text-capitalize">Giới thiệu</a></li>
+                                @*<li><a href="#">Dịch Vụ Khách Hàng</a></li>*@
+                                @*<li><a href="#">Điều Khoản &amp; Điều Kiện</a></li>*@
+                                <li><a href="/lien-he" class="text-capitalize">>Liên hệ</a></li>
+                                <li><a href="#" class="text-capitalize">>Bộ sưu tập</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12 col-sm-12">
                         <div class="footer-link-contact">
-                            <h4>Liên hệ</h4>
+                            <h4>Thông tin liên hệ</h4>
                             <ul>
                                 <li>
-                                    <p><i class="fas fa-map-marker-alt"></i>Địa Chỉ: Michael I. Days 3756 <br>Preston Street Wichita,<br> KS 67213 </p>
+                                    <p><i class="fas fa-map-marker-alt"></i>Địa Chỉ: 344 Trần Hưng Đạo <br>Khu phố Liêm Bình, phương BỒng Sơn<br>Thị xã Hoài Nhơn, tỉnh Bình Định </p>
                                 </li>
                                 <li>
-                                    <p><i class="fas fa-phone-square"></i>Số Điện Thoại: <a href="tel:+1-888705770">+1-888 705 770</a></p>
+                                    <p><i class="fas fa-phone-square"></i>Số Điện Thoại: <a href="tel:+1-888705770">0986958452</a></p>
                                 </li>
                                 <li>
                                     <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
@@ -277,7 +268,7 @@
     <!-- Start copyright  -->
     <div class="footer-copyright">
         <p class="footer-company">
-            Cung cấp những sản phẩm tốt nhất. &copy; 2021 <a href="/trang-chu">ChanhThuStore</a> @*Thiết kế bởi :
+            Chuyên cung cấp những sản phẩm tốt nhất. &copy; 2021 <a href="/trang-chu">ChanhThuStore</a> @*Thiết kế bởi :
                 <a href="https://html.design/">html design</a>*@
         </p>
     </div>
@@ -285,9 +276,12 @@
 
     <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
 
-    <!-- ALL JS FILES -->
-    <!-- <script src="js/jquery-3.2.1.min.js"></script> -->
+    <!-- JQUERY LINK -->
     <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
+
+    <!-- ALL JS FILES -->
     <script src="~/Content/js/popper.min.js"></script>
     <script src="~/Content/js/bootstrap.min.js"></script>
     <!-- ALL PLUGINS -->
@@ -302,10 +296,10 @@
     <script src="~/Content/js/form-validator.min.js"></script>
     <script src="~/Content/js/contact-form-script.js"></script>
     <script src="~/Content/js/custom.js"></script>
-    <script src="~/Content/js/style.js"></script>
     <script src="~/Content/js/Cart.js"></script>
     <script src="~/Content/ckfinder/ckfinder.js"></script>
-    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Content/js/style.js"></script>
+    @*@Scripts.Render("~/bundles/jquery")*@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     @RenderSection("jsFooter", required: false)

@@ -4,31 +4,27 @@
     <meta name="viewport" content="width=device-width" />
     <title>ChanhThuStore</title>
     <link rel="shortcut icon" href="~/Content/images/favicon.ico" type="image/x-icon">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="~/Content/css/custom.css">
     <!-- PageList CSS -->
-    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+    @*<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />*@
+    <link href="~/Content/css/PagedList.css" rel="stylesheet" />
+    <!-- Value CSS -->
+    <link href="~/Content/css/value.css" rel="stylesheet" />
     <!-- Style CSS -->
-    @*<link rel="stylesheet" href="~/Content/css/style.css">*@
     <link href="~/Content/css/style.css" rel="stylesheet" />
+    <!-- layout-notify CSS -->
+    <link href="~/Content/css/Layout-Noti.css" rel="stylesheet" />
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="~/Content/css/responsive.css">
-
+    <!-- Other CSS -->
     <link rel="stylesheet" href="~/Content/css/all.css">
     <link rel="stylesheet" href="~/Content/css/animate.css">
     <link rel="stylesheet" href="~/Content/css/baguetteBox.min.css">
     <link rel="stylesheet" href="~/Content/css/bootsnav.css">
     <link rel="stylesheet" href="~/Content/css/bootstrap-select.css">
     <link rel="stylesheet" href="~/Content/css/carousel-ticker.css">
-
-    <!-- Value CSS -->
-    <link href="~/Content/css/value.css" rel="stylesheet" />
-
-    <!-- layout-notify CSS -->
-    <link href="~/Content/css/Layout-Noti.css" rel="stylesheet" />
 </head>
 <body>
     <div>
@@ -124,5 +120,9 @@
     <div class="text">
         @RenderBody()
     </div>
+     <!-- JQUERY LINK -->
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
 </body>
 </html>

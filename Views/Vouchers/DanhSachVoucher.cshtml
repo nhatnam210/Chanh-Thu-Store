@@ -28,21 +28,6 @@
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-sm-12 col-xs-12 shop-content-left">
                 <div class="right-product-box">
-                    <!-- <div class="product-item-filter row">
-                        <div class="col-12 col-sm-8 text-center text-sm-left">
-                            <div class="toolbar-sorter-right">
-                                <span>Sort by </span>
-                                <select id="basic" class="selectpicker show-tick form-control"
-                                    data-placeholder="$ USD">
-                                    <option data-display="Select">Không</option>
-                                    <option value="1">Phổ Biến</option>
-                                    <option value="2">Giá Cao → Giá Thấp</option>
-                                    <option value="3">Giá Thấp → Giá Cao</option>
-                                    <option value="4">Bán Chạy</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div> -->
                     @{
                         Html.RenderAction("LayDiemUser", "Vouchers");
                     }
@@ -50,9 +35,56 @@
             </div>
         </div>
     </div>
+    <div class="container voucher_place">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-xl-4 col-md-6 col-sm-12 voucher__container">
+                    <div class="voucher__item">
+                        <div class="voucher__item--left">
+                            <div class="voucher__item--left-wrap">
+                                <span class="voucher__code">@item.MaVoucher</span>
+                                <span class="voucher__value-wrap">
+                                    <span class="voucher__value-percent text-uppercase">@item.GiaTriGiam</span><span>%</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="voucher__item--right">
+                            <div class="voucher__item--right-wrap">
+                                <div class="voucher__item--right-wrap--top">
+                                    <div class="voucher__name">@item.TenVoucher</div>
+                                    <div class="voucher__date">
+                                        <small>HSD:</small>
+                                        @item.HanSuDung.ToString("d", VN)
+                                    </div>
+                                </div>
+                                <div class="voucher__item--right-wrap--bottom">
+                                    <div data-point="@item.DiemDoi" class="voucher__point">
+                                        <span>@item.DiemDoi</span>
+                                        <small>điểm</small>
+                                    </div>
+                                    <div class="voucher-button">
+                                        <ion-icon class="show-ask-options" name="arrow-up-circle-outline"></ion-icon>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ask-options">
+                        <span class="ask-options__title">Bạn muốn đổi phiếu này?</span>
+                        <div class="ask-options__select">
+                            <a href="Vouchers/DoiVoucher?idVoucher=@item.MaVoucher"
+                               class="ask-options__btn ask-options--yes">Đồng ý</a>
+                            <div class="ask-options__btn ask-options--no">Hủy</div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
 </div>
 <!-- End Shop Page -->
-<div class="table-container">
+<!--<div class="table-container">
     <table class="table table-striped">
         <thead>
             <tr>
@@ -69,46 +101,46 @@
                     Hạn sử dụng
                 </th>
                 <th>
-                   Tùy chọn
+                    Tùy chọn
                 </th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TenVoucher)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.GiaTriGiam)%
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DiemDoi)
-                </td>
-                <td>
-                    @item.HanSuDung.ToString("d", VN)
-                </td>
-                @if (Request.IsAuthenticated)
-                {
+                <tr>
                     <td>
-                        <a class="btn login hvr-hover voucher-point" style="min-width:130px;" data-point="@item.DiemDoi" href="/Vouchers/DoiVoucher?idVoucher=@item.MaVoucher">Đổi mã</a>
-                       
+                        @Html.DisplayFor(modelItem => item.TenVoucher)
                     </td>
-                }
-                else
-                {
                     <td>
-                        <a class="btn login hvr-hover voucher-point btnDisable" style="min-width:130px;" data-point="@item.DiemDoi">Buộc đăng nhập</a>
+                        @Html.DisplayFor(modelItem => item.GiaTriGiam)%
                     </td>
-                }
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DiemDoi)
+                    </td>
+                    <td>
+                        @item.HanSuDung.ToString("d", VN)
+                    </td>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <td>
+                            <a class="btn login hvr-hover voucher-point" style="min-width:130px;" data-point="@item.DiemDoi" href="/Vouchers/DoiVoucher?idVoucher=@item.MaVoucher">Đổi mã</a>
 
-            </tr>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <a class="btn login hvr-hover voucher-point btnDisable" style="min-width:130px;" data-point="@item.DiemDoi">Buộc đăng nhập</a>
+                        </td>
+                    }
+
+                </tr>
             }
         </tbody>
+    </table>-->
 
 
 
-    </table>
-</div>
+@*</div>*@
 

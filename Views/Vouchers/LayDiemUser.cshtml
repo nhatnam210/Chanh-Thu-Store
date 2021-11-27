@@ -3,10 +3,10 @@
 
 @if (Request.IsAuthenticated)
 {
-    <div class="user-point">
-        <div class="user-point__title">Điểm của bạn</div>
-        <div class="user-point__value">@Model.DiemTichLuy</div>
-    </div>
+<div class="user-point">
+    <div class="user-point__title">Điểm của bạn</div>
+    <div data-point="@Model.DiemTichLuy" class="user-point__value">@Model.DiemTichLuy</div>
+</div>
 }
 else
 {
