@@ -330,29 +330,35 @@
 
             /*Load more comment*/
             size_li = $("#myList li").length;
-            if (size_li <= 3) {
+            if (size_li <= 5) {
                 $('#loadMore').hide();
             }
-            x = 3;
-            $('#showLess').hide();
-            $('#loadMore').click(function () {
-                x = (x + 3 <= size_li) ? x + 3 : size_li;
+
+            function LoadComment(x) {
                 $('#myList li:lt(' + x + ')').show();
                 $('#myList li:lt(' + x + ')').css("display", "flex")
+            }
+
+            /*Begin*/
+            x = 5;
+            LoadComment(x)
+
+            $('#showLess').hide();
+            $('#loadMore').click(function () {
+                x = (x + 5 <= size_li) ? x + 5 : size_li;
+                LoadComment(x)
                 $('#showLess').show();
                 if (x >= size_li) {
                     $('#loadMore').hide();
                 }
             });
             $('#showLess').click(function () {
-                x = (x - 3 < 0) ? 3 : x - 3;
-                if (x < 3) {
-                    x = 3;
-                }
+                x = (x - 5 <= 5) ? 5 : x - 5;
+              
                 $('#myList li').not(':lt(' + x + ')').hide();
                 $('#loadMore').show();
                 $('#showLess').show();
-                if (x == 3) {
+                if (x <= 5) {
                     $('#showLess').hide();
                 }
             });
