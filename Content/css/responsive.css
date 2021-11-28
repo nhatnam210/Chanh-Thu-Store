@@ -105,9 +105,7 @@
         padding: 0px;
         margin: 0px;
     }
-    .cover-slides h1 {
-        font-size: 28px;
-    }
+
     .cover-slides p {
         font-size: 16px;
     }
@@ -300,9 +298,17 @@
         padding: 0px;
         margin: 0px;
     }
-    .cover-slides h1 {
-        font-size: 28px;
+
+
+    .slide__title-header-top {
+        font-size: 30px;
     }
+
+    .slide__title-header-bottom {
+        font-size: 40px;
+    }
+
+
     .cover-slides p {
         font-size: 16px;
     }

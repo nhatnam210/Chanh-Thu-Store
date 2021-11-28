@@ -893,6 +893,7 @@ ul.cart-list p .price {
     color: #222 !important;
     border-radius: var(--btn-corner-radius);
     border: 1px solid var(--primary-color) !important;
+    min-width: 100px;
 }
 
     .hvr-hover:hover {
@@ -1002,7 +1003,7 @@ ul.cart-list > li.total > .btn:hover {
 }
 
 .slides-navigation a {
-    background: var(--primary-color);
+    background: rgba(0,0,0,0.3);
     position: absolute;
     height: 70px;
     width: 70px;
@@ -1020,7 +1021,6 @@ ul.cart-list > li.total > .btn:hover {
     }
 
     .slides-navigation a:hover {
-        background: #222;
         color: var(--primary-color);
     }
 
@@ -1052,28 +1052,29 @@ ul.cart-list > li.total > .btn:hover {
 
 .cover-slides h1 {
     font-weight: 500;
-    font-size: 64px;
     color: #fff;
-    text-shadow: 0px 0px 2px var(--primary-color);
-    filter: drop-shadow( 0px 0px 2px var(--primary-color));
+}
+
+/*Text on slide home*/
+.slide__title-header-top {
+    font-size: 50px;
+}
+
+.slide__title-header-bottom {
+    font-size: 80px;
 }
 
 
 .cover-slides p {
     font-size: 18px;
     color: #fff;
-    padding-bottom: 30px;
 }
 
-.light-blue {
-    text-shadow: 0px 0px 2px var(--blue);
-    filter: drop-shadow( 0px 0px 2px var(--blue));
-}
 
-    .slides-pagination a {
-        border: 2px solid #ffffff;
-        border-radius: 6px;
-    }
+.slides-pagination a {
+    border: 2px solid #ffffff;
+    border-radius: 6px;
+}
 
     .slides-pagination a.current {
         background: var(--primary-color);
@@ -2361,19 +2362,18 @@ ul.cart-list > li.total > .btn:hover {
     user-select: none;
 }
 
-.ask-forgot-pass,
-.ask-register {
+.ask-link-group {
+    margin: 10px 0;
+}
+
+.ask-link {
     display: inline-block;
     padding: 5px 0px !important;
     transition: all linear .1s;
-}
-
-.ask-forgot-pass {
     line-height: 1;
 }
 
-.ask-forgot-pass:hover,
-.ask-register:hover {
+.ask-link:hover {
     color: var(--primary-color) !important;
 }
 
@@ -2388,21 +2388,20 @@ ul.cart-list > li.total > .btn:hover {
 .text-muted {
     padding: 10px 0px;
 }
-/*.list-group-item[data-toggle="collapse"]::after {
-    width: 0;
-    height: 0;
-    position: absolute;
-    top: calc(50% - 12px);
-    right: 10px;
-    content: "";
-    -webkit-transition: top 0.2s, -webkit-transform 0.2s;
-    transition: top 0.2s, -webkit-transform 0.2s;
-    transition: transform 0.2s, top 0.2s;
-    transition: transform 0.2s, top 0.2s, -webkit-transform 0.2s;
-    font-family: FontAwesome;
-    content: "\f105";
-}*/
 
+/*Social custom*/
+.social__button-wrap {
+    margin-bottom: 10px;
+}
+
+.social__button {
+    width: 100%;
+}
+
+.mb-3 {
+    margin-bottom: 10px !important;
+}
+/**/
 .arrow-down {
     transform: translateY(40%);
     padding-left: 10px;
@@ -3143,7 +3142,7 @@ ul.cart-list > li.total > .btn:hover {
     }
 
 .review-form-box button {
-    padding: 10px 20px;
+    /*padding: 10px 20px;*/
     color: #ffffff;
     font-size: 1rem;
     border: none;
@@ -4081,14 +4080,18 @@ ul.cart-list > li.total > .btn:hover {
 }
 
 /*slider buton*/
+
+
 .slides-navigation a.prev {
     border-top-right-radius: var(--btn-corner-radius);
     border-bottom-right-radius: var(--btn-corner-radius);
+    width: 50px;
 }
 
 .slides-navigation a.next {
     border-top-left-radius: var(--btn-corner-radius);
     border-bottom-left-radius: var(--btn-corner-radius);
+    width: 50px;
 }
 
 /* Trang voucher*/
@@ -4239,24 +4242,30 @@ textarea {
 }
 
 #myList {
-    max-height: 30vh;
+    max-height: 40vh;
     overflow-y: auto;
 }
-#myList::-webkit-scrollbar {
-    width: 4px;
-    background-color: transparent;
     /* background của thanh cuộn */
-}
-
-#myList::-webkit-scrollbar-thumb {
-    background-color: var(--primary-color);
+    #myList::-webkit-scrollbar {
+        width: 8px;
+        background-color: transparent;
+        opacity: 0.2;
+        
+    }
     /* màu của thanh cuộn*/
-    /* border-radius: 10px; */
-}
+    #myList::-webkit-scrollbar-thumb {
+        background-color: rgba(0 0 0 / 20%);
+        opacity:0.2;
+        border-radius: 10px;
+    }
 .curent-user-comment {
     padding: 10px;
     /*border-top: 1px solid rgba(0, 0, 0, 0.125);*/
     margin-bottom: 0px !important;
+}
+
+.list-comment__product-detail {
+    padding-bottom: 10px;
 }
 
 .btn-comment {
@@ -4511,12 +4520,6 @@ textarea {
     width: 50px;
     height: 50px;
 }
-.regis-social {
-    width: 100%;
-    display: flex;
-    align-items: center;
-}
-
 /*--------------------------------------------Start Design voucher ticket------------------------------------------------------------------------*/
 .container.voucher_place {
     width: 100%;
