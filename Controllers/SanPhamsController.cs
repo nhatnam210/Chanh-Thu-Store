@@ -92,7 +92,7 @@ namespace ChanhThu_Store.Controllers
             SanPham sanpham = db.SanPhams.Find(id);
             if (sanpham == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("NotFound","Home");
             }
             var userID = User.Identity.GetUserId();
             var objProduct = db.SanPhams.Where(p => p.MaSanPham == id);
@@ -146,7 +146,7 @@ namespace ChanhThu_Store.Controllers
             SanPham sanpham = db.SanPhams.Find(id);
             if (sanpham == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("NotFound", "Home");
             }
             var objBinhLuan = db.BinhLuans.Where(p => p.MaSanPham == id)
                                            .OrderByDescending(p=> p.NgayBinhLuan)

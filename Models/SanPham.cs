@@ -55,7 +55,7 @@
         public int SoLuongTonKho { get; set; }
 
         [Required(ErrorMessage = "Vui lòng nhập số lượng đã bán!")]
-        public int SoLuongDaBan { get; set; }
+        public int? SoLuongDaBan { get; set; }
 
         public int? LuotYeuThich { get; set; }
 
