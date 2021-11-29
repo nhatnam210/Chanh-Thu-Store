@@ -147,14 +147,13 @@
                     <div class="media mb-3 curent-user-comment">
                         <img class="rounded-circle p-1 user-avatar__comment--type" src="~/Content/images/user-default.png" />
                         <div class="media-body">
-                            <form >
-                                <input hidden name="masanpham" value="@Model.MaSanPham" />
-                                <input readonly name="noidung" placeholder="Đăng nhập để bình luận..." class="user-input"></input>
+                            <form method="post" action="/Sanphams/Binhluan">
+                                <input hidden name="masanpham" value="@ViewBag.MaSanPham" />
+
+                                <input name="noidung" readonly placeholder="Vui lòng đăng nhập để bình luận..." class="user-input"></input>
                                 <button type="submit" class="btn hvr-hover max-width-mobile font-weight-bold
                                     float-lg-right float-md-right btn-comment">
-                                    <a href="/Sanphams/Binhluan">
-                                        Đăng nhập
-                                    </a>
+                                    Đăng nhập
                                 </button>
                             </form>
                         </div>
@@ -186,101 +185,6 @@
                             <div class="why-text">
                                 <h4>Bánh Trứng</h4>
                                 <h5> 10.000 đ</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="products-single fix">
-                            <div class="box-img-hover">
-                                <img src="~/Content/images/banh2.jpg" class="img-fluid" alt="Image">
-                                <div class="mask-icon">
-                                    <ul>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                    </ul>
-                                    <a class="cart" href="#">Thêm Vào Giỏ</a>
-                                </div>
-                            </div>
-                            <div class="why-text">
-                                <h4>Bon Choco</h4>
-                                <h5> 23.000 đ</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="products-single fix">
-                            <div class="box-img-hover">
-                                <img src="~/Content/images/banh1.png" class="img-fluid" alt="Image">
-                                <div class="mask-icon">
-                                    <ul>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                    </ul>
-                                    <a class="cart" href="#">Thêm Vào Giỏ</a>
-                                </div>
-                            </div>
-                            <div class="why-text">
-                                <h4>Bánh Trứng</h4>
-                                <h5> 10.000 đ</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="products-single fix">
-                            <div class="box-img-hover">
-                                <img src="~/Content/images/banh2.jpg" class="img-fluid" alt="Image">
-                                <div class="mask-icon">
-                                    <ul>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                    </ul>
-                                    <a class="cart" href="#">Thêm Vào Giỏ</a>
-                                </div>
-                            </div>
-                            <div class="why-text">
-                                <h4>Bon Choco</h4>
-                                <h5> 23.000 đ</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="products-single fix">
-                            <div class="box-img-hover">
-                                <img src="~/Content/images/banh1.png" class="img-fluid" alt="Image">
-                                <div class="mask-icon">
-                                    <ul>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                    </ul>
-                                    <a class="cart" href="#">Thêm Vào Giỏ</a>
-                                </div>
-                            </div>
-                            <div class="why-text">
-                                <h4>Bánh Trứng</h4>
-                                <h5> 10.000 đ</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="products-single fix">
-                            <div class="box-img-hover">
-                                <img src="~/Content/images/banh2.jpg" class="img-fluid" alt="Image">
-                                <div class="mask-icon">
-                                    <ul>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                    </ul>
-                                    <a class="cart" href="#">Thêm Vào Giỏ</a>
-                                </div>
-                            </div>
-                            <div class="why-text">
-                                <h4>Bon Choco</h4>
-                                <h5> 23.000 đ</h5>
                             </div>
                         </div>
                     </div>

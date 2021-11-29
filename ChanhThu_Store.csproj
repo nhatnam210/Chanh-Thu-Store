@@ -197,6 +197,7 @@
     <Compile Include="Areas\Admin\Controllers\SanPhamsAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\SlideFootersAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\SlideHeadersAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ThongTinCuaHangsController.cs" />
     <Compile Include="Areas\Admin\Controllers\VouchersAdminController.cs" />
     <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -3244,7 +3245,6 @@
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\carousel-ticker.css" />
     <Content Include="Content\css\code_animate.css" />
-    <Content Include="Content\css\custom.css" />
     <Content Include="Content\css\jquery-ui.css" />
     <Content Include="Content\css\Layout-Noti.css" />
     <Content Include="Content\css\owl.carousel.min.css" />
@@ -3331,6 +3331,7 @@
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\Cart.js" />
     <Content Include="Content\js\contact-form-script.js" />
+    <Content Include="Content\js\CountUp.js" />
     <Content Include="Content\js\custom.js" />
     <Content Include="Content\js\form-validator.min.js" />
     <Content Include="Content\js\images-loded.min.js" />
@@ -3344,7 +3345,7 @@
     <Content Include="Content\js\popper.min.js" />
     <Content Include="Areas\AssetAdmin\js\ScriptImg.js" />
     <Content Include="Content\js\style.js" />
-    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\css\PagedList.css" />
     <Content Include="Content\php\form-process.php" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -3393,7 +3394,6 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Models\Generated\Database.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Database.cs</LastGenOutput>
@@ -3599,12 +3599,10 @@
     <Content Include="Areas\Admin\Views\NhaSanXuats\Index.cshtml" />
     <Content Include="Areas\Admin\Views\DanhMucsAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\DanhMucsAdmin\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\DanhMucsAdmin\Details.cshtml" />
     <Content Include="Areas\Admin\Views\DanhMucsAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\DanhMucsAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\DanhMucConsAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\DanhMucConsAdmin\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\DanhMucConsAdmin\Details.cshtml" />
     <Content Include="Areas\Admin\Views\DanhMucConsAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\DanhMucConsAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\HoaDonsAdmin\Create.cshtml" />
@@ -3617,10 +3615,8 @@
     <Content Include="Areas\Admin\Views\SanPhamsAdmin\Details.cshtml" />
     <Content Include="Areas\Admin\Views\SanPhamsAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\SanPhamsAdmin\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\AspNetUsersAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\AspNetUsersAdmin\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\AspNetUsersAdmin\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\AspNetUsersAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\AspNetUsersAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ChiTietHoaDonsAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ChiTietHoaDonsAdmin\Delete.cshtml" />
@@ -3629,7 +3625,6 @@
     <Content Include="Areas\Admin\Views\ChiTietHoaDonsAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\SlideHeadersAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\SlideHeadersAdmin\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\SlideHeadersAdmin\Details.cshtml" />
     <Content Include="Areas\Admin\Views\SlideHeadersAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\SlideHeadersAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\BannersAdmin\Create.cshtml" />
@@ -3639,7 +3634,6 @@
     <Content Include="Areas\Admin\Views\BannersAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\SlideFootersAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\SlideFootersAdmin\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\SlideFootersAdmin\Details.cshtml" />
     <Content Include="Areas\Admin\Views\SlideFootersAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\SlideFootersAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\VouchersAdmin\Create.cshtml" />
@@ -3661,12 +3655,11 @@
     <Content Include="Content\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\ckfinder\userfiles\.htaccess" />
-    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.4.1.js" />
-    <Content Include="Scripts\jquery-3.4.1.min.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Areas\Admin\Views\ThongTinCuaHangs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongTinCuaHangs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongTinCuaHangs\Index.cshtml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\Ck.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -3754,9 +3747,7 @@
     <Content Include="Views\Account\GetAvatarComment.cshtml" />
     <Content Include="Views\Cart\ThongTinKhachDatHang.cshtml" />
     <Content Include="Views\Account\RegisterSuccess.cshtml" />
-    <Content Include="Views\Account\LoginConfirm.cshtml" />
     <Content Include="Views\Shared\_Layout_Noti.cshtml" />
-    <Content Include="Views\Shared\_Main_Layout2.cshtml" />
     <Content Include="Views\Shared\_LoginPartial_Conform.cshtml" />
     <Content Include="Views\Account\EmailNotConfirmed.cshtml" />
   </ItemGroup>
@@ -3770,8 +3761,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -15,35 +15,35 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Mã Voucher</span>
+            <span class="label-admin" >Mã Voucher</span>
             <div class="col-md-12">
                 @Html.EditorFor(model => model.MaVoucher, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.MaVoucher, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
-            <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Tên Voucher</span>
+            <span class="label-admin" >Tên Voucher</span>
             <div class="col-md-12">
                 @Html.EditorFor(model => model.TenVoucher, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.TenVoucher, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
-            <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Giá trị Giảm</span>
+            <span class="label-admin" >Giá trị Giảm</span>
             <div class="col-md-12">
                 @Html.EditorFor(model => model.GiaTriGiam, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.GiaTriGiam, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
-            <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Điểm Đổi</span>
+            <span class="label-admin" >Điểm Đổi</span>
             <div class="col-md-12">
                 @Html.EditorFor(model => model.DiemDoi, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DiemDoi, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
-            <span class"label-admin" style="color:var(--primary-color);margin-bottom:12px;display:block">Hạn Sử Dụng Voucher</span>
+            <span class="label-admin" >Hạn Sử Dụng Voucher</span>
             <div class="col-md-12">
                 @Html.TextBoxFor(m => m.HanSuDung, new {type="date", id = "datepicker", name = "DueDate" })
                 @*<input name="DueDate" type="date" id="datepicker" class="form-control" value="" />*@

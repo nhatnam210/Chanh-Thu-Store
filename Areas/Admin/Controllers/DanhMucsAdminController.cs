@@ -64,21 +64,6 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             return View(danhmuc.ToPagedList(pageNumber, pageSize));
         }
 
-        // GET: Admin/DanhMucsAdmin/Details/5
-        public ActionResult Details(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DanhMuc danhMuc = db.DanhMucs.Find(id);
-            if (danhMuc == null)
-            {
-                return HttpNotFound();
-            }
-            return View(danhMuc);
-        }
-
         // GET: Admin/DanhMucsAdmin/Create
         public ActionResult Create()
         {

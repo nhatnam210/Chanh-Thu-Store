@@ -331,16 +331,16 @@ if (userPoint && voucherPoint && voucherContainer
             askOptionsNo[index].addEventListener("click", closeAskOptionsShow);
             //Ấn "Đồng ý"
             askOptionsYes[index].addEventListener("click", () => {
-                //Trừ điểm
-                currentUserPoint -= voucherPointIndex;
-                //Kiêm tra điểm < 0;
-                var getCurrentUserPoint = currentUserPoint < 0 ? 0 : currentUserPoint;
-                //Gán giá trị sau khi trừ
-                userPoint.innerHTML = getCurrentUserPoint;
-                userPoint.dataset.point = getCurrentUserPoint;
-                closeAskOptionsShow();
-                updateVoucherState();
-                countUpElement('.user-point__value', 2000);
+                ////Trừ điểm
+                //currentUserPoint -= voucherPointIndex;
+                ////Kiêm tra điểm < 0;
+                //var getCurrentUserPoint = currentUserPoint < 0 ? 0 : currentUserPoint;
+                ////Gán giá trị sau khi trừ
+                //userPoint.innerHTML = getCurrentUserPoint;
+                //userPoint.dataset.point = getCurrentUserPoint;
+                //closeAskOptionsShow();
+                //updateVoucherState();
+                //countUpElement('.user-point__value', 2000);
             });
         }
     });

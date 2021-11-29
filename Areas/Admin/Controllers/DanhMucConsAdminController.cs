@@ -19,9 +19,10 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         // GET: Admin/DanhMucConsAdmin
         public ActionResult Index(string sapxep, string loc, string timkiem, int? trang)
         {
-            ViewBag.Sapxep = sapxep;
-            ViewBag.SapxepMa = String.IsNullOrEmpty(sapxep) ? "Id" : "";
-            ViewBag.SapxepTen = sapxep == "Ten" ? "Ten_desc" : "Ten";
+            ViewBag.SapXep = sapxep;
+            ViewBag.SapXepMa = String.IsNullOrEmpty(sapxep) ? "ma-loai-giam-dan" : "";
+            ViewBag.SapXepTen = sapxep == "ten-loai-tang-dan" ? "ten-loai-giam-dan" : "ten-loai-tang-dan";
+            ViewBag.SapXepTenDanhMuc= sapxep == "ten-danh-muc-tang-dan" ? "ten-danh-muc-giam-dan" : "ten-danh-muc-tang-dan";
 
             //phan trang
             if (timkiem != null)
@@ -47,38 +48,29 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             //sắp xếp 
             switch (sapxep)
             {
-                case "Id":
+                case "ma-loai-giam-dan":
                     danhmuccon = danhmuccon.OrderByDescending(s => s.MaDanhMucCon);
                     break;
-                case "Ten":
+                case "ten-loai-tang-dan":
                     danhmuccon = danhmuccon.OrderBy(s => s.TenDanhMucCon);
                     break;
-                case "Ten_desc":
+                case "ten-loai-giam-dan":
                     danhmuccon = danhmuccon.OrderByDescending(s => s.TenDanhMucCon);
                     break;
+                case "ten-danh-muc-tang-dan":
+                    danhmuccon = danhmuccon.OrderBy(s => s.DanhMuc.TenDanhMuc);
+                    break;
+                case "ten-danh-muc-giam-dan":
+                    danhmuccon = danhmuccon.OrderByDescending(s => s.DanhMuc.TenDanhMuc);
+                    break;
                 default:
-                    danhmuccon = danhmuccon.OrderBy(s => s.MaDanhMucCon);
+                    danhmuccon = danhmuccon.OrderByDescending(s => s.MaDanhMucCon);
                     break;
             }
             //var articles = db.Articles.Include(a => a.Cetegory);
             int pageSize = 5;
             int pageNumber = (trang ?? 1);
             return View(danhmuccon.ToPagedList(pageNumber, pageSize));
-        }
-
-        // GET: Admin/DanhMucConsAdmin/Details/5
-        public ActionResult Details(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DanhMucCon danhMucCon = db.DanhMucCons.Find(id);
-            if (danhMucCon == null)
-            {
-                return HttpNotFound();
-            }
-            return View(danhMucCon);
         }
 
         // GET: Admin/DanhMucConsAdmin/Create
@@ -96,7 +88,26 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         public ActionResult Create([Bind(Include = "MaDanhMucCon,MaDanhMuc,TenDanhMucCon,Hinh")] DanhMucCon danhMucCon)
         {
             if (ModelState.IsValid)
-            {
+                {
+                //Lấy chuỗi MaDanhMucCon của phần tử cuối bảng
+                string maDMCCuoi = db.DanhMucCons
+                                      .OrderByDescending(d=>d.MaDanhMucCon)
+                                      .First().MaDanhMucCon;
+
+                //Cắt lấy phần chữ số và ép kiểu
+                int laySoCuoi =  Convert.ToInt32(maDMCCuoi.Substring(3));
+
+                //Tăng 1 đơn vị
+                int soMoi = ++laySoCuoi ;
+                if(soMoi <= 9)
+                {
+                    danhMucCon.MaDanhMucCon = "DMC0" + soMoi.ToString();
+                }
+                else
+                {
+                    danhMucCon.MaDanhMucCon = "DMC" + soMoi.ToString();
+                }
+
                 db.DanhMucCons.Add(danhMucCon);
                 db.SaveChanges();
                 return RedirectToAction("Index");

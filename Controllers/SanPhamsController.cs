@@ -83,6 +83,7 @@ namespace ChanhThu_Store.Controllers
         // GET: SanPhams/Details/5
         public ActionResult Details(string id)
         {
+            ViewBag.MaSanPham = id;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -115,11 +116,10 @@ namespace ChanhThu_Store.Controllers
         [Authorize]
         public ActionResult Binhluan(string masanpham, string noidung = "")
         {
-
             DateTime thisDay = DateTime.Today;
             var userID = User.Identity.GetUserId();
             SanPham find = db.SanPhams.FirstOrDefault(p => p.MaSanPham == masanpham);
-            if (find != null)
+            if (find != null && userID !=null)
             {
                 if(noidung.Trim().Length >= 0)
                 {
@@ -130,6 +130,8 @@ namespace ChanhThu_Store.Controllers
                 }
             }
 
+            //string returnURl = "/cua-hang/san-pham?id=" + ViewBag.MaSanPham;
+            //return Redirect(returnURl);
             return Redirect(Request.UrlReferrer.ToString());
         }
 

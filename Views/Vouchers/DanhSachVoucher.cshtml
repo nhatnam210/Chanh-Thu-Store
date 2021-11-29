@@ -56,6 +56,7 @@
                                     <div class="voucher__date">
                                         <small>HSD:</small>
                                         @item.HanSuDung.ToString("d", VN)
+                                        @*@item.HanSuDung.ToString("dd-MM-yyyy")*@
                                     </div>
                                 </div>
                                 <div class="voucher__item--right-wrap--bottom">
@@ -84,63 +85,3 @@
     </div>
 </div>
 <!-- End Shop Page -->
-<!--<div class="table-container">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>
-                    Tên voucher
-                </th>
-                <th>
-                    Giá trị giảm
-                </th>
-                <th>
-                    Điểm đổi
-                </th>
-                <th>
-                    Hạn sử dụng
-                </th>
-                <th>
-                    Tùy chọn
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TenVoucher)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.GiaTriGiam)%
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DiemDoi)
-                    </td>
-                    <td>
-                        @item.HanSuDung.ToString("d", VN)
-                    </td>
-                    @if (Request.IsAuthenticated)
-                    {
-                        <td>
-                            <a class="btn login hvr-hover voucher-point" style="min-width:130px;" data-point="@item.DiemDoi" href="/Vouchers/DoiVoucher?idVoucher=@item.MaVoucher">Đổi mã</a>
-
-                        </td>
-                    }
-                    else
-                    {
-                        <td>
-                            <a class="btn login hvr-hover voucher-point btnDisable" style="min-width:130px;" data-point="@item.DiemDoi">Buộc đăng nhập</a>
-                        </td>
-                    }
-
-                </tr>
-            }
-        </tbody>
-    </table>-->
-
-
-
-@*</div>*@
-

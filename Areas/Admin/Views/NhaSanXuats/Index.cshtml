@@ -53,8 +53,7 @@
             <!-- Topbar Search -->
             <form method="post" action="/admin/nha-san-xuat" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
-                    <input class="col-md-10" type="text" name="timkiem" class="form-control bg-light border-0 small" placeholder="Search for @ViewBag.CurrentFilter"
-                           aria-label="Search" aria-describedby="basic-addon2">
+                    <input class="col-md-10" type="text" name="timkiem" class="form-control bg-light border-0 small" placeholder="Tìm kiếm @ViewBag.Loc" aria-label="Search" aria-describedby="basic-addon2">
                     <div class="input-group-append col-md-2">
                         <button class="btn btn-primary" type="submit">
                             <i class="fas fa-search fa-sm"></i>
@@ -112,11 +111,12 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-white">Nhà Sản Xuất</h1>
-            <p>
-                @Html.ActionLink("Thêm nhà sản xuất", "Create")
-            </p>
-
+            <h1 class="h3 mb-2 text-white text-capitalize add-item-admin">
+                <span>Nhà Sản Xuất</span>
+                <a href="/admin/nha-san-xuat/them" class="text-capitalize">
+                    <ion-icon class="icon green" size="large" name="add-circle"></ion-icon>
+                </a>
+            </h1>
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
 
@@ -147,9 +147,14 @@
                                             @Html.DisplayFor(modelItem => item.TenNhaSanXuat)
                                         </td>
                                         <td>
-                                            @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.MaNhaSanXuat }) |
-                                            @*@Html.ActionLink("Details", "Details", new { id = item.MaNhaSanXuat }) |*@
-                                            @Html.ActionLink("Xóa", "Delete", new { id = item.MaNhaSanXuat })
+                                            <div class="wrap-options">
+                                                <a href="/admin/nha-san-xuat/chinh-sua?id=@item.MaNhaSanXuat">
+                                                    <ion-icon class="icon yellow" name="create" size="large"></ion-icon>
+                                                </a>
+                                                <a href="/admin/nha-san-xuat/xoa?id=@item.MaNhaSanXuat">
+                                                    <ion-icon class="icon red" name="trash" size="large"></ion-icon>
+                                                </a>
+                                            </div>
                                         </td>
                                     </tr>
 

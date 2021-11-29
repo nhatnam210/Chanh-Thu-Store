@@ -64,21 +64,6 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             return View(nhasanxuat.ToPagedList(pageNumber, pageSize));
         }
 
-        // GET: Admin/NhaSanXuats/Details/5
-        public ActionResult Details(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            NhaSanXuat nhaSanXuat = db.NhaSanXuats.Find(id);
-            if (nhaSanXuat == null)
-            {
-                return HttpNotFound();
-            }
-            return View(nhaSanXuat);
-        }
-
         // GET: Admin/NhaSanXuats/Create
         public ActionResult Create()
         {
