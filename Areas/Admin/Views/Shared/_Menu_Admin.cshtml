@@ -1,28 +1,23 @@
 ﻿<!-- Sidebar -->
 <ul class="navbar-nav sidebar sidebar-dark accordion navbar-menu-admin" id="accordionSidebar">
-
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/trang-chu">
-        @*<div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-laugh-wink"></i>
-            </div>*@
+    @*<a class="sidebar-brand d-flex align-items-center justify-content-center link-to-home" href="/trang-chu">
         <div class="sidebar-brand-text mx-3">
             <i class="fas fa-home"></i>
             ChanhThuStore
+            <hr class="sidebar-divider my-0">
         </div>
-    </a>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-    <!-- Heading -->
-    @*<div class="sidebar-heading">
-            Addons
-        </div>*@
-
-    <!-- Nav Item - Pages Collapse Menu -->
+    </a>*@
+    <li class="nav-item link-to-home-wrap">
+        <a class="link-to-home" href="/trang-chu">
+            <i class="fas fa-home"></i>
+            <span>
+                Chánh Thu Store
+            </span>
+        </a>
+    </li>
     <!-- Nav Item - Charts -->
+    <div class="nav-menu-wrap">
     <li class="nav-item">
         <a class="nav-link" href="/admin/nha-san-xuat">
             <i class="fas fa-warehouse"></i>
@@ -36,9 +31,9 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/admin/danh-muc-con">
+        <a class="nav-link" href="/admin/loai-san-pham">
             <i class="fas fa-stream"></i>
-            <span>Danh mục con</span>
+            <span>Loại sản phẩm</span>
         </a>
     </li>
     <li class="nav-item">
@@ -72,25 +67,27 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/admin/banner">
+        <a class="nav-link" href="/admin/quang-cao">
             <i class="fas fa-sticky-note"></i>
-            <span>Banner</span>
+            <span>Quảng cáo</span>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/admin/slider-header">
+        <a class="nav-link" href="/admin/chay-anh-dau-trang">
             <i class="fas fa-images"></i>
-            <span>Slider Header</span>
+            <span>Chạy ảnh đầu trang</span>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/admin/slider-footer">
+        <a class="nav-link" href="/admin/chay-anh-cuoi-trang">
             <i class="fas fa-images"></i>
-            <span>Slider Footer</span>
+            <span>Chạy ảnh cuối trang</span>
         </a>
     </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
+    </div>
+
 </ul>
 <!-- End of Sidebar -->

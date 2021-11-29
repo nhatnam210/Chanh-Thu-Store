@@ -154,7 +154,7 @@ a {
 }
 
     a:hover {
-        color: var(--second-color);
+        color: var(--primary-color);
         text-decoration: underline
     }
 
@@ -1633,12 +1633,14 @@ pre {
     .table td, .table th {
         padding: .75rem;
         vertical-align: top;
-        border-top: 1px solid #e3e6f0
+        border-top: 1px solid #e3e6f0;
+        vertical-align: middle;
     }
 
     .table thead th {
         vertical-align: bottom;
-        border-bottom: 2px solid #e3e6f0
+        border-bottom: 2px solid #e3e6f0;
+        user-select: none;
     }
 
     .table tbody + tbody {
@@ -2417,7 +2419,6 @@ textarea.form-control {
 
 .btn.focus, .btn:focus {
     outline: 0;
-    box-shadow: 0 0 0 .2rem rgba(78,115,223,.25)
 }
 
 .btn.disabled, .btn:disabled {
@@ -2440,14 +2441,14 @@ a.btn.disabled, fieldset:disabled a.btn {
     .btn-primary:hover {
         color: #fff;
         background-color: var(--primary-color);
-        filter: brightness(1.1);
+        opacity:0.8;
+        border-color: var(--primary-color);
     }
 
     .btn-primary.focus, .btn-primary:focus {
         color: #fff;
-        background-color: #2e59d9;
-        border-color: #2653d4;
-        box-shadow: 0 0 0 .2rem rgba(105,136,228,.5)
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
     }
 
     .btn-primary.disabled, .btn-primary:disabled {
@@ -2458,12 +2459,11 @@ a.btn.disabled, fieldset:disabled a.btn {
 
     .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
         color: #fff;
-        background-color: #2653d4;
-        border-color: #244ec9
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
     }
 
         .btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show > .btn-primary.dropdown-toggle:focus {
-            box-shadow: 0 0 0 .2rem rgba(105,136,228,.5)
         }
 
 .btn-secondary {
@@ -10456,7 +10456,7 @@ a:focus {
 }
 
     .sidebar .nav-item {
-        position: relative
+        position: relative;
     }
 
         .sidebar .nav-item:last-child {
@@ -10466,7 +10466,7 @@ a:focus {
         .sidebar .nav-item .nav-link {
             text-align: center;
             padding: .75rem 1rem;
-            width: 6.5rem
+            width: 100%;
         }
 
             .sidebar .nav-item .nav-link span {
@@ -10634,7 +10634,7 @@ a:focus {
 
 @media (min-width:768px) {
     .sidebar {
-        width: 14rem !important
+        width: 16rem !important
     }
 
         .sidebar .nav-item .collapse {
@@ -11673,10 +11673,11 @@ body.sidebar-toggled footer.sticky-footer {
 }
 
 .label-admin {
-    
     color: var(--primary-color);
     margin-bottom: 12px;
     display: block;
+    user-select:none;
+    text-transform:capitalize;
 }
 .img-fit {
     width: 100%;

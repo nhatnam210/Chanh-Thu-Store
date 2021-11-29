@@ -78,32 +78,32 @@
 }
 
 /*light -white*/
-.light-white {
+.text-light-white {
     text-shadow: 0px 0px 2px #fff;
     filter: drop-shadow( 0px 0px 2px #fff);
 }
 
 /*light-primary*/
-.light-primary {
+.text-light-primary {
     text-shadow: 0px 0px 2px var(--primary-color);
     filter: drop-shadow( 0px 0px 5px var(--primary-color));
+    color: var(--primary-color) !important;
     position: relative;
 }
 
-    .light-primary.fade-light__animate {
-        color: var(--primary-color) !important;
-    }
-
 /*light-blue*/
-.light-blue {
+.text-light-blue {
     text-shadow: 0px 0px 2px var(--blue);
     filter: drop-shadow( 0px 0px 2px var(--blue));
+    position: relative;
+    color: var(--blue) !important;
 }
 
-    .light-blue.fade-light__animate {
-        color: var(--blue) !important;
-    }
 
+.text-light-primary:not(.fade-light__animate),
+.text-light-blue:not(.fade-light__animate) {
+    color: #fff !important;
+}
 
 .fade-light__animate:before {
     content: attr(text-title);
@@ -116,11 +116,11 @@
     z-index: 2;
 }
 
-.fade-light__animate.light-500:before {
+.fade-light__animate.light-b-500:before {
     font-weight: normal;
 }
 
-.fade-light__animate.light-600:before {
+.fade-light__animate.light-b-600:before {
     font-weight: 600;
 }
 

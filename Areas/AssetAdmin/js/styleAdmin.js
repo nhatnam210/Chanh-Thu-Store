@@ -6,7 +6,7 @@ const linkNavbarMenuAdmin = document.querySelectorAll('.navbar-menu-admin .nav-i
 const locationHref = location.href
 
 if (linkNavbarMenuAdmin) {
-    if (locationHref.includes('danh-muc-con')) {
+    if (locationHref.includes('loai-san-pham')) {
         linkNavbarMenuAdmin[2].classList.add('active')
     } else {
         linkNavbarMenuAdmin.forEach((item) => {
@@ -17,5 +17,4 @@ if (linkNavbarMenuAdmin) {
             }
         })
     }
-   
 }
