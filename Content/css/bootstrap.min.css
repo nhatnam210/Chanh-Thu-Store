@@ -193,9 +193,17 @@ figure {
     margin: 0 0 1rem;
 }
 img {
+    
     vertical-align: middle;
     border-style: none;
+    
 }
+    img.logo {
+        height: 150px;
+        vertical-align: middle;
+        border-style: none;
+        width: 224px;
+    }
 svg:not(:root) {
     overflow: hidden;
 }
