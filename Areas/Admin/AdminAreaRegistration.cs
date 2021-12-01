@@ -126,9 +126,14 @@ namespace ChanhThu_Store.Areas.Admin
            );
             context.MapRoute(
                      "Xuat hoa don admin",
-                     "admin/xuat-hoa-don",
-                     new { controller = "ChiTietHoaDonsAdmin", action = "InHoaDon", id = UrlParameter.Optional }
+                     "admin/in-hoa-don",
+                     new { controller = "HoaDonsAdmin", action = "InHoaDon", id = UrlParameter.Optional }
          );
+            context.MapRoute(
+                   "xoa HD admin",
+                   "admin/hoadon/xoa",
+                   new { controller = "HoaDonsAdmin", action = "Delete", id = UrlParameter.Optional }
+           );
 
             /*Khach hang*/
             context.MapRoute(
@@ -163,8 +168,18 @@ namespace ChanhThu_Store.Areas.Admin
             context.MapRoute(
                    "Thong tin cua hang admin",
                    "admin/thong-tin-cua-hang",
-                   new { controller = "ThongTinCuaHangs", action = "Index", id = UrlParameter.Optional }
+                   new { controller = "ThongTinCuaHangsAdmin", action = "Index", id = UrlParameter.Optional }
            );
+            context.MapRoute(
+                  "Chinh sua thong tin cua hang admin",
+                  "admin/thong-tin-cua-hang/chinh-sua",
+                  new { controller = "ThongTinCuaHangsAdmin", action = "Edit", id = UrlParameter.Optional }
+          );
+            context.MapRoute(
+                 "Chi tiet thong tin cua hang admin",
+                 "admin/thong-tin-cua-hang/chi-tiet",
+                 new { controller = "ThongTinCuaHangsAdmin", action = "Details", id = UrlParameter.Optional }
+         );
 
             /*slider header*/
             context.MapRoute(

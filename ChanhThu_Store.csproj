@@ -197,7 +197,7 @@
     <Compile Include="Areas\Admin\Controllers\SanPhamsAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\SlideFootersAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\SlideHeadersAdminController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ThongTinCuaHangsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ThongTinCuaHangsAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\VouchersAdminController.cs" />
     <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -3331,7 +3331,6 @@
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\Cart.js" />
     <Content Include="Content\js\contact-form-script.js" />
-    <Content Include="Content\js\CountUp.js" />
     <Content Include="Content\js\custom.js" />
     <Content Include="Content\js\form-validator.min.js" />
     <Content Include="Content\js\images-loded.min.js" />
@@ -3605,10 +3604,8 @@
     <Content Include="Areas\Admin\Views\DanhMucConsAdmin\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\DanhMucConsAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\DanhMucConsAdmin\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\HoaDonsAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\HoaDonsAdmin\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\HoaDonsAdmin\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\HoaDonsAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\HoaDonsAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\SanPhamsAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\SanPhamsAdmin\Delete.cshtml" />
@@ -3618,11 +3615,6 @@
     <Content Include="Areas\Admin\Views\AspNetUsersAdmin\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\AspNetUsersAdmin\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AspNetUsersAdmin\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\ChiTietHoaDonsAdmin\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\ChiTietHoaDonsAdmin\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\ChiTietHoaDonsAdmin\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\ChiTietHoaDonsAdmin\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\ChiTietHoaDonsAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\SlideHeadersAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\SlideHeadersAdmin\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\SlideHeadersAdmin\Edit.cshtml" />
@@ -3655,9 +3647,12 @@
     <Content Include="Content\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\ckfinder\userfiles\.htaccess" />
-    <Content Include="Areas\Admin\Views\ThongTinCuaHangs\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\ThongTinCuaHangs\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\ThongTinCuaHangs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongTinCuaHangsAdmin\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongTinCuaHangsAdmin\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongTinCuaHangsAdmin\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongTinCuaHangsAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongTinCuaHangsAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietHoaDonsAdmin\Index.cshtml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\Ck.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />

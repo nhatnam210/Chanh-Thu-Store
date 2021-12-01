@@ -59,15 +59,15 @@
 
         public int? LuotYeuThich { get; set; }
 
-        [Required(ErrorMessage = "Vui lòng chọn ngày sản xuất!")]
+        [Required(ErrorMessage = "Vui lòng nhập ngày sản xuất!")]
         [Column(TypeName = "date")]
         public DateTime NgaySanXuat { get; set; }
 
-        [Required(ErrorMessage = "Vui lòng chọn hạn sử dụng!")]
+        [Required(ErrorMessage = "Vui lòng nhập hạn sử dụng!")]
         [Column(TypeName = "date")]
         public DateTime HanSuDung { get; set; }
 
-        [Required(ErrorMessage = "Vui lòng nhập điểm!")]
+        [Required(ErrorMessage = "Vui lòng nhập điểm tích lũy!")]
         public int Diem { get; set; }
 
         public bool TinhTrang { get; set; }

@@ -195,7 +195,7 @@ if (finalPrice) {
 
         function TinhToanGiaCuoi() {
             shipFee.innerText = `${formatCash(shipMoney.toString())} đ`
-            voucherFee.innerText = `${voucherPercent} %`
+            voucherFee.innerText = voucherPercent > 0 ? `-${voucherPercent} %` : `${voucherPercent} %`
             finalMoney = total + shipMoney - total * (voucherPercent / 100)
             finalPrice.innerText = `${formatCash(finalMoney.toString())} VNĐ`
         }

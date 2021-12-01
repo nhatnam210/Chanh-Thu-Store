@@ -14,13 +14,13 @@ namespace ChanhThu_Store.Controllers
     public class VouchersController : Controller
     {
         private ChanhThuStoreContext db = new ChanhThuStoreContext();
+        DateTime thisDay = DateTime.Today;
         public ActionResult DanhSachVoucher()
         {
-            DateTime thisDay = DateTime.Today;
             var userID = User.Identity.GetUserId();
 
             IQueryable<Voucher> listVoucher = null;
-
+            //hiển thị tất cả voucher còn hạn của shop
             listVoucher = from v in db.Vouchers
                           where v.HanSuDung >= thisDay
                           orderby v.DiemDoi ascending
@@ -32,22 +32,21 @@ namespace ChanhThu_Store.Controllers
         [Authorize]
         public ActionResult DoiVoucher(String idVoucher)
         {
-            DateTime thisDay = DateTime.Today;
             var userID = User.Identity.GetUserId();
             AspNetUser currentUser = db.AspNetUsers.Find(userID);
             var diemHienTai = currentUser.DiemTichLuy;
 
             Voucher voucher = db.Vouchers.Find(idVoucher);
 
-            if(voucher != null)
+            if (voucher != null)
             {
                 /*Nếu đủ điểm*/
-                if (currentUser.DiemTichLuy >= voucher.DiemDoi)
+                if (currentUser.DiemTichLuy >= voucher.DiemDoi && voucher.HanSuDung >= thisDay)
                 {
+                    ChiTietVoucher updateCTVC = db.ChiTietVouchers.SingleOrDefault(p => p.MaKhachHang == userID && p.MaVoucher == idVoucher);
                     /*Nếu trùng*/
-                    if (db.ChiTietVouchers.Any(p => p.MaKhachHang == userID && p.MaVoucher == idVoucher))
+                    if (updateCTVC != null)
                     {
-                        var updateCTVC = db.ChiTietVouchers.SingleOrDefault(p => p.MaKhachHang == userID && p.MaVoucher == idVoucher);
                         /*Cập nhật số lượng*/
                         updateCTVC.SoLuong++;
 
@@ -61,19 +60,16 @@ namespace ChanhThu_Store.Controllers
                     /*Nếu không trùng*/
                     else
                     {
-                        if (voucher.HanSuDung >= thisDay)
-                        {
-                            var chitietVoucher = new ChiTietVoucher()
-                            { MaVoucher = voucher.MaVoucher, MaKhachHang = currentUser.Id, TinhTrang = true, SoLuong = 1 };
-                            db.ChiTietVouchers.Add(chitietVoucher);
+                        ChiTietVoucher chitietVoucher = new ChiTietVoucher()
+                        { MaVoucher = voucher.MaVoucher, MaKhachHang = currentUser.Id, TinhTrang = true, SoLuong = 1 };
+                        db.ChiTietVouchers.Add(chitietVoucher);
 
-                            diemHienTai -= voucher.DiemDoi;
-                            if (diemHienTai <= 0)
-                            {
-                                diemHienTai = 0;
-                            }
-                            currentUser.DiemTichLuy = diemHienTai;
+                        diemHienTai -= voucher.DiemDoi;
+                        if (diemHienTai <= 0)
+                        {
+                            diemHienTai = 0;
                         }
+                        currentUser.DiemTichLuy = diemHienTai;
                     }
                 }
 

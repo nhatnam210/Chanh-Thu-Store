@@ -10,24 +10,43 @@ using ChanhThu_Store.Models;
 
 namespace WebApplication1.Areas.Admin.Controllers
 {
-    public class ThongTinCuaHangsController : Controller
+    public class ThongTinCuaHangsAdminController : Controller
     {
         private ChanhThuStoreContext db = new ChanhThuStoreContext();
 
-        // GET: Admin/ThongTinCuaHangs
+        // GET: Admin/ThongTinCuaHangsAdmin
         public ActionResult Index()
         {
-            return View(db.ThongTinCuaHangs.ToList());
+            var listThongTin = db.ThongTinCuaHangs.ToList();
+            if(listThongTin.Count() > 0)
+            {
+                return View(listThongTin);
+            }
+            return View();
         }
-       
 
-        // GET: Admin/ThongTinCuaHangs/Create
+        // GET: Admin/ThongTinCuaHangsAdmin/Details/5
+        public ActionResult Details(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ThongTinCuaHang thongTinCuaHang = db.ThongTinCuaHangs.Find(id);
+            if (thongTinCuaHang == null)
+            {
+                return HttpNotFound();
+            }
+            return View(thongTinCuaHang);
+        }
+
+        // GET: Admin/ThongTinCuaHangsAdmin/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/ThongTinCuaHangs/Create
+        // POST: Admin/ThongTinCuaHangsAdmin/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -44,7 +63,7 @@ namespace WebApplication1.Areas.Admin.Controllers
             return View(thongTinCuaHang);
         }
 
-        // GET: Admin/ThongTinCuaHangs/Edit/5
+        // GET: Admin/ThongTinCuaHangsAdmin/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -59,7 +78,7 @@ namespace WebApplication1.Areas.Admin.Controllers
             return View(thongTinCuaHang);
         }
 
-        // POST: Admin/ThongTinCuaHangs/Edit/5
+        // POST: Admin/ThongTinCuaHangsAdmin/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -74,7 +93,33 @@ namespace WebApplication1.Areas.Admin.Controllers
             }
             return View(thongTinCuaHang);
         }
-      
+
+        // GET: Admin/ThongTinCuaHangsAdmin/Delete/5
+        public ActionResult Delete(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ThongTinCuaHang thongTinCuaHang = db.ThongTinCuaHangs.Find(id);
+            if (thongTinCuaHang == null)
+            {
+                return HttpNotFound();
+            }
+            return View(thongTinCuaHang);
+        }
+
+        // POST: Admin/ThongTinCuaHangsAdmin/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(string id)
+        {
+            ThongTinCuaHang thongTinCuaHang = db.ThongTinCuaHangs.Find(id);
+            db.ThongTinCuaHangs.Remove(thongTinCuaHang);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -1,24 +1,26 @@
-﻿
-@model PagedList.IPagedList<ChanhThu_Store.Models.AspNetUser>
-<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+﻿@model PagedList.IPagedList<ChanhThu_Store.Models.ThongTinCuaHang>
 @using PagedList.Mvc;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Main_Admin.cshtml";
 }
 
+
 <!-- Main Content -->
 <div id="content">
+
     <!-- Topbar -->
     <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
         <!-- Sidebar Toggle (Topbar) -->
         <form class="form-inline">
             <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                 <i class="fa fa-bars"></i>
             </button>
         </form>
+
         <!-- Topbar Search -->
-        <form method="post" action="/admin/khach-hang" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+        <form method="post" action="/admin/thong-tin-cua-hang" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
                 <input class="col-md-10" type="text" name="timkiem" class="form-control bg-light border-0 small" placeholder="Tìm kiếm @ViewBag.Loc"
                        aria-label="Search" aria-describedby="basic-addon2">
@@ -56,6 +58,9 @@
                     </form>
                 </div>
             </li>
+
+
+
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
@@ -76,79 +81,86 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-capitalize table-admin__title">Khách Hàng</h1>
+        <h1 class="h3 mb-2 text-capitalize table-admin__title">Thông tin cửa hàng</h1>
+        <div>
+            <a href="/admin/thong-tin-cu-hang/them" class="text-capitalize add-item-admin__btn">
+                <span class="icon white">
+                    <ion-icon size="large" name="add-circle"></ion-icon>
+                </span>
+                <span class="add-item">Thêm</span>
+            </a>
+        </div>
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
-
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    @if (Model.Count() > 0)
+                    {
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th class="text-capitalize">
+                                        Tên cửa hàng
+                                    </th>
+                                    <th class="text-capitalize">
+                                        SĐT
+                                    </th>
+                                    <th class="text-capitalize">
+                                        Email
+                                    </th>
+                                    <th width="300px;" class="text-capitalize">
+                                        Địa chỉ
+                                    </th>
+                                    <th colspan="2" class="text-capitalize text-center"> Tùy chọn</th>
+                                </tr>
+                            </thead>
 
-                        <thead>
-                            <tr>
-                                <th class="text-capitalize">
-                                    @Html.ActionLink("Tên", "Index", new { sapxep = ViewBag.SapXepTen, loc = ViewBag.Loc })
-                                </th>
-                                <th class="text-capitalize">
-                                    Email
-                                </th>
-                                <th class="text-capitalize text-center">
-                                    Xác thực
-                                </th>
-                                <th class="text-capitalize">
-                                    sđt
-                                </th>
-                                <th class="text-capitalize">
-                                    điểm tích lũy
-                                </th>
+                            <tbody>
 
-                                @*<th>Tùy chỉnh</th>*@
-                            </tr>
-                        </thead>
 
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
+                                foreach (var item in Model)
+                                {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Ten)
+                                        @item.TenCuaHang
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Email)
+                                        @item.SDT
+                                    </td>
+                                    <td>
+                                        @item.Email
+                                    </td>
+                                    <td>
+                                        @*<div class="img-fit cart" style="background-image: url('@item.Hinh'),url(" /Content/images/default.png");">
+                                            </div>*@
+                                        @item.DiaChi
+                                    </td>
+                                    <td class="options">
+                                        <a href="/admin/loai-san-pham/xoa?id=@item.TenCuaHang">
+                                            <span class="icon red hover">
+                                                <ion-icon name="trash" size="large"></ion-icon>
+                                            </span>
+                                        </a>
+                                    </td>
+                                    <td class="options">
+                                        <a href="/admin/loai-san-pham/chinh-sua?id=@item.TenCuaHang">
+                                            <span class="icon yellow hover">
+                                                <ion-icon name="create" size="large"></ion-icon>
+                                            </span>
+                                        </a>
                                     </td>
 
-                                    @if (item.EmailConfirmed)
-                                    {
-                                        <td>
-                                            <span class="icon green">
-                                                <ion-icon name="checkmark-circle"></ion-icon>
-                                            </span>
-                                        </td>
-
-                                    }
-                                    else
-                                    {
-                                        <td>
-                                            <span class="icon red">
-                                                <ion-icon name="close-circle"></ion-icon>
-                                            </span>
-                                        </td>
-                                    }
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.PhoneNumber)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.DiemTichLuy)
-                                    </td>
                                 </tr>
-                            }
-                        </tbody>
-                    </table>
-                    <br />
-                    <span class="show-page-text text-white">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
+                                }
+                                }
+                            </tbody>
+                        </table>
 
-                    @Html.PagedListPager(Model, trang => Url.Action("Index",
-                        new { trang, sapxep = ViewBag.SapXep, loc = ViewBag.Loc }))
+                        <br />
+                        <span class="show-page-text text-white">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
+                        @Html.PagedListPager(Model, trang => Url.Action("Index",
+                                 new { trang, sapxep = ViewBag.SapXep, loc = ViewBag.Loc }))
+                    }
                 </div>
             </div>
         </div>

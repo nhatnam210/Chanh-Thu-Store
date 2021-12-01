@@ -17,6 +17,30 @@ namespace ChanhThu_Store.Controllers
 
         public ActionResult Index()
         {
+            //Cập nhật tình trạng voucher của tất cả user khi về trang chủ
+            IQueryable<ChiTietVoucher> listChiTietVoucherFalse = null;
+            //danh sách voucher hết hạn của tất cả user
+            listChiTietVoucherFalse = from ctvc in db.ChiTietVouchers
+                                 join vc in db.Vouchers on ctvc.MaVoucher equals vc.MaVoucher
+                                 where vc.HanSuDung < thisDay
+                                 select ctvc;
+
+            //Cập nhật tình trạng hoặc xóa
+            foreach (var item in listChiTietVoucherFalse)
+            {
+                item.TinhTrang = false;
+                DateTime hansudung = Convert.ToDateTime(item.Voucher.HanSuDung);
+                DateTime ngayhientai = Convert.ToDateTime(thisDay);
+                int chenhlech = (ngayhientai - hansudung).Days;
+                //Xóa voucher trong CTVC nếu hết hạn quá 30 ngày của tất cả user
+                if (chenhlech > 30)
+                {
+                    db.ChiTietVouchers.Remove(db.ChiTietVouchers
+                        .SingleOrDefault(p => p.MaKhachHang == item.MaKhachHang && p.MaVoucher == item.MaVoucher));
+                }
+            }
+
+            db.SaveChanges();
             return View();
         }
 

@@ -191,6 +191,10 @@ namespace ChanhThu_Store.Controllers
                             }
                         }
                     }
+                    else
+                    {
+                        return Redirect("/loi-thanh-toan");
+                    }
                 }
                 catch
                 {
@@ -219,30 +223,15 @@ namespace ChanhThu_Store.Controllers
         {
             var userID = User.Identity.GetUserId();
             IQueryable<Voucher> listVoucher = null;
-            IQueryable<ChiTietVoucher> listChiTietVoucher = null;
             if (userID!=null)
             {
                 /*hiện voucher sở hữu + còn hạn*/
-                listVoucher = (from vc in db.Vouchers
-                               join ctvc in db.ChiTietVouchers on vc.MaVoucher equals ctvc.MaVoucher
-                               where vc.MaVoucher == ctvc.MaVoucher && ctvc.MaKhachHang == userID && vc.HanSuDung > thisDay
-                               select vc).Distinct();
-
-                /*Cập nhật tình trạng voucher trong chietvoucher*/
-                listChiTietVoucher = from ctvc in db.ChiTietVouchers
-                                     join vc in db.Vouchers on ctvc.MaVoucher equals vc.MaVoucher
-                                     where ctvc.MaKhachHang == userID && vc.HanSuDung < thisDay
-                                     select ctvc;
-
-                foreach (var item in listChiTietVoucher)
-                {
-                    item.TinhTrang = false;
-                    ////if ((item.Voucher.HanSuDung - thisDay) > 30) { };
-                    //db.ChiTietVouchers.Remove(item);
-                }
+                listVoucher = from vc in db.Vouchers
+                              join ctvc in db.ChiTietVouchers on vc.MaVoucher equals ctvc.MaVoucher
+                              where ctvc.MaKhachHang == userID && vc.HanSuDung >= thisDay && ctvc.TinhTrang == true
+                              select vc;
             }
 
-            db.SaveChanges();
             return PartialView("VoucherTheoUser", listVoucher);
         }
 

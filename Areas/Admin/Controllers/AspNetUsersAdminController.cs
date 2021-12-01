@@ -19,9 +19,8 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         // GET: Admin/AspNetUsersAdmin
         public ActionResult Index(string sapxep, string loc, string timkiem, int? trang)
         {
-            ViewBag.Sapxep = sapxep;
-            ViewBag.SapxepMa = String.IsNullOrEmpty(sapxep) ? "Id" : "";
-            ViewBag.SapxepTen = sapxep == "Ten" ? "Ten_desc" : "Ten";
+            ViewBag.SapXep = sapxep;
+            ViewBag.SapXepTen = sapxep == "ten" ? "ten-giam-dan" : "ten";
 
             //phan trang
             if (timkiem != null)
@@ -39,26 +38,21 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             if (!String.IsNullOrEmpty(timkiem))
             {
                 khachhang = khachhang.Where(s => s.Ten.Contains(timkiem));
-                //|| s.author.Contains(timkiem)
 
             }
             //sắp xếp 
             switch (sapxep)
             {
-                case "Id":
-                    khachhang = khachhang.OrderByDescending(s => s.Id);
-                    break;
-                case "Ten":
+                case "ten":
                     khachhang = khachhang.OrderBy(s => s.Ten);
                     break;
-                case "Ten_desc":
+                case "ten-giam-dan":
                     khachhang = khachhang.OrderByDescending(s => s.Ten);
                     break;
                 default:
                     khachhang = khachhang.OrderBy(s => s.Id);
                     break;
             }
-            //var articles = db.Articles.Include(a => a.Cetegory);
             int pageSize = 5;
             int pageNumber = (trang ?? 1);
             return View(khachhang.ToPagedList(pageNumber, pageSize));

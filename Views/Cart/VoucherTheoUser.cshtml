@@ -11,21 +11,127 @@
             @{ var i = 0;}
             @if (Model.Count() > 0)
             {
+                DateTime thisDay = DateTime.Today;
+
                 <div class="custom-control custom-radio">
                     <input checked="checked" id="voucher__@i" name="mavoucher" value="" data-voucher="0" class="custom-control-input" type="radio">
                     <label class="custom-control-label" for="voucher__@i">Không dùng</label> <span class="float-right font-weight-bold">0%</span>
                 </div>
-                <div class="ml-4 mb-2 small"></div>
+                <div class="ml-4 mb-2 small voucher-payment-group"></div>
                 foreach (var item in Model)
                 {
-                        i++;
+                    i++;
+                    DateTime hansudung = Convert.ToDateTime(item.HanSuDung);
+                    DateTime ngayhientai = Convert.ToDateTime(thisDay);
+                    int chenhlech = (ngayhientai - hansudung).Days;
+                    var chenhlechAbs = Math.Abs(chenhlech);
                     <div class="custom-control custom-radio">
                         <input id="voucher__@i" name="mavoucher" value="@item.MaVoucher" data-voucher="@item.GiaTriGiam" class="custom-control-input" type="radio">
                         <label class="custom-control-label" for="voucher__@i">@item.TenVoucher</label><span class="float-right font-weight-bold">@item.GiaTriGiam%</span>
                     </div>
-                    <div class="ml-4 mb-2 small">
-                        *HSD:@item.HanSuDung.ToString("d", VN)
-                    </div>
+                    @*switch (chenhlech)
+                {
+                    //Sắp hết
+                    case 0:
+                        <div class="ml-4 mb-2 small">
+                            <span class="font-weight-bold">*HSD:</span>
+                            <span>@item.HanSuDung.ToString("d", VN)</span>
+                            <span class="font-italic text-red float-right">(Ngày mai hết hạn)</span>
+                        </div>
+                        break;
+                    //HSD nhỏ hơn 1 tháng
+                    case > -30:
+                        <div class="ml-4 mb-2 small">
+                            <span class="font-weight-bold">*HSD:</span>
+                            <span>@item.HanSuDung.ToString("d", VN)</span>
+                            <span class="font-italic text-red float-right">(Còn @chenhlechAbs ngày)</span>
+                        </div>
+                        break;
+                    // HSD lớn hơn 1 tháng và nhỏ hơn 1 năm
+                    case <= -30 and >= -365:
+                        var thang = Convert.ToInt32(chenhlechAbs / 30);
+                        var ngay = chenhlechAbs % 30;
+                        if (ngay > 0)
+                        {
+                            <div class="ml-4 mb-2 small">
+                                <span class="font-weight-bold">*HSD:</span>
+                                <span> @item.HanSuDung.ToString("d", VN)</span>
+                                <span class="font-italic float-right">(Còn @thang tháng @ngay ngày)</span>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="ml-4 mb-2 small">
+                                <span class="font-weight-bold">*HSD:</span>
+                                <span> @item.HanSuDung.ToString("d", VN)</span>
+                                <span class="font-italic float-right">(Còn @thang tháng)</span>
+                            </div>
+                        }
+                        break;
+                    default:
+                        <div class="ml-4 mb-2 small">
+                            <span class="font-weight-bold">*HSD:</span>
+                            <span> @item.HanSuDung.ToString("d", VN)</span>
+                        </div>
+                        break;
+                }*@
+
+                    //Sắp hết
+                    if (chenhlech == 0)
+                    {
+                        <div class="ml-4 mb-2 small">
+                            <span class="font-weight-bold">*HSD:</span>
+                            <span>@item.HanSuDung.ToString("d", VN)</span>
+                            <span class="font-italic text-red float-right">(Ngày mai hết hạn)</span>
+                        </div>
+                    }
+                    else if (chenhlech > -30)  //HSD nhỏ hơn 1 tháng
+                    {
+                        if (chenhlech == -1)
+                        {
+                            <div class="ml-4 mb-2 small">
+                                <span class="font-weight-bold">*HSD:</span>
+                                <span>@item.HanSuDung.ToString("d", VN)</span>
+                                <span class="font-italic text-red float-right">(Còn @chenhlechAbs ngày)</span>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="ml-4 mb-2 small">
+                                <span class="font-weight-bold">*HSD:</span>
+                                <span>@item.HanSuDung.ToString("d", VN)</span>
+                                <span class="font-italic float-right">(Còn @chenhlechAbs ngày)</span>
+                            </div>
+                        }
+                    }
+                    else if (chenhlech <= -30 && chenhlech >= -365) // HSD lớn hơn 1 tháng và nhỏ hơn 1 năm
+                    {
+                        var thang = Convert.ToInt32(chenhlechAbs / 30);
+                        var ngay = chenhlechAbs % 30;
+                        if (ngay > 0)
+                        {
+                            <div class="ml-4 mb-2 small">
+                                <span class="font-weight-bold">*HSD:</span>
+                                <span> @item.HanSuDung.ToString("d", VN)</span>
+                                <span class="font-italic float-right">(Còn @thang tháng @ngay ngày)</span>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="ml-4 mb-2 small">
+                                <span class="font-weight-bold">*HSD:</span>
+                                <span> @item.HanSuDung.ToString("d", VN)</span>
+                                <span class="font-italic float-right">(Còn @thang tháng)</span>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="ml-4 mb-2 small">
+                            <span class="font-weight-bold">*HSD:</span>
+                            <span> @item.HanSuDung.ToString("d", VN)</span>
+                        </div>
+                    }
                 }
             }
             else

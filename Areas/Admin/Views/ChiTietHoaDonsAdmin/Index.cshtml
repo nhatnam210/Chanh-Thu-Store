@@ -1,24 +1,28 @@
-﻿@model PagedList.IPagedList<ChanhThu_Store.Models.SanPham>
-@using PagedList.Mvc;
+﻿@model List<ChanhThu_Store.Models.ChiTietHoaDon>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Main_Admin.cshtml";
 }
 
+
 <!-- Main Content -->
 <div id="content">
     <!-- Topbar -->
     <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
         <!-- Sidebar Toggle (Topbar) -->
         <form class="form-inline">
             <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                 <i class="fa fa-bars"></i>
             </button>
         </form>
+
         <!-- Topbar Search -->
-        <form method="post" action="/admin/san-pham" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+        <form method="post" action="/admin/hoa-don" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-                <input class="col-md-10" type="text" name="timkiem" class="form-control bg-light border-0 small" placeholder="Tìm kiếm @ViewBag.Loc" aria-label="Search" aria-describedby="basic-addon2">
+                <input class="col-md-10" type="text" name="timkiem" class="form-control bg-light border-0 small" placeholder="Tìm kiếm @ViewBag.Loc"
+                       aria-label="Search" aria-describedby="basic-addon2">
                 <div class="input-group-append col-md-2">
                     <button class="btn btn-primary" type="submit">
                         <i class="fas fa-search fa-sm"></i>
@@ -29,6 +33,7 @@
 
         <!-- Topbar Navbar -->
         <ul class="navbar-nav ml-auto">
+
             <!-- Nav Item - Search Dropdown (Visible Only XS) -->
             <li class="nav-item dropdown no-arrow d-sm-none">
                 <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
@@ -53,6 +58,8 @@
                 </div>
             </li>
 
+
+
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
@@ -62,107 +69,89 @@
                          src="img/undraw_profile.svg">
                 </a>
                 <!-- Dropdown - User Information -->
+
             </li>
+
         </ul>
+
     </nav>
     <!-- End of Topbar -->
     <!-- Begin Page Content -->
     <div class="container-fluid">
-        <!-- Page Heading -->
-        <h1 class="h3 mb-2 ">Sản Phẩm</h1>
-        <p>
-            @Html.ActionLink("Thêm Sản Phẩm", "Create")
-        </p>
+        @if (Model.Count > 0)
+        {
+            var khachdat = Model[0].HoaDon.AspNetUser.Ten;
+            khachdat = khachdat != null ? khachdat.Trim() : Model[0].HoaDon.AspNetUser.Email;
+            var khachnhan = Model[0].HoaDon.Ten;
+            khachnhan = khachnhan != null ? khachnhan.Trim() : Model[0].HoaDon.AspNetUser.Email;
+
+
+            <!-- Page Heading -->
+            <h1 class="h3 mb-2 text-white text-center">Hóa Đơn - @Model[0].HoaDon.MaHoaDon</h1>
+            <h1 class="h3 mb-2 text-white">Khách đặt: @khachdat</h1>
+            <h1 class="h3 mb-2 text-white">Khách nhận: @khachnhan</h1>
+        }
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
+
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
                         <thead>
                             <tr>
                                 <th class="text-capitalize">
-                                    Tên Danh Mục Con
+                                    Mã sản phẩm
                                 </th>
                                 <th class="text-capitalize">
-                                    @Html.ActionLink("Mã Sản Phẩm", "Index", new { sapxep = ViewBag.SapxepMa, loc = ViewBag.Loc })
+                                    Tên Sản phẩm
                                 </th>
                                 <th class="text-capitalize">
-                                    @Html.ActionLink("Tên Sản Phẩm", "Index", new { sapxep = ViewBag.SapxepTen, loc = ViewBag.Loc })
+                                    Số lượng
                                 </th>
                                 <th class="text-capitalize">
-                                    Giá
-                                </th>
-                                <th width="125px">
-                                    Hình
+                                    Đơn giá
                                 </th>
                                 <th class="text-capitalize">
-                                    @Html.ActionLink("Tồn kho", "Index", new { sapxep = ViewBag.SapxepTonKho, loc = ViewBag.Loc })
+                                    Thành tiền
                                 </th>
-                                <th class="text-capitalize">
-                                    Tình Trạng
-                                </th>
-                                <th class="text-capitalize">Tùy chỉnh</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             @foreach (var item in Model)
                             {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.DanhMucCon.TenDanhMucCon)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.MaSanPham)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TenSanPham)
-                                </td>
-                                <td>
-                                    @string.Format("{0:#,##0}", item.Gia) đ
-                                </td>
-                                <td>
-                                    <div class="img-fit cart" style="background-image: url('@item.HinhChinh'),url(" /Content/images/default.png");">
-                                    </div>
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.SoLuongTonKho) @item.DonViTinh
-                                </td>
-
-                                @if (item.TinhTrang)
-                                {
+                                <tr>
                                     <td>
-                                        <span class="icon green">
-                                            <ion-icon name="checkmark-circle"></ion-icon>
-                                        </span>
+                                        @item.SanPham.MaSanPham
                                     </td>
-
-                                }
-                                else
-                                {
                                     <td>
-                                        <span class="icon red">
-                                            <ion-icon name="close-circle"></ion-icon>
-                                        </span>
+                                        @item.SanPham.TenSanPham
                                     </td>
-                                }
-                                <td>
-                                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.MaSanPham }) |
-                                    @Html.ActionLink("Details", "Details", new { id = item.MaSanPham }) |
-                                    @Html.ActionLink("Xóa", "Delete", new { id = item.MaSanPham })
-                                </td>
-                            </tr>
+                                    <td>
+                                        @item.Soluong @item.SanPham.DonViTinh
+                                    </td>
+                                    <td>
+                                        @string.Format("{0:#,##0}", item.DonGia) đ
+                                    </td>
+                                    <td>
+                                        @string.Format("{0:#,##0}", item.Soluong * item.DonGia) đ
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                     </table>
                     <br />
-                    <span class="show-page-text text-white">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
+                    @*<span class="show-page-text text-white">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
+
                     @Html.PagedListPager(Model, trang => Url.Action("Index",
-                        new { trang, sapxep = ViewBag.Sapxep, loc = ViewBag.Loc }))
+                        new { trang, sapxep = ViewBag.Sapxep, loc = ViewBag.Loc }))*@
                 </div>
             </div>
         </div>
+
     </div>
     <!-- /.container-fluid -->
+
 </div>
 <!-- End of Main Content -->
