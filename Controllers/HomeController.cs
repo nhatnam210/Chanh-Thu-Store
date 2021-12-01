@@ -23,6 +23,10 @@ namespace ChanhThu_Store.Controllers
         {
             return View();
         }
+        public ActionResult Map()
+        {
+            return View();
+        }
 
         [ChildActionOnly]
         public PartialViewResult HeaderCart()
