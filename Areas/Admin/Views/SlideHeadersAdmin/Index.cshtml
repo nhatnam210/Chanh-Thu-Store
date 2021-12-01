@@ -4,41 +4,6 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Main_Admin.cshtml";
 }
-
-@*<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th class="text-capitalize">
-            @Html.DisplayNameFor(model => model.HinhSlideHeader)
-        </th>
-        <th class="text-capitalize">
-            @Html.DisplayNameFor(model => model.MoTaSliderHeader)
-        </th>
-        <th class="text-capitalize"></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.HinhSlideHeader)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MoTaSliderHeader)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.MaSliderHeader }) |
-                @Html.ActionLink("Details", "Details", new { id = item.MaSliderHeader }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.MaSliderHeader })
-            </td>
-        </tr>
-    }
-
-</table>*@
 <!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">
 
@@ -58,7 +23,7 @@
             <!-- Topbar Search -->
             <form method="post" action="/admin/danh-muc" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
-                    <input class="col-md-10" type="text" name="timkiem" class="form-control bg-light border-0 small" placeholder="Search for @ViewBag.CurrentFilter"
+                    <input class="col-md-10" type="text" name="timkiem" class="form-control bg-light border-0 small" placeholder="Tìm kiếm @ViewBag.Loc"
                            aria-label="Search" aria-describedby="basic-addon2">
                     <div class="input-group-append col-md-2">
                         <button class="btn btn-primary" type="submit">
@@ -131,12 +96,11 @@
 
                             <thead>
                                 <tr>
-                                    <th class="text-capitalize" width="125px">
-                                        Hình Slider
+                                    <th class="text-capitalize" width="50%">
+                                        Hình chạy đầu trang
                                     </th>
                                     <th class="text-capitalize">
-                                        Mô tả Slider
-
+                                        Mô tả hình
                                     </th>
                                     <th class="text-capitalize"> Tùy chỉnh</th>
                                 </tr>

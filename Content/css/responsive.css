@@ -247,7 +247,7 @@
         height: 180px;
     }
 
-    .products-single {
+    .products-single:not(.gallery-box) {
         margin-bottom: 0px !important;
     }
 

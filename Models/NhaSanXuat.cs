@@ -1,4 +1,4 @@
-namespace ChanhThu_Store.Models
+﻿namespace ChanhThu_Store.Models
 {
     using System;
     using System.Collections.Generic;
@@ -19,8 +19,8 @@ namespace ChanhThu_Store.Models
         [StringLength(6)]
         public string MaNhaSanXuat { get; set; }
 
-        [Required]
-        [StringLength(20)]
+        [Required(ErrorMessage = "Vui lòng nhập tên loại sản phẩm!")]
+        [StringLength(20, ErrorMessage = "Tên nhà sản xuất không được vượt quá {0} ký tự!")]
         public string TenNhaSanXuat { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

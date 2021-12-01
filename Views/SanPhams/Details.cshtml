@@ -112,16 +112,19 @@
                 </div>
             </div>
         </div>
-
         <div class="row my-5">
             <div class="card card-outline-secondary my-4 shadow" style="width:100%">
                 <div class="card-header table-comment__title">
                     <h2 class="text-capitalize font-weight-bold table-comment__title-text">Đánh Giá Sản Phẩm</h2>
                 </div>
-                <div class="card-body list-comment__product-detail">
+                <div class="card-body list-comment__product-detail" id="list-comment__product-detail">
                     @{
                         Html.RenderAction("ShowDanhSachBinhLuan", "SanPhams", new { id = @Model.MaSanPham });
                     }
+                </div>
+                <div class="showmore">
+                    <div id="loadMore" class="btn hvr-hover">Xem Thêm</div>
+                    <div id="showLess" class="btn hvr-hover">Thu Gọn</div>
                 </div>
                 @if (Request.IsAuthenticated)
                 {
@@ -129,16 +132,13 @@
                         @{
                             Html.RenderAction("GetAvatarComment", "Account");
                         }
+                       
                         <div class="media-body">
-                            <form method="post" action="/Sanphams/Binhluan">
-                                <input hidden name="masanpham" value="@Model.MaSanPham" />
-
-                                <input name="noidung" placeholder="Nhập bình luận..." class="user-input"></input>
-                                <button type="submit" class="btn hvr-hover max-width-mobile font-weight-bold
-                                    float-lg-right float-md-right btn-comment">
-                                    Đăng bình luận
-                                </button>
-                            </form>
+                            <input hidden name="masanpham" value="@Model.MaSanPham" />
+                            <input name="noidung" placeholder="Nhập bình luận..." class="user-input"></input>
+                            <button id="post-comment" class="btn hvr-hover max-width-mobile font-weight-bold float-lg-right float-md-right btn-comment">
+                                Đăng bình luận
+                            </button>
                         </div>
                     </div>
                 }
@@ -197,6 +197,9 @@
 <!-- End Cart -->
 @section scripts{
     <script>
+        /* ..............................................
+        Yêu thích
+        ................................................ */
         $(document).ready(function () {
             $(".js-tongle-yeuthich").click(function (e) {
                 var luotyeuthich = document.getElementById('like_num__value')
@@ -232,25 +235,27 @@
                     });
             });
 
-            /*Load more comment*/
+            /* ..............................................
+            load more commet
+            ................................................. */
             size_li = $("#myList li").length;
             if (size_li <= 5) {
                 $('#loadMore').hide();
             }
 
-            function LoadComment(x) {
+            function LoadMoreComment(x) {
                 $('#myList li:lt(' + x + ')').show();
                 $('#myList li:lt(' + x + ')').css("display", "flex")
             }
 
             /*Begin*/
             x = 5;
-            LoadComment(x)
+            LoadMoreComment(x)
 
             $('#showLess').hide();
             $('#loadMore').click(function () {
                 x = (x + 5 <= size_li) ? x + 5 : size_li;
-                LoadComment(x)
+                LoadMoreComment(x)
                 $('#showLess').show();
                 if (x >= size_li) {
                     $('#loadMore').hide();
@@ -258,7 +263,7 @@
             });
             $('#showLess').click(function () {
                 x = (x - 5 <= 5) ? 5 : x - 5;
-              
+
                 $('#myList li').not(':lt(' + x + ')').hide();
                 $('#loadMore').show();
                 $('#showLess').show();
@@ -267,6 +272,56 @@
                 }
             });
         });
+
+        /* ..............................................
+        load list curent comment user
+        ................................................. */
+
+        // hàm load bình luận
+        function loadBinhLuan() {
+            var maSP = $('input[name="masanpham"]').val();
+            var noiDung = $('input[name="noidung"]').val();
+
+            $.ajax({
+                url: "/SanPhams/Binhluan",
+                //type: "POST",
+                data: { masanpham: maSP, noidung: noiDung },
+                success: function (res) {
+                    $('#list-comment__product-detail').html(res)
+                    $('input[name="noidung"]').val("")
+
+                    var currentUser = $('#currentUser')[0];
+                    currentAvt = currentUser.src
+
+                    var currentName = currentUser.getAttribute('user-name');
+                    var currentEmail = currentUser.getAttribute('user-email');
+                    var currentDate = currentUser.getAttribute('date');
+
+                    // Avt cmt hiện tại
+                    $(".user-avatar__comment").first().attr("src", currentAvt);
+
+                    //Day cmt hiện tại
+                    if (currentName != null) {
+                        $('.user-comment__day').first().html(`Đăng bởi ${currentName} - ${currentDate}`)
+                    } else {
+                        $('.user-comment__day').first().html(`Đăng bởi ${currentEmail} - ${currentDate}`)
+                    }
+                    $('#showLess').hide();
+
+                    size_li = $("#myList li").length;
+                    if (size_li > 5) {
+                        $('#loadMore').show();
+                    }
+                },
+            })
+        }
+
+        $('#post-comment').click(loadBinhLuan);
+        $('input[name="noidung"]').keypress(function (ele) {
+            if (ele.keyCode == 13) {
+                loadBinhLuan();
+            }
+        })
     </script>
 
 }

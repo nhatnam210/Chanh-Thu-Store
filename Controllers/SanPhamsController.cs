@@ -132,7 +132,12 @@ namespace ChanhThu_Store.Controllers
 
             //string returnURl = "/cua-hang/san-pham?id=" + ViewBag.MaSanPham;
             //return Redirect(returnURl);
-            return Redirect(Request.UrlReferrer.ToString());
+            //return Redirect(Request.UrlReferrer.ToString());
+            var loadBinhLuan = db.BinhLuans.Where(p => p.MaSanPham == masanpham)
+                                           .OrderByDescending(p => p.NgayBinhLuan)
+                                           .OrderByDescending(p => p.MaBinhLuan);
+
+            return PartialView("ShowDanhSachBinhLuan", loadBinhLuan.ToList()); //res
         }
 
         [AllowAnonymous]
@@ -148,12 +153,19 @@ namespace ChanhThu_Store.Controllers
             {
                 return RedirectToAction("NotFound", "Home");
             }
-            var objBinhLuan = db.BinhLuans.Where(p => p.MaSanPham == id)
+            var listBinhLuan = db.BinhLuans.Where(p => p.MaSanPham == id)
                                            .OrderByDescending(p=> p.NgayBinhLuan)
                                            .OrderByDescending(p=>p.MaBinhLuan);
 
-            return PartialView("ShowDanhSachBinhLuan", objBinhLuan);
+            return PartialView("ShowDanhSachBinhLuan", listBinhLuan.ToList());
         }
+
+        //public ActionResult LoadTime()
+        //{
+        //    var text = DateTime.Now.ToString("HH:mm:ss tt");
+        //    return Content(text);
+        //}
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -1,10 +1,13 @@
 ﻿@model ChanhThu_Store.Models.AspNetUser
+@using System.Globalization;
+@{ CultureInfo VN = new CultureInfo("vi-VN");}
 
+@{ DateTime thisDay = DateTime.Today;}
 @if (Model.Avatar != null)
 {
-    <img class="rounded-circle p-1 user-avatar__comment--type"src="@Model.Avatar" />
+    <img user-name="@Model.Ten" user-email="@Model.Email" date="@thisDay.ToString("d", VN)" id="currentUser" class="rounded-circle p-1 user-avatar__comment--type" src="@Model.Avatar" />
 }
 else
 {
-    <img class="rounded-circle p-1 user-avatar__comment--type" src="~/Content/images/user-default.png" />
+    <img user-name="@Model.Ten" user-email="@Model.Email" date="@thisDay.ToString("d", VN)" id="currentUser" class="rounded-circle p-1 user-avatar__comment--type" src="~/Content/images/user-default.png" />
 }

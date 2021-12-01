@@ -13,6 +13,7 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
 {
     public class VouchersAdminController : Controller
     {
+        DateTime thisDay = DateTime.Today;
         private ChanhThuStoreContext db = new ChanhThuStoreContext();
 
         // GET: Admin/VouchersAdmin
@@ -99,7 +100,17 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 db.Vouchers.Add(voucher);
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch
+                {
+                    ViewBag.Message = "Mã này đã tồn tại!";
+                    //return new HttpStatusCodeResult(204);
+                    return Redirect(Request.UrlReferrer.ToString());
+                }
+               
                 return RedirectToAction("Index");
             }
 
@@ -132,8 +143,44 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             {
                 db.Entry(voucher).State = EntityState.Modified;
                 db.SaveChanges();
+
+                /*thay đổi lại tình trạng của voucher tất cả user*/
+                IQueryable<Voucher> listVoucherAfterUpdate = null;
+
+                //danh sách voucher sau khi update
+                listVoucherAfterUpdate = db.Vouchers.Select(vc => vc);
+
+                if (listVoucherAfterUpdate.Count() > 0)
+                {
+                    //Cập nhật tình trạng mới cho bảng ChiTietVoucher
+                    foreach (var itemVC in listVoucherAfterUpdate)
+                    {
+                        IQueryable<ChiTietVoucher> listChiTietVoucherAfterUpdate = null;
+                        //danh sách ChiTietVoucher tương ứng theo MaVoucher
+                        listChiTietVoucherAfterUpdate = from ctvc in db.ChiTietVouchers
+                                                        where ctvc.MaVoucher == itemVC.MaVoucher
+                                                        select ctvc;
+                        //Nếu có MaVoucher tương ứng trong bảng ChiTietVoucher
+                        if (listChiTietVoucherAfterUpdate.Count() > 0)
+                        {
+                            foreach (var itemCTVC in listChiTietVoucherAfterUpdate)
+                            {
+                                if (itemVC.HanSuDung >= thisDay)
+                                {
+                                    itemCTVC.TinhTrang = true;
+                                }
+                                else
+                                {
+                                    itemCTVC.TinhTrang = false;
+                                }
+                            }
+                        }
+                    }
+                }
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             return View(voucher);
         }
 
