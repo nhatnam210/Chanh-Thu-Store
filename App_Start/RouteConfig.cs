@@ -13,11 +13,11 @@ namespace ChanhThu_Store
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-          //  routes.MapRoute(
-          //        name: "lien he",
-          //        url: "lien-he",
-          //        defaults: new { controller = "ContactUs", action = "Index", id = UrlParameter.Optional }
-          //);
+            routes.MapRoute(
+                  name: "lien he",
+                  url: "lien-he",
+                  defaults: new { controller = "ContactUs", action = "Index", id = UrlParameter.Optional }
+          );
             routes.MapRoute(
                   name: "cua hang",
                   url: "cua-hang",
