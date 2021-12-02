@@ -12,12 +12,12 @@
         @*<hr />*@
         <h3 class="question text-center">Bạn có chắc chắn muốn xóa Sản Phẩm này không ?</h3>
         <dl class="dl-horizontal text-center text-white h1">
-
-
+            <dd>
+                @Html.DisplayFor(model => model.MaSanPham)
+            </dd>
             <dd>
                 @Html.DisplayFor(model => model.TenSanPham)
             </dd>
-
         </dl>
 
         @using (Html.BeginForm())
@@ -25,7 +25,7 @@
             @Html.AntiForgeryToken()
 
             <div class="form-actions btn-touch">
-                <input type="submit" value="Delete" class="btn btn-danger" />
+                <input type="submit" value="Xóa" class="btn btn-danger" />
             </div>
             <div class=" col-md-12 back-to-list">
                 @Html.ActionLink("Trở lại", "Index")

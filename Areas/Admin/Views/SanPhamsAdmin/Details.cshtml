@@ -1,142 +1,175 @@
 ﻿@model ChanhThu_Store.Models.SanPham
 @using System.Globalization;
 @{ CultureInfo VN = new CultureInfo("vi-VN");}
+
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_Main_Admin.cshtml";
 }
+<div class="container-fluid">
+    <div class="card shadow mb-4 mt-4">
+        <div class="card-body">
+            <div class="table-responsive shadow">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <th class="text-capitalize detail-table__th text-primary">
+                                Mã sản phẩm
+                            </th>
+                            <td>
+                                @Model.MaSanPham
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-capitalize detail-table__th text-primary">
+                                Nhà sản xuất
+                            </th>
+                            <td>
+                                @Model.NhaSanXuat.TenNhaSanXuat
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-capitalize detail-table__th text-primary">
+                                Loại sản phẩm
+                            </th>
+                            <td>
+                                @Model.DanhMucCon.TenDanhMucCon
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-capitalize detail-table__th text-primary">
+                                Tên sản phẩm
+                            </th>
+                            <td>
+                                @Model.TenSanPham
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-capitalize detail-table__th text-primary">
+                                Hình trưng bày
+                            </th>
+                            <td class="text-center">
+                                <img onerror="this.src='/Content/images/default.png'" class="table-admin__img" src="@Model.HinhChinh" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-capitalize detail-table__th text-primary">
+                                Hình phụ 1
+                            </th>
+                            <td class="text-center">
+                                @if (Model.Hinh1 != null)
+                                {
+                                    <img class="table-admin__img" src="@Model.Hinh1" />
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-capitalize detail-table__th text-primary">
+                                Hình phụ 2
+                            </th>
+                            <td class="text-center">
+                                @if (Model.Hinh1 != null)
+                                {
+                                    <img class="table-admin__img" src="@Model.Hinh2" />
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-capitalize detail-table__th text-primary">
+                                Giá
+                            </th>
+                            <td>
+                                @string.Format("{0:#,##0}", Model.Gia) đ
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-capitalize detail-table__th text-primary">
+                                Đơn vị tính
+                            </th>
+                            <td>
+                                @Model.DonViTinh
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-capitalize detail-table__th text-primary">
+                                Mô tả
+                            </th>
+                            <td>
+                                <div class="table-admin__product-des">
+                                    @Model.Mota
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-capitalize detail-table__th text-primary">
+                                Ngày sản xuất
+                            </th>
+                            <td>
+                                @Model.NgaySanXuat.ToString("d", VN)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-capitalize detail-table__th text-primary">
+                                Hạn sử dụng
+                            </th>
+                            <td>
+                                @Model.HanSuDung.ToString("d", VN)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-capitalize detail-table__th text-primary">
+                                Số lượng tồn kho
+                            </th>
+                            <td>
+                                @Model.SoLuongTonKho
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-capitalize detail-table__th text-primary">
+                                Số lượng đã bán
+                            </th>
+                            <td>
+                                @Model.SoLuongDaBan
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-capitalize detail-table__th text-primary">
+                                Lượt yêu thích
+                            </th>
+                            <td>
+                                @Model.LuotYeuThich
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-capitalize detail-table__th text-primary">
+                                Điểm tích lũy
+                            </th>
+                            <td>
+                                @Model.Diem
+                            </td>
+                        </tr>
 
-
-
-<div class="form">
-
-    <dl class="dl-horizontal">
-        <dt>
-            <span class="label-admin h3">Mã Danh Mục Con</span>
-        </dt>
-
-        <dd class="text-white h5">
-            @Html.DisplayFor(model => model.DanhMucCon.MaDanhMuc)
-        </dd>
-
-        <dt>
-            <span class="label-admin h3">Tên nhà sản xuất</span>
-        </dt>
-
-        <dd class="text-white h3">
-            @Html.DisplayFor(model => model.NhaSanXuat.TenNhaSanXuat)
-        </dd>
-
-        <dt>
-            <span class="label-admin h3">Tên Sản Phẩm</span>
-        </dt>
-
-        <dd class="text-white h3">
-            @Html.DisplayFor(model => model.TenSanPham)
-        </dd>
-
-        <dt>
-            <span class="label-admin h3">Giá</span>
-        </dt>
-
-        <dd class="text-white h3">
-            @Html.DisplayFor(model => model.Gia)
-        </dd>
-
-        <dt>
-            <span class="label-admin h3">Hình Chính</span>
-        </dt>
-
-        <dd class="text-white h3">
-            @Html.DisplayFor(model => model.HinhChinh)
-        </dd>
-
-        <dt>
-            <span class="label-admin h3">Hình 1</span>
-        </dt>
-
-        <dd class="text-white h3">
-            @Html.DisplayFor(model => model.Hinh1)
-        </dd>
-
-        <dt>
-            <span class="label-admin h3">Hình 2</span>
-        </dt>
-
-        <dd class="text-white h3">
-            @Html.DisplayFor(model => model.Hinh2)
-        </dd>
-
-        <dt>
-            <span class="label-admin h3">Mô tả</span>
-        </dt>
-
-        <dd class="text-white h3">
-            @Html.DisplayFor(model => model.Mota)
-        </dd>
-
-        <dt>
-            <span class="label-admin h3">Số lượng Tồn Kho</span>
-        </dt>
-
-        <dd class="text-white h3">
-            @Html.DisplayFor(model => model.SoLuongTonKho) @Model.DonViTinh
-        </dd>
-
-        <dt>
-            <span class="label-admin h3">Số lượng Đã Bán</span>
-        </dt>
-
-        <dd class="text-white h3">
-            @Html.DisplayFor(model => model.SoLuongDaBan)
-        </dd>
-
-        <dt>
-            <span class="label-admin h3">Lượt yêu thích</span>
-        </dt>
-
-        <dd class="text-white h3">
-            @Html.DisplayFor(model => model.LuotYeuThich)
-        </dd>
-
-        <dt>
-            <span class="label-admin h3">Ngày sản xuất</span>
-        </dt>
-
-        <dd class="text-white h3">
-            @Model.NgaySanXuat.ToString("d", VN)
-        </dd>
-
-        <dt>
-            <span class="label-admin h3">Hạn sử dụng</span>
-        </dt>
-
-        <dd class="text-white h3">
-            @Model.HanSuDung.ToString("d", VN)
-        </dd>
-
-        <dt>
-            <span class="label-admin h3">Điểm</span>
-        </dt>
-
-        <dd class="text-white h3">
-            @Html.DisplayFor(model => model.Diem)
-        </dd>
-
-        <dt>
-            <span class="label-admin h3">Tình trạng</span>
-        </dt>
-
-        <dd class="text-white h3">
-            @Html.DisplayFor(model => model.TinhTrang)
-        </dd>
-        <dd>
-            <p>
-                @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.MaSanPham }) |
-                @Html.ActionLink("Trở về trang sản phẩm", "Index")
-            </p>
-        </dd>
-    </dl>
-
-
+                        <tr>
+                            <th class="text-capitalize detail-table__th text-primary">
+                                Tình trạng
+                            </th>
+                            <td>
+                                @if (Model.TinhTrang)
+                                {
+                                    <span class="text-green">Còn hàng</span>
+                                }
+                                else
+                                {
+                                    <span class="text-red">Hết hàng</span>
+                                }
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center mt-3">
+                <a href="/admin/san-pham/chinh-sua?id=@Model.MaSanPham" class="btn btn-warning">Chỉnh sửa</a>
+            </div>
+        </div>
+    </div>
 </div>

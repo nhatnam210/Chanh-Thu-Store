@@ -106,6 +106,27 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Lấy chuỗi MaSanPham của phần tử cuối bảng
+                string maSPCuoi = db.SanPhams
+                                      .OrderByDescending(d => d.MaSanPham)
+                                      .First().MaSanPham;
+
+                //Cắt lấy phần chữ số và ép kiểu
+                int laySoCuoi = Convert.ToInt32(maSPCuoi.Substring(2));
+
+                //Tăng 1 đơn vị
+                int soMoi = ++laySoCuoi;
+                if (soMoi <= 9)
+                {
+                    sanPham.MaSanPham = "SP0" + soMoi.ToString();
+                }
+                else
+                {
+                    sanPham.MaSanPham = "SP" + soMoi.ToString();
+                }
+
+                sanPham.LuotYeuThich = 0;
+
                 db.SanPhams.Add(sanPham);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -114,26 +135,6 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             ViewBag.MaDanhMucCon = new SelectList(db.DanhMucCons, "MaDanhMucCon", "MaDanhMuc", sanPham.MaDanhMucCon);
             ViewBag.MaNhaSanXuat = new SelectList(db.NhaSanXuats, "MaNhaSanXuat", "TenNhaSanXuat", sanPham.MaNhaSanXuat);
             return View(sanPham);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CreateSanPham()
-        {
-            //SanPham sanpham = new SanPham()
-            //{
-                
-            //}
-            //if (ModelState.IsValid)
-            //{
-            //    db.SanPhams.Add(sanpham);
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
-
-            //ViewBag.MaDanhMucCon = new SelectList(db.DanhMucCons, "MaDanhMucCon", "MaDanhMuc", sanPham.MaDanhMucCon);
-            //ViewBag.MaNhaSanXuat = new SelectList(db.NhaSanXuats, "MaNhaSanXuat", "TenNhaSanXuat", sanPham.MaNhaSanXuat);
-            return View();
         }
 
         // GET: Admin/SanPhamsAdmin/Edit/5
@@ -191,6 +192,24 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
+            //Xóa bình luận
+            var binhLuan = db.BinhLuans
+                            .Where(b => b.MaSanPham == id)
+                            .Select(b => b);
+            foreach (var itemBL in binhLuan)
+            {
+                db.BinhLuans.Remove(itemBL);
+            }
+            //Xóa Yêu thích
+            var yeuThich = db.TuongTacs
+                           .Where(t => t.MaSanPham == id)
+                           .Select(t => t);
+
+            foreach (var itemYT in yeuThich)
+            {
+                db.TuongTacs.Remove(itemYT);
+            }
+
             SanPham sanPham = db.SanPhams.Find(id);
             db.SanPhams.Remove(sanPham);
             db.SaveChanges();

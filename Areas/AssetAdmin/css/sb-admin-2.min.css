@@ -1882,7 +1882,7 @@ pre {
     display: block;
     width: 100%;
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch
+    -webkit-overflow-scrolling: touch;
 }
 
     .table-responsive > .table-bordered {
@@ -4436,7 +4436,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     flex: 1 1 auto;
     min-height: 1px;
     padding: 1.25rem;
-    background: #222;
+    background: #333;
 }
 
 .card-title {
@@ -9892,10 +9892,10 @@ a:focus {
 }
 
     #wrapper #content-wrapper {
-        background-color: #f8f9fc;
+        background-color: #222;
         width: 100%;
         overflow-x: hidden;
-        height: 100vh;
+        flex:1;
     }
 
         #wrapper #content-wrapper #content {
@@ -10602,7 +10602,7 @@ a:focus {
 
 @media (min-width:768px) {
     .sidebar {
-        width: 16rem !important
+        /*width: 16rem !important*/
     }
 
         .sidebar .nav-item .collapse {
@@ -11522,11 +11522,6 @@ body.sidebar-toggled footer.sticky-footer {
     justify-content: center;
     align-items: center;
     flex:1;
-}
-
-.admin-title {
-    margin: 15px 12px;
-    color: #333;
 }
 
 .dl-horizontal {

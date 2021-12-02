@@ -152,9 +152,17 @@
 }
 
 .text-primary {
-    color: var(--primary-color);
+    color: var(--primary-color) !important;
 }
 
 .text-red {
     color: var(--red);
+}
+
+.text-green {
+    color: var(--green);
+}
+
+.underline {
+    text-decoration:underline;
 }

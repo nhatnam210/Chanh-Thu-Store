@@ -21,7 +21,7 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         {
             ViewBag.SapXep = sapxep;
             ViewBag.SapXepTen = sapxep == "ten" ? "ten-giam-dan" : "ten";
-
+            ViewBag.SapXepXacThuc = sapxep == "xac-thuc" ? "chua-xac-thuc" : "xac-thuc";
             //phan trang
             if (timkiem != null)
             {
@@ -48,6 +48,12 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
                     break;
                 case "ten-giam-dan":
                     khachhang = khachhang.OrderByDescending(s => s.Ten);
+                    break;
+                case "xac-thuc":
+                    khachhang = khachhang.OrderByDescending(s => s.EmailConfirmed);
+                    break;
+                case "chua-xac-thuc":
+                    khachhang = khachhang.OrderBy(s => s.EmailConfirmed);
                     break;
                 default:
                     khachhang = khachhang.OrderBy(s => s.Id);

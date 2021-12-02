@@ -33,7 +33,7 @@ namespace ChanhThu_Store.Models
         public string Code { get; set; }
         public string ReturnUrl { get; set; }
 
-        [Display(Name = "Remember this browser?")]
+        [Display(Name = "Ghi nhớ trên trình duyệt này?")]
         public bool RememberBrowser { get; set; }
 
         public bool RememberMe { get; set; }
@@ -55,11 +55,11 @@ namespace ChanhThu_Store.Models
 
         [Required(ErrorMessage = "Vui lòng nhập mật khẩu!")]
         [DataType(DataType.Password)]
-        [StringLength(100, ErrorMessage = "Mật khẩu phải có ít nhất {2} ký tự!", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "Mật khẩu phải từ {2} đến {0} ký tự!", MinimumLength = 6)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Ghi nhớ tài khoản của tôi?")]
         public bool RememberMe { get; set; }
     }
 
@@ -75,7 +75,7 @@ namespace ChanhThu_Store.Models
         public string Ten { get; set; }
 
         [Required(ErrorMessage = "Vui lòng nhập mật khẩu!")]
-        [StringLength(100, ErrorMessage = "Mật khẩu phải có ít nhất {2} ký tự!", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "Mật khẩu phải từ {2} đến {0} ký tự!", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }

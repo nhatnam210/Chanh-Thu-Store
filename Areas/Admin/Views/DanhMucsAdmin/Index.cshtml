@@ -83,11 +83,15 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-white">Danh Mục</h1>
-        <p>
-            @Html.ActionLink("Thêm Danh Mục", "Create")
-        </p>
-
+        <h1 class="mb-2 text-capitalize table-admin__title">Danh mục</h1>
+        <div>
+            <a href="/admin/danh-muc/them" class="text-capitalize add-item-admin__btn">
+                <span class="icon white">
+                    <ion-icon size="large" name="add-circle"></ion-icon>
+                </span>
+                <span class="add-item">Thêm</span>
+            </a>
+        </div>
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
 
@@ -103,26 +107,35 @@
                                 <th class="text-capitalize">
                                     @Html.ActionLink("Tên Danh Mục", "Index", new { sapxep = ViewBag.SapxepTen, loc = ViewBag.Loc })
                                 </th>
-                                <th class="text-capitalize"> Tùy chỉnh</th>
+                                <th colspan="2" class="text-capitalize text-center">Tùy chọn</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.MaDanhMuc)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.TenDanhMuc)
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.MaDanhMuc }) |
-                                        @*@Html.ActionLink("Details", "Details", new { id = item.MaDanhMuc }) |*@
-                                        @Html.ActionLink("Xóa", "Delete", new { id = item.MaDanhMuc })
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MaDanhMuc)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TenDanhMuc)
+                                </td>
+                                <td class="options">
+                                    <a href="/admin/danh-muc/chinh-sua?id=@item.MaDanhMuc">
+                                        <span class="icon yellow-bt hover">
+                                            <ion-icon name="create" size="large"></ion-icon>
+                                        </span>
+                                    </a>
+                                </td>
+                                <td class="options">
+                                    <a href="/admin/danh-muc/xoa?id=@item.MaDanhMuc">
+                                        <span class="icon red-bt hover">
+                                            <ion-icon name="trash" size="large"></ion-icon>
+                                        </span>
+                                    </a>
+                                </td>
+                            </tr>
 
                             }
                         </tbody>

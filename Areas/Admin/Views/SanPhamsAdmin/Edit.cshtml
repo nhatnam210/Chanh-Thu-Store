@@ -1,7 +1,7 @@
 ﻿@model ChanhThu_Store.Models.SanPham
 @using System.Globalization;
 @{ CultureInfo VN = new CultureInfo("vi-VN");}
-@*@item.NgayLap.ToString("d", VN)*@
+
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_Main_Admin.cshtml";
@@ -57,7 +57,9 @@
     <div class="form-group">
         <span class="label-admin">Mô Tả</span>
         <div class="col-md-12">
-            @Html.EditorFor(model => model.Mota, new { htmlAttributes = new { @class = "form-control" } })
+            @*@Html.TextAreaFor(model => model.Mota, new { htmlAttributes = new { @class = "form-control" } })
+            <textarea cols="20" htmlattributes="{ class = form-control }" id="Mota" name="Mota" rows="2">Bánh dẻo Hạt sen làm bằng bột nếp trắng tinh nhồi với đường với nước hoa bưởi thơm lừng, đúc trong khuôn, nhân làm bằng hột sen tán nhuyễn là chiếc bánh Trung Thu Kinh Đô dẻo hạt sen mang đậm sắc thái người Việt Nam.</textarea>*@
+            <textarea class="text-area__producr-edit" id="Mota" name="Mota">@Model.Mota</textarea>
             @Html.ValidationMessageFor(model => model.Mota, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -120,7 +122,7 @@
         </div>
     </div>
     <div class="form-group">
-        <span class="label-admin">Tình Trạng</span>
+        <span class="label-admin">Tình Trạng <span class="font-italic">(Còn hàng)</span></span>
         <div class="col-md-12">
             @Html.EditorFor(model => model.TinhTrang, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.TinhTrang, "", new { @class = "text-danger" })

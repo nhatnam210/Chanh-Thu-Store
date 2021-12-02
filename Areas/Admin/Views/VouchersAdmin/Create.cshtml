@@ -45,7 +45,7 @@
         <div class="form-group">
             <span class="label-admin" >Hạn Sử Dụng Voucher</span>
             <div class="col-md-12">
-                @Html.TextBoxFor(m => m.HanSuDung, new {type="date", id = "datepicker", name = "DueDate" })
+                @Html.TextBoxFor(m => m.HanSuDung, new { type = "date", id = "datepicker", name = "DueDate", @class = "form-control" })
                 @*<input name="DueDate" type="date" id="datepicker" class="form-control" value="" />*@
                 @Html.ValidationMessageFor(model => model.HanSuDung, "", new { @class = "text-danger" })
             </div>
