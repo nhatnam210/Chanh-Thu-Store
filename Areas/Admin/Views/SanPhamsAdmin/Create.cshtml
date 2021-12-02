@@ -41,33 +41,53 @@
     <h2 class="admin-title text-white text-center">Thêm Sản Phẩm</h2>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-    <div class="form-group">
-        <span class="label-admin">Tên Danh Mục Con</span>
-        <div class="col-md-10">
-            @Html.DropDownList("MaDanhMucCon", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.DanhMucCon.TenDanhMucCon, "", new { @class = "text-danger" })
-        </div>
-    </div>
     <div class="form-group">
         <span class="label-admin">Tên Nhà Sản Xuất</span>
-        <div class="col-md-10">
+        <div class="col-md-12">
             @Html.DropDownList("MaNhaSanXuat", null, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.NhaSanXuat.TenNhaSanXuat, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
-        <span class="label-admin">Mã Sản Phẩm</span>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.MaSanPham, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.MaSanPham, "", new { @class = "text-danger" })
+        <span class="label-admin">Tên Danh Mục Con</span>
+        <div class="col-md-12">
+            @Html.DropDownList("MaDanhMucCon", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DanhMucCon.TenDanhMucCon, "", new { @class = "text-danger" })
         </div>
     </div>
+    @Html.HiddenFor(model => model.MaSanPham, new { htmlAttributes = new { @class = "form-control" } })
     <div class="form-group">
         <span class="label-admin">Tên Sản Phẩm</span>
         <div class="col-md-12">
             @Html.EditorFor(model => model.TenSanPham, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.TenSanPham, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span class="label-admin">Hình trưng bày</span>
+        <div class="col-md-12">
+            @*@Html.TextBoxFor(model => model.HinhChinh, new { htmlAttributes = new { @class = "form-control", @readonly = moduleEditModel.Content.ReadOnly }, id= "linkImg" })*@
+            <input id="linkImg" class="form-control" name="HinhChinh" value="" readonly="readonly" />
+            <a href="#" id="selectImg">Chọn ảnh</a>
+            @Html.ValidationMessageFor(model => model.HinhChinh, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span class="label-admin">Hình phụ 1</span>
+        <div class="col-md-12">
+            @*@Html.TextBoxFor(model => model.Hinh1, new { htmlAttributes = new { @class = "form-control" }, id = "linkImg1" })*@
+            <input id="linkImg1" class="form-control" name="Hinh1" value="" readonly="readonly" />
+            <a href="#" id="selectImg1">Chọn ảnh</a>
+            @Html.ValidationMessageFor(model => model.Hinh1, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span class="label-admin">Hình phụ 2</span>
+        <div class="col-md-12">
+            @*@Html.TextBoxFor(model => model.Hinh2, new { htmlAttributes = new { @class = "form-control" }, id = "linkImg2" })*@
+            <input id="linkImg2" class="form-control" name="Hinh2" value="" readonly="readonly" />
+            <a href="#" id="selectImg2">Chọn ảnh</a>
+            @Html.ValidationMessageFor(model => model.Hinh2, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
@@ -84,53 +104,12 @@
             @Html.ValidationMessageFor(model => model.DonViTinh, "", new { @class = "text-danger" })
         </div>
     </div>
-    <div class="form-group">
-        <span class="label-admin">Hình Chính</span>
-        <div class="col-md-12">
-            @*@Html.TextBoxFor(model => model.HinhChinh, new { htmlAttributes = new { @class = "form-control", @readonly = moduleEditModel.Content.ReadOnly }, id= "linkImg" })*@
-            <input id="linkImg" class="form-control" name="HinhChinh" value="" readonly="readonly" />
-            <a href="#" id="selectImg">Chọn ảnh</a>
-            @Html.ValidationMessageFor(model => model.HinhChinh, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        <span class="label-admin">Hình 1</span>
-        <div class="col-md-12">
-            @*@Html.TextBoxFor(model => model.Hinh1, new { htmlAttributes = new { @class = "form-control" }, id = "linkImg1" })*@
-            <input id="linkImg1" class="form-control" name="Hinh1" value="" readonly="readonly" />
-            <a href="#" id="selectImg1">Chọn ảnh</a>
-            @Html.ValidationMessageFor(model => model.Hinh1, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        <span class="label-admin">Hình 2</span>
-        <div class="col-md-12">
-            @*@Html.TextBoxFor(model => model.Hinh2, new { htmlAttributes = new { @class = "form-control" }, id = "linkImg2" })*@
-            <input id="linkImg2" class="form-control" name="Hinh2" value="" readonly="readonly" />
-            <a href="#" id="selectImg2">Chọn ảnh</a>
-            @Html.ValidationMessageFor(model => model.Hinh2, "", new { @class = "text-danger" })
-        </div>
-    </div>
+
     <div class="form-group">
         <span class="label-admin">Mô Tả</span>
         <div class="col-md-12">
             @Html.EditorFor(model => model.Mota, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Mota, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        <span class="label-admin">Số Lượng Tồn Kho</span>
-        <div class="col-md-12">
-            @Html.EditorFor(model => model.SoLuongTonKho, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.SoLuongTonKho, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        <span class="label-admin">Số Lượng Đã Bán</span>
-        <div class="col-md-12">
-            <input class="form-control text-box single-line" id="SoLuongDaBan" name="SoLuongDaBan" type="number" value="0">
-            @*@Html.EditorFor(model => model.SoLuongDaBan, new { htmlAttributes = new { @class = "form-control" } })*@
-            @Html.ValidationMessageFor(model => model.SoLuongDaBan, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
@@ -148,7 +127,23 @@
         </div>
     </div>
     <div class="form-group">
-        <span class="label-admin">Điểm</span>
+        <span class="label-admin">Số Lượng Tồn Kho</span>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.SoLuongTonKho, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SoLuongTonKho, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span class="label-admin">Số Lượng Đã Bán</span>
+        <div class="col-md-12">
+            <input class="form-control text-box single-line" id="SoLuongDaBan" name="SoLuongDaBan" type="number" value="0">
+            @*@Html.EditorFor(model => model.SoLuongDaBan, new { htmlAttributes = new { @class = "form-control" } })*@
+            @Html.ValidationMessageFor(model => model.SoLuongDaBan, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <span class="label-admin">Điểm tích lũy</span>
         <div class="col-md-12">
             @Html.EditorFor(model => model.Diem, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Diem, "", new { @class = "text-danger" })
@@ -165,7 +160,7 @@
 
     <div class="form-group col-md-12">
         <div class="col-md-offset-2 btn-touch">
-            <input type="submit" value="Create" class="btn btn-success" />
+            <input type="submit" value="Thêm" class="btn btn-success" />
         </div>
     </div>
     <div class="col-md-12 back-to-list">

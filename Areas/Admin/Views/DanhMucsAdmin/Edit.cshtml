@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h2 class="admin-title text-white text-center text-capitalize">chỉnh sửa danh mục</h2>
+        <h2 class="table-admin__title text-center text-capitalize">chỉnh sửa thông tin <br/>danh mục</h2>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.MaDanhMuc)

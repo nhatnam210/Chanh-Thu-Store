@@ -116,7 +116,7 @@
                         Html.RenderAction("VoucherTheoUser", "Cart");
                     }
                 </div>
-                <hr class="mb-4">
+                <hr class="">
             </div>
 
             @*<div class="col-sm-6 col-lg-6 mb-3">
@@ -196,13 +196,13 @@
                             <hr class="my-1">
                             <div class="d-flex">
                                 <h4>Tổng tiền</h4>
-                                <div class="ml-auto font-weight-bold text-primary-color">  @string.Format("{0:#,##0}", @Total) đ </div>
+                                <div class="ml-auto font-weight-bold text-primary">@string.Format("{0:#,##0}", @Total) đ </div>
                             </div>
 
                             <hr class="my-1">
                             <div class="d-flex">
-                                <h4>Voucher</h4>
-                                <div id="voucher-fee" class="ml-auto font-weight-bold">0 %</div>
+                                <h4>Giảm giá</h4>
+                                <div id="voucher-fee" class="ml-auto font-weight-bold">0%</div>
                             </div>
                             <!-- <div class="d-flex">
                         <h4>Thuế</h4>

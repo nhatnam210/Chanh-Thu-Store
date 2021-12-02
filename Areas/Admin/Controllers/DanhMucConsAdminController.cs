@@ -174,6 +174,34 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
+            var sanPham = db.SanPhams
+                          .Where(s => s.MaDanhMucCon == id)
+                          .Select(s => s);
+
+            //xóa tất cả sản phẩm thuộc danh mục con, bao gồm bình luận, tương tác
+            foreach (var itemSP in sanPham)
+            {
+                //Xóa bình luận
+                var binhLuan = db.BinhLuans
+                                .Where(b => b.MaSanPham == itemSP.MaSanPham)
+                                .Select(b => b);
+                foreach (var itemBL in binhLuan)
+                {
+                    db.BinhLuans.Remove(itemBL);
+                }
+                //Xóa Yêu thích
+                var yeuThich = db.TuongTacs
+                               .Where(t => t.MaSanPham == itemSP.MaSanPham)
+                               .Select(t => t);
+
+                foreach (var itemYT in yeuThich)
+                {
+                    db.TuongTacs.Remove(itemYT);
+                }
+
+                db.SanPhams.Remove(itemSP);
+            }
+
             DanhMucCon danhMucCon = db.DanhMucCons.Find(id);
             db.DanhMucCons.Remove(danhMucCon);
             db.SaveChanges();

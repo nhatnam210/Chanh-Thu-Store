@@ -1,4 +1,4 @@
-namespace ChanhThu_Store.Models
+﻿namespace ChanhThu_Store.Models
 {
     using System;
     using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace ChanhThu_Store.Models
         [Key]
         public int MaSliderFoot { get; set; }
 
-        [StringLength(255)]
+        [StringLength(255, ErrorMessage = "Đường dẫn hình không được vượt quá {0} ký tự!")]
         public string HinhSlideFooter { get; set; }
     }
 }

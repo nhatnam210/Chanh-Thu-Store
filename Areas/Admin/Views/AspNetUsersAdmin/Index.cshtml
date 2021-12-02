@@ -76,7 +76,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-capitalize table-admin__title">Khách Hàng</h1>
+        <h1 class="mb-2 text-capitalize table-admin__title">Khách Hàng</h1>
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
 
@@ -93,7 +93,7 @@
                                     Email
                                 </th>
                                 <th class="text-capitalize text-center">
-                                    Xác thực
+                                    @Html.ActionLink("Xác thực", "Index", new { sapxep = ViewBag.SapXepXacThuc, loc = ViewBag.Loc })
                                 </th>
                                 <th class="text-capitalize">
                                     sđt

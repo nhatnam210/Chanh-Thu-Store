@@ -8,7 +8,7 @@
     --blue: #007bff;
     --indigo: #6610f2;
     --purple: #6f42c1;
-    .img-fluid --pink: #e83e8c;
+    --pink: #e83e8c;
     --red: #dc3545;
     --orange: #fd7e14;
     --yellow: #ffc107;
@@ -199,10 +199,12 @@ img {
     
 }
     img.logo {
-        height: 150px;
         vertical-align: middle;
         border-style: none;
-        width: 224px;
+        width: 150px;
+        object-fit: cover;
+        transition: all linear .2s;
+        border-radius: var(--img-corner-radius);
     }
 svg:not(:root) {
     overflow: hidden;
@@ -508,7 +510,7 @@ pre code {
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-    padding-bottom: 15px;
+    /*padding-bottom: 15px;*/
 }
 @media (min-width: 576px) {
     .container {
@@ -5312,6 +5314,7 @@ button.close {
     position: relative;
     width: 100%;
     overflow: hidden;
+    border-radius: var(--img-corner-radius);
 }
 .carousel-item {
     position: relative;

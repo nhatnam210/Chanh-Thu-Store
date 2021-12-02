@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ChanhThu_Store.Models;
 
-namespace WebApplication1.Areas.Admin.Controllers
+namespace ChanhThu_Store.Areas.Admin.Controllers
 {
     public class ThongTinCuaHangsAdminController : Controller
     {
@@ -17,16 +17,16 @@ namespace WebApplication1.Areas.Admin.Controllers
         // GET: Admin/ThongTinCuaHangsAdmin
         public ActionResult Index()
         {
-            var listThongTin = db.ThongTinCuaHangs.ToList();
-            if(listThongTin.Count() > 0)
+            var thongtincuahang = db.ThongTinCuaHangs.ToList();
+            if(thongtincuahang.Count() <=0)
             {
-                return View(listThongTin);
+                return View();
             }
-            return View();
+            return View(db.ThongTinCuaHangs.ToList());
         }
 
         // GET: Admin/ThongTinCuaHangsAdmin/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int id)
         {
             if (id == null)
             {
@@ -40,31 +40,8 @@ namespace WebApplication1.Areas.Admin.Controllers
             return View(thongTinCuaHang);
         }
 
-        // GET: Admin/ThongTinCuaHangsAdmin/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Admin/ThongTinCuaHangsAdmin/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TenCuaHang,SDT,Email,DiaChi,NgayThanhLap,ThoiGianMoCua,ThoiGianDongCua,LoiGioiThieu,HinhMinhHoa")] ThongTinCuaHang thongTinCuaHang)
-        {
-            if (ModelState.IsValid)
-            {
-                db.ThongTinCuaHangs.Add(thongTinCuaHang);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(thongTinCuaHang);
-        }
-
         // GET: Admin/ThongTinCuaHangsAdmin/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int id)
         {
             if (id == null)
             {
@@ -83,7 +60,7 @@ namespace WebApplication1.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TenCuaHang,SDT,Email,DiaChi,NgayThanhLap,ThoiGianMoCua,ThoiGianDongCua,LoiGioiThieu,HinhMinhHoa")] ThongTinCuaHang thongTinCuaHang)
+        public ActionResult Edit([Bind(Include = "Id,TenCuaHang,SDT,Email,DiaChi,NgayThanhLap,ThoiGianMoCua,ThoiGianDongCua,LoiGioiThieu,HinhMinhHoa")] ThongTinCuaHang thongTinCuaHang)
         {
             if (ModelState.IsValid)
             {
@@ -92,32 +69,6 @@ namespace WebApplication1.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
             return View(thongTinCuaHang);
-        }
-
-        // GET: Admin/ThongTinCuaHangsAdmin/Delete/5
-        public ActionResult Delete(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ThongTinCuaHang thongTinCuaHang = db.ThongTinCuaHangs.Find(id);
-            if (thongTinCuaHang == null)
-            {
-                return HttpNotFound();
-            }
-            return View(thongTinCuaHang);
-        }
-
-        // POST: Admin/ThongTinCuaHangsAdmin/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
-        {
-            ThongTinCuaHang thongTinCuaHang = db.ThongTinCuaHangs.Find(id);
-            db.ThongTinCuaHangs.Remove(thongTinCuaHang);
-            db.SaveChanges();
-            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

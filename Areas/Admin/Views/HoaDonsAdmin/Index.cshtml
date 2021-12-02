@@ -1,5 +1,4 @@
 ﻿@model PagedList.IPagedList<ChanhThu_Store.Models.HoaDon>
-<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @using PagedList.Mvc;
 @using System.Globalization;
 @{ CultureInfo VN = new CultureInfo("vi-VN");}
@@ -84,7 +83,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-white">Hóa Đơn</h1>
+        <h1 class="mb-2 text-capitalize table-admin__title">Hóa đơn</h1>
 
 
         <!-- DataTales Example -->
@@ -115,59 +114,74 @@
                                     Địa Chỉ
                                 </th>
                                 <th class="text-capitalize">
-                                    Email
-                                </th>
-                                <th class="text-capitalize">
                                     Tổng Tiền
                                 </th>
-                                <th width="165px"> Tùy chỉnh</th>
+                                <th colspan="3" class="text-capitalize text-center">Tùy chọn</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MaHoaDon)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AspNetUser.Ten)
+                                </td>
+                                <td>
+                                    @item.NgayLap.ToString("d", VN)
+                                </td>
+                                @if (item.Voucher != null)
+                                {
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.MaHoaDon)
+                                        @item.Voucher.GiaTriGiam%
                                     </td>
+                                }
+                                else
+                                {
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.AspNetUser.Ten)
+                                        0%
                                     </td>
-                                    <td>
-                                        @item.NgayLap.ToString("d", VN)
-                                    </td>
-                                    @if (item.Voucher != null)
-                                    {
-                                        <td>
-                                            @item.Voucher.GiaTriGiam%
-                                        </td>
-                                    }
-                                    else
-                                    {
-                                        <td>
-                                            0%
-                                        </td>
-                                    }
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.SDT)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.DiaChi)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.AspNetUser.Email)
-                                    </td>
-                                    <td>
-                                        @string.Format("{0:#,##0}", item.TongTien) đ
-                                    </td>
-                                    <td>
-                                        <a href="/admin/chi-tiet-hoa-don?id=@item.MaHoaDon">Chi Tiết</a> |
-                                        <a href="/admin/hoadon/xoa?id=@item.MaHoaDon">Xóa hóa đơn</a>
-                                        |<br />
-                                        <a href="/admin/in-hoa-don?id=@item.MaHoaDon">In hóa đơn</a>
-                                    </td>
-                                </tr>
+                                }
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SDT)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DiaChi)
+                                </td>
+                                <td>
+                                    @string.Format("{0:#,##0}", item.TongTien) đ
+                                </td>
+                                @*<td>
+                                    <a href="/admin/chi-tiet-hoa-don?id=@item.MaHoaDon">Chi Tiết</a> |
+                                    <a href="/admin/hoadon/xoa?id=@item.MaHoaDon">Xóa hóa đơn</a>
+                                    |<br />
+                                    <a href="/admin/in-hoa-don?id=@item.MaHoaDon">In hóa đơn</a>
+                                </td>*@
+                                <td class="options">
+                                    <a href="/admin/chi-tiet-hoa-don?id=@item.MaHoaDon">
+                                        <span class="icon green-bt hover">
+                                            <ion-icon name="eye" size="large"></ion-icon>
+                                        </span>
+                                    </a>
+                                </td>
+                                <td class="options">
+                                    <a href="/admin/in-hoa-don?id=@item.MaHoaDon">
+                                        <span class="icon yellow-bt hover">
+                                            <ion-icon name="print" size="large"></ion-icon>
+                                        </span>
+                                    </a>
+                                </td>
+                                <td class="options">
+                                    <a href="/admin/hoadon/xoa?id=@item.MaHoaDon">
+                                        <span class="icon red-bt hover">
+                                            <ion-icon name="trash" size="large"></ion-icon>
+                                        </span>
+                                    </a>
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>

@@ -534,7 +534,7 @@ ul.cart-list > li.total > .btn {
     }
 
         nav.navbar .navbar-brand img.logo {
-            width: 160px;
+            width: 125px;
         }
 
     .attr-nav > ul > li > a {
@@ -998,8 +998,8 @@ ul.cart-list > li.total > .btn:hover {
 
 .main-header.fixed-menu {
     padding: 0px;
-    box-shadow: 0 0 8px 0 rgb(11 11 11 / 50%);
     border-radius: 0;
+    background: rgba(255 255 255 / 95%);
 }
 
 .top-search .input-group-addon {
@@ -1241,6 +1241,10 @@ ul.cart-list > li.total > .btn:hover {
         border-radius: var(--btn-corner-radius);
         user-select: none;
     }
+
+        .filter-button-group button:hover {
+            opacity: 0.8;
+        }
 
         .filter-button-group button.active {
             background: #222;
@@ -3471,7 +3475,7 @@ ul.cart-list > li.total > .btn:hover {
 
 .single-product-slider .carousel-control-prev {
     bottom: auto;
-    background: #111111;
+    background: rgba(0 0 0 / 70%);
     width: 6%;
     padding: 10px 0;
     background-image: none;
@@ -3480,11 +3484,16 @@ ul.cart-list > li.total > .btn:hover {
 
 .single-product-slider .carousel-control-next {
     bottom: auto;
-    background: #111111;
+    background: rgba(0 0 0 / 70%);
     width: 6%;
     padding: 10px 0;
     background-image: none;
     top: 40%;
+}
+
+.single-product-slider:hover .carousel-control-prev,
+.single-product-slider:hover .carousel-control-next {
+    color: var(--primary-color);
 }
 
 .single-product-slider .carousel-indicators li img {
@@ -3921,6 +3930,7 @@ ul.cart-list > li.total > .btn:hover {
     color: var(--primary-color);
     background-color: rgba(0, 0, 0,0.6);
     backdrop-filter: blur(7px);
+    user-select:none;
     animation: zoomInNotify ease-out .2s;
 }
 
@@ -4470,6 +4480,16 @@ textarea {
     margin-left: -10px;
 }
 
+.voucher-user-payment__list {
+    max-height: 195px;
+    overflow-y: auto;
+    margin-bottom: 0px !important;
+}
+
+.voucher__day-count-down {
+    padding-right: 5px;
+}
+
 /*empty submenu*/
 .empty-product {
     display: flex;
@@ -4542,6 +4562,7 @@ textarea {
     width: 100%;
     height: auto;
     margin-bottom: 30px;
+    margin-top: 15px;
 }
 
 .voucher__container {
@@ -4791,7 +4812,6 @@ textarea {
 
 /*Thông báo lựa chọn*/
 .ask-options {
-    position: relative;
     flex-direction: column;
     position: absolute;
     bottom: 30px;
@@ -4799,16 +4819,18 @@ textarea {
     width: fit-content;
     border-radius: 10px;
     border: 2px solid var(--primary-color);
-    background-color: #fff;
-    z-index: 2;
     box-shadow: 2px 2px 5px rgb(11 11 11 / 40%);
-    display: none;
-    animation: showAskOptions linear 0.15s;
+    background-color: #fff;
+    opacity: 0;
+    transform: scale(0);
     transform-origin: 100% calc(100% - 10px);
+    transition: all linear 0.15s;
+    z-index: 2;
 }
 
     .ask-options.show {
-        display: flex;
+        opacity: 1;
+        transform: scale(1);
     }
 
 @keyframes showAskOptions {
@@ -4928,4 +4950,10 @@ textarea {
     color: var(--primary-color);
     filter: brightness(1.2);
     text-shadow: 0px 0px 2px var(--primary-color);
+}
+
+/*Map*/
+.map-container {
+    display: flex;
+    justify-content: center;
 }

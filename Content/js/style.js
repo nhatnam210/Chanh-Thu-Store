@@ -176,6 +176,7 @@ var total;
 var shipMoney = 0;
 var voucherPercent = 0;
 var finalMoney;
+var subMoney;
 
 var finalPrice = document.getElementById('final-price')
 if (finalPrice) {
@@ -186,17 +187,16 @@ if (finalPrice) {
     var shipInput = getAll('input[name="ship"]')
     var shipFee = document.getElementById('ship-fee');
 
-
     var voucherInput = getAll('input[name="mavoucher"]')
     var voucherFee = document.getElementById('voucher-fee');
-
 
     if (shipInput && shipFee || voucherInput && voucherFee) {
 
         function TinhToanGiaCuoi() {
-            shipFee.innerText = `${formatCash(shipMoney.toString())} đ`
-            voucherFee.innerText = voucherPercent > 0 ? `-${voucherPercent} %` : `${voucherPercent} %`
+            subMoney = total * (voucherPercent / 100)
             finalMoney = total + shipMoney - total * (voucherPercent / 100)
+            shipFee.innerText = `${formatCash(shipMoney.toString())} đ`
+            voucherFee.innerText = voucherPercent > 0 ? `-${formatCash(subMoney.toString())} đ (${voucherPercent}%)` : `0%`
             finalPrice.innerText = `${formatCash(finalMoney.toString())} VNĐ`
         }
 
@@ -204,7 +204,6 @@ if (finalPrice) {
         shipInput.forEach(function (item) {
             item.onclick = function () {
                 shipMoney = parseInt(item.value)
-
                 TinhToanGiaCuoi()
             }
         })
@@ -213,7 +212,6 @@ if (finalPrice) {
         voucherInput.forEach(function (itemVoucher) {
             itemVoucher.onclick = function () {
                 voucherPercent = parseInt(itemVoucher.dataset.voucher)
-
                 TinhToanGiaCuoi()
             }
         })
@@ -345,4 +343,18 @@ if (userPoint && voucherPoint && voucherContainer
         }
     });
 }
+
+/* ..............................................
+Scroll giảm kích thước logo and reverse
+ ................................................. */
+var currentWidth = $('.logo').css("width");
+
+$(window).scroll(function () {
+    var scrollVal = window.scrollY || document.documentElement.scrollTop;
+    if (scrollVal >= 52) {
+        $('.logo').css("width", "100px");
+    } else {
+        $('.logo').css("width", currentWidth);
+    }
+})
 

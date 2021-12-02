@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<ChanhThu_Store.Models.ThongTinCuaHang>
+﻿@model List<ChanhThu_Store.Models.ThongTinCuaHang>
 @using PagedList.Mvc;
 @{
     ViewBag.Title = "Index";
@@ -81,86 +81,72 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-capitalize table-admin__title">Thông tin cửa hàng</h1>
-        <div>
-            <a href="/admin/thong-tin-cu-hang/them" class="text-capitalize add-item-admin__btn">
-                <span class="icon white">
-                    <ion-icon size="large" name="add-circle"></ion-icon>
-                </span>
-                <span class="add-item">Thêm</span>
-            </a>
-        </div>
+        <h1 class="mb-2 text-capitalize table-admin__title">Thông tin cửa hàng</h1>
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-body">
                 <div class="table-responsive">
-                    @if (Model.Count() > 0)
-                    {
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th class="text-capitalize">
-                                        Tên cửa hàng
-                                    </th>
-                                    <th class="text-capitalize">
-                                        SĐT
-                                    </th>
-                                    <th class="text-capitalize">
-                                        Email
-                                    </th>
-                                    <th width="300px;" class="text-capitalize">
-                                        Địa chỉ
-                                    </th>
-                                    <th colspan="2" class="text-capitalize text-center"> Tùy chọn</th>
-                                </tr>
-                            </thead>
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th class="text-capitalize">
+                                    Tên cửa hàng
+                                </th>
+                                <th class="text-capitalize">
+                                    SĐT
+                                </th>
+                                <th class="text-capitalize">
+                                    Email
+                                </th>
+                                <th width="300px;" class="text-capitalize">
+                                    Địa chỉ
+                                </th>
+                                <th colspan="2" class="text-capitalize text-center"> Tùy chọn</th>
+                            </tr>
+                        </thead>
 
-                            <tbody>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td>
+                                    @item.TenCuaHang
+                                </td>
+                                <td>
+                                    @item.SDT
+                                </td>
+                                <td>
+                                    @item.Email
+                                </td>
+                                <td>
+                                    @*<div class="img-fit cart" style="background-image: url('@item.Hinh'),url(" /Content/images/default.png");">
+            </div>*@
+                                    @item.DiaChi
+                                </td>
+                                <td class="options">
+                                    <a href="/admin/thong-tin-cua-hang/chi-tiet?id=@item.Id">
+                                        <span class="icon green-bt hover">
+                                            <ion-icon name="eye" size="large"></ion-icon>
+                                        </span>
+                                    </a>
+                                </td>
+                                <td class="options">
+                                    <a href="/admin/thong-tin-cua-hang/chinh-sua?id=@item.Id">
+                                        <span class="icon yellow-bt hover">
+                                            <ion-icon name="create" size="large"></ion-icon>
+                                        </span>
+                                    </a>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
 
-
-                                foreach (var item in Model)
-                                {
-                                <tr>
-                                    <td>
-                                        @item.TenCuaHang
-                                    </td>
-                                    <td>
-                                        @item.SDT
-                                    </td>
-                                    <td>
-                                        @item.Email
-                                    </td>
-                                    <td>
-                                        @*<div class="img-fit cart" style="background-image: url('@item.Hinh'),url(" /Content/images/default.png");">
-                                            </div>*@
-                                        @item.DiaChi
-                                    </td>
-                                    <td class="options">
-                                        <a href="/admin/loai-san-pham/xoa?id=@item.TenCuaHang">
-                                            <span class="icon red hover">
-                                                <ion-icon name="trash" size="large"></ion-icon>
-                                            </span>
-                                        </a>
-                                    </td>
-                                    <td class="options">
-                                        <a href="/admin/loai-san-pham/chinh-sua?id=@item.TenCuaHang">
-                                            <span class="icon yellow hover">
-                                                <ion-icon name="create" size="large"></ion-icon>
-                                            </span>
-                                        </a>
-                                    </td>
-
-                                </tr>
-                                }
-                                }
-                            </tbody>
-                        </table>
-
-                        <br />
-                        <span class="show-page-text text-white">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
-                        @Html.PagedListPager(Model, trang => Url.Action("Index",
-                                 new { trang, sapxep = ViewBag.SapXep, loc = ViewBag.Loc }))
-                    }
+                    <br />
+                    @*<span class="show-page-text text-white">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
+                            @Html.PagedListPager(Model, trang => Url.Action("Index",
+                                     new { trang, sapxep = ViewBag.SapXep, loc = ViewBag.Loc }))
+                        }*@
                 </div>
             </div>
         </div>

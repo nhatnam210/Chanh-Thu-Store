@@ -79,6 +79,25 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Lấy chuỗi MaDanhMuc của phần tử cuối bảng
+                string maDMCuoi = db.DanhMucs
+                                      .OrderByDescending(d => d.MaDanhMuc)
+                                      .First().MaDanhMuc;
+
+                //Cắt lấy phần chữ số và ép kiểu
+                int laySoCuoi = Convert.ToInt32(maDMCuoi.Substring(2));
+
+                //Tăng 1 đơn vị
+                int soMoi = ++laySoCuoi;
+                if (soMoi <= 9)
+                {
+                    danhMuc.MaDanhMuc = "DM0" + soMoi.ToString();
+                }
+                else
+                {
+                    danhMuc.MaDanhMuc = "DM" + soMoi.ToString();
+                }
+
                 db.DanhMucs.Add(danhMuc);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -138,6 +157,43 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
+            var danhMucCon = db.DanhMucCons
+                          .Where(d => d.MaDanhMuc == id)
+                          .Select(d => d);
+
+            foreach (var itemDMC in danhMucCon)
+            {
+                var sanPham = db.SanPhams
+                              .Where(s => s.MaDanhMucCon == itemDMC.MaDanhMucCon)
+                              .Select(s => s);
+
+                //xóa tất cả sản phẩm thuộc danh mục con của danh mục, bao gồm bình luận, tương tác
+                foreach (var itemSP in sanPham)
+                {
+                    //Xóa bình luận
+                    var binhLuan = db.BinhLuans
+                                    .Where(b => b.MaSanPham == itemSP.MaSanPham)
+                                    .Select(b => b);
+                    foreach (var itemBL in binhLuan)
+                    {
+                        db.BinhLuans.Remove(itemBL);
+                    }
+                    //Xóa Yêu thích
+                    var yeuThich = db.TuongTacs
+                                   .Where(t => t.MaSanPham == itemSP.MaSanPham)
+                                   .Select(t => t);
+
+                    foreach (var itemYT in yeuThich)
+                    {
+                        db.TuongTacs.Remove(itemYT);
+                    }
+
+                    //xóa sản phẩm
+                    db.SanPhams.Remove(itemSP);
+                }
+                //xóa danh mục con
+                db.DanhMucCons.Remove(itemDMC);
+            }
             DanhMuc danhMuc = db.DanhMucs.Find(id);
             db.DanhMucs.Remove(danhMuc);
             db.SaveChanges();

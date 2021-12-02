@@ -19,10 +19,11 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         // GET: Admin/VouchersAdmin
         public ActionResult Index(string sapxep, string loc, string timkiem, int? trang)
         {
-            ViewBag.Sapxep = sapxep;
-            ViewBag.SapxepMa = String.IsNullOrEmpty(sapxep) ? "Id" : "";
-            ViewBag.SapxepTen = sapxep == "Ten" ? "Ten_desc" : "Ten";
-
+            ViewBag.SapXep = sapxep;
+            ViewBag.SapXepMa = String.IsNullOrEmpty(sapxep) ? "Id" : "";
+            ViewBag.SapXepTen = sapxep == "ten" ? "ten-giam-dan" : "ten";
+            ViewBag.SapXepGiaTri = sapxep == "gia-tri-tang-dan" ? "gia-tri-giam-dan" : "gia-tri-tang-dan";
+            ViewBag.SapXepHSD = sapxep == "han-su-dung-tang-dan" ? "han-su-dung-giam-dan" : "han-su-dung-tang-dan";
             //phan trang
             if (timkiem != null)
             {
@@ -47,17 +48,26 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             //sắp xếp 
             switch (sapxep)
             {
-                case "Ngay":
+                case "Id":
+                    voucher = voucher.OrderBy(s => s.MaVoucher);
+                    break;
+                case "han-su-dung-tang-dan":
                     voucher = voucher.OrderBy(s => s.HanSuDung);
                     break;
-                case "Ngay_desc":
+                case "han-su-dung-ngan-dan":
                     voucher = voucher.OrderByDescending(s => s.HanSuDung);
                     break;
-                case "Ten":
+                case "ten":
                     voucher = voucher.OrderBy(s => s.TenVoucher);
                     break;
-                case "Ten_desc":
+                case "ten-giam-dan":
                     voucher = voucher.OrderByDescending(s => s.TenVoucher);
+                    break;
+                case "gia-tri-tang-dan":
+                    voucher = voucher.OrderBy(s => s.GiaTriGiam);
+                    break;
+                case "gia-tri-giam-dan":
+                    voucher = voucher.OrderByDescending(s => s.GiaTriGiam);
                     break;
                 default:
                     voucher = voucher.OrderBy(s => s.MaVoucher);

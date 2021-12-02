@@ -224,7 +224,6 @@
     <Compile Include="Models\BinhLuan.cs" />
     <Compile Include="Models\BUS\BannerBUS.cs" />
     <Compile Include="Models\BUS\DanhMucBUS.cs" />
-    <Compile Include="Models\BUS\HoaDonBUS.cs" />
     <Compile Include="Models\BUS\SliderBUS.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\ChanhThuStoreContext.cs" />
@@ -3277,8 +3276,10 @@
     <Content Include="Content\images\categories_img_01.jpg" />
     <Content Include="Content\images\categories_img_02.jpg" />
     <Content Include="Content\images\categories_img_03.jpg" />
+    <Content Include="Content\images\chanhthustore_logo.png" />
     <Content Include="Content\images\contact-bg.jpg" />
     <Content Include="Content\images\default.png" />
+    <Content Include="Content\images\empty-product.png" />
     <Content Include="Content\images\favicon.ico" />
     <Content Include="Content\images\gallery-img-01.jpg" />
     <Content Include="Content\images\gallery-img-02.jpg" />
@@ -3325,6 +3326,7 @@
     <Content Include="Content\images\smp-img-02.jpg" />
     <Content Include="Content\images\smp-img-03.jpg" />
     <Content Include="Content\images\user-default.png" />
+    <Content Include="Content\images\zalo.png" />
     <Content Include="Content\js\baguetteBox.min.js" />
     <Content Include="Content\js\bootsnav.js" />
     <Content Include="Content\js\bootstrap-select.js" />
@@ -3745,6 +3747,8 @@
     <Content Include="Views\Shared\_Layout_Noti.cshtml" />
     <Content Include="Views\Shared\_LoginPartial_Conform.cshtml" />
     <Content Include="Views\Account\EmailNotConfirmed.cshtml" />
+    <Content Include="Views\Home\NotFound.cshtml" />
+    <Content Include="Views\Home\Map.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -79,6 +79,26 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Lấy chuỗi MaNhaSanXuat của phần tử cuối bảng
+                string maNSXCuoi = db.NhaSanXuats
+                                      .OrderByDescending(d => d.MaNhaSanXuat)
+                                      .First().MaNhaSanXuat;
+
+                //Cắt lấy phần chữ số và ép kiểu
+                int laySoCuoi = Convert.ToInt32(maNSXCuoi.Substring(3));
+
+                //Tăng 1 đơn vị
+                int soMoi = ++laySoCuoi;
+                if (soMoi <= 9)
+                {
+                    nhaSanXuat.MaNhaSanXuat = "NSX0" + soMoi.ToString();
+                }
+                else
+                {
+                    nhaSanXuat.MaNhaSanXuat = "NSX" + soMoi.ToString();
+                }
+
+
                 db.NhaSanXuats.Add(nhaSanXuat);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -139,6 +159,35 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             NhaSanXuat nhaSanXuat = db.NhaSanXuats.Find(id);
+
+            var sanPham = db.SanPhams
+                           .Where(s => s.MaNhaSanXuat == id)
+                           .Select(s => s);
+
+            //xóa tất cả sản phẩm thuộc nhà sản xuất, bao gồm bình luận, tương tác
+            foreach(var itemSP in sanPham)
+            {
+                //Xóa bình luận
+                var binhLuan = db.BinhLuans
+                                .Where(b => b.MaSanPham == itemSP.MaSanPham)
+                                .Select(b => b);
+                foreach(var itemBL in binhLuan)
+                {
+                    db.BinhLuans.Remove(itemBL);
+                }
+                //Xóa Yêu thích
+                var yeuThich = db.TuongTacs
+                               .Where(t => t.MaSanPham == itemSP.MaSanPham)
+                               .Select(t => t);
+
+                foreach (var itemYT in yeuThich)
+                {
+                    db.TuongTacs.Remove(itemYT);
+                }
+
+                db.SanPhams.Remove(itemSP);
+            }
+
             db.NhaSanXuats.Remove(nhaSanXuat);
             db.SaveChanges();
             return RedirectToAction("Index");

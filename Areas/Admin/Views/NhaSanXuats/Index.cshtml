@@ -82,12 +82,15 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-white text-capitalize add-item-admin">
-                <span>Nhà Sản Xuất</span>
-                <a href="/admin/nha-san-xuat/them" class="text-capitalize">
-                    <ion-icon class="icon green" size="large" name="add-circle"></ion-icon>
+            <h1 class="mb-2 text-capitalize table-admin__title">Nhà sản xuất</h1>
+            <div>
+                <a href="/admin/nha-san-xuat/them" class="text-capitalize add-item-admin__btn">
+                    <span class="icon white">
+                        <ion-icon size="large" name="add-circle"></ion-icon>
+                    </span>
+                    <span class="add-item">Thêm</span>
                 </a>
-            </h1>
+            </div>
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
 
@@ -103,36 +106,37 @@
                                     <th class="text-capitalize">
                                         @Html.ActionLink("Tên nhà sản xuất", "Index", new { sapxep = ViewBag.SapxepTen, loc = ViewBag.Loc })
                                     </th>
-                                    <th class="text-capitalize"> Tùy chỉnh</th>
+                                    <th colspan="2" class="text-capitalize text-center">Tùy chọn</th>
                                 </tr>
                             </thead>
 
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.MaNhaSanXuat)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.TenNhaSanXuat)
-                                        </td>
-                                        <td>
-                                            <div class="wrap-options">
-                                                <a href="/admin/nha-san-xuat/chinh-sua?id=@item.MaNhaSanXuat">
-                                                    <ion-icon class="icon yellow" name="create" size="large"></ion-icon>
-                                                </a>
-                                                <a href="/admin/nha-san-xuat/xoa?id=@item.MaNhaSanXuat">
-                                                    <ion-icon class="icon red" name="trash" size="large"></ion-icon>
-                                                </a>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.MaNhaSanXuat)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TenNhaSanXuat)
+                                    </td>
+                                    <td class="options">
+                                        <a href="/admin/nha-san-xuat/chinh-sua?id=@item.MaNhaSanXuat">
+                                            <span class="icon yellow-bt hover">
+                                                <ion-icon name="create" size="large"></ion-icon>
+                                            </span>
+                                        </a>
+                                    </td>
+                                    <td class="options">
+                                        <a href="/admin/nha-san-xuat/xoa?id=@item.MaNhaSanXuat">
+                                            <span class="icon red-bt hover">
+                                                <ion-icon name="trash" size="large"></ion-icon>
+                                            </span>
+                                        </a>
+                                    </td>
+                                </tr>
 
                                 }
-
-
-
                             </tbody>
                         </table>
                         <br />

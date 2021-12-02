@@ -11405,8 +11405,36 @@ body.sidebar-toggled footer.sticky-footer {
         font-size: 16px;
     }
 
+@media (max-width: 576px) {
+    .link-to-home span {
+        display: none;
+    }
+}
+/**/
+.text-area__producr-edit {
+    border-radius: 0.35rem;
+    height: 200px;
+    resize: none;
+    padding: 0 10px;
+}
 /*table*/
 .table-admin__title {
     color: #fff;
     font-weight: 600;
+}
+
+.detail-table__th {
+    width: 40%;
+    text-shadow: 0 0 0 #333;
+}
+
+.table-admin__img {
+    width: 200px;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.table-admin__product-des {
+    max-height: 250px;
+    overflow-y:auto;
 }

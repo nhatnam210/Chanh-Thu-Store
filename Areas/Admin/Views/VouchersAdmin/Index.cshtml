@@ -84,7 +84,7 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-white">Sản Phẩm</h1>
+            <h1 class=" mb-2 text-capitalize table-admin__title">Phiếu giảm giá</h1>
             <p>
                 @Html.ActionLink("Thêm Voucher", "Create")
             </p>
@@ -99,19 +99,19 @@
                             <thead>
                                 <tr>
                                     <th class="text-capitalize">
-                                        Mã Voucher
+                                        @Html.ActionLink("Mã voucher", "Index", new { sapxep = ViewBag.SapXepMa, loc = ViewBag.Loc })
                                     </th>
                                     <th class="text-capitalize">
-                                        @Html.ActionLink("Tên Voucher", "Index", new { sapxep = ViewBag.SapxepTen, loc = ViewBag.Loc })
+                                        @Html.ActionLink("Tên Voucher", "Index", new { sapxep = ViewBag.SapXepTen, loc = ViewBag.Loc })
                                     </th>
                                     <th class="text-capitalize">
-                                        Giá Trị Giảm
+                                        @Html.ActionLink("Giá trị giảm", "Index", new { sapxep = ViewBag.SapXepGiaTri, loc = ViewBag.Loc })
                                     </th>
                                     <th class="text-capitalize">
                                         Điểm đổi
                                     </th>
                                     <th class="text-capitalize">
-                                        @Html.ActionLink("Hạn Sử Dụng", "Index", new { sapxep = ViewBag.SapxepNgay, loc = ViewBag.Loc })
+                                        @Html.ActionLink("Hạn Sử Dụng", "Index", new { sapxep = ViewBag.SapXepHSD, loc = ViewBag.Loc })
                                     </th>
 
                                     <th class="text-capitalize">Tùy chỉnh</th>

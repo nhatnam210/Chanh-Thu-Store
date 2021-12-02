@@ -69,10 +69,15 @@
     <!-- Begin Page Content -->
     <div class="container-fluid">
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 ">Sản Phẩm</h1>
-        <p>
-            @Html.ActionLink("Thêm Sản Phẩm", "Create")
-        </p>
+        <h1 class="h3 mb-2 text-capitalize table-admin__title">Sản Phẩm</h1>
+        <div>
+            <a href="/admin/san-pham/them" class="text-capitalize add-item-admin__btn">
+                <span class="icon white">
+                    <ion-icon size="large" name="add-circle"></ion-icon>
+                </span>
+                <span class="add-item">Thêm</span>
+            </a>
+        </div>
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-body">
@@ -81,10 +86,10 @@
                         <thead>
                             <tr>
                                 <th class="text-capitalize">
-                                    Tên Danh Mục Con
+                                    @Html.ActionLink("Mã Sản Phẩm", "Index", new { sapxep = ViewBag.SapxepMa, loc = ViewBag.Loc })
                                 </th>
                                 <th class="text-capitalize">
-                                    @Html.ActionLink("Mã Sản Phẩm", "Index", new { sapxep = ViewBag.SapxepMa, loc = ViewBag.Loc })
+                                    Loại sản phẩm
                                 </th>
                                 <th class="text-capitalize">
                                     @Html.ActionLink("Tên Sản Phẩm", "Index", new { sapxep = ViewBag.SapxepTen, loc = ViewBag.Loc })
@@ -98,10 +103,10 @@
                                 <th class="text-capitalize">
                                     @Html.ActionLink("Tồn kho", "Index", new { sapxep = ViewBag.SapxepTonKho, loc = ViewBag.Loc })
                                 </th>
-                                <th class="text-capitalize">
+                                <th class="text-capitalize text-center">
                                     Tình Trạng
                                 </th>
-                                <th class="text-capitalize">Tùy chỉnh</th>
+                                <th colspan="3" class="text-capitalize text-center">Tùy chọn</th>
                             </tr>
                         </thead>
 
@@ -110,10 +115,10 @@
                             {
                             <tr>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.DanhMucCon.TenDanhMucCon)
+                                    @Html.DisplayFor(modelItem => item.MaSanPham)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.MaSanPham)
+                                    @Html.DisplayFor(modelItem => item.DanhMucCon.TenDanhMucCon)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.TenSanPham)
@@ -146,10 +151,26 @@
                                         </span>
                                     </td>
                                 }
-                                <td>
-                                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.MaSanPham }) |
-                                    @Html.ActionLink("Details", "Details", new { id = item.MaSanPham }) |
-                                    @Html.ActionLink("Xóa", "Delete", new { id = item.MaSanPham })
+                                <td class="options">
+                                    <a href="/admin/san-pham/chi-tiet?id=@item.MaSanPham">
+                                        <span class="icon green-bt hover">
+                                            <ion-icon name="eye"  size="large"></ion-icon>
+                                        </span>
+                                    </a>
+                                </td>
+                                <td class="options">
+                                    <a href="/admin/san-pham/chinh-sua?id=@item.MaSanPham">
+                                        <span class="icon yellow-bt hover">
+                                            <ion-icon name="create" size="large"></ion-icon>
+                                        </span>
+                                    </a>
+                                </td>
+                                <td class="options">
+                                    <a href="/admin/san-pham/xoa?id=@item.MaSanPham">
+                                        <span class="icon red-bt hover">
+                                            <ion-icon name="trash" size="large"></ion-icon>
+                                        </span>
+                                    </a>
                                 </td>
                             </tr>
                             }
