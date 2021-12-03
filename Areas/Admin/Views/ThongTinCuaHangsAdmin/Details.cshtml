@@ -1,83 +1,102 @@
 ﻿@model ChanhThu_Store.Models.ThongTinCuaHang
-
+@using System.Globalization;
+@{ CultureInfo VN = new CultureInfo("vi-VN");}
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_Main_Admin.cshtml";
 }
-
-<h2>Details</h2>
-
-<div>
-    <h4>ThongTinCuaHang</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.SDT)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SDT)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DiaChi)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DiaChi)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NgayThanhLap)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NgayThanhLap)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ThoiGianMoCua)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ThoiGianMoCua)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ThoiGianDongCua)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ThoiGianDongCua)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LoiGioiThieu)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LoiGioiThieu)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HinhMinhHoa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HinhMinhHoa)
-        </dd>
-
-    </dl>
+<div class="container-fluid">
+    <h2 class="table-admin__title text-center">Thông tin cửa hàng</h2>
+    <div class="card shadow mb-4 mt-4">
+        <div class="card-body">
+            <div class="table-responsive shadow">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <th class="text-capitalize detail-table__th text-primary">
+                                Tên cửa hàng
+                            </th>
+                            <td>
+                                @Model.TenCuaHang
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-capitalize detail-table__th text-primary">
+                                Số điện thoại
+                            </th>
+                            <td>
+                                @Model.SDT
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-capitalize detail-table__th text-primary">
+                                Email
+                            </th>
+                            <td>
+                                @Model.Email
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-capitalize detail-table__th text-primary">
+                                Địa chỉ
+                            </th>
+                            <td>
+                                @Model.DiaChi
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-capitalize detail-table__th text-primary">
+                                Ngày thành lập
+                            <td>
+                                @Model.NgayThanhLap.ToString("d", VN)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-capitalize detail-table__th text-primary">
+                                Thời gian mờ cửa
+                            </th>
+                            <td>
+                                @Model.ThoiGianMoCua
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-capitalize detail-table__th text-primary">
+                                Thời gian đóng cửa
+                            </th>
+                            <td>
+                                @Model.ThoiGianDongCua
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-capitalize detail-table__th text-primary">
+                                Lời giới thiệu
+                            </th>
+                            <td>
+                                <div class="table-admin__product-des">
+                                    @Model.LoiGioiThieu
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-capitalize detail-table__th text-primary">
+                                Hình minh họa
+                            </th>
+                            <td class="text-center">
+                                @if (Model.HinhMinhHoa != null)
+                                {
+                                    <img class="table-admin__img" src="@Model.HinhMinhHoa" />
+                                }
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center mt-3">
+                <a href="/admin/thong-tin-cua-hang/chinh-sua?id=@Model.Id" class="btn btn-warning">Chỉnh sửa</a>
+            </div>
+            <div class="col-md-12 back-to-list ">
+                @Html.ActionLink("Trở lại", "Index")
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.TenCuaHang }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

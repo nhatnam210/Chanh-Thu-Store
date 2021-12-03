@@ -69,7 +69,13 @@
     <!-- Begin Page Content -->
     <div class="container-fluid">
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-capitalize table-admin__title">Sản Phẩm</h1>
+        <h1 class="mb-2 text-capitalize table-admin__title">
+            Sản Phẩm
+            @if (ViewBag.SapXep != null)
+            {
+                <span class="font-italic filter-admin">(@ViewBag.SapXep)</span>
+            }
+        </h1>
         <div>
             <a href="/admin/san-pham/them" class="text-capitalize add-item-admin__btn">
                 <span class="icon white">
@@ -86,25 +92,25 @@
                         <thead>
                             <tr>
                                 <th class="text-capitalize">
-                                    @Html.ActionLink("Mã Sản Phẩm", "Index", new { sapxep = ViewBag.SapxepMa, loc = ViewBag.Loc })
+                                    @Html.ActionLink("Mã Sản Phẩm", "Index", new { sapxep = ViewBag.SapXepMa, loc = ViewBag.Loc })
                                 </th>
                                 <th class="text-capitalize">
-                                    Loại sản phẩm
+                                    @Html.ActionLink("Loại sản phẩm", "Index", new { sapxep = ViewBag.SapXepLoai, loc = ViewBag.Loc })
                                 </th>
                                 <th class="text-capitalize">
-                                    @Html.ActionLink("Tên Sản Phẩm", "Index", new { sapxep = ViewBag.SapxepTen, loc = ViewBag.Loc })
+                                    @Html.ActionLink("Tên Sản Phẩm", "Index", new { sapxep = ViewBag.SapXepTen, loc = ViewBag.Loc })
                                 </th>
                                 <th class="text-capitalize">
-                                    Giá
+                                    @Html.ActionLink("Giá", "Index", new { sapxep = ViewBag.SapXepGia, loc = ViewBag.Loc })
                                 </th>
                                 <th width="125px">
                                     Hình
                                 </th>
                                 <th class="text-capitalize">
-                                    @Html.ActionLink("Tồn kho", "Index", new { sapxep = ViewBag.SapxepTonKho, loc = ViewBag.Loc })
+                                    @Html.ActionLink("Tồn kho", "Index", new { sapxep = ViewBag.SapXepTonKho, loc = ViewBag.Loc })
                                 </th>
                                 <th class="text-capitalize text-center">
-                                    Tình Trạng
+                                    @Html.ActionLink("Tình trạng", "Index", new { sapxep = ViewBag.SapXepTinhTrang, loc = ViewBag.Loc })
                                 </th>
                                 <th colspan="3" class="text-capitalize text-center">Tùy chọn</th>
                             </tr>
@@ -113,73 +119,73 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.MaSanPham)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.DanhMucCon.TenDanhMucCon)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TenSanPham)
-                                </td>
-                                <td>
-                                    @string.Format("{0:#,##0}", item.Gia) đ
-                                </td>
-                                <td>
-                                    <div class="img-fit cart" style="background-image: url('@item.HinhChinh'),url(" /Content/images/default.png");">
-                                    </div>
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.SoLuongTonKho) @item.DonViTinh
-                                </td>
-
-                                @if (item.TinhTrang)
-                                {
+                                <tr>
                                     <td>
-                                        <span class="icon green">
-                                            <ion-icon name="checkmark-circle"></ion-icon>
-                                        </span>
+                                        @Html.DisplayFor(modelItem => item.MaSanPham)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DanhMucCon.TenDanhMucCon)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TenSanPham)
+                                    </td>
+                                    <td>
+                                        @string.Format("{0:#,##0}", item.Gia) đ
+                                    </td>
+                                    <td>
+                                        <div class="img-fit cart" style="background-image: url('@item.HinhChinh'),url(" /Content/images/default.png");">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SoLuongTonKho) @item.DonViTinh
                                     </td>
 
-                                }
-                                else
-                                {
-                                    <td>
-                                        <span class="icon red">
-                                            <ion-icon name="close-circle"></ion-icon>
-                                        </span>
+                                    @if (item.TinhTrang)
+                                    {
+                                        <td>
+                                            <span class="icon green">
+                                                <ion-icon name="checkmark-circle"></ion-icon>
+                                            </span>
+                                        </td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            <span class="icon red">
+                                                <ion-icon name="close-circle"></ion-icon>
+                                            </span>
+                                        </td>
+                                    }
+                                    <td class="options">
+                                        <a href="/admin/san-pham/chi-tiet?id=@item.MaSanPham">
+                                            <span class="icon green-bt hover">
+                                                <ion-icon name="eye" size="large"></ion-icon>
+                                            </span>
+                                        </a>
                                     </td>
-                                }
-                                <td class="options">
-                                    <a href="/admin/san-pham/chi-tiet?id=@item.MaSanPham">
-                                        <span class="icon green-bt hover">
-                                            <ion-icon name="eye"  size="large"></ion-icon>
-                                        </span>
-                                    </a>
-                                </td>
-                                <td class="options">
-                                    <a href="/admin/san-pham/chinh-sua?id=@item.MaSanPham">
-                                        <span class="icon yellow-bt hover">
-                                            <ion-icon name="create" size="large"></ion-icon>
-                                        </span>
-                                    </a>
-                                </td>
-                                <td class="options">
-                                    <a href="/admin/san-pham/xoa?id=@item.MaSanPham">
-                                        <span class="icon red-bt hover">
-                                            <ion-icon name="trash" size="large"></ion-icon>
-                                        </span>
-                                    </a>
-                                </td>
-                            </tr>
+                                    <td class="options">
+                                        <a href="/admin/san-pham/chinh-sua?id=@item.MaSanPham">
+                                            <span class="icon yellow-bt hover">
+                                                <ion-icon name="create" size="large"></ion-icon>
+                                            </span>
+                                        </a>
+                                    </td>
+                                    <td class="options">
+                                        <a href="/admin/san-pham/xoa?id=@item.MaSanPham">
+                                            <span class="icon red-bt hover">
+                                                <ion-icon name="trash" size="large"></ion-icon>
+                                            </span>
+                                        </a>
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                     </table>
                     <br />
                     <span class="show-page-text text-white">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
                     @Html.PagedListPager(Model, trang => Url.Action("Index",
-                        new { trang, sapxep = ViewBag.Sapxep, loc = ViewBag.Loc }))
+                        new { trang, sapxep = ViewBag.SapXep, loc = ViewBag.Loc }))
                 </div>
             </div>
         </div>

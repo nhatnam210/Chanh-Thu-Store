@@ -55,7 +55,7 @@ namespace ChanhThu_Store.Models
 
         [Required(ErrorMessage = "Vui lòng nhập mật khẩu!")]
         [DataType(DataType.Password)]
-        [StringLength(100, ErrorMessage = "Mật khẩu phải từ {2} đến {0} ký tự!", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "Mật khẩu phải từ {2} đến {1} ký tự!", MinimumLength = 6)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
@@ -75,7 +75,7 @@ namespace ChanhThu_Store.Models
         public string Ten { get; set; }
 
         [Required(ErrorMessage = "Vui lòng nhập mật khẩu!")]
-        [StringLength(100, ErrorMessage = "Mật khẩu phải từ {2} đến {0} ký tự!", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "Mật khẩu phải từ {2} đến {1} ký tự!", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
@@ -84,6 +84,8 @@ namespace ChanhThu_Store.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "Mật khẩu nhập lại không trùng khớp!")]
         public string ConfirmPassword { get; set; }
+
+        [StringLength(11, ErrorMessage = "Số điện thoại không được vượt quá {1} chữ số!")]
         public string Phone { get; set; }
     }
 

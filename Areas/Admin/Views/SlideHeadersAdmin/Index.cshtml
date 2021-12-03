@@ -82,10 +82,15 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-white">Slider Header</h1>
-            <p>
-                @Html.ActionLink("Thêm Slider Header", "Create")
-            </p>
+            <h1 class=" mb-2 text-capitalize table-admin__title">Chạy ảnh đầu trang</h1>
+            <div>
+                <a href="/admin/chay-anh-dau-trang/them" class="text-capitalize add-item-admin__btn">
+                    <span class="icon white">
+                        <ion-icon size="large" name="add-circle"></ion-icon>
+                    </span>
+                    <span class="add-item">Thêm</span>
+                </a>
+            </div>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
@@ -96,33 +101,41 @@
 
                             <thead>
                                 <tr>
-                                    <th class="text-capitalize" width="50%">
+                                    <th class="text-capitalize">
                                         Hình chạy đầu trang
                                     </th>
                                     <th class="text-capitalize">
                                         Mô tả hình
                                     </th>
-                                    <th class="text-capitalize"> Tùy chỉnh</th>
+                                    <th colspan="2" class="text-capitalize text-center"> Tùy chọn</th>
                                 </tr>
                             </thead>
 
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    <tr>
-                                        <td>
-                                            <div class="img-fit cart" style="background-image: url('@item.HinhSlideHeader'),url(" /Content/images/default.png");">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.MoTaSliderHeader)
-                                        </td>
-                                        <td>
-                                            @Html.ActionLink("Edit", "Edit", new { id = item.MaSliderHeader }) |
-                                            @*@Html.ActionLink("Details", "Details", new { id = item.MaSliderHeader }) |*@
-                                            @Html.ActionLink("Delete", "Delete", new { id = item.MaSliderHeader })
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td class="text-center">
+                                        <img class="slider-admin__img" src="@item.HinhSlideHeader" />
+                                    </td>
+                                    <td>
+                                        @item.MoTaSliderHeader
+                                    </td>
+                                    <td class="options">
+                                        <a href="/admin/chay-anh-dau-trang/chinh-sua?id=@item.Id">
+                                            <span class="icon yellow-bt hover">
+                                                <ion-icon name="create" size="large"></ion-icon>
+                                            </span>
+                                        </a>
+                                    </td>
+                                    <td class="options">
+                                        <a href="/admin/chay-anh-dau-trang/xoa?id=@item.Id">
+                                            <span class="icon red-bt hover">
+                                                <ion-icon name="trash" size="large"></ion-icon>
+                                            </span>
+                                        </a>
+                                    </td>
+                                </tr>
 
                                 }
 
@@ -133,8 +146,8 @@
                         <br />
                         @*<span class="show-page-text text-white">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
 
-                        @Html.PagedListPager(Model, trang => Url.Action("Index",
-                            new { trang, sapxep = ViewBag.Sapxep, loc = ViewBag.Loc }))*@
+                    @Html.PagedListPager(Model, trang => Url.Action("Index",
+                        new { trang, sapxep = ViewBag.Sapxep, loc = ViewBag.Loc }))*@
                     </div>
                 </div>
             </div>

@@ -20,8 +20,8 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         public ActionResult Index(string sapxep, string loc, string timkiem, int? trang)
         {
             ViewBag.Sapxep = sapxep;
-            ViewBag.SapxepMa = String.IsNullOrEmpty(sapxep) ? "Id" : "";
-            ViewBag.SapxepTen = sapxep == "Ten" ? "Ten_desc" : "Ten";
+            ViewBag.SapxepMa = String.IsNullOrEmpty(sapxep) ? "mã tăng dần" : "";
+            ViewBag.SapxepTen = sapxep == "tên A-Z" ? "tên Z-A" : "tên A-Z";
 
             //phan trang
             if (timkiem != null)
@@ -45,13 +45,13 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             //sắp xếp 
             switch (sapxep)
             {
-                case "Id":
+                case "mã tăng dần":
                     danhmuc = danhmuc.OrderByDescending(s => s.MaDanhMuc);
                     break;
-                case "Ten":
+                case "tên A-Z":
                     danhmuc = danhmuc.OrderBy(s => s.TenDanhMuc);
                     break;
-                case "Ten_desc":
+                case "tên Z-A":
                     danhmuc = danhmuc.OrderByDescending(s => s.TenDanhMuc);
                     break;
                 default:
@@ -186,6 +186,21 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
                     foreach (var itemYT in yeuThich)
                     {
                         db.TuongTacs.Remove(itemYT);
+                    }
+
+                    //Xóa CTHD và HD
+                    var chiTietHoaDon = db.ChiTietHoaDons
+                                   .Where(c => c.MaSanPham == itemSP.MaSanPham)
+                                   .Select(c => c);
+                    foreach (var itemCTHD in chiTietHoaDon)
+                    {
+                        //tìm những item khác có cùng MaHoaDon trong ChiTietHoaDon để xóa hết
+                        db.ChiTietHoaDons.RemoveRange(db.ChiTietHoaDons
+                                                    .Where(c2 => c2.MaHoaDon == itemCTHD.MaHoaDon)
+                                                    .Select(c2 => c2));
+
+                        //xóa luôn hóa đơn có tương ứng
+                        db.HoaDons.Remove(db.HoaDons.SingleOrDefault(hd => hd.MaHoaDon == itemCTHD.MaHoaDon));
                     }
 
                     //xóa sản phẩm

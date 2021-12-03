@@ -20,9 +20,9 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         public ActionResult Index(string sapxep, string loc, string timkiem, int? trang)
         {
             ViewBag.SapXep = sapxep;
-            ViewBag.SapXepMa = String.IsNullOrEmpty(sapxep) ? "ma-loai-giam-dan" : "";
-            ViewBag.SapXepTen = sapxep == "ten-loai-tang-dan" ? "ten-loai-giam-dan" : "ten-loai-tang-dan";
-            ViewBag.SapXepTenDanhMuc = sapxep == "ten-danh-muc-tang-dan" ? "ten-danh-muc-giam-dan" : "ten-danh-muc-tang-dan";
+            ViewBag.SapXepMa = String.IsNullOrEmpty(sapxep) ? "mã tăng dần" : "";
+            ViewBag.SapXepTen = sapxep == "tên A-Z" ? "tên Z-A" : "tên A-Z";
+            ViewBag.SapXepTenDanhMuc = sapxep == "danh mục A-Z" ? "danh mục Z-A" : "danh mục A-Z";
 
             //phan trang
             if (timkiem != null)
@@ -50,19 +50,19 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
                 //sắp xếp 
                 switch (sapxep)
                 {
-                    case "ma-loai-giam-dan":
+                    case "mã tăng dần":
                         danhmuccon = danhmuccon.OrderByDescending(s => s.MaDanhMucCon);
                         break;
-                    case "ten-loai-tang-dan":
+                    case "tên A-Z":
                         danhmuccon = danhmuccon.OrderBy(s => s.TenDanhMucCon);
                         break;
-                    case "ten-loai-giam-dan":
+                    case "tên Z-A":
                         danhmuccon = danhmuccon.OrderByDescending(s => s.TenDanhMucCon);
                         break;
-                    case "ten-danh-muc-tang-dan":
+                    case "danh mục A-Z":
                         danhmuccon = danhmuccon.OrderBy(s => s.DanhMuc.TenDanhMuc);
                         break;
-                    case "ten-danh-muc-giam-dan":
+                    case "danh mục Z-A":
                         danhmuccon = danhmuccon.OrderByDescending(s => s.DanhMuc.TenDanhMuc);
                         break;
                     default:
@@ -185,18 +185,27 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
                 var binhLuan = db.BinhLuans
                                 .Where(b => b.MaSanPham == itemSP.MaSanPham)
                                 .Select(b => b);
-                foreach (var itemBL in binhLuan)
-                {
-                    db.BinhLuans.Remove(itemBL);
-                }
-                //Xóa Yêu thích
+                db.BinhLuans.RemoveRange(binhLuan);
+
+                //Xóa yêu thích
                 var yeuThich = db.TuongTacs
                                .Where(t => t.MaSanPham == itemSP.MaSanPham)
                                .Select(t => t);
+                db.TuongTacs.RemoveRange(yeuThich);
 
-                foreach (var itemYT in yeuThich)
+                //Xóa CTHD và HD
+                var chiTietHoaDon = db.ChiTietHoaDons
+                               .Where(c => c.MaSanPham == itemSP.MaSanPham)
+                               .Select(c => c);
+                foreach (var itemCTHD in chiTietHoaDon)
                 {
-                    db.TuongTacs.Remove(itemYT);
+                    //tìm những item khác có cùng MaHoaDon trong ChiTietHoaDon để xóa hết
+                    db.ChiTietHoaDons.RemoveRange(db.ChiTietHoaDons
+                                                .Where(c2 => c2.MaHoaDon == itemCTHD.MaHoaDon)
+                                                .Select(c2 => c2));
+
+                    //xóa luôn hóa đơn có tương ứng
+                    db.HoaDons.Remove(db.HoaDons.SingleOrDefault(hd => hd.MaHoaDon == itemCTHD.MaHoaDon));
                 }
 
                 db.SanPhams.Remove(itemSP);

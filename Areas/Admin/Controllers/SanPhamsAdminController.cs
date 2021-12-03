@@ -19,11 +19,13 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         // GET: Admin/SanPhamsAdmin
         public ActionResult Index(string sapxep, string loc, string timkiem, int? trang)
         {
-            ViewBag.Sapxep = sapxep;
-            ViewBag.SapxepMa = String.IsNullOrEmpty(sapxep) ? "Id" : "";
-            ViewBag.SapxepTen = sapxep == "Ten" ? "Ten_desc" : "Ten";
-            ViewBag.SapxepTonKho = sapxep == "Tonkho" ? "Tonkho_desc" : "Tonkho";
-
+            ViewBag.SapXep = sapxep;
+            ViewBag.SapXepMa = String.IsNullOrEmpty(sapxep) ? "mã tăng dần" : "";
+            ViewBag.SapXepTen = sapxep == "tên A-Z" ? "tên Z-A" : "tên A-Z";
+            ViewBag.SapXepTonKho = sapxep == "tồn kho thấp > cao" ? "tồn kho cao > thấp" : "tồn kho thấp > cao";
+            ViewBag.SapXepLoai = sapxep == "loại A-Z" ? "loại Z-A" : "loại A-Z";
+            ViewBag.SapXepGia = sapxep == "giá thấp > cao" ? "giá cao > thấp" : "giá thấp > cao";
+            ViewBag.SapXepTinhTrang= sapxep == "còn hàng" ? "hết hàng" : "còn hàng";
             //phan trang
             if (timkiem != null)
             {
@@ -48,20 +50,38 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             //sắp xếp 
             switch (sapxep)
             {
-                case "Id":
+                case "mã tăng dần":
                     sanpham = sanpham.OrderBy(s => s.MaSanPham);
                     break;
-                case "Ten":
+                case "tên A-Z":
                     sanpham = sanpham.OrderBy(s => s.TenSanPham);
                     break;
-                case "Ten_desc":
+                case "tên Z-A":
                     sanpham = sanpham.OrderByDescending(s => s.TenSanPham);
                     break;
-                case "Tonkho":
+                case "tồn kho thấp > cao":
                     sanpham = sanpham.OrderBy(s => s.SoLuongTonKho);
                     break;
-                case "Tonkho_desc":
+                case "tồn kho cao > thấp":
                     sanpham = sanpham.OrderByDescending(s => s.SoLuongTonKho);
+                    break;
+                case "loại A-Z":
+                    sanpham = sanpham.OrderBy(s => s.DanhMucCon.TenDanhMucCon);
+                    break;
+                case "loại Z-A":
+                    sanpham = sanpham.OrderByDescending(s => s.DanhMucCon.TenDanhMucCon);
+                    break;
+                case "giá thấp > cao":
+                    sanpham = sanpham.OrderBy(s => s.Gia);
+                    break;
+                case "giá cao > thấp":
+                    sanpham = sanpham.OrderByDescending(s => s.Gia);
+                    break;
+                case "hết hàng":
+                    sanpham = sanpham.OrderBy(s => s.TinhTrang);
+                    break;
+                case "còn hàng":
+                    sanpham = sanpham.OrderByDescending(s => s.TinhTrang);
                     break;
                 default:
                     sanpham = sanpham.OrderByDescending(s => s.MaSanPham);
@@ -192,22 +212,32 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
+
             //Xóa bình luận
             var binhLuan = db.BinhLuans
                             .Where(b => b.MaSanPham == id)
                             .Select(b => b);
-            foreach (var itemBL in binhLuan)
-            {
-                db.BinhLuans.Remove(itemBL);
-            }
+            db.BinhLuans.RemoveRange(binhLuan);
+
             //Xóa Yêu thích
             var yeuThich = db.TuongTacs
                            .Where(t => t.MaSanPham == id)
                            .Select(t => t);
+            db.TuongTacs.RemoveRange(yeuThich);
 
-            foreach (var itemYT in yeuThich)
+            //Xóa CTHD và HD
+            var chiTietHoaDon = db.ChiTietHoaDons
+                           .Where(c => c.MaSanPham == id)
+                           .Select(c => c);
+            foreach (var itemCTHD in chiTietHoaDon)
             {
-                db.TuongTacs.Remove(itemYT);
+                //tìm những item khác có cùng MaHoaDon trong ChiTietHoaDon để xóa hết
+                db.ChiTietHoaDons.RemoveRange(db.ChiTietHoaDons
+                                            .Where(c2 => c2.MaHoaDon == itemCTHD.MaHoaDon)
+                                            .Select(c2 => c2));
+
+                //xóa luôn hóa đơn có tương ứng
+                db.HoaDons.Remove(db.HoaDons.SingleOrDefault(hd => hd.MaHoaDon == itemCTHD.MaHoaDon));
             }
 
             SanPham sanPham = db.SanPhams.Find(id);

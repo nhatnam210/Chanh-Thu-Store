@@ -844,7 +844,7 @@ nav.navbar.bootsnav ul.nav li.megamenu-fw > a:hover {
 nav.navbar.bootsnav ul.navbar-nav li.dropdown ul.dropdown-menu li a {
     display: block;
     padding: 6px 25px;
-    font-size: 15px;
+    font-size: 16px;
 }
 
     nav.navbar.bootsnav ul.navbar-nav li.dropdown ul.dropdown-menu li a:hover {
@@ -3037,8 +3037,8 @@ ul.cart-list > li.total > .btn:hover {
     padding: 0 20px;
     text-shadow: none;
     font-weight: 600;
-    -webkit-transition: all 0.3s ease-in-out .1s;
-    transition: all 0.3s ease-in-out .1s;
+    -webkit-transition: all ease-in .2s;
+    transition: all ease-in .2s;
     white-space: nowrap;
     width: inherit;
     border-radius: var(--btn-corner-radius);
@@ -3498,6 +3498,7 @@ ul.cart-list > li.total > .btn:hover {
 
 .single-product-slider .carousel-indicators li img {
     opacity: 0.5;
+    height:100%;
 }
 
 .single-product-slider .carousel-indicators li.active img {
@@ -3508,6 +3509,8 @@ ul.cart-list > li.total > .btn:hover {
     position: relative;
     bottom: 0;
     background: #222;
+    border-radius: var(--img-corner-radius);
+    margin-top: 5px;
 }
 
     .carousel-indicators li {

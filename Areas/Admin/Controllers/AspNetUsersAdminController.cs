@@ -20,8 +20,8 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         public ActionResult Index(string sapxep, string loc, string timkiem, int? trang)
         {
             ViewBag.SapXep = sapxep;
-            ViewBag.SapXepTen = sapxep == "ten" ? "ten-giam-dan" : "ten";
-            ViewBag.SapXepXacThuc = sapxep == "xac-thuc" ? "chua-xac-thuc" : "xac-thuc";
+            ViewBag.SapXepTen = sapxep == "tên A-Z" ? "tên Z-A" : "tên A-Z";
+            ViewBag.SapXepXacThuc = sapxep == "xác thực" ? "chưa xác thực" : "xác thực";
             //phan trang
             if (timkiem != null)
             {
@@ -43,16 +43,16 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             //sắp xếp 
             switch (sapxep)
             {
-                case "ten":
+                case "tên A-Z":
                     khachhang = khachhang.OrderBy(s => s.Ten);
                     break;
-                case "ten-giam-dan":
+                case "tên Z-A":
                     khachhang = khachhang.OrderByDescending(s => s.Ten);
                     break;
-                case "xac-thuc":
+                case "xác thực":
                     khachhang = khachhang.OrderByDescending(s => s.EmailConfirmed);
                     break;
-                case "chua-xac-thuc":
+                case "chưa xác thực":
                     khachhang = khachhang.OrderBy(s => s.EmailConfirmed);
                     break;
                 default:

@@ -30,25 +30,25 @@
         public string MaNhaSanXuat { get; set; }
 
         [Required(ErrorMessage = "Vui lòng nhập tên sản phẩm!")]
-        [StringLength(200)]
+        [StringLength(200, ErrorMessage = "Tên sản phẩm không được vượt quá {1} ký tự!")]
         public string TenSanPham { get; set; }
 
         [Required(ErrorMessage = "Vui lòng nhập giá sản phẩm!")]
         public int Gia { get; set; }
 
         [Required(ErrorMessage = "Vui lòng chọn hình cho sản phẩm!")]
-        [StringLength(255, ErrorMessage = "Đường dẫn hình không được vượt quá {0} ký tự!")]
+        [StringLength(255, ErrorMessage = "Đường dẫn hình không được vượt quá {1} ký tự!")]
         public string HinhChinh { get; set; }
 
-        [StringLength(255, ErrorMessage = "Đường dẫn hình không được vượt quá {0} ký tự!")]
+        [StringLength(255, ErrorMessage = "Đường dẫn hình không được vượt quá {1} ký tự!")]
         public string Hinh1 { get; set; }
 
-        [StringLength(255, ErrorMessage = "Đường dẫn hình không được vượt quá {0} ký tự!")]
+        [StringLength(255, ErrorMessage = "Đường dẫn hình không được vượt quá {1} ký tự!")]
         public string Hinh2 { get; set; }
 
         public string Mota { get; set; }
 
-        [StringLength(20, ErrorMessage = "Đơn vị tính không được vượt quá {0} ký tự!")]
+        [StringLength(20, ErrorMessage = "Đơn vị tính không được vượt quá {1} ký tự!")]
         public string DonViTinh { get; set; }
 
         [Required(ErrorMessage = "Vui lòng nhập số lượng tồn kho!")]

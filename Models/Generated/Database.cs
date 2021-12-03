@@ -376,6 +376,12 @@ namespace ChanhThuStorePoCo
 
 
 
+		[Column] public string Avatar { get; set; }
+
+
+
+
+
 		[Column] public string SecurityStamp { get; set; }
 
 
@@ -410,12 +416,6 @@ namespace ChanhThuStorePoCo
 
 
 
-
-
-		[Column] public string Avatar { get; set; }
-
-
-
 	}
 
     
@@ -424,7 +424,7 @@ namespace ChanhThuStorePoCo
 
 
 
-	[PrimaryKey("MaBanner")]
+	[PrimaryKey("Id")]
 
 
 
@@ -436,7 +436,7 @@ namespace ChanhThuStorePoCo
 
 
 
-		[Column] public int MaBanner { get; set; }
+		[Column] public int Id { get; set; }
 
 
 
@@ -530,7 +530,7 @@ namespace ChanhThuStorePoCo
 
 
 
-		[Column] public int? DonGia { get; set; }
+		[Column] public int DonGia { get; set; }
 
 
 
@@ -559,12 +559,6 @@ namespace ChanhThuStorePoCo
 
 
 		[Column] public string MaKhachHang { get; set; }
-
-
-
-
-
-		[Column] public bool? TinhTrang { get; set; }
 
 
 
@@ -680,18 +674,6 @@ namespace ChanhThuStorePoCo
 
 
 
-		[Column] public string MaVoucher { get; set; }
-
-
-
-
-
-		[Column] public int TongTien { get; set; }
-
-
-
-
-
 		[Column] public string Ten { get; set; }
 
 
@@ -716,7 +698,19 @@ namespace ChanhThuStorePoCo
 
 
 
-		[Column] public int Ship { get; set; }
+		[Column] public int? GiamGia { get; set; }
+
+
+
+
+
+		[Column] public int TongTien { get; set; }
+
+
+
+
+
+		[Column] public int? Ship { get; set; }
 
 
 
@@ -874,7 +868,7 @@ namespace ChanhThuStorePoCo
 
 
 
-	[PrimaryKey("MaSliderFoot")]
+	[PrimaryKey("Id")]
 
 
 
@@ -886,7 +880,7 @@ namespace ChanhThuStorePoCo
 
 
 
-		[Column] public int MaSliderFoot { get; set; }
+		[Column] public int Id { get; set; }
 
 
 
@@ -904,7 +898,7 @@ namespace ChanhThuStorePoCo
 
 
 
-	[PrimaryKey("MaSliderHeader")]
+	[PrimaryKey("Id")]
 
 
 
@@ -916,7 +910,7 @@ namespace ChanhThuStorePoCo
 
 
 
-		[Column] public int MaSliderHeader { get; set; }
+		[Column] public int Id { get; set; }
 
 
 
@@ -929,6 +923,54 @@ namespace ChanhThuStorePoCo
 
 
 		[Column] public string MoTaSliderHeader { get; set; }
+
+
+
+	}
+
+    
+
+	[TableName("dbo.sysdiagrams")]
+
+
+
+	[PrimaryKey("diagram_id")]
+
+
+
+
+	[ExplicitColumns]
+
+    public partial class sysdiagram : ChanhThuStorePoCoDB.Record<sysdiagram>  
+    {
+
+
+
+		[Column] public string name { get; set; }
+
+
+
+
+
+		[Column] public int principal_id { get; set; }
+
+
+
+
+
+		[Column] public int diagram_id { get; set; }
+
+
+
+
+
+		[Column] public int? version { get; set; }
+
+
+
+
+
+		[Column] public byte[] definition { get; set; }
 
 
 

@@ -79,7 +79,13 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="mb-2 text-capitalize table-admin__title">Loại sản phẩm</h1>
+        <h1 class="mb-2 text-capitalize table-admin__title">
+            Loại sản phẩm
+            @if (ViewBag.SapXep != null)
+            {
+                <span class="font-italic filter-admin">(@ViewBag.SapXep)</span>
+            }
+        </h1>
         <div>
             <a href="/admin/loai-san-pham/them" class="text-capitalize add-item-admin__btn">
                 <span class="icon white">

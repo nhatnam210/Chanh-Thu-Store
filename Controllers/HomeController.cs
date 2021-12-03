@@ -28,7 +28,6 @@ namespace ChanhThu_Store.Controllers
             //Cập nhật tình trạng hoặc xóa
             foreach (var item in listChiTietVoucherFalse)
             {
-                item.TinhTrang = false;
                 DateTime hansudung = Convert.ToDateTime(item.Voucher.HanSuDung);
                 DateTime ngayhientai = Convert.ToDateTime(thisDay);
                 int chenhlech = (ngayhientai - hansudung).Days;

@@ -36,12 +36,15 @@ namespace ChanhThu_Store.Models
 
         public string PasswordHash { get; set; }
 
+        [StringLength(11)]
         public string PhoneNumber { get; set; }
 
         [StringLength(255)]
         public string DiaChi { get; set; }
 
         public int? DiemTichLuy { get; set; }
+
+        public string Avatar { get; set; }
 
         public string SecurityStamp { get; set; }
 
@@ -54,8 +57,6 @@ namespace ChanhThu_Store.Models
         public bool LockoutEnabled { get; set; }
 
         public int AccessFailedCount { get; set; }
-
-        public string Avatar { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }
