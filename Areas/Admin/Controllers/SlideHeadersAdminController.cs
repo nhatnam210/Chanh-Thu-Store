@@ -46,7 +46,7 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaSliderHeader,HinhSlideHeader,MoTaSliderHeader")] SlideHeader slideHeader)
+        public ActionResult Create([Bind(Include = "Id,HinhSlideHeader,MoTaSliderHeader")] SlideHeader slideHeader)
         {
             if (ModelState.IsValid)
             {

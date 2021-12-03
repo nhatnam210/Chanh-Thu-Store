@@ -10,10 +10,9 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h2 class="admin-title text-white text-center">Chỉnh sửa thông tin Slider Footer</h2>
-        <hr />
+        <h2 class="table-admin__title text-center">Chỉnh sửa thông tin <br />Ảnh cuối trang</h2>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.MaSliderFoot)
+        @Html.HiddenFor(model => model.Id)
 
         <div class="form-group">
             <span class="label-admin" >Hình Slider</span>

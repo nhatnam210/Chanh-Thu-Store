@@ -7,6 +7,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Main_Admin.cshtml";
 }
 <div class="container-fluid">
+    <h2 class="table-admin__title text-center">Chi tiết sản phẩm</h2>
     <div class="card shadow mb-4 mt-4">
         <div class="card-body">
             <div class="table-responsive shadow">
@@ -169,6 +170,9 @@
             </div>
             <div class="text-center mt-3">
                 <a href="/admin/san-pham/chinh-sua?id=@Model.MaSanPham" class="btn btn-warning">Chỉnh sửa</a>
+            </div>
+            <div class="col-md-12 back-to-list ">
+                @Html.ActionLink("Trở lại", "Index")
             </div>
         </div>
     </div>

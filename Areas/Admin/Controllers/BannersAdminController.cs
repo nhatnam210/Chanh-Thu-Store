@@ -78,7 +78,7 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaBanner,HinhBanner")] Banner banner)
+        public ActionResult Edit([Bind(Include = "Id,HinhBanner")] Banner banner)
         {
             if (ModelState.IsValid)
             {

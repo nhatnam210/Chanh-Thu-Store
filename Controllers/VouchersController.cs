@@ -61,7 +61,7 @@ namespace ChanhThu_Store.Controllers
                     else
                     {
                         ChiTietVoucher chitietVoucher = new ChiTietVoucher()
-                        { MaVoucher = voucher.MaVoucher, MaKhachHang = currentUser.Id, TinhTrang = true, SoLuong = 1 };
+                        { MaVoucher = voucher.MaVoucher, MaKhachHang = currentUser.Id, SoLuong = 1 };
                         db.ChiTietVouchers.Add(chitietVoucher);
 
                         diemHienTai -= voucher.DiemDoi;

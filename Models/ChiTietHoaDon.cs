@@ -21,7 +21,7 @@ namespace ChanhThu_Store.Models
 
         public int Soluong { get; set; }
 
-        public int? DonGia { get; set; }
+        public int DonGia { get; set; }
 
         public virtual HoaDon HoaDon { get; set; }
 

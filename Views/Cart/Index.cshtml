@@ -25,10 +25,10 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="table-main table-responsive">
-                    <table class="table custom">
-                        @{var Total = 0; }
-                        @if (Model.Count > 0)
-                        {
+                    @{var Total = 0; }
+                    @if (Model.Count > 0)
+                    {
+                        <table class="table custom">
                             <thead>
                                 <tr>
                                     <th>Hình ảnh</th>
@@ -81,28 +81,28 @@
                                 }
 
                             </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <h3 style="font-size: 20px;" class="none-notify text-center text-red">Giỏ hàng trống!!! </h3>
+                    }
 
-                        }
-                        else
-                        {
-                            <h3 class="none-notify text-center text-danger">Giỏ hàng trống!!! </h3>
-                        }
-                    </table>
                 </div>
             </div>
         </div>
 
-        <div class="row my-5">
+        <div class="row ">
             @*<div class="col-lg-6 col-sm-6">
-            <div class="coupon-box">
-                <div class="input-group input-group-sm">
-                    <input class="form-control" placeholder="Nhập mã voucher" aria-label="Coupon code" type="text">
-                    <div class="input-group-append">
-                        <button class="btn btn-theme change-color" type="button">Sử dụng voucher</button>
+                    <div class="coupon-box">
+                        <div class="input-group input-group-sm">
+                            <input class="form-control" placeholder="Nhập mã voucher" aria-label="Coupon code" type="text">
+                            <div class="input-group-append">
+                                <button class="btn btn-theme change-color" type="button">Sử dụng voucher</button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>*@
+                </div>*@
 
             @if (Model.Count > 0)
             {
@@ -112,15 +112,6 @@
                     </div>
                 </div>
             }
-            else
-            {
-                <div class="col-lg-12 col-sm-12">
-                    @*<div class="update-box">
-                        <input class="change-color no-update" id="btn-update" value="Cập nhật"/>
-                    </div>*@
-                </div>
-            }
-
         </div>
 
         <div class="row my-5">
@@ -133,13 +124,13 @@
                         <div class="ml-auto font-weight-bold">@string.Format("{0:#,##0}", @Total) đ</div>
                     </div>
                     @*<div class="d-flex">
-                    <h4>Phí ship</h4>
-                    <div class="ml-auto font-weight-bold"> Free </div>
-                </div>
-                <div class="d-flex">
-                    <h4>Thuế</h4>
-                    <div class="ml-auto font-weight-bold"> $ 2 </div>
-                </div>*@
+                            <h4>Phí ship</h4>
+                            <div class="ml-auto font-weight-bold"> Free </div>
+                        </div>
+                        <div class="d-flex">
+                            <h4>Thuế</h4>
+                            <div class="ml-auto font-weight-bold"> $ 2 </div>
+                        </div>*@
                     <hr class="my-1">
                     <div class="d-flex">
                         <h4>Voucher giảm giá</h4>
@@ -164,7 +155,7 @@
             else
             {
                 <div class="col-12 d-flex shopping-box">
-                    <a onclick="showNotify('Giỏ hàng trống!','bag-handle-outline')" style="font-weight: 600;" class="ml-auto btn hvr-hover">Thanh toán</a>
+                    <a onclick="showNotify('Giỏ hàng trống!','bag-handle-outline')" class="ml-auto btn hvr-hover font-weight-bold">Thanh toán</a>
                 </div>
             }
 

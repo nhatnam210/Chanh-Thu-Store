@@ -20,7 +20,7 @@
         </form>
 
         <!-- Topbar Search -->
-        <form method="post" action="/admin/thong-tin-cua-hang" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+        @*<form method="post" action="/admin/thong-tin-cua-hang" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
                 <input class="col-md-10" type="text" name="timkiem" class="form-control bg-light border-0 small" placeholder="Tìm kiếm @ViewBag.Loc"
                        aria-label="Search" aria-describedby="basic-addon2">
@@ -30,7 +30,7 @@
                     </button>
                 </div>
             </div>
-        </form>
+        </form>*@
 
         <!-- Topbar Navbar -->
         <ul class="navbar-nav ml-auto">
@@ -119,8 +119,6 @@
                                     @item.Email
                                 </td>
                                 <td>
-                                    @*<div class="img-fit cart" style="background-image: url('@item.Hinh'),url(" /Content/images/default.png");">
-            </div>*@
                                     @item.DiaChi
                                 </td>
                                 <td class="options">
@@ -143,10 +141,6 @@
                     </table>
 
                     <br />
-                    @*<span class="show-page-text text-white">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
-                            @Html.PagedListPager(Model, trang => Url.Action("Index",
-                                     new { trang, sapxep = ViewBag.SapXep, loc = ViewBag.Loc }))
-                        }*@
                 </div>
             </div>
         </div>

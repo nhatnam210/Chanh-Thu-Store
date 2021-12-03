@@ -36,7 +36,7 @@ namespace ChanhThu_Store.Controllers
             }
 
             listSanPhamMacDinh = from s in db.SanPhams
-                                 where s.MaDanhMucCon == DMCMacDinh.MaDanhMucCon
+                                 where s.MaDanhMucCon == DMCMacDinh.MaDanhMucCon && s.SoLuongTonKho > 0
                                  orderby s.MaSanPham
                                  select s;
 

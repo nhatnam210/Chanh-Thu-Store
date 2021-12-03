@@ -21,10 +21,11 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         // GET: Admin/HoaDonsAdmin
         public ActionResult Index(string sapxep, string loc, string timkiem, int? trang)
         {
-            ViewBag.Sapxep = sapxep;
-            ViewBag.SapxepMa = String.IsNullOrEmpty(sapxep) ? "Id" : "";
-            ViewBag.SapxepTen = sapxep == "Ten" ? "Ten_desc" : "Ten";
-            ViewBag.SapxepNgay = sapxep == "Ngay" ? "Ngay_desc" : "Ngay";
+            ViewBag.SapXep = sapxep;
+            ViewBag.SapXepMa = String.IsNullOrEmpty(sapxep) ? "mã tăng dần" : "";
+            ViewBag.SapXepTen = sapxep == "tên A-Z" ? "tên Z-A" : "tên A-Z";
+            ViewBag.SapXepNgay = sapxep == "ngày tăng dần" ? "ngày giảm dần" : "ngày tăng dần";
+            ViewBag.SapXepTongTien = sapxep == "tổng tiền thấp > cao" ? "tổng tiền cao > thấp" : "tổng tiền thấp > cao";
             //phan trang
             if (timkiem != null)
             {
@@ -53,23 +54,26 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             //sắp xếp 
             switch (sapxep)
             {
-                case "Id":
+                case "mã tăng dần":
                     hoadon = hoadon.OrderBy(s => s.MaHoaDon);
                     break;
-                case "Id desc":
-                    hoadon = hoadon.OrderByDescending(s => s.MaHoaDon);
-                    break;
-                case "Ten":
+                case "tên A-Z":
                     hoadon = hoadon.OrderBy(s => s.Ten);
                     break;
-                case "Ten_desc":
+                case "tên Z-A":
                     hoadon = hoadon.OrderByDescending(s => s.Ten);
                     break;
-                case "Ngay":
+                case "ngày tăng dần":
                     hoadon = hoadon.OrderBy(s => s.NgayLap);
                     break;
-                case "Ngay_desc":
+                case "ngày giảm dần":
                     hoadon = hoadon.OrderByDescending(s => s.NgayLap);
+                    break;
+                case "tổng tiền thấp > cao":
+                    hoadon = hoadon.OrderBy(s => s.TongTien);
+                    break;
+                case "tổng tiền cao > thấp":
+                    hoadon = hoadon.OrderByDescending(s => s.TongTien);
                     break;
                 default:
                     hoadon = hoadon.OrderByDescending(s => s.NgayLap).OrderByDescending(s => s.MaHoaDon);
@@ -202,6 +206,11 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            //tìm những item cùng MaHoaDon trong ChiTietHoaDon để xóa hết
+            db.ChiTietHoaDons.RemoveRange(db.ChiTietHoaDons
+                                        .Where(c => c.MaHoaDon == id)
+                                        .Select(c => c));
+
             HoaDon hoaDon = db.HoaDons.Find(id);
             db.HoaDons.Remove(hoaDon);
             db.SaveChanges();

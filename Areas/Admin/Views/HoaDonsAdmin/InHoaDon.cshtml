@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ChanhThuStoe | Bill</title>
+    <title>ChanhThuStoe | In hóa đơn</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -72,9 +72,12 @@
                     Nguồn giao
                     <address>
                         <strong>ChanhThuStore</strong><br>
-                        1874, TP.HCM, Việt Nam<br>
-                        SĐT: (804) 123-5432<br>
-                        Email: ChanhThuStore@gmail.com
+                        344 Trần Hưng Đạo<br>
+                        phường Bồng Sơn<br>
+                        thị xã Hoài Nhơn <br />
+                        tỉnh Bình Định<br />
+                        SĐT: 0986958452<br>
+                        Email: chanhthustore@gmail.com
                     </address>
                 </div>
                 <!-- /.col -->
@@ -125,15 +128,7 @@
                         <table class="table">
                             <tr>
                                 <th>Giảm giá:</th>
-                                @if (Model.Voucher != null)
-                                {
-                                    <td>@Model.Voucher.GiaTriGiam%</td>
-                                }
-                                else
-                                {
-                                    <td>0%</td>
-                                }
-
+                                <td>@Model.GiamGia%</td>
                             </tr>
                             <tr>
                                 <th style="width:50%">Tổng tiền hàng:</th>

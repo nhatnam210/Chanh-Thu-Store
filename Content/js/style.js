@@ -86,7 +86,8 @@ if (inputQuantity) {
         const maxValue = parseInt(item.getAttribute('maxValue'));
 
         visibilityBtn()
-        item.addEventListener('change', () => visibilityBtn())
+        //item.addEventListener('change', () => visibilityBtn())
+        item.addEventListener('input', () => visibilityBtn())
 
         btnDecrease.addEventListener('click', () => upDownValue(-1));
         btnIncrease.addEventListener('click', () => upDownValue(1));

@@ -112,7 +112,7 @@ namespace ChanhThu_Store.Controllers
         }
         [Authorize]
         [HttpPost]
-        public ActionResult Payment(string name, string email, string phone,string address ,string ship = "0", string mavoucher = null)
+        public ActionResult Payment(string name, string email, string phone,string address ,int ship = 0, string mavoucher = null)
         {
             var userID = User.Identity.GetUserId();
             var giatrigiam = 0;
@@ -122,21 +122,30 @@ namespace ChanhThu_Store.Controllers
                 HoaDon order = new HoaDon();
 
                 order.NgayLap = DateTime.Now.Date;
+                order.MaKhachHang = userID;
                 order.Ten = name;
                 order.SDT = phone;
                 order.Email = email;
                 order.DiaChi = address;
-                order.MaVoucher = mavoucher;
+                order.GiamGia = giatrigiam;
 
-                if (db.ChiTietVouchers.Any(p => p.MaKhachHang == userID && p.MaVoucher == mavoucher))
+                ChiTietVoucher itemVoucherUser = db.ChiTietVouchers.FirstOrDefault(p => p.MaKhachHang == userID && p.MaVoucher == mavoucher);
+                if (itemVoucherUser != null)
                 {
-                    order.MaVoucher = mavoucher;
-                    Voucher dungvoucher = db.Vouchers.Find(mavoucher);
-                        giatrigiam = dungvoucher.GiaTriGiam;
+                    giatrigiam = itemVoucherUser.Voucher.GiaTriGiam;
+                    order.GiamGia = giatrigiam;
+                    //Voucher dungvoucher = db.Vouchers.Find(mavoucher);
+                    //    giatrigiam = dungvoucher.GiaTriGiam;
+                    /*Cập nhật số lượng voucher của User*/
+                    itemVoucherUser.SoLuong--;
+                    if (itemVoucherUser.SoLuong == 0)
+                    {
+                        db.ChiTietVouchers.Remove(itemVoucherUser);
+                    }
                 }
-                order.MaKhachHang = userID;
-                var shipFee = Convert.ToInt32(ship);
-                order.Ship = shipFee;
+
+                //var shipFee = ship;
+                order.Ship = ship;
                 var total = 0.0;
                 try
                 {
@@ -166,6 +175,10 @@ namespace ChanhThu_Store.Controllers
                                 tonkhomoi = 0;
                             }
                             sanphamDB.SoLuongTonKho = tonkhomoi;
+                            if(tonkhomoi <=0)
+                            {
+                                sanphamDB.TinhTrang = false;
+                            }
 
                             /*Thay đổi điểm tích lũy*/
                             AspNetUser user = db.AspNetUsers.Find(userID);
@@ -180,16 +193,7 @@ namespace ChanhThu_Store.Controllers
                             detailDao.Insert(orderDetail);
                         }
 
-                        /*Cập nhật số lượng voucher của User*/
-                        ChiTietVoucher ctvcUser = db.ChiTietVouchers.SingleOrDefault(p => p.MaKhachHang == userID && p.MaVoucher == mavoucher);
-                        if (ctvcUser != null)
-                        {
-                            ctvcUser.SoLuong--;
-                            if (ctvcUser.SoLuong == 0)
-                            {
-                                db.ChiTietVouchers.Remove(ctvcUser);
-                            }
-                        }
+                        db.SaveChanges();
                     }
                     else
                     {
@@ -201,7 +205,7 @@ namespace ChanhThu_Store.Controllers
                     return Redirect("/loi-thanh-toan");
                 }
 
-                db.SaveChanges();
+                
                 return Redirect("/hoan-thanh");
             }
                 return null;
@@ -228,7 +232,7 @@ namespace ChanhThu_Store.Controllers
                 /*hiện voucher sở hữu + còn hạn*/
                 listVoucher = from vc in db.Vouchers
                               join ctvc in db.ChiTietVouchers on vc.MaVoucher equals ctvc.MaVoucher
-                              where ctvc.MaKhachHang == userID && vc.HanSuDung >= thisDay && ctvc.TinhTrang == true
+                              where ctvc.MaKhachHang == userID && vc.HanSuDung >= thisDay
                               select vc;
             }
 

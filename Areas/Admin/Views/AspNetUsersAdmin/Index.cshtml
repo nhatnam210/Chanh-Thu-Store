@@ -76,7 +76,13 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="mb-2 text-capitalize table-admin__title">Khách Hàng</h1>
+        <h1 class="mb-2 text-capitalize table-admin__title">
+            Khách Hàng
+            @if (ViewBag.SapXep != null)
+            {
+                <span class="font-italic filter-admin">(@ViewBag.SapXep)</span>
+            }
+        </h1>
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
 

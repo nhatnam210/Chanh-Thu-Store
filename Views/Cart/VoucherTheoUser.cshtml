@@ -5,7 +5,7 @@
 <div class="col-md-12 col-lg-12">
     <div class="shipping-method-box">
         <div class="title-left">
-            <h3>Mã giảm giá</h3>
+            <h3>Voucher</h3>
         </div>
         <div class="mb-4 voucher-user-payment__list">
             @{ var i = 0;}
@@ -14,7 +14,7 @@
                 DateTime thisDay = DateTime.Today;
 
                 <div class="custom-control custom-radio">
-                    <input checked="checked" id="voucher__@i" name="mavoucher" value="" data-voucher="0" class="custom-control-input" type="radio">
+                    <input checked="checked" id="voucher__@i" name="mavoucher" value="0" data-voucher="0" class="custom-control-input" type="radio">
                     <label class="custom-control-label" for="voucher__@i">Không dùng</label> <span class="float-right font-weight-bold">0%</span>
                 </div>
                 <div class="ml-4 mb-2 small voucher-payment-group"></div>

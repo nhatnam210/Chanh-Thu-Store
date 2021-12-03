@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
     Layout = "~/Areas/Admin/Views/Shared/_Main_Admin.cshtml";
 }
-@section jsFooter{
+@section jsCKFinder{
     <script>
         $('#selectImg').on('click', function (e) {
             e.preventDefault();
@@ -38,8 +38,7 @@
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <h2 class="admin-title text-white text-center">Thêm Sản Phẩm</h2>
-    <hr />
+    <h2 class="table-admin__title text-center text-capitalize">Thêm sản phẩm</h2>
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
         <span class="label-admin">Tên Nhà Sản Xuất</span>
@@ -108,7 +107,9 @@
     <div class="form-group">
         <span class="label-admin">Mô Tả</span>
         <div class="col-md-12">
-            @Html.EditorFor(model => model.Mota, new { htmlAttributes = new { @class = "form-control" } })
+            @*<textarea class="text-area__admin-edit" id="Mota" name="Mota">@Model.Mota</textarea>*@
+            <textarea cols="20" class="text-area__admin-edit" id="Mota" name="Mota" spellcheck="false"></textarea>
+            @*@Html.TextAreaFor(model => model.Mota, new { htmlAttributes = new { @class = "text-area__admin-edit" } })*@
             @Html.ValidationMessageFor(model => model.Mota, "", new { @class = "text-danger" })
         </div>
     </div>

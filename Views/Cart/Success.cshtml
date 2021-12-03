@@ -70,18 +70,9 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Email)
                     </td>
-                    if(item.Voucher != null)
-                    {
-                        <td>
-                            @item.Voucher.GiaTriGiam%
-                        </td>
-                    }
-                    else
-                    {
-                        <td>
-                            0%
-                        </td>
-                    }
+                    <td>
+                        @item.GiamGia%
+                    </td>
                     <td>
                         @string.Format("{0:#,##0}", item.TongTien) đ
                     </td>
