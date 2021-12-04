@@ -26,7 +26,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
-
+    @*JQuery Css*@
+    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="~/Content/css/custom.css">
     <!-- PageList CSS -->
@@ -43,6 +44,7 @@
     <link rel="stylesheet" href="~/Content/css/bootsnav.css">
     <link rel="stylesheet" href="~/Content/css/bootstrap-select.css">
     <link rel="stylesheet" href="~/Content/css/carousel-ticker.css">
+    <link rel="stylesheet" href="~/Content/css/jquery.paginate.css">
     @Scripts.Render("~/bundles/modernizr")
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -286,7 +288,7 @@
     <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
 
     <!-- ALL JS FILES -->
-    <!-- <script src="js/jquery-3.2.1.min.js"></script> -->
+     @*<script src="js/jquery-3.2.1.min.js"></script>*@ 
     <script src="https://code.jquery.com/jquery-latest.js"></script>
     <script src="~/Content/js/popper.min.js"></script>
     <script src="~/Content/js/bootstrap.min.js"></script>
@@ -305,7 +307,9 @@
     <script src="~/Content/js/style.js"></script>
     <script src="~/Content/js/Cart.js"></script>
     <script src="~/Content/ckfinder/ckfinder.js"></script>
-    @Scripts.Render("~/bundles/jquery")
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="~/Content/js/jquery.paginate.js"></script>
+    @*@Scripts.Render("~/bundles/jquery")*@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     @RenderSection("jsFooter", required: false)

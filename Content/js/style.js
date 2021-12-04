@@ -266,3 +266,306 @@ if (btnGetVoucher && userPoint) {
 
 })
 }
+
+
+// Paging and sort Jquery
+function PagingSort() {
+    $("#basic").on("change", function () {
+
+
+        //Getting Value
+
+        var selValue = $("#basic").val();
+
+        switch (selValue) {
+            case "0":
+                $('.box-3').css("display", "none")
+                $('.box-2').css("display", "none")
+                $('.box-4').css("display", "none")
+                $('.box-1').css("display", "block")
+                $('.box-5').css("display", "none")
+
+                break;
+            case "1":
+                $('.box-3').css("display", "none")
+                $('.box-1').css("display", "none")
+                $('.box-4').css("display", "none")
+                $('.box-2').css("display", "block")
+                $('.box-5').css("display", "none")
+                break;
+            case "2":
+                $('.box-2').css("display", "none")
+                $('.box-1').css("display", "none")
+                $('.box-4').css("display", "none")
+                $('.box-3').css("display", "block")
+                $('.box-5').css("display", "none")
+                break;
+            case "3":
+                $('.box-1').css("display", "none")
+                $('.box-2').css("display", "none")
+                $('.box-3').css("display", "none")
+                $('.box-4').css("display", "block")
+                $('.box-5').css("display", "none")
+                break;
+            case "4":
+                $('.box-1').css("display", "none")
+                $('.box-2').css("display", "none")
+                $('.box-3').css("display", "none")
+                $('.box-4').css("display", "none")
+                $('.box-5').css("display", "block")
+                break;
+        }
+
+
+    });
+
+    var as = products.sort((a, b) => a.TenSanPham.toUpperCase() > b.TenSanPham.toUpperCase() ? 1 : -1)
+    const htmls = as.map((value, index) => {
+        return `<div class="col-lg-4 col-xl-4 col-md-6 col-sm-6 parent">
+                         <div class="products-single fix shadow full-radius">
+                                                <div class="box-img-hover none-radius">
+                                                    <div class="type-lb check-like liked" data-login="${value.isLogin}" data-like="${value.isLiked}" data-id="${value.MaSanPham}">
+                                                                <p class="like bottom-left-radius text-capitalize">Đã thích</p>
+                                                     </div>
+
+
+                                                    <img src="${value.HinhChinh}" style="display:none;" class="img-fluid" alt="Image">
+                                                    <div class="img-fit product-mobile" style="background-image: url('${value.HinhChinh}'),url('/Content/images/default.png');">
+                                                    </div>
+                                                    <div class="mask-icon">
+                                                        <ul>
+                                                            <li><a href="/cua-hang/san-pham?id=${value.MaSanPham}" data-toggle="tooltip" data-placement="right" title="Chi tiết"><i class="fas fa-eye"></i></a></li>
+                                                            <li class="check-hide" data-login="${value.isLogin}" >
+                                                                <div class="login-true none">
+                                                                        <a product-data="${value.MaSanPham}" data-like="${value.isLiked}" class="heart-hover js-tongle-like like-true none" data-toggle="tooltip" data-placement="right"
+                                                                           title="Yêu thích">
+                                                                            <i class="fas fa-heart liked-heart-icon"></i>
+                                                                        </a>
+
+                                                                        <a product-data="${value.MaSanPham}" data-like="${value.isLiked}" class="heart-hover js-tongle-like like-false none" data-toggle="tooltip" data-placement="right"
+                                                                           title="Yêu thích">
+                                                                            <i class="far fa-heart not-like-heart-icon"></i>
+                                                                        </a>
+                                                                </div>
+                                                                <div class="login-false none">
+                                                                        <a href="/dang-nhap" class="heart-hover" data-toggle="tooltip" data-placement="right"
+                                                                           title="Yêu thích">
+                                                                            <i class="far fa-heart not-like-heart-icon"></i>
+                                                                        </a>
+                                                                </div>
+
+                                                            </li>
+                                                        </ul>
+                                                        <a class="cart add-cart-notify text-capitalize hide-in-mobile font-weight-bold" href="/them-vao-gio?masanpham=${value.MaSanPham}&soluong=1">Thêm Vào Giỏ</a>
+                                                    </div>
+                                                </div>
+                                                <div class="why-text view-row-content">
+                                                    <h4 class="name-product">${value.TenSanPham}</h4>
+                                                    <h5 class="price-product price-sort">${value.Gia}</h5>
+                                                    <a style="margin-top: 10px;" href="/them-vao-gio?masanpham=${value.MaSanPham}&soluong=1" class="btn register hvr-hover text-capitalize add-cart-notify max-width-mobile show-in-mobile font-weight-bold font-size-mobile">Thêm vào giỏ</a>
+                                                </div>
+                                            </div>
+    </div>`
+    })
+    var de = products.sort((a, b) => a.TenSanPham.toUpperCase() < b.TenSanPham.toUpperCase() ? 1 : -1)
+    const htmls2 = de.map((value, index) => {
+        return `<div class="col-lg-4 col-xl-4 col-md-6 col-sm-6 parent">
+                         <div class="products-single fix shadow full-radius">
+                                                <div class="box-img-hover none-radius">
+                                                    <div class="type-lb check-like liked" data-login="${value.isLogin}" data-like="${value.isLiked}" data-id="${value.MaSanPham}">
+                                                                <p class="like bottom-left-radius text-capitalize">Đã thích</p>
+                                                     </div>
+
+
+                                                    <img src="${value.HinhChinh}" style="display:none;" class="img-fluid" alt="Image">
+                                                    <div class="img-fit product-mobile" style="background-image: url('${value.HinhChinh}'),url('/Content/images/default.png');">
+                                                    </div>
+                                                    <div class="mask-icon">
+                                                        <ul>
+                                                            <li><a href="/cua-hang/san-pham?id=${value.MaSanPham}" data-toggle="tooltip" data-placement="right" title="Chi tiết"><i class="fas fa-eye"></i></a></li>
+                                                            <li class="check-hide" data-login="${value.isLogin}" >
+                                                                <div class="login-true none">
+                                                                        <a product-data="${value.MaSanPham}" data-like="${value.isLiked}" class="heart-hover js-tongle-like like-true none" data-toggle="tooltip" data-placement="right"
+                                                                           title="Yêu thích">
+                                                                            <i class="fas fa-heart liked-heart-icon"></i>
+                                                                        </a>
+
+                                                                        <a product-data="${value.MaSanPham}" data-like="${value.isLiked}" class="heart-hover js-tongle-like like-false none" data-toggle="tooltip" data-placement="right"
+                                                                           title="Yêu thích">
+                                                                            <i class="far fa-heart not-like-heart-icon"></i>
+                                                                        </a>
+                                                                </div>
+                                                                <div class="login-false none">
+                                                                        <a href="/dang-nhap" class="heart-hover" data-toggle="tooltip" data-placement="right"
+                                                                           title="Yêu thích">
+                                                                            <i class="far fa-heart not-like-heart-icon"></i>
+                                                                        </a>
+                                                                </div>
+
+                                                            </li>
+                                                        </ul>
+                                                        <a class="cart add-cart-notify text-capitalize hide-in-mobile font-weight-bold" href="/them-vao-gio?masanpham=${value.MaSanPham}&soluong=1">Thêm Vào Giỏ</a>
+                                                    </div>
+                                                </div>
+                                                <div class="why-text view-row-content">
+                                                    <h4 class="name-product">${value.TenSanPham}</h4>
+                                                    <h5 class="price-product price-sort">${value.Gia}</h5>
+                                                    <a style="margin-top: 10px;" href="/them-vao-gio?masanpham=${value.MaSanPham}&soluong=1" class="btn register hvr-hover text-capitalize add-cart-notify max-width-mobile show-in-mobile font-weight-bold font-size-mobile">Thêm vào giỏ</a>
+                                                </div>
+                                            </div>
+    </div>`
+    })
+    var priceas = products.sort((a, b) => a.Gia > b.Gia ? 1 : -1)
+    const htmls3 = priceas.map((value, index) => {
+        return `<div class="col-lg-4 col-xl-4 col-md-6 col-sm-6 parent">
+                         <div class="products-single fix shadow full-radius">
+                                                <div class="box-img-hover none-radius">
+                                                    <div class="type-lb check-like liked" data-login="${value.isLogin}" data-like="${value.isLiked}" data-id="${value.MaSanPham}">
+                                                                <p class="like bottom-left-radius text-capitalize">Đã thích</p>
+                                                     </div>
+
+
+                                                    <img src="${value.HinhChinh}" style="display:none;" class="img-fluid" alt="Image">
+                                                    <div class="img-fit product-mobile" style="background-image: url('${value.HinhChinh}'),url('/Content/images/default.png');">
+                                                    </div>
+                                                    <div class="mask-icon">
+                                                        <ul>
+                                                            <li><a href="/cua-hang/san-pham?id=${value.MaSanPham}" data-toggle="tooltip" data-placement="right" title="Chi tiết"><i class="fas fa-eye"></i></a></li>
+                                                            <li class="check-hide" data-login="${value.isLogin}" >
+                                                                <div class="login-true none">
+                                                                        <a product-data="${value.MaSanPham}" data-like="${value.isLiked}" class="heart-hover js-tongle-like like-true none" data-toggle="tooltip" data-placement="right"
+                                                                           title="Yêu thích">
+                                                                            <i class="fas fa-heart liked-heart-icon"></i>
+                                                                        </a>
+
+                                                                        <a product-data="${value.MaSanPham}" data-like="${value.isLiked}" class="heart-hover js-tongle-like like-false none" data-toggle="tooltip" data-placement="right"
+                                                                           title="Yêu thích">
+                                                                            <i class="far fa-heart not-like-heart-icon"></i>
+                                                                        </a>
+                                                                </div>
+                                                                <div class="login-false none">
+                                                                        <a href="/dang-nhap" class="heart-hover" data-toggle="tooltip" data-placement="right"
+                                                                           title="Yêu thích">
+                                                                            <i class="far fa-heart not-like-heart-icon"></i>
+                                                                        </a>
+                                                                </div>
+
+                                                            </li>
+                                                        </ul>
+                                                        <a class="cart add-cart-notify text-capitalize hide-in-mobile font-weight-bold" href="/them-vao-gio?masanpham=${value.MaSanPham}&soluong=1">Thêm Vào Giỏ</a>
+                                                    </div>
+                                                </div>
+                                                <div class="why-text view-row-content">
+                                                    <h4 class="name-product">${value.TenSanPham}</h4>
+                                                    <h5 class="price-product price-sort">${value.Gia}</h5>
+                                                    <a style="margin-top: 10px;" href="/them-vao-gio?masanpham=${value.MaSanPham}&soluong=1" class="btn register hvr-hover text-capitalize add-cart-notify max-width-mobile show-in-mobile font-weight-bold font-size-mobile">Thêm vào giỏ</a>
+                                                </div>
+                                            </div>
+    </div>`
+    })
+    var pricede = products.sort((a, b) => a.Gia < b.Gia ? 1 : -1)
+    const htmls4 = pricede.map((value, index) => {
+        return `<div class="col-lg-4 col-xl-4 col-md-6 col-sm-6 parent">
+                         <div class="products-single fix shadow full-radius">
+                                                <div class="box-img-hover none-radius">
+                                                    <div class="type-lb check-like liked" data-login="${value.isLogin}" data-like="${value.isLiked}" data-id="${value.MaSanPham}">
+                                                                <p class="like bottom-left-radius text-capitalize">Đã thích</p>
+                                                     </div>
+
+
+                                                    <img src="${value.HinhChinh}" style="display:none;" class="img-fluid" alt="Image">
+                                                    <div class="img-fit product-mobile" style="background-image: url('${value.HinhChinh}'),url('/Content/images/default.png');">
+                                                    </div>
+                                                    <div class="mask-icon">
+                                                        <ul>
+                                                            <li><a href="/cua-hang/san-pham?id=${value.MaSanPham}" data-toggle="tooltip" data-placement="right" title="Chi tiết"><i class="fas fa-eye"></i></a></li>
+                                                            <li class="check-hide" data-login="${value.isLogin}" >
+                                                                <div class="login-true none">
+                                                                        <a product-data="${value.MaSanPham}" data-like="${value.isLiked}" class="heart-hover js-tongle-like like-true none" data-toggle="tooltip" data-placement="right"
+                                                                           title="Yêu thích">
+                                                                            <i class="fas fa-heart liked-heart-icon"></i>
+                                                                        </a>
+
+                                                                        <a product-data="${value.MaSanPham}" data-like="${value.isLiked}" class="heart-hover js-tongle-like like-false none" data-toggle="tooltip" data-placement="right"
+                                                                           title="Yêu thích">
+                                                                            <i class="far fa-heart not-like-heart-icon"></i>
+                                                                        </a>
+                                                                </div>
+                                                                <div class="login-false none">
+                                                                        <a href="/dang-nhap" class="heart-hover" data-toggle="tooltip" data-placement="right"
+                                                                           title="Yêu thích">
+                                                                            <i class="far fa-heart not-like-heart-icon"></i>
+                                                                        </a>
+                                                                </div>
+
+                                                            </li>
+                                                        </ul>
+                                                        <a class="cart add-cart-notify text-capitalize hide-in-mobile font-weight-bold" href="/them-vao-gio?masanpham=${value.MaSanPham}&soluong=1">Thêm Vào Giỏ</a>
+                                                    </div>
+                                                </div>
+                                                <div class="why-text view-row-content">
+                                                    <h4 class="name-product">${value.TenSanPham}</h4>
+                                                    <h5 class="price-product price-sort">${value.Gia}</h5>
+                                                    <a style="margin-top: 10px;" href="/them-vao-gio?masanpham=${value.MaSanPham}&soluong=1" class="btn register hvr-hover text-capitalize add-cart-notify max-width-mobile show-in-mobile font-weight-bold font-size-mobile">Thêm vào giỏ</a>
+                                                </div>
+                                            </div>
+    </div>`
+    })
+    $(".hihi").html(htmls).paginate()
+    $(".haha").html(htmls2).paginate();
+    $(".huhu").html(htmls3).paginate();
+    $(".hehe").html(htmls4).paginate();
+    $('.example').paginate();
+
+    function formatCash(str) {
+        return str.split('').reverse().reduce((prev, next, index) => {
+            return ((index % 3) ? next : (next + ',')) + prev
+        })
+    }
+    const price = $('.price-sort')
+    $.each(price, function (index, value) {
+
+        value.innerHTML = `${formatCash(value.innerText.toString())} đ`
+    })
+
+    const isLike = $('.check-like')
+    $.each(isLike, function (index, value) {
+        var checkLogin = value.getAttribute('data-login')
+        var checkLike = value.getAttribute('data-like')
+        if (checkLogin === true.toString()) {
+            if (checkLike === true.toString()) {
+                value.classList.remove('liked')
+            }
+
+        }
+
+    })
+    const isHide = $('.check-hide')
+    $.each(isHide, function (index, value) {
+        var checkLogin = value.getAttribute('data-login')
+        var checkLike = value.getAttribute('data-like')
+        if (checkLogin === true.toString()) {
+            $('.login-true').removeClass('none')
+
+        }
+        else {
+            $('.login-false').removeClass('none')
+        }
+
+
+    })
+    const likeTrue = $('.like-true')
+    $.each(likeTrue, function (index, value) {
+        var checkLike = value.getAttribute('data-like')
+        if (checkLike === true.toString()) {
+            value.classList.remove('none')
+        }
+    })
+    const likeFalse = $('.like-false')
+    $.each(likeFalse, function (index, value) {
+        var checkLike = value.getAttribute('data-like')
+        if (checkLike !== true.toString()) {
+            value.classList.remove('none')
+        }
+    })
+}

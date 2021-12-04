@@ -17,16 +17,11 @@ namespace ChanhThu_Store.Controllers
         private ChanhThuStoreContext db = new ChanhThuStoreContext();
 
         // GET: SanPhams
-        public ActionResult Index(int? trang, string sapxep)
+        public ActionResult Index()
         {
             IQueryable<SanPham> listSanPhamMacDinh = null;
             var userID = User.Identity.GetUserId();
 
-            ViewBag.SapXepHienTai = sapxep;
-            ViewBag.SapXepTen = "ten-A-Z";
-            ViewBag.SapXepTenGiam = "ten-Z-A";
-            ViewBag.SapXepGia = "gia-tang-dan";
-            ViewBag.SapXepGiaGiam = "gia-tang-dan";
 
             DanhMucCon DMCMacDinh = db.DanhMucCons.FirstOrDefault();
 
@@ -53,31 +48,8 @@ namespace ChanhThu_Store.Controllers
                 }
             }
 
-            //sắp xếp 
-            switch (sapxep)
-            {
-                case "ten-A-Z":
-                    listSanPhamMacDinh = listSanPhamMacDinh.OrderBy(s => s.TenSanPham);
-                    break;
-                case "ten-Z-A":
-                    listSanPhamMacDinh = listSanPhamMacDinh.OrderByDescending(s => s.TenSanPham);
-                    break;
-                case "gia-tang-dan":
-                    listSanPhamMacDinh = listSanPhamMacDinh.OrderBy(s => s.Gia);
-                    break;
-                case "gia-giam-dan":
-                    listSanPhamMacDinh = listSanPhamMacDinh.OrderByDescending(s => s.Gia);
-                    break;
-                default:
-                    listSanPhamMacDinh = listSanPhamMacDinh.OrderByDescending(s => s.MaSanPham);
-                    break;
-            }
-
-            int pageNumber = (trang ?? 1);
-            int pageSize = 9;
-
-            var showListSanPhamMacDinh = listSanPhamMacDinh.ToPagedList(pageNumber, pageSize);
-            return View(showListSanPhamMacDinh);
+            ViewBag.listsp = listSanPhamMacDinh;
+            return View(listSanPhamMacDinh);
         }
 
         // GET: SanPhams/Details/5

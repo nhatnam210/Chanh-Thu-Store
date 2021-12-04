@@ -4479,7 +4479,7 @@ textarea {
 
 .text-red {
     color: var(--red);
-=======
+}
 .title-forgot{
     font-size:35px;
     margin-top:20px;
@@ -4516,4 +4516,13 @@ textarea {
     width:100%;
     display:flex;
     align-items:center;
+}
+.example.disable{
+    display:none;
+}
+.check-like.liked {
+    display: none;
+}
+.none{
+    display:none !important;
 }
