@@ -52,15 +52,16 @@ namespace ChanhThu_Store.Controllers
 
         //
         // GET: /Manage/Index
+        [Authorize]
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
-                : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
-                : message == ManageMessageId.Error ? "An error has occurred."
-                : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
-                : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
+                message == ManageMessageId.ChangePasswordSuccess ? "Thay đổi mật khẩu thành công!"
+                : message == ManageMessageId.SetPasswordSuccess ? "Mật khẩu của bạn đã được đặt!"
+                : message == ManageMessageId.SetTwoFactorSuccess ? "Mật khẩu 2 bước của bạn đã được đặt!"
+                : message == ManageMessageId.Error ? "Thất bại!"
+                : message == ManageMessageId.AddPhoneSuccess ? "Thêm số điện thoại thành công!"
+                : message == ManageMessageId.RemovePhoneSuccess ? "Xóa số điện thoại thành công"
                 : "";
 
             var userId = User.Identity.GetUserId();
@@ -215,6 +216,7 @@ namespace ChanhThu_Store.Controllers
 
         //
         // GET: /Manage/ChangePassword
+        [Authorize]
         public ActionResult ChangePassword()
         {
             return View();
@@ -222,6 +224,7 @@ namespace ChanhThu_Store.Controllers
 
         //
         // POST: /Manage/ChangePassword
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)

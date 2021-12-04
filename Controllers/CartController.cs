@@ -62,17 +62,21 @@ namespace ChanhThu_Store.Controllers
         public ActionResult AddItem(string masanpham, int soluong)
         {
             var sanpham = new SanPhamModel().ViewDetail(masanpham);
+            var tonkho = db.SanPhams.Find(masanpham).SoLuongTonKho;
             var cart = Session[CartSession];
             if(cart != null)
             {
                 var list = (List<CartItem>)cart;
                 if(list.Exists(x => x.Sanpham.MaSanPham == masanpham))
                 {
+                    //chạy trong list giỏ hàng để tìm và cộng dồn sản phẩm tương ứng
                     foreach (var item in list)
                     {
                         if (item.Sanpham.MaSanPham == masanpham)
                         {
+                            //var tonkho2 = item.Sanpham.SoLuongTonKho;
                             item.Soluong += soluong;
+                            item.Soluong = item.Soluong >= tonkho ? tonkho : item.Soluong ;
                         }
                         
                     }

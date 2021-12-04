@@ -24,7 +24,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="table-main table-responsive">
+                <div class="table-main table-responsive shadow">
                     @{var Total = 0; }
                     @if (Model.Count > 0)
                     {
@@ -46,14 +46,14 @@
                                     Total += item.Sanpham.Gia * item.Soluong;
                                     <tr>
                                         <td class="thumbnail-img">
-                                            <a href="#">
+                                            <a href="/cua-hang/san-pham?id=@item.Sanpham.MaSanPham">
                                                 <div class="img-fit cart" style="background-image: url('@item.Sanpham.HinhChinh'),url('/Content/images/default.png');">
                                                 </div>
                                                 @*<img class="img-fluid" src="@item.Sanpham.HinhChinh" alt="" />*@
                                             </a>
                                         </td>
                                         <td class="name-pr">
-                                            <a href="#">
+                                            <a href="/cua-hang/san-pham?id=@item.Sanpham.MaSanPham">
                                                 @item.Sanpham.TenSanPham
                                             </a>
                                         </td>
@@ -108,7 +108,8 @@
             {
                 <div class="col-lg-12 col-sm-12">
                     <div class="update-box">
-                        <input class="change-color" id="btn-update" value="Cập nhật" type="submit" />
+                        @*<input class="change-color" id="btn-update" value="Cập nhật" type="submit" />*@
+                        <button type="submit" id="btn-update" class="btn hvr-hover max-width-mobile text-capitalize p-2 float-right mt-3 shadow">Cập nhật</button>
                     </div>
                 </div>
             }
@@ -149,13 +150,13 @@
             @if (Model.Count > 0)
             {
                 <div class="col-12 d-flex shopping-box">
-                    <a href="/thanh-toan" style="font-weight: 600;" class="ml-auto btn hvr-hover">Thanh toán</a>
+                    <a href="/thanh-toan" class="ml-auto btn hvr-hover max-width-mobile font-weight-bold">Thanh toán</a>
                 </div>
             }
             else
             {
                 <div class="col-12 d-flex shopping-box">
-                    <a onclick="showNotify('Giỏ hàng trống!','bag-handle-outline')" class="ml-auto btn hvr-hover font-weight-bold">Thanh toán</a>
+                    <a onclick="showNotify('Giỏ hàng trống!','bag-handle-outline')" class="ml-auto btn hvr-hover max-width-mobile font-weight-bold">Thanh toán</a>
                 </div>
             }
 

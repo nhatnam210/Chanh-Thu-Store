@@ -6,10 +6,11 @@
 }
      
 
-<div class="main">
-    <h2 class="text-center title-table">Thông tin hóa đơn</h2>
-    <table class="table table-striped">
-        <thead>
+
+<h2 class="text-center title-table">Thông tin hóa đơn</h2>
+<div class="table-container">
+    <table class="table table-user table-striped shadow">
+        <thead class="bg-primary text-white">
             <tr>
                 <th> 
                     Tên sản phẩm
@@ -39,7 +40,7 @@
                         @string.Format("{0:#,##0}", @item.DonGia) đ
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Soluong) @item.SanPham.DonViTinh
+                        @Html.DisplayFor(modelItem => item.Soluong) <span class="text-lowercase">@item.SanPham.DonViTinh</span>
                     </td>
 
                     <td>

@@ -10,9 +10,8 @@
 
 <h2 class="text-center title-table">Lịch sử mua hàng</h2>
 <div class="table-container">
-
-    <table class="table table-striped">
-        <thead>
+    <table class="table table-user table-striped shadow">
+        <thead class="bg-primary text-white">
             <tr>
                 <th>
                     Ngày đặt
@@ -82,7 +81,7 @@
                     @string.Format("{0:#,##0}", item.TongTien + item.Ship) đ
                 </td>
                 <td>
-                    <a href="/nguoi-dung/lich-su-mua-hang/hoa-don?id=@item.MaHoaDon">Chi Tiết</a>
+                    <a class="view-bill-detail__link" href="/nguoi-dung/lich-su-mua-hang/hoa-don?id=@item.MaHoaDon"><i class="fas fa-eye"></i></a>
                 </td>
             </tr>
             }

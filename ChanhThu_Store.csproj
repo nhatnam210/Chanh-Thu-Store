@@ -3609,7 +3609,6 @@
     <Content Include="Areas\Admin\Views\DanhMucConsAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\DanhMucConsAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\HoaDonsAdmin\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\HoaDonsAdmin\Details.cshtml" />
     <Content Include="Areas\Admin\Views\HoaDonsAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\SanPhamsAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\SanPhamsAdmin\Delete.cshtml" />
@@ -3700,7 +3699,6 @@
     <Content Include="Views\Account\VerifyCode.cshtml" />
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
     <Content Include="Views\Manage\ManageLogins.cshtml" />
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
@@ -3728,7 +3726,6 @@
     <Content Include="Views\DanhMucCons\SanPhamTheoDMC.cshtml" />
     <Content Include="Views\DanhMucCons\_BoSuTap_DM.cshtml" />
     <Content Include="Views\Account\SuaThongTinCaNhan.cshtml" />
-    <Content Include="Views\Account\ThongTinCaNhan.cshtml" />
     <Content Include="Views\TimKiem\Index.cshtml" />
     <Content Include="Views\Account\LichSuMuaHang.cshtml" />
     <Content Include="Views\ChitietHoaDon\Index.cshtml" />
@@ -3749,6 +3746,7 @@
     <Content Include="Views\Account\EmailNotConfirmed.cshtml" />
     <Content Include="Views\Home\NotFound.cshtml" />
     <Content Include="Views\Home\Map.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
