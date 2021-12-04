@@ -359,7 +359,7 @@ $(window).scroll(function () {
     }
 })
 
-}
+
 
 
 // Paging and sort Jquery
