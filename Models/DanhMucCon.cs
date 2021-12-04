@@ -1,5 +1,6 @@
 ﻿namespace ChanhThu_Store.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -33,6 +34,7 @@
         public virtual DanhMuc DanhMuc { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [JsonIgnore]
         public virtual ICollection<SanPham> SanPhams { get; set; }
     }
 }

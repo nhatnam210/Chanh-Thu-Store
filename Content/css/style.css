@@ -4523,10 +4523,42 @@ textarea {
     margin-right: 12px;
 }
 
+
+.text-red {
+    color: var(--red);
+}
+.title-forgot{
+    font-size:35px;
+    margin-top:20px;
+    color:var(--primary-color);
+}
+.form-center{
+    width:600px;
+    margin:auto;
+}
+.btn-checkmail{
+    margin-top:20px;
+}
+.success-main{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:50px 0;
+    flex-direction:column;
+}
+.success-title{
+    display:flex;
+    align-items:baseline;
+    
+}
+.success-title h1{
+    font-size:35px;
+}
 .title-forgot {
     font-size: 35px;
     margin-top: 20px;
     color: var(--primary-color);
+
 }
 
 .form-center {
@@ -4559,6 +4591,21 @@ textarea {
     margin-left: 12px;
     width: 50px;
     height: 50px;
+}
+
+.regis-social{
+    width:100%;
+    display:flex;
+    align-items:center;
+}
+.example.disable{
+    display:none;
+}
+.check-like.liked {
+    display: none;
+}
+.none{
+    display:none !important;
 }
 /*--------------------------------------------Start Design voucher ticket------------------------------------------------------------------------*/
 .container.voucher_place {
@@ -4959,4 +5006,5 @@ textarea {
 .map-container {
     display: flex;
     justify-content: center;
+
 }
