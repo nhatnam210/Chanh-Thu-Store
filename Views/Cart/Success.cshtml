@@ -8,87 +8,89 @@
 
 <div class="success-main">
     <div class="success-title">
-        <h1>
+        <h1 class="text-center title-table">
             Bạn đã đặt hàng thành công
         </h1>
         <img class="success-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Light_green_check.svg/2048px-Light_green_check.svg.png" />
     </div>
-    <h5 class="h5">Thông tin đơn hàng</h5>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>
-                    Ngày đặt
-                </th>
-                <th>
-                    Người nhận
-                </th>
-                <th>
-                    Địa chỉ
-                </th>
-                <th>
-                    SDT
-                </th>
-                <th>
-                    Email
-                </th>
-                <th>
-                    Giảm giá
-                </th>
-                <th>
-                    Tổng tiền
-                </th>
-                <th>
-                    Phí Ship
-                </th>
-                <th>
-                    Tổng thanh toán
-                </th>
-                <th>
-                    Xem
-                </th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="table-container">
+        <table class="table table-user table-striped shadow">
+            <thead class="bg-primary text-white">
+                <tr>
+                    <th>
+                        Ngày đặt
+                    </th>
+                    <th>
+                        Người nhận
+                    </th>
+                    <th>
+                        Địa chỉ
+                    </th>
+                    <th>
+                        SDT
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Giảm giá
+                    </th>
+                    <th>
+                        Tổng tiền
+                    </th>
+                    <th>
+                        Phí Ship
+                    </th>
+                    <th>
+                        Tổng thanh toán
+                    </th>
+                    <th>
+                        Xem
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
 
-            <tr>
-                @foreach (var item in Model)
-                {
-                    <td>
-                        @item.NgayLap.ToString("d", VN)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Ten)
-                    </td>
-                    <td style="max-width:200px">
-                        @Html.DisplayFor(modelItem => item.DiaChi)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SDT)
-                    </td>
+                <tr>
+                    @foreach (var item in Model)
+                    {
+                        <td>
+                            @item.NgayLap.ToString("d", VN)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Ten)
+                        </td>
+                        <td style="max-width:200px">
+                            @Html.DisplayFor(modelItem => item.DiaChi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SDT)
+                        </td>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-                        @item.GiamGia%
-                    </td>
-                    <td>
-                        @string.Format("{0:#,##0}", item.TongTien) đ
-                    </td>
-                    <td>
-                        @string.Format("{0:#,##0}", item.Ship) đ
-                    </td>
-                    <td>
-                        @string.Format("{0:#,##0}", item.TongTien + item.Ship) đ
-                    </td>
-                    <td>
-                        <a href="/nguoi-dung/lich-su-mua-hang/hoa-don?id=@item.MaHoaDon">Chi Tiết</a>
-                    </td>
-                }
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @item.GiamGia%
+                        </td>
+                        <td>
+                            @string.Format("{0:#,##0}", item.TongTien) đ
+                        </td>
+                        <td>
+                            @string.Format("{0:#,##0}", item.Ship) đ
+                        </td>
+                        <td>
+                            @string.Format("{0:#,##0}", item.TongTien + item.Ship) đ
+                        </td>
+                        <td>
+                            <a class="view-bill-detail__link" href="/nguoi-dung/lich-su-mua-hang/hoa-don?id=@item.MaHoaDon"><i class="fas fa-eye"></i></a>
+                        </td>
+                    }
 
-            </tr>
+                </tr>
 
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
+
 </div>

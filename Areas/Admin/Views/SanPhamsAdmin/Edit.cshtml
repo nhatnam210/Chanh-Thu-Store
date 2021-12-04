@@ -63,7 +63,7 @@
                 <span class="label-admin">Hình Chính</span>
                 <div class="col-md-12">
                     @*@Html.EditorFor(model => model.HinhChinh, new { htmlAttributes = new { @class = "form-control" } })*@
-                    <input id="linkImg" class="form-control" name="HinhChinh" value="" readonly="readonly" />
+                    <input id="linkImg" class="form-control" name="HinhChinh" value="@Model.HinhChinh" />
                     <a href="#" id="selectImg">Chọn ảnh</a>
                     @Html.ValidationMessageFor(model => model.HinhChinh, "", new { @class = "text-danger" })
                 </div>

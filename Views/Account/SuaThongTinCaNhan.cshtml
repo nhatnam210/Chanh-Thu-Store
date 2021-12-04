@@ -49,7 +49,7 @@
             <div class="col-md-12">
                 <div class="col-md-12">
                     @*@Html.TextBoxFor(model => model.Avatar, new { htmlAttributes = new { @class = "form-control linkImg" }, id = "linkImg" })*@
-                    <input id="user-avatar__link" class="form-control" hidden name="Avatar" value="" readonly="readonly" />
+                    <input id="user-avatar__link" class="form-control" hidden name="avatar" value="@Model.Avatar" readonly="readonly" />
                     <div class="user-avatar__wrap">
                         <div class="user-avatar__group">
                             @if (Model.Avatar != null)
@@ -71,14 +71,14 @@
         </div>
         <div class="form-group">
             <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12 user-input-info">
-                <div>Email</div>
+                <div class="user-input__label">Email</div>
                 <input class="form-control user-input" value="@Model.Email" readonly />
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12 user-input-info">
-                <div>Tên khách hàng</div>
+                <div class="user-input__label">Tên khách hàng</div>
                 @Html.EditorFor(model => model.Ten, new { htmlAttributes = new { @class = "form-control user-input", placeholder = "Nhập tên của bạn" } })
                 @Html.ValidationMessageFor(model => model.Ten, "", new { @class = "text-danger" })
             </div>
@@ -91,7 +91,7 @@
 
         <div class="form-group">
             <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12 user-input-info">
-                <div>Số điện thoại</div>
+                <div class="user-input__label">Số điện thoại</div>
                 @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control user-input", placeholder = "Nhập số điện thoại của bạn" } })
                 @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
             </div>
@@ -99,7 +99,7 @@
 
         <div class="form-group">
             <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12 user-input-info">
-                <div>Địa chỉ</div>
+                <div class="user-input__label">Địa chỉ</div>
                 @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control user-input", placeholder = "Nhập địa chỉ của bạn" } })
                 @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
             </div>
@@ -110,7 +110,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-12 btn-update-info__wrap">
-                <input class="btn hvr-hover btn-update-info max-width-mobile" type="submit" value="Cập nhật" />
+                <button type="submit" class="btn hvr-hover max-width-mobile text-capitalize m-auto p-2">Cập nhật</button>
             </div>
         </div>
     </div>

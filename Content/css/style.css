@@ -955,6 +955,8 @@ ul.cart-list > li.total > .btn:hover {
 .cart-box {
     margin-top: 40px;
     background: #ffffff;
+    border-radius: var(--btn-corner-radius);
+    overflow: hidden;
 }
 
 .main-header.fixed-menu {
@@ -2804,7 +2806,6 @@ ul.cart-list > li.total > .btn:hover {
 
 .table-main table td.thumbnail-img {
     width: 120px;
-    padding-left: 0;
 }
 
 .table-main table td {
@@ -2970,9 +2971,9 @@ ul.cart-list > li.total > .btn:hover {
     }
 
 .name-pr a {
-    font-weight: 700;
+    font-weight: 600;
     font-size: inherit;
-    color: #222;
+    color: var(--text-color);
 }
 
 .remove-pr {
@@ -3216,6 +3217,11 @@ ul.cart-list > li.total > .btn:hover {
 .account-box {
     border: 2px solid #222;
     margin-top: 15px;
+    border-radius: var(--img-corner-radius);
+}
+
+.my-account-page {
+    margin-bottom: 20px;
 }
 
 .my-account-page a {
@@ -3450,6 +3456,12 @@ ul.cart-list > li.total > .btn:hover {
             box-shadow: none;
         }
 
+.user-input__label {
+    color: var(--text-color);
+    font-weight: 600;
+    padding-bottom: 5px;
+}
+
 .submit-button button {
     padding: 10px 20px;
     font-weight: 700;
@@ -3658,6 +3670,10 @@ ul.cart-list > li.total > .btn:hover {
 .table-responsive .table th {
     vertical-align: middle;
     white-space: nowrap;
+    max-width: 300px;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
 }
 
 .card-outline-secondary .card-body a {
@@ -3689,10 +3705,12 @@ ul.cart-list > li.total > .btn:hover {
 
 .img-fit.cart {
     height: 100px;
+    border-radius: var(--img-corner-radius);
 }
 
 .img-fit.cart--mini {
     height: 50px;
+    border-radius: var(--img-corner-radius);
 }
 
 
@@ -3796,14 +3814,20 @@ ul.cart-list > li.total > .btn:hover {
 }
 
 /*custom table*/
+.table-user,
 .table-responsive {
     border-radius: var(--table-corner-radius);
 }
 
-.table.custom {
-    position: relative;
-    overflow: auto;
-}
+    .table-user {
+        overflow:hidden;
+    }
+
+    .table.custom {
+        position: relative;
+        overflow: auto;
+        margin-bottom: 0;
+    }
 
     .table.custom th {
         text-align: center;
@@ -4182,13 +4206,14 @@ ul.cart-list > li.total > .btn:hover {
     margin-bottom: 50px;
     overflow-y: auto;
     max-width: 100vw;
+    padding: 0 10px;
 }
 
 .title-table {
     font-size: 36px;
     font-weight: 700;
-    margin-top: 25px;
-    color: var(--primary-color);
+    margin: 50px 0 25px 0;
+    color: var(--text-color);
 }
 
 
@@ -4330,9 +4355,9 @@ textarea {
     padding: 0;
 }
 
-.comment-item:nth-child(n+6) {
+/*.comment-item:nth-child(n+6) {
     display: none;
-}
+}*/
 
 .comment-item:last-of-type {
     padding-bottom: 0px;
@@ -4597,6 +4622,7 @@ textarea {
     position: relative;
     padding: var(--padding-line);
     border-radius: var(--radius);
+    border-right: 1px dashed;
     background-color: #333;
     color: var(--primary-color);
     user-select: none;
@@ -4722,9 +4748,9 @@ textarea {
 .voucher__date {
     color: var(--text-color);
     text-align: center;
-    font-style: italic;
-    font-size: 12px;
-    margin-top: 5px;
+    font-size: 11px;
+    margin: 5px auto;
+    /*font-style: italic;*/
 }
 
 .disable-voucher .voucher__date {
@@ -4765,7 +4791,6 @@ textarea {
         display: inline-block;
         text-shadow: 0 0 2px transparent;
         font-weight: 600;
-        font-style: italic;
     }
 
 .voucher__date small {
@@ -4959,4 +4984,14 @@ textarea {
 .map-container {
     display: flex;
     justify-content: center;
+}
+
+.view-bill-detail__link i {
+    color: #999;
+    transition: all ease-in .1s;
+    font-size: 18px;
+}
+
+.view-bill-detail__link:hover i {
+    color: green;
 }

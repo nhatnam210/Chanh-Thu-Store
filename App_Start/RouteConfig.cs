@@ -49,8 +49,8 @@ namespace ChanhThu_Store
                   defaults: new { controller = "DanhMucCons", action = "Index", id = UrlParameter.Optional }
               );
             routes.MapRoute(
-                  name: "san pham theo danh muc con",
-                  url: "cua-hang/danh-muc-con",
+                  name: "san pham theo loai san pham",
+                  url: "cua-hang/loai-san-pham",
                   defaults: new { controller = "DanhMucCons", action = "Details", id = UrlParameter.Optional }
           );
             routes.MapRoute(
@@ -94,10 +94,15 @@ namespace ChanhThu_Store
                  defaults: new { controller = "Account", action = "Info", id = UrlParameter.Optional }
           );
             routes.MapRoute(
-                 name: "Chinh sua mat khau",
-                 url: "chinh-sua-mat-khau",
-                 defaults: new { controller = "Manage", action = "Index", id = UrlParameter.Optional }
+                 name: "Doi mat khau",
+                 url: "nguoi-dung/doi-mat-khau",
+                 defaults: new { controller = "Manage", action = "ChangePassword", id = UrlParameter.Optional }
           );
+            routes.MapRoute(
+                name: "Doi mat khau thong bao",
+                url: "nguoi-dung/doi-mat-khau/xac-nhan",
+                defaults: new { controller = "Manage", action = "Index", id = UrlParameter.Optional }
+         );
             routes.MapRoute(
                 name: "yeu thich",
                 url: "nguoi-dung/yeu-thich",
