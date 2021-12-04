@@ -77,7 +77,7 @@ a {
 }
 
 .notify__title {
-    color: var(--primary-color);
+    color: #f3bf16;
     font-size: 30px;
     font-weight: 600;
     text-transform: uppercase;
@@ -92,6 +92,7 @@ a {
     font-weight: 600;
     margin: 5px 0px 0px 0px;
     font-style: italic;
+    font-size: 25px;
 }
 
 .go-to-link {

@@ -116,7 +116,7 @@
                         Html.RenderAction("VoucherTheoUser", "Cart");
                     }
                 </div>
-                <hr class="mb-4">
+                <hr class="">
             </div>
 
             @*<div class="col-sm-6 col-lg-6 mb-3">
@@ -166,7 +166,7 @@
                                         Total += item.Sanpham.Gia * item.Soluong;
                                         <div class="media mb-2 border-bottom">
                                             <div class="media-body">
-                                                <a href="/cua-hang/san-pham?id=@item.Sanpham.MaSanPham">@item.Sanpham.TenSanPham</a>
+                                                <a class="link-to-product" href="/cua-hang/san-pham?id=@item.Sanpham.MaSanPham">@item.Sanpham.TenSanPham</a>
                                                 <div class="small text-muted"> @string.Format("{0:#,##0}", @item.Sanpham.Gia) đ<span class="mx-2">|</span> @item.Soluong @item.Sanpham.DonViTinh<span class="mx-2">|</span> Tổng : <strong> @string.Format("{0:#,##0}", item.Sanpham.Gia * item.Soluong) đ</strong></div>
                                             </div>
                                         </div>
@@ -190,19 +190,19 @@
                                 <h3>Thống kê</h3>
                             </div>
                             <div class="d-flex">
-                                <div class="font-weight-bold">Sản Phẩm</div>
+                                <div class="font-weight-bold">Chi phí</div>
                                 <div class="ml-auto font-weight-bold">Tổng</div>
                             </div>
                             <hr class="my-1">
                             <div class="d-flex">
                                 <h4>Tổng tiền</h4>
-                                <div class="ml-auto font-weight-bold">  @string.Format("{0:#,##0}", @Total) đ </div>
+                                <div class="ml-auto font-weight-bold text-primary">@string.Format("{0:#,##0}", @Total) đ </div>
                             </div>
 
                             <hr class="my-1">
                             <div class="d-flex">
-                                <h4>Voucher</h4>
-                                <div id="voucher-fee" class="ml-auto font-weight-bold">0 %</div>
+                                <h4>Giảm giá</h4>
+                                <div id="voucher-fee" class="ml-auto font-weight-bold">0%</div>
                             </div>
                             <!-- <div class="d-flex">
                         <h4>Thuế</h4>
@@ -220,7 +220,7 @@
                             <hr>
                         </div>
                     </div>
-                    <div class="col-12 d-flex shopping-box"> <button style="font-weight: 600" type="submit" class="ml-auto btn hvr-hover max-width-mobile">Đặt Hàng</button> </div>
+                    <div class="col-12 d-flex shopping-box"> <button type="submit" class="ml-auto btn hvr-hover max-width-mobile font-weight-bold">Đặt Hàng</button> </div>
                 </div>
             </div>
         </div>

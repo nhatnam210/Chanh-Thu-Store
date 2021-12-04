@@ -6,9 +6,11 @@ const linkNavbarMenuAdmin = document.querySelectorAll('.navbar-menu-admin .nav-i
 const locationHref = location.href
 
 if (linkNavbarMenuAdmin) {
-    if (locationHref.includes('danh-muc-con')) {
-        linkNavbarMenuAdmin[2].classList.add('active')
-    } else {
+    if (locationHref.includes('loai-san-pham')) {
+        linkNavbarMenuAdmin[3].classList.add('active')
+    } else if (locationHref.includes('chi-tiet-hoa-don')) {
+        linkNavbarMenuAdmin[5].classList.add('active')
+    }else {
         linkNavbarMenuAdmin.forEach((item) => {
             if (locationHref.includes(item.href)) {
                 item.classList.add('active')
@@ -17,5 +19,4 @@ if (linkNavbarMenuAdmin) {
             }
         })
     }
-   
 }

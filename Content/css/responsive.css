@@ -105,9 +105,7 @@
         padding: 0px;
         margin: 0px;
     }
-    .cover-slides h1 {
-        font-size: 28px;
-    }
+
     .cover-slides p {
         font-size: 16px;
     }
@@ -241,7 +239,7 @@
     }
 
     .max-width-mobile {
-        width: 100%;
+        width: 100% !important;
         max-width: 100%;
     }
 
@@ -249,7 +247,7 @@
         height: 180px;
     }
 
-    .products-single {
+    .products-single:not(.gallery-box) {
         margin-bottom: 0px !important;
     }
 
@@ -300,9 +298,17 @@
         padding: 0px;
         margin: 0px;
     }
-    .cover-slides h1 {
-        font-size: 28px;
+
+
+    .slide__title-header-top {
+        font-size: 30px;
     }
+
+    .slide__title-header-bottom {
+        font-size: 40px;
+    }
+
+
     .cover-slides p {
         font-size: 16px;
     }

@@ -10,7 +10,7 @@
     <meta name="author" content="">
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="~/Content/images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="~/Content/images/chanhthustore_logo.png" type="image/x-icon">
     <title>Admin | ChanhThuStore</title>
 
     <!-- Custom fonts for this template-->
@@ -22,21 +22,32 @@
     <!-- Custom styles for this template-->
     <link href="~/Areas/AssetAdmin/css/sb-admin-2.css" rel="stylesheet" />
     <link href="~/Areas/AssetAdmin/css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/PagedList.css" rel="stylesheet" type="text/css" />
     <!-- jQuery UI CSS Reference -->
     <link href="@Url.Content("~/Content/themes/base/minified/jquery-ui.min.css")" rel="stylesheet" />
+    <link href="~/Content/css/value.css" rel="stylesheet" />
     <!-- Required jQuery and jQuery UI Javascript references -->
     <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")"></script>
     <script src="@Url.Content("~/Scripts/jquery-ui-1.10.4.min.js")"></script>
-
-    <link href="~/Content/css/value.css" rel="stylesheet" />
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
     <div id="wrapper">
         @Html.Partial("_Menu_Admin")
-
-
-        @RenderBody()
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            @RenderBody()
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto text-white">
+                        <span>Copyright &copy; ChanhThuStore 2021</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+        </div>
     </div>
 
 </body>
@@ -55,9 +66,4 @@
 <script src="~/Scripts/jquery-3.6.0.js"></script>
 <script src="~/Scripts/jquery-3.6.0.min.js"></script>
 <script src="~/Areas/AssetAdmin/ckfinder/ckfinder.js"></script>
-@RenderSection("jsFooter",required: false)
-@*<script type="text/javascript">
-        $(function () {
-            $("#datepicker").datepicker();
-        });
-    </script>*@
+@RenderSection("jsCKFinder", required: false)

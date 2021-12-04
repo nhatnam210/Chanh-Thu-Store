@@ -32,7 +32,8 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.SanPham.TenSanPham)
+                        @*@Html.DisplayFor(modelItem => item.SanPham.TenSanPham)*@
+                        <a class="link-to-product" href="/cua-hang/san-pham?id=@item.SanPham.MaSanPham">@item.SanPham.TenSanPham</a>
                     </td>
                     <td>
                         @string.Format("{0:#,##0}", @item.DonGia) đ

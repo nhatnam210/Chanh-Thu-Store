@@ -31,7 +31,7 @@ namespace ChanhThu_Store.Controllers
             }
 
             listSanPhamMacDinh = from s in db.SanPhams
-                                 where s.MaDanhMucCon == DMCMacDinh.MaDanhMucCon
+                                 where s.MaDanhMucCon == DMCMacDinh.MaDanhMucCon && s.SoLuongTonKho > 0
                                  orderby s.MaSanPham
                                  select s;
 
@@ -55,6 +55,7 @@ namespace ChanhThu_Store.Controllers
         // GET: SanPhams/Details/5
         public ActionResult Details(string id)
         {
+            ViewBag.MaSanPham = id;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -63,7 +64,7 @@ namespace ChanhThu_Store.Controllers
             SanPham sanpham = db.SanPhams.Find(id);
             if (sanpham == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("NotFound","Home");
             }
             var userID = User.Identity.GetUserId();
             var objProduct = db.SanPhams.Where(p => p.MaSanPham == id);
@@ -87,11 +88,10 @@ namespace ChanhThu_Store.Controllers
         [Authorize]
         public ActionResult Binhluan(string masanpham, string noidung = "")
         {
-
             DateTime thisDay = DateTime.Today;
             var userID = User.Identity.GetUserId();
             SanPham find = db.SanPhams.FirstOrDefault(p => p.MaSanPham == masanpham);
-            if (find != null)
+            if (find != null && userID !=null)
             {
                 if(noidung.Trim().Length >= 0)
                 {
@@ -102,7 +102,14 @@ namespace ChanhThu_Store.Controllers
                 }
             }
 
-            return Redirect(Request.UrlReferrer.ToString());
+            //string returnURl = "/cua-hang/san-pham?id=" + ViewBag.MaSanPham;
+            //return Redirect(returnURl);
+            //return Redirect(Request.UrlReferrer.ToString());
+            var loadBinhLuan = db.BinhLuans.Where(p => p.MaSanPham == masanpham)
+                                           .OrderByDescending(p => p.NgayBinhLuan)
+                                           .OrderByDescending(p => p.MaBinhLuan);
+
+            return PartialView("ShowDanhSachBinhLuan", loadBinhLuan.ToList()); //res
         }
 
         [AllowAnonymous]
@@ -116,14 +123,21 @@ namespace ChanhThu_Store.Controllers
             SanPham sanpham = db.SanPhams.Find(id);
             if (sanpham == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("NotFound", "Home");
             }
-            var objBinhLuan = db.BinhLuans.Where(p => p.MaSanPham == id)
+            var listBinhLuan = db.BinhLuans.Where(p => p.MaSanPham == id)
                                            .OrderByDescending(p=> p.NgayBinhLuan)
                                            .OrderByDescending(p=>p.MaBinhLuan);
 
-            return PartialView("ShowDanhSachBinhLuan", objBinhLuan);
+            return PartialView("ShowDanhSachBinhLuan", listBinhLuan.ToList());
         }
+
+        //public ActionResult LoadTime()
+        //{
+        //    var text = DateTime.Now.ToString("HH:mm:ss tt");
+        //    return Content(text);
+        //}
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

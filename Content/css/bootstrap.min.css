@@ -8,7 +8,7 @@
     --blue: #007bff;
     --indigo: #6610f2;
     --purple: #6f42c1;
-    .img-fluid --pink: #e83e8c;
+    --pink: #e83e8c;
     --red: #dc3545;
     --orange: #fd7e14;
     --yellow: #ffc107;
@@ -193,9 +193,19 @@ figure {
     margin: 0 0 1rem;
 }
 img {
+    
     vertical-align: middle;
     border-style: none;
+    
 }
+    img.logo {
+        vertical-align: middle;
+        border-style: none;
+        width: 150px;
+        object-fit: cover;
+        transition: all linear .2s;
+        border-radius: var(--img-corner-radius);
+    }
 svg:not(:root) {
     overflow: hidden;
 }
@@ -500,7 +510,7 @@ pre code {
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-    padding-bottom: 15px;
+    /*padding-bottom: 15px;*/
 }
 @media (min-width: 576px) {
     .container {
@@ -1478,12 +1488,13 @@ pre code {
     margin-bottom: 1rem;
     background-color: transparent;
 }
-.table td,
-.table th {
-    padding: 0.75rem;
-    vertical-align: top;
-    border-top: 1px solid #dee2e6;
-}
+    .table td,
+    .table th {
+        padding: 0.75rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+        border-bottom: 1px solid #dee2e6;
+    }
 .table thead th {
     vertical-align: bottom;
     border-bottom: 2px solid #dee2e6;
@@ -5304,6 +5315,7 @@ button.close {
     position: relative;
     width: 100%;
     overflow: hidden;
+    border-radius: var(--img-corner-radius);
 }
 .carousel-item {
     position: relative;

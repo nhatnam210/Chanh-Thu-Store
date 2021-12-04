@@ -15,13 +15,14 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
     public class DanhMucConsAdminController : Controller
     {
         private ChanhThuStoreContext db = new ChanhThuStoreContext();
-       
+
         // GET: Admin/DanhMucConsAdmin
         public ActionResult Index(string sapxep, string loc, string timkiem, int? trang)
         {
-            ViewBag.Sapxep = sapxep;
-            ViewBag.SapxepMa = String.IsNullOrEmpty(sapxep) ? "Id" : "";
-            ViewBag.SapxepTen = sapxep == "Ten" ? "Ten_desc" : "Ten";
+            ViewBag.SapXep = sapxep;
+            ViewBag.SapXepMa = String.IsNullOrEmpty(sapxep) ? "mã tăng dần" : "";
+            ViewBag.SapXepTen = sapxep == "tên A-Z" ? "tên Z-A" : "tên A-Z";
+            ViewBag.SapXepTenDanhMuc = sapxep == "danh mục A-Z" ? "danh mục Z-A" : "danh mục A-Z";
 
             //phan trang
             if (timkiem != null)
@@ -35,50 +36,45 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             ViewBag.Loc = timkiem;
             //tìm kiếm
             var danhmuccon = from s in db.DanhMucCons
-                          select s;
-            if (!String.IsNullOrEmpty(timkiem))
+                             select s;
+            if (danhmuccon.Count() > 0)
             {
-                danhmuccon = danhmuccon.Where(s => s.TenDanhMucCon.Contains(timkiem)
-                || s.DanhMuc.TenDanhMuc.Contains(timkiem)
-                );
-                //|| s.author.Contains(timkiem)
+                if (!String.IsNullOrEmpty(timkiem))
+                {
+                    danhmuccon = danhmuccon.Where(s => s.TenDanhMucCon.Contains(timkiem)
+                    || s.DanhMuc.TenDanhMuc.Contains(timkiem)
+                    );
+                    //|| s.author.Contains(timkiem)
 
-            }
-            //sắp xếp 
-            switch (sapxep)
-            {
-                case "Id":
-                    danhmuccon = danhmuccon.OrderByDescending(s => s.MaDanhMucCon);
-                    break;
-                case "Ten":
-                    danhmuccon = danhmuccon.OrderBy(s => s.TenDanhMucCon);
-                    break;
-                case "Ten_desc":
-                    danhmuccon = danhmuccon.OrderByDescending(s => s.TenDanhMucCon);
-                    break;
-                default:
-                    danhmuccon = danhmuccon.OrderBy(s => s.MaDanhMucCon);
-                    break;
-            }
-            //var articles = db.Articles.Include(a => a.Cetegory);
-            int pageSize = 5;
-            int pageNumber = (trang ?? 1);
-            return View(danhmuccon.ToPagedList(pageNumber, pageSize));
-        }
+                }
+                //sắp xếp 
+                switch (sapxep)
+                {
+                    case "mã tăng dần":
+                        danhmuccon = danhmuccon.OrderByDescending(s => s.MaDanhMucCon);
+                        break;
+                    case "tên A-Z":
+                        danhmuccon = danhmuccon.OrderBy(s => s.TenDanhMucCon);
+                        break;
+                    case "tên Z-A":
+                        danhmuccon = danhmuccon.OrderByDescending(s => s.TenDanhMucCon);
+                        break;
+                    case "danh mục A-Z":
+                        danhmuccon = danhmuccon.OrderBy(s => s.DanhMuc.TenDanhMuc);
+                        break;
+                    case "danh mục Z-A":
+                        danhmuccon = danhmuccon.OrderByDescending(s => s.DanhMuc.TenDanhMuc);
+                        break;
+                    default:
+                        danhmuccon = danhmuccon.OrderByDescending(s => s.MaDanhMucCon);
+                        break;
+                }
 
-        // GET: Admin/DanhMucConsAdmin/Details/5
-        public ActionResult Details(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                int pageSize = 5;
+                int pageNumber = (trang ?? 1);
+                return View(danhmuccon.ToPagedList(pageNumber, pageSize));
             }
-            DanhMucCon danhMucCon = db.DanhMucCons.Find(id);
-            if (danhMucCon == null)
-            {
-                return HttpNotFound();
-            }
-            return View(danhMucCon);
+            return View();
         }
 
         // GET: Admin/DanhMucConsAdmin/Create
@@ -97,6 +93,25 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Lấy chuỗi MaDanhMucCon của phần tử cuối bảng
+                string maDMCCuoi = db.DanhMucCons
+                                      .OrderByDescending(d => d.MaDanhMucCon)
+                                      .First().MaDanhMucCon;
+
+                //Cắt lấy phần chữ số và ép kiểu
+                int laySoCuoi = Convert.ToInt32(maDMCCuoi.Substring(3));
+
+                //Tăng 1 đơn vị
+                int soMoi = ++laySoCuoi;
+                if (soMoi <= 9)
+                {
+                    danhMucCon.MaDanhMucCon = "LSP0" + soMoi.ToString();
+                }
+                else
+                {
+                    danhMucCon.MaDanhMucCon = "LSP" + soMoi.ToString();
+                }
+
                 db.DanhMucCons.Add(danhMucCon);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -159,6 +174,43 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
+            var sanPham = db.SanPhams
+                          .Where(s => s.MaDanhMucCon == id)
+                          .Select(s => s);
+
+            //xóa tất cả sản phẩm thuộc danh mục con, bao gồm bình luận, tương tác
+            foreach (var itemSP in sanPham)
+            {
+                //Xóa bình luận
+                var binhLuan = db.BinhLuans
+                                .Where(b => b.MaSanPham == itemSP.MaSanPham)
+                                .Select(b => b);
+                db.BinhLuans.RemoveRange(binhLuan);
+
+                //Xóa yêu thích
+                var yeuThich = db.TuongTacs
+                               .Where(t => t.MaSanPham == itemSP.MaSanPham)
+                               .Select(t => t);
+                db.TuongTacs.RemoveRange(yeuThich);
+
+                //Xóa CTHD và HD
+                var chiTietHoaDon = db.ChiTietHoaDons
+                               .Where(c => c.MaSanPham == itemSP.MaSanPham)
+                               .Select(c => c);
+                foreach (var itemCTHD in chiTietHoaDon)
+                {
+                    //tìm những item khác có cùng MaHoaDon trong ChiTietHoaDon để xóa hết
+                    db.ChiTietHoaDons.RemoveRange(db.ChiTietHoaDons
+                                                .Where(c2 => c2.MaHoaDon == itemCTHD.MaHoaDon)
+                                                .Select(c2 => c2));
+
+                    //xóa luôn hóa đơn có tương ứng
+                    db.HoaDons.Remove(db.HoaDons.SingleOrDefault(hd => hd.MaHoaDon == itemCTHD.MaHoaDon));
+                }
+
+                db.SanPhams.Remove(itemSP);
+            }
+
             DanhMucCon danhMucCon = db.DanhMucCons.Find(id);
             db.DanhMucCons.Remove(danhMucCon);
             db.SaveChanges();

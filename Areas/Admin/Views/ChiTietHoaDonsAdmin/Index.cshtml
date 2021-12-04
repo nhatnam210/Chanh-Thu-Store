@@ -1,0 +1,157 @@
+﻿@model List<ChanhThu_Store.Models.ChiTietHoaDon>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Main_Admin.cshtml";
+}
+
+
+<!-- Main Content -->
+<div id="content">
+    <!-- Topbar -->
+    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+        <!-- Sidebar Toggle (Topbar) -->
+        <form class="form-inline">
+            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                <i class="fa fa-bars"></i>
+            </button>
+        </form>
+
+        <!-- Topbar Search -->
+        <form method="post" action="/admin/hoa-don" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <div class="input-group">
+                <input class="col-md-10" type="text" name="timkiem" class="form-control bg-light border-0 small" placeholder="Tìm kiếm @ViewBag.Loc"
+                       aria-label="Search" aria-describedby="basic-addon2">
+                <div class="input-group-append col-md-2">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-search fa-sm"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Topbar Navbar -->
+        <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-search fa-fw"></i>
+                </a>
+                <!-- Dropdown - Messages -->
+                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                     aria-labelledby="searchDropdown">
+                    <form class="form-inline mr-auto w-100 navbar-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-light border-0 small"
+                                   placeholder="Search for..." aria-label="Search"
+                                   aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </li>
+
+
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
+                    <img class="img-profile rounded-circle"
+                         src="img/undraw_profile.svg">
+                </a>
+                <!-- Dropdown - User Information -->
+
+            </li>
+
+        </ul>
+
+    </nav>
+    <!-- End of Topbar -->
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+        @if (Model.Count > 0)
+        {
+            var khachdat = Model[0].HoaDon.AspNetUser.Ten;
+            khachdat = khachdat != null ? khachdat.Trim() : Model[0].HoaDon.AspNetUser.Email;
+            var khachnhan = Model[0].HoaDon.Ten;
+            khachnhan = khachnhan != null ? khachnhan.Trim() : Model[0].HoaDon.AspNetUser.Email;
+
+
+            <!-- Page Heading -->
+            <h1 class="table-admin__title text-center">Hóa Đơn - <span class="text-primary">@Model[0].HoaDon.MaHoaDon</span></h1>
+            <h1 class="h3 table-admin__title text-primary">Khách đặt: <span class="text-white">@khachdat</span></h1>
+            <h1 class="h3 table-admin__title text-primary">Khách nhận: <span class="text-white">@khachnhan</span></h1>
+        }
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+                        <thead>
+                            <tr>
+                                <th class="text-capitalize">
+                                    Mã sản phẩm
+                                </th>
+                                <th class="text-capitalize">
+                                    Tên Sản phẩm
+                                </th>
+                                <th class="text-capitalize">
+                                    Số lượng
+                                </th>
+                                <th class="text-capitalize">
+                                    Đơn giá
+                                </th>
+                                <th class="text-capitalize">
+                                    Thành tiền
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.SanPham.MaSanPham
+                                    </td>
+                                    <td>
+                                        @item.SanPham.TenSanPham
+                                    </td>
+                                    <td>
+                                        @item.Soluong @item.SanPham.DonViTinh
+                                    </td>
+                                    <td>
+                                        @string.Format("{0:#,##0}", item.DonGia) đ
+                                    </td>
+                                    <td>
+                                        @string.Format("{0:#,##0}", item.Soluong * item.DonGia) đ
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <br />
+                    @*<span class="show-page-text text-white">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
+
+                    @Html.PagedListPager(Model, trang => Url.Action("Index",
+                        new { trang, sapxep = ViewBag.Sapxep, loc = ViewBag.Loc }))*@
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->

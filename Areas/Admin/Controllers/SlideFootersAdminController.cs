@@ -20,20 +20,6 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             return View(db.SlideFooters.ToList());
         }
 
-        // GET: Admin/SlideFootersAdmin/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            SlideFooter slideFooter = db.SlideFooters.Find(id);
-            if (slideFooter == null)
-            {
-                return HttpNotFound();
-            }
-            return View(slideFooter);
-        }
 
         // GET: Admin/SlideFootersAdmin/Create
         public ActionResult Create()
@@ -78,7 +64,7 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaSliderFoot,HinhSlideFooter")] SlideFooter slideFooter)
+        public ActionResult Edit([Bind(Include = "Id,HinhSlideFooter")] SlideFooter slideFooter)
         {
             if (ModelState.IsValid)
             {

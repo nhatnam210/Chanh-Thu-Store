@@ -39,15 +39,19 @@
             @foreach (var item in Model)
             {
                 <div class="col-lg-3 col-md-6 special-grid @item.MaDanhMuc">
-                    <div class="products-single fix shadow">
-                        <div class="box-img-hover">
+                    <div class="products-single fix shadow gallery-box">
+                        <div  class="box-img-hover ">
+                            <a href="/cua-hang/danh-muc-con?id=@item.MaDanhMucCon">
+                                <div class="img-fit gallery" style="background-image: url('@item.Hinh'),url('/Content/images/default.png');"></div>
+                                <span class="gallery__name">@item.TenDanhMucCon</span>
+                                <span class="mask"></span>
+                            </a>
                             @*<img src="@item.Hinh" class="img-fluid" alt="Image">*@
-                            <div class="img-fit gallery" style="background-image: url('@item.Hinh'),url('/Content/images/default.png');"></div>
-                            <div class="mask-icon">
+                            @*<div class="mask-icon">
 
-                                <a class="cart" href="/cua-hang/danh-muc-con/@item.MaDanhMucCon">@item.TenDanhMucCon</a>
+                                <a class="cart" href="/cua-hang/danh-muc-con?id=@item.MaDanhMucCon">@item.TenDanhMucCon</a>
 
-                            </div>
+                            </div>*@
                         </div>
                     </div>
                 </div>

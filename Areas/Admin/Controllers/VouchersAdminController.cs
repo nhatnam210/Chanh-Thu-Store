@@ -7,21 +7,24 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ChanhThu_Store.Models;
+using Microsoft.AspNet.Identity;
 using PagedList;
 
 namespace ChanhThu_Store.Areas.Admin.Controllers
 {
     public class VouchersAdminController : Controller
     {
+        DateTime thisDay = DateTime.Today;
         private ChanhThuStoreContext db = new ChanhThuStoreContext();
 
         // GET: Admin/VouchersAdmin
         public ActionResult Index(string sapxep, string loc, string timkiem, int? trang)
         {
-            ViewBag.Sapxep = sapxep;
-            ViewBag.SapxepMa = String.IsNullOrEmpty(sapxep) ? "Id" : "";
-            ViewBag.SapxepTen = sapxep == "Ten" ? "Ten_desc" : "Ten";
-
+            ViewBag.SapXep = sapxep;
+            ViewBag.SapXepMa = String.IsNullOrEmpty(sapxep) ? "mã tăng dần" : "";
+            ViewBag.SapXepTen = sapxep == "tên A-Z" ? "tên Z-A" : "tên A-Z";
+            ViewBag.SapXepGiaTri = sapxep == "giá trị thấp > cao" ? "giá trị cao > thấp" : "giá trị thấp > cao";
+            ViewBag.SapXepHSD = sapxep == "hạn sử dụng tăng dần" ? "hạn sử dụng giảm dần" : "hạn sử dụng tăng dần";
             //phan trang
             if (timkiem != null)
             {
@@ -46,17 +49,26 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             //sắp xếp 
             switch (sapxep)
             {
-                case "Ngay":
+                case "mã tăng dần":
+                    voucher = voucher.OrderBy(s => s.MaVoucher);
+                    break;
+                case "hạn sử dụng tăng dần":
                     voucher = voucher.OrderBy(s => s.HanSuDung);
                     break;
-                case "Ngay_desc":
+                case "hạn sử dụng giảm dần":
                     voucher = voucher.OrderByDescending(s => s.HanSuDung);
                     break;
-                case "Ten":
+                case "tên A-Z":
                     voucher = voucher.OrderBy(s => s.TenVoucher);
                     break;
-                case "Ten_desc":
+                case "tên Z-A":
                     voucher = voucher.OrderByDescending(s => s.TenVoucher);
+                    break;
+                case "giá trị thấp > cao":
+                    voucher = voucher.OrderBy(s => s.GiaTriGiam);
+                    break;
+                case "giá trị cao > thấp":
+                    voucher = voucher.OrderByDescending(s => s.GiaTriGiam);
                     break;
                 default:
                     voucher = voucher.OrderBy(s => s.MaVoucher);
@@ -99,7 +111,17 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 db.Vouchers.Add(voucher);
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch
+                {
+                    ViewBag.Message = "Mã này đã tồn tại!";
+                    //return new HttpStatusCodeResult(204);
+                    return Redirect(Request.UrlReferrer.ToString());
+                }
+               
                 return RedirectToAction("Index");
             }
 
@@ -132,8 +154,11 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             {
                 db.Entry(voucher).State = EntityState.Modified;
                 db.SaveChanges();
+
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             return View(voucher);
         }
 
@@ -157,6 +182,26 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
+            var userID = User.Identity.GetUserId();
+
+            //kiểm tra voucher này có tồn tại trong ChiTietVoucher
+            var voucherUser = db.ChiTietVouchers
+                                .Where(v => v.MaVoucher == id )
+                                .Select(v => v);
+
+            foreach(var item in voucherUser)
+            {
+                //voucher còn sử dụng được
+                if (item.Voucher.HanSuDung >= thisDay)
+                {
+                    //cộng bù lại điểm của user trước khi xóa voucher
+                    item.AspNetUser.DiemTichLuy += item.Voucher.DiemDoi * item.SoLuong;
+                }
+
+                //xóa đi 1 item voucher tương ứng đó trong ChiTietVoucher
+                db.ChiTietVouchers.Remove(item);
+            }
+
             Voucher voucher = db.Vouchers.Find(id);
             db.Vouchers.Remove(voucher);
             db.SaveChanges();

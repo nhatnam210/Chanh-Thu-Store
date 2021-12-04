@@ -19,10 +19,9 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         // GET: Admin/AspNetUsersAdmin
         public ActionResult Index(string sapxep, string loc, string timkiem, int? trang)
         {
-            ViewBag.Sapxep = sapxep;
-            ViewBag.SapxepMa = String.IsNullOrEmpty(sapxep) ? "Id" : "";
-            ViewBag.SapxepTen = sapxep == "Ten" ? "Ten_desc" : "Ten";
-
+            ViewBag.SapXep = sapxep;
+            ViewBag.SapXepTen = sapxep == "tên A-Z" ? "tên Z-A" : "tên A-Z";
+            ViewBag.SapXepXacThuc = sapxep == "xác thực" ? "chưa xác thực" : "xác thực";
             //phan trang
             if (timkiem != null)
             {
@@ -39,26 +38,27 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             if (!String.IsNullOrEmpty(timkiem))
             {
                 khachhang = khachhang.Where(s => s.Ten.Contains(timkiem));
-                //|| s.author.Contains(timkiem)
 
             }
             //sắp xếp 
             switch (sapxep)
             {
-                case "Id":
-                    khachhang = khachhang.OrderByDescending(s => s.Id);
-                    break;
-                case "Ten":
+                case "tên A-Z":
                     khachhang = khachhang.OrderBy(s => s.Ten);
                     break;
-                case "Ten_desc":
+                case "tên Z-A":
                     khachhang = khachhang.OrderByDescending(s => s.Ten);
+                    break;
+                case "xác thực":
+                    khachhang = khachhang.OrderByDescending(s => s.EmailConfirmed);
+                    break;
+                case "chưa xác thực":
+                    khachhang = khachhang.OrderBy(s => s.EmailConfirmed);
                     break;
                 default:
                     khachhang = khachhang.OrderBy(s => s.Id);
                     break;
             }
-            //var articles = db.Articles.Include(a => a.Cetegory);
             int pageSize = 5;
             int pageNumber = (trang ?? 1);
             return View(khachhang.ToPagedList(pageNumber, pageSize));
@@ -80,58 +80,58 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         }
 
         // GET: Admin/AspNetUsersAdmin/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+        //public ActionResult Create()
+        //{
+        //    return View();
+        //}
 
-        // POST: Admin/AspNetUsersAdmin/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Ten,UserName,Email,EmailConfirmed,PasswordHash,PhoneNumber,DiaChi,DiemTichLuy,SecurityStamp,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount")] AspNetUser aspNetUser)
-        {
-            if (ModelState.IsValid)
-            {
-                db.AspNetUsers.Add(aspNetUser);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+        //// POST: Admin/AspNetUsersAdmin/Create
+        //// To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create([Bind(Include = "Id,Ten,UserName,Email,EmailConfirmed,PasswordHash,PhoneNumber,DiaChi,DiemTichLuy,SecurityStamp,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount")] AspNetUser aspNetUser)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.AspNetUsers.Add(aspNetUser);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
 
-            return View(aspNetUser);
-        }
+        //    return View(aspNetUser);
+        //}
 
         // GET: Admin/AspNetUsersAdmin/Edit/5
-        public ActionResult Edit(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            AspNetUser aspNetUser = db.AspNetUsers.Find(id);
-            if (aspNetUser == null)
-            {
-                return HttpNotFound();
-            }
-            return View(aspNetUser);
-        }
+        //public ActionResult Edit(string id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    AspNetUser aspNetUser = db.AspNetUsers.Find(id);
+        //    if (aspNetUser == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(aspNetUser);
+        //}
 
-        // POST: Admin/AspNetUsersAdmin/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Ten,UserName,Email,EmailConfirmed,PasswordHash,PhoneNumber,DiaChi,DiemTichLuy,SecurityStamp,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount")] AspNetUser aspNetUser)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(aspNetUser).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(aspNetUser);
-        }
+        //// POST: Admin/AspNetUsersAdmin/Edit/5
+        //// To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit([Bind(Include = "Id,Ten,UserName,Email,EmailConfirmed,PasswordHash,PhoneNumber,DiaChi,DiemTichLuy,SecurityStamp,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount")] AspNetUser aspNetUser)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Entry(aspNetUser).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View(aspNetUser);
+        //}
 
         // GET: Admin/AspNetUsersAdmin/Delete/5
         public ActionResult Delete(string id)

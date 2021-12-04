@@ -34,6 +34,11 @@ namespace ChanhThu_Store
                       defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
           );
             routes.MapRoute(
+                     name: "map",
+                     url: "map",
+                     defaults: new { controller = "Home", action = "Map", id = UrlParameter.Optional }
+         );
+            routes.MapRoute(
                       name: "khong tim thay",
                       url: "khong-tim-thay-trang",
                       defaults: new { controller = "Home", action = "NotFound", id = UrlParameter.Optional }

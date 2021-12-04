@@ -1,4 +1,4 @@
-namespace ChanhThu_Store.Models
+﻿namespace ChanhThu_Store.Models
 {
     using System;
     using System.Collections.Generic;
@@ -9,10 +9,9 @@ namespace ChanhThu_Store.Models
     [Table("Banner")]
     public partial class Banner
     {
-        [Key]
-        public int MaBanner { get; set; }
+        public int Id { get; set; }
 
-        [StringLength(255)]
+        [StringLength(255, ErrorMessage = "Đường dẫn hình không được vượt quá {1} ký tự!")]
         public string HinhBanner { get; set; }
     }
 }

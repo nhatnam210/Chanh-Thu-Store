@@ -37,7 +37,7 @@ namespace ChanhThu_Store.Controllers
             }
 
             listSanPham = from s in db.SanPhams
-                          where s.MaDanhMucCon == id
+                          where s.MaDanhMucCon == id && s.SoLuongTonKho > 0
                           orderby s.MaSanPham
                           select s;
 
@@ -124,7 +124,7 @@ namespace ChanhThu_Store.Controllers
             IQueryable<SanPham> listSanPham = null;
 
             listSanPham = (from s in db.SanPhams
-                           where s.MaDanhMucCon == id
+                           where s.MaDanhMucCon == id && s.SoLuongTonKho > 0
                            select s).Distinct();
             return PartialView("DemSP_DMC", listSanPham);
         }

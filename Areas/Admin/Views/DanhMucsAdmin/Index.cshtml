@@ -6,153 +6,158 @@
     Layout = "~/Areas/Admin/Views/Shared/_Main_Admin.cshtml";
 }
 
-<!-- Content Wrapper -->
-<div id="content-wrapper" class="d-flex flex-column">
-
-    <!-- Main Content -->
-    <div id="content">
-
-        <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-            <!-- Sidebar Toggle (Topbar) -->
-            <form class="form-inline">
-                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                    <i class="fa fa-bars"></i>
-                </button>
-            </form>
-
-            <!-- Topbar Search -->
-            <form method="post" action="/admin/danh-muc" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                <div class="input-group">
-                    <input class="col-md-10" type="text" name="timkiem" class="form-control bg-light border-0 small" placeholder="Search for @ViewBag.CurrentFilter"
-                           aria-label="Search" aria-describedby="basic-addon2">
-                    <div class="input-group-append col-md-2">
-                        <button class="btn btn-primary" type="submit">
-                            <i class="fas fa-search fa-sm"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
-
-            <!-- Topbar Navbar -->
-            <ul class="navbar-nav ml-auto">
-
-                <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                <li class="nav-item dropdown no-arrow d-sm-none">
-                    <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-search fa-fw"></i>
-                    </a>
-                    <!-- Dropdown - Messages -->
-                    <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                         aria-labelledby="searchDropdown">
-                        <form class="form-inline mr-auto w-100 navbar-search">
-                            <div class="input-group">
-                                <input type="text" class="form-control bg-light border-0 small"
-                                       placeholder="Search for..." aria-label="Search"
-                                       aria-describedby="basic-addon2">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary" type="button">
-                                        <i class="fas fa-search fa-sm"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </li>
 
 
+<!-- Main Content -->
+<div id="content">
 
-                <!-- Nav Item - User Information -->
-                <li class="nav-item dropdown no-arrow">
-                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
-                        <img class="img-profile rounded-circle"
-                             src="img/undraw_profile.svg">
-                    </a>
-                    <!-- Dropdown - User Information -->
+    <!-- Topbar -->
+    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                </li>
+        <!-- Sidebar Toggle (Topbar) -->
+        <form class="form-inline">
+            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                <i class="fa fa-bars"></i>
+            </button>
+        </form>
 
-            </ul>
-
-        </nav>
-        <!-- End of Topbar -->
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
-
-            <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-white">Danh Mục</h1>
-            <p>
-                @Html.ActionLink("Thêm Danh Mục", "Create")
-            </p>
-
-            <!-- DataTales Example -->
-            <div class="card shadow mb-4">
-
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-
-                            <thead>
-                                <tr>
-                                    <th class="text-capitalize">
-                                        @Html.ActionLink("Mã Danh Mục", "Index", new { sapxep = ViewBag.SapxepMa, loc = ViewBag.Loc })
-                                    </th>
-                                    <th class="text-capitalize">
-                                        @Html.ActionLink("Tên Danh Mục", "Index", new { sapxep = ViewBag.SapxepTen, loc = ViewBag.Loc })
-                                    </th>
-                                    <th class="text-capitalize"> Tùy chỉnh</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                @foreach (var item in Model)
-                                {
-                                    <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.MaDanhMuc)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.TenDanhMuc)
-                                        </td>
-                                        <td>
-                                            @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.MaDanhMuc }) |
-                                            @*@Html.ActionLink("Details", "Details", new { id = item.MaDanhMuc }) |*@
-                                            @Html.ActionLink("Xóa", "Delete", new { id = item.MaDanhMuc })
-                                        </td>
-                                    </tr>
-
-                                }
-
-
-
-                            </tbody>
-                        </table>
-                        <br />
-                        <span class="show-page-text text-white">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
-
-                        @Html.PagedListPager(Model, trang => Url.Action("Index",
-                            new { trang, sapxep = ViewBag.Sapxep, loc = ViewBag.Loc }))
-                    </div>
+        <!-- Topbar Search -->
+        <form method="post" action="/admin/danh-muc" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <div class="input-group">
+                <input class="col-md-10" type="text" name="timkiem" class="form-control bg-light border-0 small" placeholder="Tìm kiếm @ViewBag.Loc"
+                       aria-label="Search" aria-describedby="basic-addon2">
+                <div class="input-group-append col-md-2">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-search fa-sm"></i>
+                    </button>
                 </div>
             </div>
+        </form>
 
+        <!-- Topbar Navbar -->
+        <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-search fa-fw"></i>
+                </a>
+                <!-- Dropdown - Messages -->
+                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                     aria-labelledby="searchDropdown">
+                    <form class="form-inline mr-auto w-100 navbar-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-light border-0 small"
+                                   placeholder="Search for..." aria-label="Search"
+                                   aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </li>
+
+
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
+                    <img class="img-profile rounded-circle"
+                         src="img/undraw_profile.svg">
+                </a>
+                <!-- Dropdown - User Information -->
+
+            </li>
+
+        </ul>
+
+    </nav>
+    <!-- End of Topbar -->
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="mb-2 text-capitalize table-admin__title">
+            Danh mục
+            @if (ViewBag.SapXep != null)
+            {
+                <span class="font-italic filter-admin">(@ViewBag.SapXep)</span>
+            }
+        </h1>
+        <div>
+            <a href="/admin/danh-muc/them" class="text-capitalize add-item-admin__btn">
+                <span class="icon white">
+                    <ion-icon size="large" name="add-circle"></ion-icon>
+                </span>
+                <span class="add-item">Thêm</span>
+            </a>
         </div>
-        <!-- /.container-fluid -->
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+                        <thead>
+                            <tr>
+                                <th class="text-capitalize">
+                                    @Html.ActionLink("Mã Danh Mục", "Index", new { sapxep = ViewBag.SapxepMa, loc = ViewBag.Loc })
+                                </th>
+                                <th class="text-capitalize">
+                                    @Html.ActionLink("Tên Danh Mục", "Index", new { sapxep = ViewBag.SapxepTen, loc = ViewBag.Loc })
+                                </th>
+                                <th colspan="2" class="text-capitalize text-center">Tùy chọn</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MaDanhMuc)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TenDanhMuc)
+                                </td>
+                                <td class="options">
+                                    <a href="/admin/danh-muc/chinh-sua?id=@item.MaDanhMuc">
+                                        <span class="icon yellow-bt hover">
+                                            <ion-icon name="create" size="large"></ion-icon>
+                                        </span>
+                                    </a>
+                                </td>
+                                <td class="options">
+                                    <a href="/admin/danh-muc/xoa?id=@item.MaDanhMuc">
+                                        <span class="icon red-bt hover">
+                                            <ion-icon name="trash" size="large"></ion-icon>
+                                        </span>
+                                    </a>
+                                </td>
+                            </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                    <br />
+                    <span class="show-page-text text-white">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
+
+                    @Html.PagedListPager(Model, trang => Url.Action("Index",
+                        new { trang, sapxep = ViewBag.Sapxep, loc = ViewBag.Loc }))
+                </div>
+            </div>
+        </div>
 
     </div>
-    <!-- End of Main Content -->
-    <!-- Footer -->
-    <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-            <div class="copyright text-center my-auto text-white">
-                <span>Copyright &copy; ChanhThuStore 2021</span>
-            </div>
-        </div>
-    </footer>
-    <!-- End of Footer -->
+    <!-- /.container-fluid -->
 
 </div>
+<!-- End of Main Content -->
+<!-- Footer -->

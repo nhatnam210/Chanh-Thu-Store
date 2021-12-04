@@ -28,25 +28,13 @@
                             @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                         </div>
                     </div>
-                    <button type="submit" class="btn hvr-hover">Đăng Nhập</button>
-
-                    <div><a href="/dang-ky" class="text-muted ask-register">Bạn chưa có tài khoản? Đăng ký ngay!</a></div>
-                    <div><a href="/quen-mat-khau" class="text-muted ask-forgot-pass">Quên mật khẩu?</a></div>
-                    @*<p>
-                @Html.ActionLink("Quên mật khẩu?", "ForgotPassword")
-            </p>*@
-
-                    @*@Html.ActionLink("Bạn chưa có tài khoản? Đăng ký ngay !", "Register")*@
-                    @*<div class="col-md-4">
-                <section id="socialLoginForm">
-                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-                </section>
-            </div>*@
+                    <button type="submit" class="btn hvr-hover max-width-mobile">Đăng Nhập</button>
                 }
-                <div class="regis-social">
-                    <a style="display:block;" class="text-muted mt-2">Đăng nhập với Google hoặc Facebook</a>
-                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                <div class="ask-link-group">
+                    <div><a href="/dang-ky" class="text-muted ask-link">Bạn chưa có tài khoản? Đăng ký ngay!</a></div>
+                    <div><a href="/quen-mat-khau" class="text-muted ask-link">Quên mật khẩu?</a></div>
                 </div>
+                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
             </div>
         </div>
     </div>

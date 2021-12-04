@@ -10,14 +10,11 @@
     <div class="max">
         @*<h2 class="admin-title">Delete Section</h2>*@
         @*<hr />*@
-        <h3 class="question text-center">Bạn có chắc chắn muốn xóa Slider này không ?</h3>
+        <h3 class="question text-center">Bạn có chắc chắn muốn xóa hình này không ?</h3>
         <dl class="dl-horizontal text-center text-white h1">
-
-
             <dt>
-                @Html.DisplayNameFor(model => model.HinhSlideHeader)
+                <img width="400px" src="@Model.HinhSlideHeader" />
             </dt>
-
         </dl>
 
         @using (Html.BeginForm())

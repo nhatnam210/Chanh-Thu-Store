@@ -26,7 +26,6 @@
                     if (res.status == true) {
                         window.location.href ="/gio-hang";
                     }
-                  
                 }
             }) 
         });

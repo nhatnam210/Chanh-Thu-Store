@@ -86,6 +86,11 @@ namespace ChanhThu_Store.Models
             modelBuilder.Entity<ThongTinCuaHang>()
                 .Property(e => e.SDT)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Voucher>()
+                .HasMany(e => e.ChiTietVouchers)
+                .WithRequired(e => e.Voucher)
+                .WillCascadeOnDelete(false);
         }
     }
 }

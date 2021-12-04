@@ -33,7 +33,7 @@ namespace ChanhThu_Store.Controllers
             AspNetUser aspuser = db.AspNetUsers.Find(user);
             if (aspuser == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("NotFound", "Home");
             }
             return View(aspuser);
         }
@@ -58,7 +58,7 @@ namespace ChanhThu_Store.Controllers
             AspNetUser aspuser = db.AspNetUsers.Find(user);
             if (aspuser == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("NotFound", "Home");
             }
             return View(aspuser);
         }
@@ -68,7 +68,7 @@ namespace ChanhThu_Store.Controllers
             AspNetUser aspuser = db.AspNetUsers.Find(userID);
             if (aspuser == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("NotFound", "Home");
             }
             return PartialView("GetAvatarLogin", aspuser);
         }
@@ -79,7 +79,7 @@ namespace ChanhThu_Store.Controllers
             AspNetUser aspuser = db.AspNetUsers.Find(userID);
             if (aspuser == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("NotFound", "Home");
             }
             return PartialView("GetAvatarComment", aspuser);
         }
@@ -124,13 +124,6 @@ namespace ChanhThu_Store.Controllers
                      orderby h.NgayLap descending, h.MaHoaDon descending
                      select h;
 
-            //foreach(var item in hoadon)
-            //{
-            //    if(item.MaVoucher == null)
-            //    {
-            //        item.
-            //    }
-            //}
             return View(hoadon.ToPagedList(pageNumber, pageSize));
         }
 
@@ -187,12 +180,21 @@ namespace ChanhThu_Store.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var userid = UserManager.FindByEmail(model.Email).Id;
-            if (!UserManager.IsEmailConfirmed(userid))
+
+            var findEmail = UserManager.FindByEmail(model.Email);
+
+            if (findEmail != null)
             {
-                return View("EmailNotConfirmed");
+                var userid = findEmail.Id;
+
+                if (!UserManager.IsEmailConfirmed(userid))
+                {
+                    return View("EmailNotConfirmed");
+                }
             }
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+
+
+            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: true);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -229,7 +231,7 @@ namespace ChanhThu_Store.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: true);
             switch (result)
             {
                 case SignInStatus.Success:

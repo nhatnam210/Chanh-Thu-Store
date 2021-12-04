@@ -9,43 +9,11 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
-:root {
-    --blue: #4e73df;
-    --indigo: #6610f2;
-    --purple: #6f42c1;
-    --pink: #e83e8c;
-    --red: #e74a3b;
-    --orange: #fd7e14;
-    --yellow: #f6c23e;
-    --green: #1cc88a;
-    --teal: #20c9a6;
-    --cyan: #36b9cc;
-    --white: #fff;
-    --gray: #858796;
-    --gray-dark: #5a5c69;
-    --primary: #4e73df;
-    --secondary: #858796;
-    --success: #1cc88a;
-    --info: #36b9cc;
-    --warning: #f6c23e;
-    --danger: #e74a3b;
-    --light: #f8f9fc;
-    --dark: #5a5c69;
-    --breakpoint-xs: 0;
-    --breakpoint-sm: 576px;
-    --breakpoint-md: 768px;
-    --breakpoint-lg: 992px;
-    --breakpoint-xl: 1200px;
-    --font-family-sans-serif: "Nunito",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
-}
-
 *, ::after, ::before {
     box-sizing: border-box
 }
 
 html {
-    font-family: sans-serif;
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent
@@ -57,7 +25,6 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
     margin: 0;
-    font-family: Nunito,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -154,7 +121,7 @@ a {
 }
 
     a:hover {
-        color: var(--second-color);
+        color: var(--primary-color);
         text-decoration: underline
     }
 
@@ -1633,12 +1600,14 @@ pre {
     .table td, .table th {
         padding: .75rem;
         vertical-align: top;
-        border-top: 1px solid #e3e6f0
+        border-top: 1px solid #e3e6f0;
+        vertical-align: middle;
     }
 
     .table thead th {
         vertical-align: bottom;
-        border-bottom: 2px solid #e3e6f0
+        border-bottom: 2px solid #e3e6f0;
+        user-select: none;
     }
 
     .table tbody + tbody {
@@ -1913,7 +1882,7 @@ pre {
     display: block;
     width: 100%;
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch
+    -webkit-overflow-scrolling: touch;
 }
 
     .table-responsive > .table-bordered {
@@ -2417,7 +2386,6 @@ textarea.form-control {
 
 .btn.focus, .btn:focus {
     outline: 0;
-    box-shadow: 0 0 0 .2rem rgba(78,115,223,.25)
 }
 
 .btn.disabled, .btn:disabled {
@@ -2440,14 +2408,14 @@ a.btn.disabled, fieldset:disabled a.btn {
     .btn-primary:hover {
         color: #fff;
         background-color: var(--primary-color);
-        filter: brightness(1.1);
+        opacity:0.8;
+        border-color: var(--primary-color);
     }
 
     .btn-primary.focus, .btn-primary:focus {
         color: #fff;
-        background-color: #2e59d9;
-        border-color: #2653d4;
-        box-shadow: 0 0 0 .2rem rgba(105,136,228,.5)
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
     }
 
     .btn-primary.disabled, .btn-primary:disabled {
@@ -2458,12 +2426,11 @@ a.btn.disabled, fieldset:disabled a.btn {
 
     .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
         color: #fff;
-        background-color: #2653d4;
-        border-color: #244ec9
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
     }
 
         .btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show > .btn-primary.dropdown-toggle:focus {
-            box-shadow: 0 0 0 .2rem rgba(105,136,228,.5)
         }
 
 .btn-secondary {
@@ -4469,7 +4436,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     flex: 1 1 auto;
     min-height: 1px;
     padding: 1.25rem;
-    background: #222;
+    background: #333;
 }
 
 .card-title {
@@ -9925,9 +9892,10 @@ a:focus {
 }
 
     #wrapper #content-wrapper {
-        background-color: #f8f9fc;
+        background-color: #222;
         width: 100%;
-        overflow-x: hidden
+        overflow-x: hidden;
+        flex:1;
     }
 
         #wrapper #content-wrapper #content {
@@ -10456,7 +10424,7 @@ a:focus {
 }
 
     .sidebar .nav-item {
-        position: relative
+        position: relative;
     }
 
         .sidebar .nav-item:last-child {
@@ -10466,7 +10434,7 @@ a:focus {
         .sidebar .nav-item .nav-link {
             text-align: center;
             padding: .75rem 1rem;
-            width: 6.5rem
+            width: 100%;
         }
 
             .sidebar .nav-item .nav-link span {
@@ -10634,7 +10602,7 @@ a:focus {
 
 @media (min-width:768px) {
     .sidebar {
-        width: 14rem !important
+        /*width: 16rem !important*/
     }
 
         .sidebar .nav-item .collapse {
@@ -10674,7 +10642,7 @@ a:focus {
             }
 
             .sidebar .nav-item .nav-link span {
-                font-size: 16px;
+                font-size: 15px;
                 display: inline
             }
 
@@ -11553,11 +11521,7 @@ body.sidebar-toggled footer.sticky-footer {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.admin-title {
-    margin: 15px 12px;
-    color: #333;
+    flex:1;
 }
 
 .dl-horizontal {
@@ -11589,29 +11553,29 @@ body.sidebar-toggled footer.sticky-footer {
     display: flex;
     height:100%;
 }
-#content-manage a {
-        
+    #content-manage a {
         margin: auto;
         color: #fff;
         font-weight: bold;
         user-select: none;
-        position:relative;
-        display:inline-block;
-        padding:15px 30px;
-        color:var(--primary-color);
-        text-transform:uppercase;
-        letter-spacing:4px;
-        text-decoration:none;
-        font-size:24px;
-        overflow:hidden;
-        transition:0.2s;
-}
+        position: relative;
+        display: inline-block;
+        padding: 15px 30px;
+        color: var(--primary-color);
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        text-decoration: none;
+        font-size: 24px;
+        overflow: hidden;
+        transition: 0.2s;
+    }
     #content-manage a:hover {
         color: #fff;
         background: var(--primary-color);
         box-shadow: 0 0 10px var(--primary-color), 0 0 40px var(--primary-color), 0 0 80px var(--primary-color);
         transition-delay: 1s;
     }
+
 #content-manage a span{
     position:absolute;
     display:block;
@@ -11673,10 +11637,11 @@ body.sidebar-toggled footer.sticky-footer {
 }
 
 .label-admin {
-    
     color: var(--primary-color);
     margin-bottom: 12px;
     display: block;
+    user-select:none;
+    text-transform:capitalize;
 }
 .img-fit {
     width: 100%;

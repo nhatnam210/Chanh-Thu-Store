@@ -1,0 +1,93 @@
+﻿@model ChanhThu_Store.Models.ThongTinCuaHang
+@using System.Globalization;
+@{ CultureInfo VN = new CultureInfo("vi-VN");}
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Main_Admin.cshtml";
+}
+
+@using (Html.BeginForm("Edit", "ThongTinCuaHangsAdmin", FormMethod.Post, new { @class = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h2 class="table-admin__title text-white text-center">Chỉnh sửa thông tin <br />Cửa hàng</h2>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-group">
+        <span class="label-admin">Tên cửa hàng</span>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.TenCuaHang, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TenCuaHang, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <span class="label-admin">Số điện thoại</span>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span class="label-admin">Email</span>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span class="label-admin">Địa chỉ</span>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span class="label-admin">Ngày thành lập</span>
+        <div class="col-md-12">
+            <input class="form-control" name="NgayThanhLap" type="text" value="@Model.NgayThanhLap.ToString("d", VN)">
+            @Html.ValidationMessageFor(model => model.NgayThanhLap, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span class="label-admin">Thời gian mở cửa</span>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.ThoiGianMoCua, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ThoiGianMoCua, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span class="label-admin">Thời gian đóng cửa</span>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.ThoiGianDongCua, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ThoiGianDongCua, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span class="label-admin">Lời giới thiệu</span>
+        <div class="col-md-12">
+            <textarea class="text-area__admin-edit" id="LoiGioiThieu" name="LoiGioiThieu">@Model.LoiGioiThieu</textarea>
+            @Html.ValidationMessageFor(model => model.LoiGioiThieu, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span class="label-admin">Hình minh họa</span>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.HinhMinhHoa, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.HinhMinhHoa, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group col-md-12">
+        <div class="col-md-offset-2 btn-touch">
+            <input type="submit" value="Cập nhật" class="btn btn-warning" />
+        </div>
+    </div>
+    <div class="col-md-12 back-to-list ">
+        @Html.ActionLink("Trở lại", "Index")
+    </div>
+</div>
+}
+
