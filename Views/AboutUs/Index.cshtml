@@ -1,4 +1,4 @@
-﻿
+﻿@model ChanhThu_Store.Models.ThongTinCuaHang
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Main_Layout.cshtml";
@@ -25,35 +25,15 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="banner-frame">
-                    <img class="img-fluid" src="https://vinatechjsc.vn/wp-content/uploads/2018/10/cua-hang-tap-hoa-1.jpg" alt="" />
+                    <img class="img-fluid full-radius" src="@Model.HinhMinhHoa" alt="" />
                 </div>
             </div>
             <div class="col-lg-6 ">
-                <h2 class="noo-sh-title-top ">Chúng tôi là <span>Chánh Thu Store</span></h2>
+                <h2 class="noo-sh-title-top ">Chúng tôi là <span>@Model.TenCuaHang</span></h2>
                 <p class="text-justify">
-                    "Shop chúng tôi được thành lập từ năm 2016 cho đến nay. Khoảng thời gian đó là 1 khoảng thòi gian
-                    vô cùng đặc biệt không chỉ với tôi mà còn với tất cả mọi người từ nhân viên cho đến khách hàng.
-                    Tuy có hơi vất vả nhưng Shop chúng tôi đã và đang ngày càng lớn mạnh hơn bao giờ hết do sự tiến
-                    bộ
-                    của công nghệ và con người. Cùng với đó là sự giúp sức của các nhân viên và các khách hàng dễ
-                    thương
-                    đã tạo động lực cho shop đi đến ngày hôm nay. Mặt hàng của shop chúng tôi luôn luôn được đảm bảo
-                    được chất lượng
-                    và an toàn cho người dùng. Cùng với đó là giả thành luôn đúng với giá thị trường , phù hợp với
-                    túi tiền của
-                    khách hàng. Do mùa dịch ảnh hưởng
-                    khá nghiêm trọng nên Shop quyết định mở rộng hướng kinh doanh theo
-                    hình thức online nhằm đáp ứng yêu cầu của khách hàng trong mùa dịch này
-
+                    @Model.LoiGioiThieu
                 </p>
-                <p class="text-justify">
-                    Chúng tôi xin cam đoan với khách hàng theo tiêu chí 5 nhất đó là: Sản phẩm tốt nhất , Giá cả rẻ
-                    nhất , An toàn
-                    nhất , Dịch vụ tốt nhất , Chuyên nghiệp nhất. Khách hàng hãy tin tưởng Shop chúng tôi vì chúng
-                    tôi sẽ mang lại
-                    cho các bạn những sản phẩm chất lượng cho tất cả mọi người.
-                </p>
-                <a class="btn hvr-hover max-width-mobile" href="#">Xem thêm</a>
+                <a class="btn hvr-hover max-width-mobile show-more-introduce" href="#">Xem thêm</a>
             </div>
         </div>
         <div class="row my-5">
@@ -87,7 +67,7 @@
         </div>
         <div class="row my-4">
             <div class="col-12">
-                <h2 class="noo-sh-title">Team Chánh Thu Store</h2>
+                <h2 class="noo-sh-title">Team @Model.TenCuaHang</h2>
             </div>
             <div class="col-sm-6 col-lg-4">
                 <div class="hover-team">

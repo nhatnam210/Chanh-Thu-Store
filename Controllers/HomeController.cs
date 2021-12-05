@@ -110,5 +110,23 @@ namespace ChanhThu_Store.Controllers
 
             return PartialView(listMoiNhat);
         }
+
+        public PartialViewResult Footer_Info()
+        {
+            var thongTinCuaHang = db.ThongTinCuaHangs.FirstOrDefault();
+            return PartialView(thongTinCuaHang);
+        }
+
+        public PartialViewResult SDTTop()
+        {
+            var thongTinCuaHang = db.ThongTinCuaHangs.FirstOrDefault();
+            return PartialView(thongTinCuaHang);
+        }
+
+        public PartialViewResult TenCuaHangSliderHome()
+        {
+            var thongTinCuaHang = db.ThongTinCuaHangs.FirstOrDefault();
+            return PartialView(thongTinCuaHang);
+        }
     }
 }

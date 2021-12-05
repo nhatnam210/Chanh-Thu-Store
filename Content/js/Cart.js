@@ -11,7 +11,6 @@
                     Soluong: $(item).val(),
                     Sanpham: {
                         MaSanPham: $(item).data('id')
-
                     }
                 });
             });
@@ -24,7 +23,8 @@
                 type: 'POST',
                 success: function (res) {
                     if (res.status == true) {
-                        window.location.href ="/gio-hang";
+                        //window.location.href = "/gio-hang";
+                        location.reload()
                     }
                 }
             }) 
@@ -39,7 +39,8 @@
                 type: 'POST',
                 success: function (res) {
                     if (res.status == true) {
-                        window.location.href = "/gio-hang";
+                        //window.location.href = "/gio-hang";
+                        location.reload()
                     }
 
                 }

@@ -84,6 +84,10 @@
                         Loại:
                         <span class="font-weight-normal">@Model.DanhMucCon.TenDanhMucCon</span>
                     <p>
+                    <p class="available-stock font-weight-bold text-color  mt-1 mb-1">
+                        Thương hiệu:
+                        <span class="font-weight-normal">@Model.NhaSanXuat.TenNhaSanXuat</span>
+                    <p>
                     <p class="available-stock">
                         <span class="like_num__label">
                             Yêu thích:
@@ -106,12 +110,12 @@
                             <li class="max-width-mobile">
                                 <div class="quantity-box mb-1">
                                     <label class="control-label">Số Lượng</label>
-                                    <input class="user-input" value="1" min="1" name="soluong" id="soluong" max="@Model.SoLuongTonKho" type="number"/>
+                                    <input class="user-input" value="1" min="1" name="soluong" id="soluong" max="@Model.SoLuongTonKho" type="number" />
                                 </div>
                                 <p class="message-max text-red text-center" data-id="@Model.MaSanPham">Đã đạt giới hạn tồn kho!</p>
                             </li>
                         </ul>
-                        <input hidden name="masanpham" id="masanpham" value="@Model.MaSanPham"/>
+                        <input hidden name="masanpham" id="masanpham" value="@Model.MaSanPham" />
                         <div class="price-box-bar">
                             <div class="cart-and-bay-btn max-btn">
                                 <button type="submit" class="ml-auto btn hvr-hover max-width-mobile font-weight-bold text-capitalize p-2">Thêm vào giỏ</button>
@@ -182,12 +186,12 @@
             </div>
         </div>
 
-        <div class="row my-5">
+        <!--<div class="row my-5">
             <div class="col-lg-12">
                 <div class="title-all text-center">
-                    <h1>Sản Phẩm Nổi Bật</h1>
+                    <h1>Sản Phẩm Nổi Bật</h1>-->
                     <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p> -->
-                </div>
+                <!--</div>
                 <div class="featured-products-box owl-carousel owl-theme">
                     <div class="item">
                         <div class="products-single fix">
@@ -210,7 +214,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
 
     </div>
 </div>

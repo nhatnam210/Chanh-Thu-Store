@@ -114,8 +114,10 @@ if (inputQuantity) {
                 btnIncrease.classList.add('show')
                 message.textContent = ""
             } else if (parseInt(item.value) >= maxValue) {
+                if (parseInt(item.value) > maxValue) {
+                    MaxValueMess()
+                }
                 item.value = parseInt(maxValue);
-                MaxValueMess()
                 btnIncrease.classList.remove('show')
                 btnDecrease.classList.add('show')
             } else {
@@ -146,12 +148,14 @@ const notifyIcon = getOne('.notify-icon')
 const notifyTitle = getOne('.notify-title')
 
 //Hiển thị thông báo thêm vào giỏ hàng thành công
-//Array.from(listBtnShow).forEach((item) => {
-//    item.onclick = () => {
-//        showNotify('Đã thêm vào giỏ hàng!', 'bag-check-outline')
-//        //location.reload();
-//    }
-//})
+Array.from(listBtnShow).forEach((item) => {
+    item.onclick = () => {
+        showNotify('Đã thêm vào giỏ hàng!', 'bag-check-outline')
+        setTimeout(function () {
+            location.reload();
+        }, 1500)
+    }
+})
 
 //Custom Popup thông báo
 function showNotify(title, name, time = 1500) {

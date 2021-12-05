@@ -92,5 +92,10 @@ namespace ChanhThu_Store.Controllers
 
             return PartialView("LayDiemUser", currentUser);
         }
+
+        public PartialViewResult QuangCaoVoucherTop()
+        {
+            return PartialView(db.Vouchers.ToList());
+        }
     }
 }
