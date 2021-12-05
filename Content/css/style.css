@@ -1388,6 +1388,8 @@ ul.cart-list > li.total > .btn:hover {
         font-weight: 700;
         color: #222;
         transition: all linear .2s;
+        user-select:none;
+        cursor:pointer;
     }
 
         .mask-icon a.cart:hover {
@@ -4297,17 +4299,31 @@ textarea {
     overflow-y: auto;
 }
     /* background của thanh cuộn */
-    #myList::-webkit-scrollbar {
-        width: 8px;
-        background-color: transparent;
-        opacity: 0.2;
-    }
+ul.cart-list::-webkit-scrollbar,
+#myList::-webkit-scrollbar {
+    width: 8px;
+    background-color: transparent;
+    opacity: 0.2;
+}
     /* màu của thanh cuộn*/
-    #myList::-webkit-scrollbar-thumb {
-        background-color: rgba(0 0 0 / 20%);
-        opacity: 0.2;
-        border-radius: 10px;
+
+ul.cart-list::-webkit-scrollbar-thumb,
+#myList::-webkit-scrollbar-thumb {
+    background-color: rgba(0 0 0 / 20%);
+    opacity: 0.2;
+    border-radius: 10px;
+}
+
+@media (max-width: 767px) {
+
+    #myList::-webkit-scrollbar {
+        display: none;
     }
+
+    ul.cart-list::-webkit-scrollbar {
+        display: none;
+    }
+}
 
 .curent-user-comment {
     padding: 10px;

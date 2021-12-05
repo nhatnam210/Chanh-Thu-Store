@@ -146,12 +146,12 @@ const notifyIcon = getOne('.notify-icon')
 const notifyTitle = getOne('.notify-title')
 
 //Hiển thị thông báo thêm vào giỏ hàng thành công
-Array.from(listBtnShow).forEach((item) => {
-    item.onclick = () => {
-        showNotify('Đã thêm vào giỏ hàng!', 'bag-check-outline')
-        //location.reload();
-    }
-})
+//Array.from(listBtnShow).forEach((item) => {
+//    item.onclick = () => {
+//        showNotify('Đã thêm vào giỏ hàng!', 'bag-check-outline')
+//        //location.reload();
+//    }
+//})
 
 //Custom Popup thông báo
 function showNotify(title, name, time = 1500) {
@@ -330,16 +330,16 @@ if (userPoint && voucherPoint && voucherContainer
             askOptionsNo[index].addEventListener("click", closeAskOptionsShow);
             //Ấn "Đồng ý"
             askOptionsYes[index].addEventListener("click", () => {
-                ////Trừ điểm
-                //currentUserPoint -= voucherPointIndex;
-                ////Kiêm tra điểm < 0;
-                //var getCurrentUserPoint = currentUserPoint < 0 ? 0 : currentUserPoint;
-                ////Gán giá trị sau khi trừ
-                //userPoint.innerHTML = getCurrentUserPoint;
-                //userPoint.dataset.point = getCurrentUserPoint;
-                //closeAskOptionsShow();
-                //updateVoucherState();
-                //countUpElement('.user-point__value', 2000);
+                //Trừ điểm
+                currentUserPoint -= voucherPointIndex;
+                //Kiêm tra điểm < 0;
+                var getCurrentUserPoint = currentUserPoint < 0 ? 0 : currentUserPoint;
+                //Gán giá trị sau khi trừ
+                userPoint.innerHTML = getCurrentUserPoint;
+                userPoint.dataset.point = getCurrentUserPoint;
+                closeAskOptionsShow();
+                updateVoucherState();
+                countUpElement('.user-point__value', 2000);
             });
         }
     });
@@ -359,18 +359,14 @@ $(window).scroll(function () {
     }
 })
 
+/* ..............................................
+Paging and sort Jquery
+ ................................................. */
 
-
-
-// Paging and sort Jquery
 function PagingSort() {
     $("#basic").on("change", function () {
-
-
         //Getting Value
-
         var selValue = $("#basic").val();
-
         switch (selValue) {
             case "0":
                 $('.box-3').css("display", "none")
@@ -409,10 +405,9 @@ function PagingSort() {
                 $('.box-5').css("display", "block")
                 break;
         }
-
-
     });
 
+    //A-Z
     var as = products.sort((a, b) => a.TenSanPham.toUpperCase() > b.TenSanPham.toUpperCase() ? 1 : -1)
     const htmls = as.map((value, index) => {
         return `<div class="col-lg-4 col-xl-4 col-md-6 col-sm-6 parent">
@@ -461,6 +456,7 @@ function PagingSort() {
                                             </div>
     </div>`
     })
+    //Z-A
     var de = products.sort((a, b) => a.TenSanPham.toUpperCase() < b.TenSanPham.toUpperCase() ? 1 : -1)
     const htmls2 = de.map((value, index) => {
         return `<div class="col-lg-4 col-xl-4 col-md-6 col-sm-6 parent">
@@ -509,6 +505,8 @@ function PagingSort() {
                                             </div>
     </div>`
     })
+
+    //Low-High
     var priceas = products.sort((a, b) => a.Gia > b.Gia ? 1 : -1)
     const htmls3 = priceas.map((value, index) => {
         return `<div class="col-lg-4 col-xl-4 col-md-6 col-sm-6 parent">
@@ -557,6 +555,8 @@ function PagingSort() {
                                             </div>
     </div>`
     })
+
+    //High-Low
     var pricede = products.sort((a, b) => a.Gia < b.Gia ? 1 : -1)
     const htmls4 = pricede.map((value, index) => {
         return `<div class="col-lg-4 col-xl-4 col-md-6 col-sm-6 parent">
@@ -611,11 +611,11 @@ function PagingSort() {
     $(".hehe").html(htmls4).paginate();
     $('.example').paginate();
 
-    function formatCash(str) {
-        return str.split('').reverse().reduce((prev, next, index) => {
-            return ((index % 3) ? next : (next + ',')) + prev
-        })
-    }
+    //function formatCash(str) {
+    //    return str.split('').reverse().reduce((prev, next, index) => {
+    //        return ((index % 3) ? next : (next + ',')) + prev
+    //    })
+    //}
     const price = $('.price-sort')
     $.each(price, function (index, value) {
 
@@ -665,4 +665,14 @@ function PagingSort() {
 }
 
 
+/* ..............................................
+Thêm giỏ hàng Ajax
+ ................................................. */
+//$('.add-cart-notify').click(function () {
+//    $('.add-cart-notify').attr('data-product');
+//    $.ajax({
+//        url: '/Cart/AddItem',
+//        data=
+//    })
+//})
 

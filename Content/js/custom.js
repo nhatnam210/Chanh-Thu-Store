@@ -12,7 +12,7 @@
 	//	});
 	//});
 	$(window).load(function () {
-		$('#loader__effect').delay(1000).fadeOut('fast', function () {
+		$('#loader__effect').delay(1).fadeOut('fast', function () {
 			$('#loader__wrap').removeClass('loader__wrap');
 			// $('.loader__wrap')[0].classList.add('hide')
 

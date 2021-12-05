@@ -29,9 +29,6 @@
 
     @*JQuery Css*@
     <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="~/Content/css/custom.css">
-
 
     <!-- PageList CSS -->
     @*<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />*@
@@ -51,8 +48,8 @@
     <link rel="stylesheet" href="~/Content/css/carousel-ticker.css">
     <link rel="stylesheet" href="~/Content/css/jquery.paginate.css">
     @Scripts.Render("~/bundles/modernizr")
-    
-    
+
+
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
@@ -130,45 +127,8 @@
     <header class="main-header">
         <!-- Start Navigation -->
         <nav class="navbar navbar-expand-lg navbar-light navbar-default bootsnav">
-            <div class="container">
-                <!-- Start Header Navigation -->
-                <div class="navbar-header">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                    <a class="navbar-brand" href="/trang-chu"><img src="~/Content/images/chanhthustore_logo.png" class="logo" alt=""></a>
-                </div>
-                <!-- End Header Navigation -->
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="navbar-menu">
-                    <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/trang-chu">Trang Chủ</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/gioi-thieu">Giới thiệu</a>
-                        </li>
-                        <li class="dropdown">
-                            <a class="nav-link dropdown-toggle arrow" data-toggle="dropdown">
-                                <i class="fas fa-chevron-down arrow-down float-right "></i>
-                                Cửa Hàng
-                            </a>
-                            <ul class="dropdown-menu custom">
-                                <li><a href="/cua-hang">Sản phẩm</a></li>
-                                <li><a href="/gio-hang">Giỏ Hàng</a></li>
-                                @*<li><a href="/thanh-toan">Thanh Toán</a></li>*@
-                                <li><a href="/nguoi-dung">Tài Khoản Của Tôi</a></li>
-                                <li><a href="/voucher">Voucher</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="/bo-suu-tap">Bộ Sưu Tập</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/lien-he">Liên hệ</a></li>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-                <!-- Start Atribute Navigation -->
-                @{ Html.RenderAction("HeaderCart", "Home");}
-            </div>
+            <!--bao gồm nav-->
+            @{ Html.RenderAction("HeaderCart", "Home");}
         </nav>
         <!-- End Navigation -->
     </header>
@@ -286,9 +246,8 @@
 
     <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
 
-
     <!-- ALL JS FILES -->
-     @*<script src="js/jquery-3.2.1.min.js"></script>*@ 
+    @*<script src="js/jquery-3.2.1.min.js"></script>*@
 
     <!-- JQUERY LINK -->
 

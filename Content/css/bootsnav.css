@@ -1,4 +1,4 @@
-
+﻿
 /* MEGAMENU STYLE
 =================================*/
 nav.bootsnav .dropdown.megamenu-fw {
@@ -250,9 +250,13 @@ li.close-full-menu{
     border: solid 1px #e0e0e0;
 }
 
-ul.cart-list{
+ul.cart-list {
     padding: 0 !important;
+    max-height: 50vh;
+    overflow-y: auto;
+    position:relative;
 }
+
 
     ul.cart-list > li {
         position: relative;
@@ -291,9 +295,11 @@ ul.cart-list > li > p{
     margin-bottom: 0;
 }
 
-ul.cart-list > li.total{
-    background-color: #f5f5f5;
-}
+        ul.cart-list > li.total {
+            background-color: #f5f5f5;
+            position: sticky;
+            bottom: 0;
+        }
 
 ul.cart-list > li.total > .btn{
     display: inline-block;
