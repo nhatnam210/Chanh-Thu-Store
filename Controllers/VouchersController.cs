@@ -76,9 +76,9 @@ namespace ChanhThu_Store.Controllers
                 db.SaveChanges();
             }
 
-            //return new HttpStatusCodeResult(204);
+            return new HttpStatusCodeResult(204);
             //return Redirect(Request.UrlReferrer.ToString());
-            return RedirectToAction("DanhSachVoucher", "Vouchers");
+            //return RedirectToAction("DanhSachVoucher", "Vouchers");
         }
 
         public ActionResult LayDiemUser()

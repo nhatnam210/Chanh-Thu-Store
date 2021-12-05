@@ -1,48 +1,91 @@
 ﻿@model List<ChanhThu_Store.Models.CartItem>
 
-<div class="attr-nav">
-    <ul>
-        <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+<div class="container">
+    <!-- Start Header Navigation -->
+    <div class="navbar-header">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa fa-bars"></i>
+        </button>
+        <a class="navbar-brand" href="/trang-chu"><img src="~/Content/images/chanhthustore_logo.png" class="logo" alt=""></a>
+    </div>
+    <!-- End Header Navigation -->
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-menu">
+        <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+            <li class="nav-item active">
+                <a class="nav-link" href="/trang-chu">Trang Chủ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/gioi-thieu">Giới thiệu</a>
+            </li>
+            <li class="dropdown">
+                <a class="nav-link dropdown-toggle arrow" data-toggle="dropdown">
+                    <i class="fas fa-chevron-down arrow-down float-right "></i>
+                    Cửa Hàng
+                </a>
+                <ul class="dropdown-menu custom">
+                    <li><a href="/cua-hang">Sản phẩm</a></li>
+                    <li><a href="/gio-hang">Giỏ Hàng</a></li>
+                    @*<li><a href="/thanh-toan">Thanh Toán</a></li>*@
+                    <li><a href="/nguoi-dung">Tài Khoản Của Tôi</a></li>
+                    <li><a href="/voucher">Voucher</a></li>
+                </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="/bo-suu-tap">Bộ Sưu Tập</a></li>
+            <li class="nav-item"><a class="nav-link" href="/lien-he">Liên hệ</a></li>
+        </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+    <!-- Start Atribute Navigation -->
 
-        <li class="side-menu">
-            <a href="#">
-                <i class="fa fa-shopping-bag"></i>
-                <span class="badge">@Model.Count</span>
-                <p></p>
-            </a>
-        </li>
+    <div class="attr-nav">
+        <ul>
+            <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
 
-    </ul>
+            <li class="side-menu">
+                <a href="#">
+                    <i class="fa fa-shopping-bag"></i>
+                    <span class="badge">@Model.Count</span>
+                    <p></p>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+    <!-- End Atribute Navigation -->
 </div>
-<!-- End Atribute Navigation -->
-            </div>
-<!-- Start Side Menu -->
-
+<!-- Start Cart Menu -->
 <div class="side">
     <a href="#" class="close-side"><i class="fa fa-times"></i></a>
     <div class="cart-box">
-        <ul class="cart-list">
+        <ul id="mini-cart__list" class="cart-list">
+
             @{var Total = 0; }
             @foreach (var item in Model)
             {
-                Total += item.Sanpham.Gia*item.Soluong; 
+                Total += item.Sanpham.Gia * item.Soluong;
                 <li>
                     <a href="/cua-hang/san-pham?id=@item.Sanpham.MaSanPham" class="photo">
                         @*<img src="@item.Sanpham.HinhChinh" class="cart-thumb" alt="" />*@
                         <div class="img-fit cart--mini" style="background-image: url('@item.Sanpham.HinhChinh'),url('/Content/images/default.png');"></div>
                     </a>
                     <h6><a href="/cua-hang/san-pham?id=@item.Sanpham.MaSanPham">@item.Sanpham.TenSanPham</a></h6>
-                    <p>@item.Soluong x <span class="price">@string.Format("{0:#,##0}",@item.Sanpham.Gia) đ</span></p>
+                    <p>@item.Soluong x <span class="price">@string.Format("{0:#,##0}", @item.Sanpham.Gia) đ</span></p>
                 </li>
             }
+
+        </ul>
+        <ul id="mini-cart__total" class="cart-list">
             <li class="total">
-                <span class="float-right total-price"><span>Tổng: </span>@string.Format("{0:#,##0}",@Total) VNĐ</span>
+                <span class="float-right total-price"><span>Tổng:@ViewBag.Text </span>@string.Format("{0:#,##0}", @Total) VNĐ</span>
                 <a href="/gio-hang" class="btn btn-default hvr-hover btn-cart">Xem giỏ hàng</a>
             </li>
-
         </ul>
     </div>
 </div>
-<!-- End Side Menu -->
-
-
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script src="~/Content/js/Cart.js"></script>
+<script>
+    call();
+    //var listMiniCart = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.MiniCart));
+</script>
