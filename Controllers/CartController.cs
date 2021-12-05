@@ -34,14 +34,14 @@ namespace ChanhThu_Store.Controllers
         {
             var jsonCart = new JavaScriptSerializer().Deserialize<List<CartItem>>(cartModel);
             var sessionCart = (List<CartItem>)Session[CartSession];
-            foreach(var item in sessionCart)
+            foreach (var item in sessionCart)
             {
                 var jsonItem = jsonCart.SingleOrDefault(x => x.Sanpham.MaSanPham == item.Sanpham.MaSanPham);
-                if(jsonItem != null)
+                if (jsonItem != null)
                 {
                     item.Soluong = jsonItem.Soluong;
                 }
-                
+
             }
             Session[CartSession] = sessionCart;
             return Json(new
@@ -99,8 +99,8 @@ namespace ChanhThu_Store.Controllers
                 list.Add(item);
                 Session[CartSession] = list;
             }
-            //return new HttpStatusCodeResult(204);
-            return Redirect(Request.UrlReferrer.ToString());
+            return new HttpStatusCodeResult(204);
+            //return Redirect(Request.UrlReferrer.ToString());
         }
         [Authorize]
         [HttpGet]

@@ -3747,6 +3747,10 @@
     <Content Include="Views\Home\NotFound.cshtml" />
     <Content Include="Views\Home\Map.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Shared\Footer_Info.cshtml" />
+    <Content Include="Views\Shared\QuangCaoVoucherTop.cshtml" />
+    <Content Include="Views\Shared\SDTTop.cshtml" />
+    <Content Include="Views\Home\TenCuaHangSliderHome.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

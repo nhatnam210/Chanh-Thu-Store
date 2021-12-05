@@ -1857,7 +1857,13 @@ ul.cart-list > li.total > .btn:hover {
         color: #cccccc;
         font-weight: 400;
         font-size: 14px;
-        padding-bottom: 20px;
+        margin-bottom: 20px;
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-word;
     }
 
 .footer-link {
@@ -5059,5 +5065,3 @@ ul.cart-list::-webkit-scrollbar-thumb,
 .view-bill-detail__link:hover i {
     color: green;
 }
-
-

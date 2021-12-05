@@ -34,7 +34,8 @@
 </head>
 <body>
     <div id="wrapper">
-        @Html.Partial("_Menu_Admin")
+        @*@Html.Partial("_Menu_Admin")*@
+        @{ Html.RenderAction("_Menu_Admin", "MainAdmin"); }
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
             @RenderBody()

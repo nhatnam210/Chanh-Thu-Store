@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChanhThu_Store.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,83 +10,16 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
     [Authorize(Roles = "Admin")]
     public class MainAdminController : Controller
     {
-       
+        private ChanhThuStoreContext db = new ChanhThuStoreContext();
         // GET: Admin/MainAdmin
         public ActionResult Index()
         {
-            return View();
+            return View(db.ThongTinCuaHangs.FirstOrDefault());
         }
 
-        // GET: Admin/MainAdmin/Details/5
-        public ActionResult Details(int id)
+        public PartialViewResult _Menu_Admin()
         {
-            return View();
-        }
-
-        // GET: Admin/MainAdmin/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Admin/MainAdmin/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Admin/MainAdmin/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Admin/MainAdmin/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Admin/MainAdmin/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Admin/MainAdmin/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return PartialView(db.ThongTinCuaHangs.FirstOrDefault());
         }
     }
 }
