@@ -82,6 +82,18 @@
     background-color: var(--second-color);
 }
 
+.text-white-shadow {
+    color: #fff;
+    text-shadow: 0px 0px 2px #222;
+    filter: drop-shadow( 0px 0px 5px #222);
+}
+
+.text-black-shadow {
+    color: #222;
+    text-shadow: 0px 0px 2px #fff;
+    filter: drop-shadow( 0px 0px 5px #fff);
+}
+
 /*light -white*/
 .text-light-white {
     text-shadow: 0px 0px 2px #fff;
@@ -96,14 +108,28 @@
     position: relative;
 }
 
-/*light-blue*/
-.text-light-blue {
-    text-shadow: 0px 0px 2px var(--blue);
-    filter: drop-shadow( 0px 0px 2px var(--blue));
-    position: relative;
-    color: var(--blue) !important;
+.text-black-primary {
+    color: #222;
+    text-shadow: 0px 0px 2px var(--primary-color);
+    filter: drop-shadow( 0px 0px 5px var(--primary-color));
 }
 
+a.text-black-primary {
+    transition: all ease-in .1s;
+    display: inline-block;
+}
+
+.text-black-primary:hover {
+    color: #222 !important;
+    transform: scale(1.05);
+}
+    /*light-blue*/
+    .text-light-blue {
+        text-shadow: 0px 0px 2px var(--blue);
+        filter: drop-shadow( 0px 0px 2px var(--blue));
+        position: relative;
+        color: var(--blue) !important;
+    }
 
 .text-light-primary:not(.fade-light__animate),
 .text-light-blue:not(.fade-light__animate) {
@@ -156,11 +182,11 @@
 }
 
 .text-red {
-    color: var(--red);
+    color: var(--red) !important;
 }
 
 .text-green {
-    color: var(--green);
+    color: var(--green) !important;
 }
 
 .underline {
@@ -172,7 +198,7 @@
 }
 
 .text-color {
-    color: var(--text-color);
+    color: var(--text-color) !important;
 }
 
 

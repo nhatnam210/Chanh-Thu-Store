@@ -142,63 +142,18 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             return PartialView("BillChiTietHoaDon", listChiTietHoaDon);
         }
 
-        // GET: Admin/HoaDonsAdmin/Create
-        //public ActionResult Create()
-        //{
-        //    ViewBag.MaKhachHang = new SelectList(db.AspNetUsers, "Id", "Ten");
-        //    return View();
-        //}
+        public PartialViewResult TenCuaHangBill()
+        {
+            var thongTinCuaHang = db.ThongTinCuaHangs.FirstOrDefault();
+            return PartialView(thongTinCuaHang);
+        }
 
-        //// POST: Admin/HoaDonsAdmin/Create
-        //// To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "MaHoaDon,MaKhachHang,NgayLap,MaVoucher,TongTien,Ten,SDT,DiaChi,Email")] HoaDon hoaDon)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.HoaDons.Add(hoaDon);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
+        public PartialViewResult ThongTinCuaHangBill()
+        {
+            var thongTinCuaHang = db.ThongTinCuaHangs.FirstOrDefault();
+            return PartialView(thongTinCuaHang);
+        }
 
-        //    ViewBag.MaKhachHang = new SelectList(db.AspNetUsers, "Id", "Ten", hoaDon.MaKhachHang);
-        //    return View(hoaDon);
-        //}
-
-        //// GET: Admin/HoaDonsAdmin/Edit/5
-        //public ActionResult Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    HoaDon hoaDon = db.HoaDons.Find(id);
-        //    if (hoaDon == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    ViewBag.MaKhachHang = new SelectList(db.AspNetUsers, "Id", "Ten", hoaDon.MaKhachHang);
-        //    return View(hoaDon);
-        //}
-
-        //// POST: Admin/HoaDonsAdmin/Edit/5
-        //// To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit([Bind(Include = "MaHoaDon,MaKhachHang,NgayLap,MaVoucher,TongTien,Ten,SDT,DiaChi,Email")] HoaDon hoaDon)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Entry(hoaDon).State = EntityState.Modified;
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    ViewBag.MaKhachHang = new SelectList(db.AspNetUsers, "Id", "Ten", hoaDon.MaKhachHang);
-        //    return View(hoaDon);
-        //}
 
         // GET: Admin/HoaDonsAdmin/Delete/5
         public ActionResult Delete(int? id)

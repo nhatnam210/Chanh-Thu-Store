@@ -57,8 +57,7 @@
                 <div class="col-12">
                     <h2 class="page-header">
                         <i style="margin-right:16px" class="fas fa-store"></i>
-                        <span>ChanhThuStore</span>
-                        @*<small class="float-right">Ngày: @Model.NgayLap.Value.ToShortDateString()</small>*@
+                        @{Html.RenderAction("TenCuaHangBill", "HoaDonsAdmin");}
                         <small class="float-right">
                             Ngày: @Model.NgayLap.ToString("d", VN)
                         </small>
@@ -70,37 +69,21 @@
             <div class="row invoice-info">
                 <div class="col-sm-4 invoice-col">
                     Nguồn giao
-                    <address>
-                        <strong>ChanhThuStore</strong><br>
-                        344 Trần Hưng Đạo<br>
-                        phường Bồng Sơn<br>
-                        thị xã Hoài Nhơn <br />
-                        tỉnh Bình Định<br />
-                        SĐT: 0986958452<br>
-                        Email: chanhthustore@gmail.com
-                    </address>
+                    @{Html.RenderAction("ThongTinCuaHangBill", "HoaDonsAdmin");}
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 invoice-col">
                     Giao đến
                     <address>
                         <strong>@Model.Ten</strong><br>
-                        @Model.DiaChi<br>
+                        Địa chỉ: @Model.DiaChi<br>
                         SĐT: @Model.SDT<br>
                         Email: @Model.Email
                     </address>
                 </div>
-                <!-- /.col -->
-                <!--<div class="col-sm-4 invoice-col">
-                    <b>Mã Hóa Đơn: @Model.MaHoaDon</b><br>
-                    <br>-->
-                @*<b>Mã Người Dùng:</b> @Model.MaKhachHang*@
-                <!--</div>-->
-                <!-- /.col -->
             </div>
             <!-- /.row -->
             <!-- Table row -->
-            @*@Html.Partial("_Table_HoaDon", ChanhThu_Store.Models.BUS.ChiTietHoaDonBUS.ChiTietHoaDon(Model.MaHoaDon))*@
             <div class="print-bill-id">Mã Hóa Đơn: <span>@Model.MaHoaDon</span></div>
             @{
                 Html.RenderAction("BillChiTietHoaDon", "HoaDonsAdmin", new { id = Model.MaHoaDon });

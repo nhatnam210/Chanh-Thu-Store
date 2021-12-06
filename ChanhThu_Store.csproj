@@ -3260,6 +3260,7 @@
     <Content Include="Content\images\back1.jpg" />
     <Content Include="Content\images\back2.jpg" />
     <Content Include="Content\images\back3.jpg" />
+    <Content Include="Content\images\background_lienhe.jpg" />
     <Content Include="Content\images\banh1.png" />
     <Content Include="Content\images\banh2.jpg" />
     <Content Include="Content\images\banner-01.jpg" />
@@ -3654,6 +3655,8 @@
     <Content Include="Areas\Admin\Views\ThongTinCuaHangsAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ThongTinCuaHangsAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ChiTietHoaDonsAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\HoaDonsAdmin\TenCuaHangBill.cshtml" />
+    <Content Include="Areas\Admin\Views\HoaDonsAdmin\ThongTinCuaHangBill.cshtml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\Ck.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
@@ -3751,6 +3754,7 @@
     <Content Include="Views\Shared\QuangCaoVoucherTop.cshtml" />
     <Content Include="Views\Shared\SDTTop.cshtml" />
     <Content Include="Views\Home\TenCuaHangSliderHome.cshtml" />
+    <Content Include="Views\ContactUs\ThongTinLienHe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
