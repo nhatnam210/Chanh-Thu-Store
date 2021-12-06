@@ -28,7 +28,7 @@
             <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-left">
                 <div class="right-product-box">
                     <div class="product-item-filter row">
-                        <div class="col-12 col-sm-8 text-center text-sm-left">
+                        <div class="col-12 col-sm-9 text-center text-sm-left">
                             <div class="toolbar-sorter-right">
                                 <span>Sắp xếp</span>
                                 <form action="" class="hm-searchbox">
@@ -45,18 +45,18 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-4 text-center text-sm-right">
+                        <div class="col-12 col-sm-3 text-center text-sm-right">
                             <ul class="nav nav-tabs ml-auto">
                                 <li>
                                     <a class="nav-link active" href="#grid-view" data-toggle="tab">
                                         <i class="fa fa-th"></i>
                                     </a>
                                 </li>
-                                <li>
+                                @*<li>
                                     <a class="nav-link" href="#list-view" data-toggle="tab">
                                         <i class="fa fa-list-ul"></i>
                                     </a>
-                                </li>
+                                </li>*@
                             </ul>
                         </div>
                     </div>
@@ -64,7 +64,6 @@
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
                                 <div class="row test4 hehe">
-
                                     @foreach (var item in Model)
                                     {
                                         <div class="col-lg-4 col-xl-4 col-md-6 col-sm-6 parent">
@@ -126,86 +125,14 @@
                                     }
                                 </div>
                             </div>
-                            <div role="tabpanel" class="tab-pane fade" id="list-view">
-                                @foreach (var item in Model)
-                                {
-                                    <div class="list-view-box">
-                                        <div class="row">
-                                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                <div class="products-single fix shadow">
-                                                    <div class="box-img-hover none-radius ">
-                                                        @if (item.isLogin)
-                                                        {
-                                                            if (item.isLiked)
-                                                            {
-                                                                <div class="type-lb" data-id="@item.MaSanPham">
-                                                                    <p class="like bottom-left-radius text-capitalize">Đã thích</p>
-                                                                </div>
-                                                            }
-                                                        }
-                                                        @*<img src="@item.HinhChinh" class="img-fluid" alt="Image">*@
-                                                        <div class="img-fit" style="background-image: url('@item.HinhChinh'),url('/Content/images/default.png');"></div>
-                                                        <div class="mask-icon">
-                                                            <ul>
-                                                                <li>
-                                                                    <a href="/cua-hang/san-pham?id=@item.MaSanPham" data-toggle="tooltip"
-                                                                       data-placement="right" title="Xem chi tiết">
-                                                                        <i class="fas fa-eye"></i>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    @if (item.isLogin)
-                                                                    {
-                                                                        if (item.isLiked)
-                                                                        {
-                                                                            <a product-data="@item.MaSanPham" class="heart-hover js-tongle-like" data-toggle="tooltip" data-placement="right"
-                                                                               title="Yêu thích">
-                                                                                <i class="fas fa-heart liked-heart-icon"></i>
-                                                                            </a>
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            <a product-data="@item.MaSanPham" class="heart-hover js-tongle-like" data-toggle="tooltip" data-placement="right"
-                                                                               title="Yêu thích">
-                                                                                <i class="far fa-heart not-like-heart-icon"></i>
-                                                                            </a>
-                                                                        }
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        <a href="/dang-nhap" class="heart-hover" data-toggle="tooltip" data-placement="right"
-                                                                           title="Yêu thích">
-                                                                            <i class="far fa-heart not-like-heart-icon"></i>
-                                                                        </a>
-                                                                    }
-                                                                </li>
-                                                            </ul>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
-                                                <div class="why-text full-width view-column-content full-radius shadow col-single-product__description">
-                                                    <h4>@item.TenSanPham</h4>
-                                                    <h5>@string.Format("{0:#,##0}", @item.Gia) đ</h5>
-                                                    <p>
-                                                        @item.Mota
-                                                    </p>
-                                                    <a class="btn hvr-hover add-cart-notify" href="/them-vao-gio?masanpham=@item.MaSanPham&soluong=1">Thêm Vào Giỏ</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
-                            </div>
+                            <!--Start list view-->
+                            <!--End list view-->
                         </div>
                     </div>
                     <div class="product-categorie-box box-4" style="display:none;">
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
                                 <div class="row test4 huhu">
-
                                     @foreach (var item in Model)
                                     {
                                         <div class="col-lg-4 col-xl-4 col-md-6 col-sm-6 parent">
@@ -260,85 +187,12 @@
                                                 <div class="why-text view-row-content">
                                                     <h4 class="name-product">@item.TenSanPham</h4>
                                                     <h5 class="price-product">@string.Format("{0:#,##0}", @item.Gia) đ</h5>
-                                                    <a style="margin-top: 10px;" href="/them-vao-gio?masanpham=@item.MaSanPham&soluong=1" class="btn register hvr-hover text-capitalize add-cart-notify max-width-mobile show-in-mobile font-weight-bold font-size-mobile">Thêm vào giỏ</a>
+                                                    <a  href="/them-vao-gio?masanpham=@item.MaSanPham&soluong=1" class="btn register hvr-hover text-capitalize add-cart-notify max-width-mobile show-in-mobile font-weight-bold font-size-mobile mt-1">Thêm vào giỏ</a>
                                                 </div>
                                             </div>
                                         </div>
                                     }
                                 </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane fade" id="list-view">
-                                @foreach (var item in Model)
-                                {
-                                    <div class="list-view-box">
-                                        <div class="row">
-                                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                <div class="products-single fix shadow">
-                                                    <div class="box-img-hover none-radius ">
-                                                        @if (item.isLogin)
-                                                        {
-                                                            if (item.isLiked)
-                                                            {
-                                                                <div class="type-lb" data-id="@item.MaSanPham">
-                                                                    <p class="like bottom-left-radius text-capitalize">Đã thích</p>
-                                                                </div>
-                                                            }
-                                                        }
-                                                        @*<img src="@item.HinhChinh" class="img-fluid" alt="Image">*@
-                                                        <div class="img-fit" style="background-image: url('@item.HinhChinh'),url('/Content/images/default.png');"></div>
-                                                        <div class="mask-icon">
-                                                            <ul>
-                                                                <li>
-                                                                    <a href="/cua-hang/san-pham?id=@item.MaSanPham" data-toggle="tooltip"
-                                                                       data-placement="right" title="Xem chi tiết">
-                                                                        <i class="fas fa-eye"></i>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    @if (item.isLogin)
-                                                                    {
-                                                                        if (item.isLiked)
-                                                                        {
-                                                                            <a product-data="@item.MaSanPham" class="heart-hover js-tongle-like" data-toggle="tooltip" data-placement="right"
-                                                                               title="Yêu thích">
-                                                                                <i class="fas fa-heart liked-heart-icon"></i>
-                                                                            </a>
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            <a product-data="@item.MaSanPham" class="heart-hover js-tongle-like" data-toggle="tooltip" data-placement="right"
-                                                                               title="Yêu thích">
-                                                                                <i class="far fa-heart not-like-heart-icon"></i>
-                                                                            </a>
-                                                                        }
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        <a href="/dang-nhap" class="heart-hover" data-toggle="tooltip" data-placement="right"
-                                                                           title="Yêu thích">
-                                                                            <i class="far fa-heart not-like-heart-icon"></i>
-                                                                        </a>
-                                                                    }
-                                                                </li>
-                                                            </ul>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
-                                                <div class="why-text full-width view-column-content full-radius shadow col-single-product__description">
-                                                    <h4>@item.TenSanPham</h4>
-                                                    <h5>@string.Format("{0:#,##0}", @item.Gia) đ</h5>
-                                                    <p>
-                                                        @item.Mota
-                                                    </p>
-                                                    <a class="btn hvr-hover add-cart-notify" href="/them-vao-gio?masanpham=@item.MaSanPham&soluong=1">Thêm Vào Giỏ</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
                             </div>
                         </div>
                     </div>
@@ -346,7 +200,6 @@
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
                                 <div class="row test3 haha">
-
                                     @foreach (var item in Model)
                                     {
                                         <div class="col-lg-4 col-xl-4 col-md-6 col-sm-6 parent">
@@ -401,85 +254,12 @@
                                                 <div class="why-text view-row-content">
                                                     <h4 class="name-product">@item.TenSanPham</h4>
                                                     <h5 class="price-product">@string.Format("{0:#,##0}", @item.Gia) đ</h5>
-                                                    <a style="margin-top: 10px;" href="/them-vao-gio?masanpham=@item.MaSanPham&soluong=1" class="btn register hvr-hover text-capitalize add-cart-notify max-width-mobile show-in-mobile font-weight-bold font-size-mobile">Thêm vào giỏ</a>
+                                                    <a  href="/them-vao-gio?masanpham=@item.MaSanPham&soluong=1" class="btn register hvr-hover text-capitalize add-cart-notify max-width-mobile show-in-mobile font-weight-bold font-size-mobile mt-1">Thêm vào giỏ</a>
                                                 </div>
                                             </div>
                                         </div>
                                     }
                                 </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane fade" id="list-view">
-                                @foreach (var item in Model)
-                                {
-                                    <div class="list-view-box">
-                                        <div class="row">
-                                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                <div class="products-single fix shadow">
-                                                    <div class="box-img-hover none-radius ">
-                                                        @if (item.isLogin)
-                                                        {
-                                                            if (item.isLiked)
-                                                            {
-                                                                <div class="type-lb" data-id="@item.MaSanPham">
-                                                                    <p class="like bottom-left-radius text-capitalize">Đã thích</p>
-                                                                </div>
-                                                            }
-                                                        }
-                                                        @*<img src="@item.HinhChinh" class="img-fluid" alt="Image">*@
-                                                        <div class="img-fit" style="background-image: url('@item.HinhChinh'),url('/Content/images/default.png');"></div>
-                                                        <div class="mask-icon">
-                                                            <ul>
-                                                                <li>
-                                                                    <a href="/cua-hang/san-pham?id=@item.MaSanPham" data-toggle="tooltip"
-                                                                       data-placement="right" title="Xem chi tiết">
-                                                                        <i class="fas fa-eye"></i>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    @if (item.isLogin)
-                                                                    {
-                                                                        if (item.isLiked)
-                                                                        {
-                                                                            <a product-data="@item.MaSanPham" class="heart-hover js-tongle-like" data-toggle="tooltip" data-placement="right"
-                                                                               title="Yêu thích">
-                                                                                <i class="fas fa-heart liked-heart-icon"></i>
-                                                                            </a>
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            <a product-data="@item.MaSanPham" class="heart-hover js-tongle-like" data-toggle="tooltip" data-placement="right"
-                                                                               title="Yêu thích">
-                                                                                <i class="far fa-heart not-like-heart-icon"></i>
-                                                                            </a>
-                                                                        }
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        <a href="/dang-nhap" class="heart-hover" data-toggle="tooltip" data-placement="right"
-                                                                           title="Yêu thích">
-                                                                            <i class="far fa-heart not-like-heart-icon"></i>
-                                                                        </a>
-                                                                    }
-                                                                </li>
-                                                            </ul>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
-                                                <div class="why-text full-width view-column-content full-radius shadow col-single-product__description">
-                                                    <h4>@item.TenSanPham</h4>
-                                                    <h5>@string.Format("{0:#,##0}", @item.Gia) đ</h5>
-                                                    <p>
-                                                        @item.Mota
-                                                    </p>
-                                                    <a class="btn hvr-hover add-cart-notify" href="/them-vao-gio?masanpham=@item.MaSanPham&soluong=1">Thêm Vào Giỏ</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
                             </div>
                         </div>
                     </div>
@@ -487,7 +267,6 @@
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
                                 <div class="row test2 hihi">
-
                                     @foreach (var item in Model)
                                     {
                                         <div class="col-lg-4 col-xl-4 col-md-6 col-sm-6 parent">
@@ -538,85 +317,12 @@
                                                 <div class="why-text view-row-content">
                                                     <h4 class="name-product">@item.TenSanPham</h4>
                                                     <h5 class="price-product">@string.Format("{0:#,##0}", @item.Gia) đ</h5>
-                                                    <a style="margin-top: 10px;" href="/them-vao-gio?masanpham=@item.MaSanPham&soluong=1" class="btn register hvr-hover text-capitalize add-cart-notify max-width-mobile show-in-mobile font-weight-bold font-size-mobile">Thêm vào giỏ</a>
+                                                    <a  href="/them-vao-gio?masanpham=@item.MaSanPham&soluong=1" class="btn register hvr-hover text-capitalize add-cart-notify max-width-mobile show-in-mobile font-weight-bold font-size-mobile mt-1">Thêm vào giỏ</a>
                                                 </div>
                                             </div>
                                         </div>
                                     }
                                 </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane fade" id="list-view">
-                                @foreach (var item in Model)
-                                {
-                                    <div class="list-view-box">
-                                        <div class="row">
-                                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                <div class="products-single fix shadow">
-                                                    <div class="box-img-hover none-radius ">
-                                                        @if (item.isLogin)
-                                                        {
-                                                            if (item.isLiked)
-                                                            {
-                                                                <div class="type-lb" data-id="@item.MaSanPham">
-                                                                    <p class="like bottom-left-radius text-capitalize">Đã thích</p>
-                                                                </div>
-                                                            }
-                                                        }
-                                                        @*<img src="@item.HinhChinh" class="img-fluid" alt="Image">*@
-                                                        <div class="img-fit" style="background-image: url('@item.HinhChinh'),url('/Content/images/default.png');"></div>
-                                                        <div class="mask-icon">
-                                                            <ul>
-                                                                <li>
-                                                                    <a href="/cua-hang/san-pham?id=@item.MaSanPham" data-toggle="tooltip"
-                                                                       data-placement="right" title="Xem chi tiết">
-                                                                        <i class="fas fa-eye"></i>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    @if (item.isLogin)
-                                                                    {
-                                                                        if (item.isLiked)
-                                                                        {
-                                                                            <a product-data="@item.MaSanPham" class="heart-hover js-tongle-like" data-toggle="tooltip" data-placement="right"
-                                                                               title="Yêu thích">
-                                                                                <i class="fas fa-heart liked-heart-icon"></i>
-                                                                            </a>
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            <a product-data="@item.MaSanPham" class="heart-hover js-tongle-like" data-toggle="tooltip" data-placement="right"
-                                                                               title="Yêu thích">
-                                                                                <i class="far fa-heart not-like-heart-icon"></i>
-                                                                            </a>
-                                                                        }
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        <a href="/dang-nhap" class="heart-hover" data-toggle="tooltip" data-placement="right"
-                                                                           title="Yêu thích">
-                                                                            <i class="far fa-heart not-like-heart-icon"></i>
-                                                                        </a>
-                                                                    }
-                                                                </li>
-                                                            </ul>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
-                                                <div class="why-text full-width view-column-content full-radius shadow col-single-product__description">
-                                                    <h4>@item.TenSanPham</h4>
-                                                    <h5>@string.Format("{0:#,##0}", @item.Gia) đ</h5>
-                                                    <p>
-                                                        @item.Mota
-                                                    </p>
-                                                    <a class="btn hvr-hover add-cart-notify" href="/them-vao-gio?masanpham=@item.MaSanPham&soluong=1">Thêm Vào Giỏ</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
                             </div>
                         </div>
                     </div>
@@ -625,7 +331,6 @@
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
                                 <div class="row example">
-
                                     @foreach (var item in Model)
                                     {
                                         <div class="col-lg-4 col-xl-4 col-md-6 col-sm-6 parent">
@@ -680,89 +385,15 @@
                                                 <div class="why-text view-row-content">
                                                     <h4 class="name-product">@item.TenSanPham</h4>
                                                     <h5 class="price-product">@string.Format("{0:#,##0}", @item.Gia) đ</h5>
-                                                    <a style="margin-top: 10px;" href="/them-vao-gio?masanpham=@item.MaSanPham&soluong=1" class="btn register hvr-hover text-capitalize add-cart-notify max-width-mobile show-in-mobile font-weight-bold font-size-mobile">Thêm vào giỏ</a>
+                                                    <a  href="/them-vao-gio?masanpham=@item.MaSanPham&soluong=1" class="btn register hvr-hover text-capitalize add-cart-notify max-width-mobile show-in-mobile font-weight-bold font-size-mobile mt-1">Thêm vào giỏ</a>
                                                 </div>
                                             </div>
                                         </div>
                                     }
                                 </div>
                             </div>
-                            <div role="tabpanel" class="tab-pane fade" id="list-view">
-                                @foreach (var item in Model)
-                                {
-                                    <div class="list-view-box">
-                                        <div class="row">
-                                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                <div class="products-single fix shadow">
-                                                    <div class="box-img-hover none-radius ">
-                                                        @if (item.isLogin)
-                                                        {
-                                                            if (item.isLiked)
-                                                            {
-                                                                <div class="type-lb" data-id="@item.MaSanPham">
-                                                                    <p class="like bottom-left-radius text-capitalize">Đã thích</p>
-                                                                </div>
-                                                            }
-                                                        }
-                                                        @*<img src="@item.HinhChinh" class="img-fluid" alt="Image">*@
-                                                        <div class="img-fit" style="background-image: url('@item.HinhChinh'),url('/Content/images/default.png');"></div>
-                                                        <div class="mask-icon">
-                                                            <ul>
-                                                                <li>
-                                                                    <a href="/cua-hang/san-pham?id=@item.MaSanPham" data-toggle="tooltip"
-                                                                       data-placement="right" title="Xem chi tiết">
-                                                                        <i class="fas fa-eye"></i>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    @if (item.isLogin)
-                                                                    {
-                                                                        if (item.isLiked)
-                                                                        {
-                                                                            <a product-data="@item.MaSanPham" class="heart-hover js-tongle-like" data-toggle="tooltip" data-placement="right"
-                                                                               title="Yêu thích">
-                                                                                <i class="fas fa-heart liked-heart-icon"></i>
-                                                                            </a>
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            <a product-data="@item.MaSanPham" class="heart-hover js-tongle-like" data-toggle="tooltip" data-placement="right"
-                                                                               title="Yêu thích">
-                                                                                <i class="far fa-heart not-like-heart-icon"></i>
-                                                                            </a>
-                                                                        }
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        <a href="/dang-nhap" class="heart-hover" data-toggle="tooltip" data-placement="right"
-                                                                           title="Yêu thích">
-                                                                            <i class="far fa-heart not-like-heart-icon"></i>
-                                                                        </a>
-                                                                    }
-                                                                </li>
-                                                            </ul>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
-                                                <div class="why-text full-width view-column-content full-radius shadow col-single-product__description">
-                                                    <h4>@item.TenSanPham</h4>
-                                                    <h5>@string.Format("{0:#,##0}", @item.Gia) đ</h5>
-                                                    <p>
-                                                        @item.Mota
-                                                    </p>
-                                                    <a class="btn hvr-hover add-cart-notify" href="/them-vao-gio?masanpham=@item.MaSanPham&soluong=1">Thêm Vào Giỏ</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
-                            </div>
                         </div>
                     </div>
-
                     <!--End product by submenu-->
                 </div>
             </div>

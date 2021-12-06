@@ -51,15 +51,19 @@
 }
 
 .paginate-pagination ul > li > a.page:hover {
-	background-color: #f3bf168c;
+	background-color: var(--second-color);
     color: #333;
 
 }
 .paginate-pagination ul > li > a.page.active { 
-	background-color: #f3bf16;
-    border: 1px solid #f3bf16; 
-
+	background-color: var(--primary-color);
+    border: 1px solid var(--primary-color); 
 }
 
-.paginate-pagination ul > li > a.page-next.deactive,
-.paginate-pagination ul > li > a.page-prev.deactive { opacity: 0.7; cursor: default; display:none; }
+
+	.paginate-pagination ul > li > a.page-next.deactive,
+	.paginate-pagination ul > li > a.page-prev.deactive {
+		opacity: 0.7;
+		cursor: default;
+		display: none;
+	}

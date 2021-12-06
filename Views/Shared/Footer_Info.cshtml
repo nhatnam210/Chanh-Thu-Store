@@ -69,7 +69,10 @@
                                 <p><i class="fas fa-map-marker-alt"></i>Địa Chỉ: @Model.DiaChi</p>
                             </li>
                             <li>
-                                <p><i class="fas fa-phone-square"></i>Số Điện Thoại: <a href="tel:@Model.SDT">@Model.SDT</a></p>
+                                @{ var sdt = "+84" + Model.SDT.Substring(1);}
+                                <p><i class="fas fa-phone-square"></i>Số Điện Thoại: <a href="tel:@Model.SDT">
+                                    @sdt
+                                         </a></p>
                             </li>
                             <li>
                                 <p><i class="fas fa-envelope"></i>Email: <a href="mailto:chanhthustore@gmail.com">@Model.Email</a></p>

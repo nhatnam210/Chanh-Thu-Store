@@ -200,3 +200,7 @@
     text-overflow: ellipsis;
     word-break: break-word;
 }
+
+.word-break {
+    word-break: break-all;
+}

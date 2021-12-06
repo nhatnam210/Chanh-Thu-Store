@@ -8,6 +8,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using System.Text.RegularExpressions;
+using System.Text;
+using ChanhThu_Store.Controllers;
 
 namespace ChanhThu_Store.Areas.Admin.Controllers
 {
@@ -15,7 +18,8 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
     public class NhaSanXuatsController : Controller
     {
         private readonly ChanhThuStoreContext db = new ChanhThuStoreContext();
-        
+
+
         // GET: Admin/NhaSanXuats
         public ActionResult Index(string sapxep, string loc, string timkiem, int? trang)
         {
@@ -38,9 +42,15 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
                            select s;
             if (!String.IsNullOrEmpty(timkiem))
             {
-                nhasanxuat = nhasanxuat.Where(s => s.TenNhaSanXuat.Contains(timkiem));
-                //|| s.author.Contains(timkiem)
-
+                timkiem = timkiem.Trim();
+                var timkiemUnsign = TimKiemController.ConvertToUnSignNoneSpace(timkiem);
+                nhasanxuat = nhasanxuat.Where(delegate (NhaSanXuat s)
+                {
+                    if (TimKiemController.ConvertToUnSignNoneSpace(s.TenNhaSanXuat).IndexOf(timkiemUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0)
+                        return true;
+                    else
+                        return false;
+                }).AsQueryable();
             }
             //sắp xếp 
             switch (sapxep)

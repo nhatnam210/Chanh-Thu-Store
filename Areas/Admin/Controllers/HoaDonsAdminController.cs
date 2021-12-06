@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using ChanhThu_Store.Models;
 using PagedList;
+using ChanhThu_Store.Controllers;
 
 
 namespace ChanhThu_Store.Areas.Admin.Controllers
@@ -41,15 +42,28 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
                              select s;
             if (!String.IsNullOrEmpty(timkiem))
             {
-                CultureInfo VN = new CultureInfo("vi-VN"); 
-                hoadon = hoadon.Where(s => s.MaHoaDon.ToString().Contains(timkiem)
-                || s.Ten.Contains(timkiem)
-                || s.SDT.Contains(timkiem)
-                || s.Email.Contains(timkiem)
-                || s.NgayLap.ToString().Contains(timkiem)
-                );
-                //|| s.author.Contains(timkiem)
-
+                //CultureInfo VN = new CultureInfo("vi-VN"); 
+                //hoadon = hoadon.Where(s => s.MaHoaDon.ToString().Contains(timkiem)
+                //|| s.Ten.Contains(timkiem)
+                //|| s.SDT.Contains(timkiem)
+                //|| s.Email.Contains(timkiem)
+                //|| s.NgayLap.ToString().Contains(timkiem)
+                //);
+                ////|| s.author.Contains(timkiem)
+                timkiem = timkiem.Trim();
+                var timkiemUnsign = TimKiemController.ConvertToUnSignNoneSpace(timkiem);
+                hoadon = hoadon.Where(delegate (HoaDon s)
+                {
+                    if (TimKiemController.ConvertToUnSignNoneSpace(s.MaHoaDon.ToString()).IndexOf(timkiemUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0
+                    || TimKiemController.ConvertToUnSignNoneSpace(s.Ten).IndexOf(timkiemUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0
+                    || TimKiemController.ConvertToUnSignNoneSpace(s.SDT).IndexOf(timkiemUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0
+                    || TimKiemController.ConvertToUnSignNoneSpace(s.Email).IndexOf(timkiemUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0
+                    || TimKiemController.ConvertToUnSignNoneSpace(s.NgayLap.ToString()).IndexOf(timkiemUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0
+                    )
+                        return true;
+                    else
+                        return false;
+                }).AsQueryable();
             }
             //sắp xếp 
             switch (sapxep)
