@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ChanhThu_Store.Models;
 using PagedList;
+using ChanhThu_Store.Controllers;
 
 namespace ChanhThu_Store.Areas.Admin.Controllers
 {
@@ -41,11 +42,16 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             {
                 if (!String.IsNullOrEmpty(timkiem))
                 {
-                    danhmuccon = danhmuccon.Where(s => s.TenDanhMucCon.Contains(timkiem)
-                    || s.DanhMuc.TenDanhMuc.Contains(timkiem)
-                    );
-                    //|| s.author.Contains(timkiem)
-
+                    timkiem = timkiem.Trim();
+                    var timkiemUnsign = TimKiemController.ConvertToUnSignNoneSpace(timkiem);
+                    danhmuccon = danhmuccon.Where(delegate (DanhMucCon s)
+                    {
+                        if (TimKiemController.ConvertToUnSignNoneSpace(s.TenDanhMucCon).IndexOf(timkiemUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0
+                        || TimKiemController.ConvertToUnSignNoneSpace(s.DanhMuc.TenDanhMuc).IndexOf(timkiemUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0)
+                            return true;
+                        else
+                            return false;
+                    }).AsQueryable();
                 }
                 //sắp xếp 
                 switch (sapxep)

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ChanhThu_Store.Models;
 using PagedList;
+using ChanhThu_Store.Controllers;
 
 namespace ChanhThu_Store.Areas.Admin.Controllers
 {
@@ -15,7 +16,7 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
     public class SanPhamsAdminController : Controller
     {
         private ChanhThuStoreContext db = new ChanhThuStoreContext();
-        
+
         // GET: Admin/SanPhamsAdmin
         public ActionResult Index(string sapxep, string loc, string timkiem, int? trang)
         {
@@ -25,7 +26,7 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             ViewBag.SapXepTonKho = sapxep == "tồn kho thấp > cao" ? "tồn kho cao > thấp" : "tồn kho thấp > cao";
             ViewBag.SapXepLoai = sapxep == "loại A-Z" ? "loại Z-A" : "loại A-Z";
             ViewBag.SapXepGia = sapxep == "giá thấp > cao" ? "giá cao > thấp" : "giá thấp > cao";
-            ViewBag.SapXepTinhTrang= sapxep == "còn hàng" ? "hết hàng" : "còn hàng";
+            ViewBag.SapXepTinhTrang = sapxep == "còn hàng" ? "hết hàng" : "còn hàng";
             //phan trang
             if (timkiem != null)
             {
@@ -41,11 +42,18 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
                           select s;
             if (!String.IsNullOrEmpty(timkiem))
             {
-                sanpham = sanpham.Where(s => s.TenSanPham.Contains(timkiem) 
-                || s.DanhMucCon.TenDanhMucCon.Contains(timkiem)
-                || s.MaSanPham.Contains(timkiem));
-                //|| s.author.Contains(timkiem)
-
+                timkiem = timkiem.Trim();
+                var timkiemUnsign = TimKiemController.ConvertToUnSignNoneSpace(timkiem);
+                sanpham = sanpham.Where(delegate (SanPham s)
+                {
+                    if (TimKiemController.ConvertToUnSignNoneSpace(s.TenSanPham).IndexOf(timkiemUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0
+                        || TimKiemController.ConvertToUnSignNoneSpace(s.Mota).IndexOf(timkiemUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0
+                        || TimKiemController.ConvertToUnSignNoneSpace(s.DanhMucCon.TenDanhMucCon).IndexOf(timkiemUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0
+                        || TimKiemController.ConvertToUnSignNoneSpace(s.DanhMucCon.DanhMuc.TenDanhMuc).IndexOf(timkiemUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0)
+                        return true;
+                    else
+                        return false;
+                }).AsQueryable();
             }
             //sắp xếp 
             switch (sapxep)
@@ -111,7 +119,7 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         // GET: Admin/SanPhamsAdmin/Create
         public ActionResult Create()
         {
-            
+
             ViewBag.MaDanhMucCon = new SelectList(db.DanhMucCons, "MaDanhMucCon", "TenDanhMucCon");
             ViewBag.MaNhaSanXuat = new SelectList(db.NhaSanXuats, "MaNhaSanXuat", "TenNhaSanXuat");
             return View();
@@ -119,7 +127,7 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
 
         //POST: Admin/SanPhamsAdmin/Create
         //To protect from overposting attacks, enable the specific properties you want to bind to, for 
-         //more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MaSanPham,MaDanhMucCon,MaNhaSanXuat,TenSanPham,Gia,DonViTinh,HinhChinh,Hinh1,Hinh2,Mota,SoLuongTonKho,SoLuongDaBan,LuotYeuThich,NgaySanXuat,HanSuDung,Diem,TinhTrang")] SanPham sanPham)
