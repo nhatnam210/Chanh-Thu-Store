@@ -3389,10 +3389,24 @@ ul.cart-list > li.total > .btn:hover {
 
 .contact-info-left {
     padding: 20px;
-    background: url(../images/contact-bg.jpg) no-repeat center;
-    background-size: cover;
-    background-attachment: fixed;
+    position:relative;
+    border-radius: var(--img-corner-radius);
+    overflow: hidden;
 }
+
+    .contact-info-left::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: url('../images/background_lienhe.jpg') no-repeat center;
+        background-size: cover;
+        background-attachment: fixed;
+        opacity: 0.6;
+        z-index: -1;
+    }
 
     .contact-info-left h2 {
         font-size: 22px;
@@ -3401,6 +3415,7 @@ ul.cart-list > li.total > .btn:hover {
 
     .contact-info-left p {
         margin-bottom: 15px;
+        color: #fff;
     }
 
     .contact-info-left ul li {
@@ -4540,27 +4555,6 @@ ul.cart-list::-webkit-scrollbar-thumb,
     padding-right: 5px;
 }
 
-/*empty submenu*/
-.empty-product {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.empty-product__title {
-    padding: 10px 0;
-    font-weight: 600;
-    color: var(--gray);
-}
-
-.empty-product__img {
-    width: 200px;
-    height: auto;
-    object-fit: cover;
-    filter: drop-shadow(0px 6px 3px var(--shadow-object));
-}
-
 .showmore {
     display: flex;
     justify-content: center;
@@ -5064,4 +5058,24 @@ ul.cart-list::-webkit-scrollbar-thumb,
 
 .view-bill-detail__link:hover i {
     color: green;
+}
+
+.none-product__title {
+    color: #444;
+    font-size: 18px;
+}
+
+.none-product__img {
+    width: 180px;
+    filter: drop-shadow(2px 5px 3px rgba(0 0 0 / 30%));
+    animation: upAnDown linear 2s infinite;
+}
+
+@keyframes upAnDown {
+    0%, 100%{
+        transform: translateY(-15px) scale(1.05);
+    }
+    50% {
+        transform: translateY(0px) scale(1);
+    }
 }

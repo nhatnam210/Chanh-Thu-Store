@@ -26,7 +26,7 @@
             <div class="col-lg-8 col-sm-12">
                 <div class="contact-form-right">
                     <h2>Hãy liên hệ với chúng tôi ngay</h2>
-                    <p>Mọi ý kiến đóng góp của bạn chính là động lực để chúng tôi có thể phát triển , trở nên tốt hơn từng ngày.</p>
+                    <p>Mọi ý kiến đóng góp của bạn chính là động lực để chúng tôi có thể phát triển, trở nên tốt hơn từng ngày.</p>
                     <form id="contactForm">
                         <div class="fb-comments" data-href="https://localhost:44340/lien-he" data-width="450" data-numposts="5"></div>
                         
@@ -36,22 +36,11 @@
             </div>
             <div class="col-lg-4 col-sm-12">
                 <div class="contact-info-left">
-                    <h2>
+                    <h2 class="text-capitalize text-black-shadow">
                         Thông tin liên hệ
-
                     </h2>
-                    <p>Nếu bạn chưa nhận được hồi âm hoặc có việc cần liên hệ hãy sử dụng những thông tin bên dưới để liên hệ ngay nhé ! </p>
-                    <ul>
-                        <li>
-                            <p><i class="fas fa-map-marker-alt"></i>Địa chỉ: 344 Trần Hưng Đạo,p.Bồng Sơn, tx.Hoài Nhơn, Bình Định
-                        </li>
-                        <li>
-                            <p><i class="fas fa-phone-square"></i>Phone: <a href="0986958452">+0986 958 452</a></p>
-                        </li>
-                        <li>
-                            <p><i class="fas fa-envelope"></i>Email: <a href="mailto:chanhthustore@gmail.com">chanhthustore@gmail.com</a></p>
-                        </li>
-                    </ul>
+                    <p class="text-white-shadow">Nếu bạn chưa nhận được hồi âm hoặc có việc cần liên hệ hãy sử dụng những thông tin bên dưới để liên hệ ngay nhé ! </p>
+                    @{ Html.RenderAction("ThongTinLienHe", "ContactUs");}
                 </div>
             </div>
         </div>

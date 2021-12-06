@@ -117,8 +117,8 @@
             <div class="col-lg-4 col-sm-12">
                 <div class="order-box">
                     <h3>Đơn hàng</h3>
-                    <div class="d-flex">
-                        <h4>Số sản phẩm</h4>
+                    <div class="d-flex align-items-center">
+                        <h4 class="font-weight-bold text-muted">Số sản phẩm</h4>
                         <div class="ml-auto text-color" >@Model.Count() loại</div>
                     </div>
                     @*<div class="d-flex">
@@ -130,10 +130,10 @@
                             <div class="ml-auto font-weight-bold"> $ 2 </div>
                         </div>*@
                     <hr class="my-1">
-                    <div class="d-flex">
+                    <div class="d-flex align-items-center">
                         @*<h4>Voucher giảm giá</h4>
                         <div class="ml-auto font-weight-bold">0 đ</div>*@
-                        <h4>Tiền hàng</h4>
+                        <h4 class="font-weight-bold text-muted">Tiền hàng</h4>
                         <div class="ml-auto text-color">@string.Format("{0:#,##0}", @Total) đ</div>
                     </div>
 
