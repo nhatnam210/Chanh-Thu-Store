@@ -1864,6 +1864,7 @@ ul.cart-list > li.total > .btn:hover {
         overflow: hidden;
         text-overflow: ellipsis;
         word-break: break-word;
+        line-height: 24px;
     }
 
 .footer-link {
@@ -2087,6 +2088,7 @@ ul.cart-list > li.total > .btn:hover {
 .about-box-main p {
     padding-bottom: 20px;
     font-size: 14px;
+    line-height: 26px;
 }
 
 .service-block-inner {
@@ -3587,7 +3589,7 @@ ul.cart-list > li.total > .btn:hover {
 
 .single-product-details p {
     font-size: 14px;
-    /*margin-bottom: 20px;*/
+    line-height: 24px;
 }
 
 .single-product-details ul {
@@ -3806,6 +3808,8 @@ ul.cart-list > li.total > .btn:hover {
         border: 1px solid var(--primary-color);
         background-color: var(--primary-color);
         outline: none;
+        margin: 3px 0px;
+        min-width: 110px;
     }
 
         .custom-login .login:hover,
