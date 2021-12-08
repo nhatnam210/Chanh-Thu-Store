@@ -68,18 +68,8 @@ namespace ChanhThu_Store.Controllers
             IQueryable<SanPham> listBanChay = null;
 
             listBanChay = (from b in db.SanPhams
-                           orderby b.SoLuongDaBan descending
+                           orderby b.SoLuongDaBan descending,b.LuotYeuThich descending
                            select b).Take(4);
-
-            //listBanChay = db.ChiTietHoaDons
-            //    .Where(c => c.HoaDon.NgayLap.Month == thisDay.Month)
-            //    .GroupBy(c => c.HoaDon.NgayLap.Month)
-            //    .Select(s => new SanPham
-            //    {
-            //        SoLuongDaBan = s.Sum(c => c.Soluong),
-            //    })
-            //    .OrderByDescending(s => s.SoLuongDaBan)
-            //    .Take(4);
                 
             return listBanChay;
         }
@@ -94,7 +84,8 @@ namespace ChanhThu_Store.Controllers
             IQueryable<SanPham> listNoiBat = null;
 
             listNoiBat = (from n in db.SanPhams
-                          orderby n.LuotYeuThich descending
+                          where n.LuotYeuThich > 0
+                          orderby n.LuotYeuThich descending, n.SoLuongDaBan descending
                           select n).Except(ListBanChay()).Take(4);
 
             return PartialView(listNoiBat);

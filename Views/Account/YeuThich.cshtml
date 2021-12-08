@@ -28,103 +28,68 @@
             <div class="col-xl-12 col-lg-12 col-sm-12 col-xs-12 shop-content-left">
                 <div class="right-product-box">
                     <div class="product-categorie-box">
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
-                                <div class="row">
-                                    @foreach (var item in Model)
-                                    {
-                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                            <div class="products-single fix shadow full-radius">
-                                                <div class="box-img-hover none-radius">
-                                                    @*<div class="type-lb">
-                                                        <p class="sale bottom-left-radius">Sale</p>
-                                                    </div>*@
-                                                    @*<img src="@item.HinhChinh" class="img-fluid" alt="Image">*@
-                                                    <div class="img-fit" style="background-image: url('@item.HinhChinh'),url('/Content/images/default.png');">
-                                                    </div>
-                                                    <div class="mask-icon">
-                                                        <ul>
-                                                            <li>
-                                                                <a href="/cua-hang/san-pham?id=@item.MaSanPham" data-toggle="tooltip" data-placement="right"
-                                                                   title="Xem chi tiết"><i class="fas fa-eye"></i></a>
-                                                            </li>
-                                                            <li>
+                        @if (Model.Count() > 0)
+                        {
 
-
-                                                                <a class="js-tongle-yeuthich" data-product-id="@item.MaSanPham" data-toggle="tooltip" data-placement="right"
-                                                                   title="Yêu thích">
-                                                                    <i class="far fa-heart"></i>
-                                                                </a>
-
-
-                                                            </li>
-                                                        </ul>
-                                                        <a class="cart add-cart-notify" href="/them-vao-gio?masanpham=@item.MaSanPham&soluong=1">Thêm Vào Giỏ</a>
-                                                    </div>
-                                                </div>
-                                                <div class="why-text view-row-content">
-                                                    <h4>@item.TenSanPham</h4>
-                                                    <h5>@string.Format("{0:#,##0}", @item.Gia) đ</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    }
-                                </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane fade" id="list-view">
-                                @foreach (var item in Model)
-                                {
-                                    <div class="list-view-box">
-                                        <div class="row">
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
+                                    <div class="row">
+                                        @foreach (var item in Model)
+                                        {
                                             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                <div class="products-single fix">
-                                                    <div class="box-img-hover">
+                                                <div class="products-single fix shadow full-radius">
+                                                    <div class="box-img-hover none-radius">
                                                         @*<div class="type-lb">
-                                        <p class="new">New</p>
-                                    </div>*@
+                                            <p class="sale bottom-left-radius">Sale</p>
+                                        </div>*@
                                                         @*<img src="@item.HinhChinh" class="img-fluid" alt="Image">*@
-                                                        <div class="img-fit" style="background-image: url('@item.HinhChinh'),url('/Content/images/default.png');"></div>
+                                                        <div class="img-fit" style="background-image: url('@item.HinhChinh'),url('/Content/images/default.png');">
+                                                        </div>
                                                         <div class="mask-icon">
                                                             <ul>
                                                                 <li>
-                                                                    <a href="/cua-hang/san-pham?id=@item.MaSanPham" data-toggle="tooltip"
-                                                                       data-placement="right" title="Xem chi tiết">
-                                                                        <i class="fas fa-eye"></i>
-                                                                    </a>
+                                                                    <a href="/cua-hang/san-pham?id=@item.MaSanPham" data-toggle="tooltip" data-placement="right"
+                                                                       title="Xem chi tiết"><i class="fas fa-eye"></i></a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="#" data-toggle="tooltip"
-                                                                       data-placement="right"
+
+
+                                                                    <a class="js-tongle-yeuthich" data-product-id="@item.MaSanPham" data-toggle="tooltip" data-placement="right"
                                                                        title="Yêu thích">
                                                                         <i class="far fa-heart"></i>
                                                                     </a>
+
+
                                                                 </li>
                                                             </ul>
-
+                                                            <a class="cart add-cart-notify" href="/them-vao-gio?masanpham=@item.MaSanPham&soluong=1">Thêm Vào Giỏ</a>
                                                         </div>
+                                                    </div>
+                                                    <div class="why-text view-row-content">
+                                                        <h4>@item.TenSanPham</h4>
+                                                        <h5>@string.Format("{0:#,##0}", @item.Gia) đ</h5>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
-                                                <div class="why-text full-width view-column-content">
-                                                    <h4>@item.TenSanPham</h4>
-                                                    <h5>@string.Format("{0:#,##0}", @item.Gia) đ</h5>
-                                                    <p>
-                                                        @item.Mota
-                                                    </p>
-                                                    <a class="btn hvr-hover add-cart-notify" href="/them-vao-gio?masanpham=@item.MaSanPham&soluong=1">Thêm Vào Giỏ</a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        }
                                     </div>
-                                }
-                            </div>
-                            <div class="pagelist_custom">
-                                <span class="show-page-text">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
-                            </div>
+                                </div>
+                                <div class="pagelist_custom">
+                                    <span class="show-page-text">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
+                                </div>
 
-                            @Html.PagedListPager(Model, page => Url.Action("YeuThich", new { page }))
-                        </div>
+                                @Html.PagedListPager(Model, page => Url.Action("YeuThich", new { page }))
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="flex-column text-center mt-4 mb-4">
+                                <p class="none-product__title font-weight-bold font-italic mb-2 text-red">
+                                    Bạn chưa yêu thích sản phẩm nào!
+                                </p>
+                                <img class="none-product__img mt-3" src="~/Content/images/empty-product.png" />
+                            </div>
+                        }
                     </div>
                 </div>
             </div>

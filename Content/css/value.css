@@ -9,7 +9,7 @@
     --yellow: #FFC312;
     --green: #4cd137;
     /*color object*/
-    --selection-text: #fff;
+    --selection-text: #333;
     --border-input-color: #00000040;
     --line-gray: #00000020;
     --shadow-object: #00000066;
@@ -75,11 +75,6 @@
     border-top-right-radius: 0px;
     border-bottom-left-radius: var(--img-corner-radius);
     border-bottom-right-radius: var(--img-corner-radius);
-}
-
-*::selection {
-    color: #fff;
-    background-color: var(--second-color);
 }
 
 .text-white-shadow {
@@ -207,6 +202,15 @@ a.text-black-primary {
     max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.text-lm-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
 }
 
 .text-lm-2 {

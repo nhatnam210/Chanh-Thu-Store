@@ -3723,7 +3723,7 @@
     <Content Include="Views\Cart\Success.cshtml" />
     <Content Include="Views\Account\Info.cshtml" />
     <Content Include="Views\Home\_Slider_home.cshtml" />
-    <Content Include="Views\Shared\_Banner.cshtml" />
+    <Content Include="Views\Home\_Banner.cshtml" />
     <Content Include="Views\Shared\_Slider_footer.cshtml" />
     <Content Include="Views\Account\YeuThich.cshtml" />
     <Content Include="Views\DanhMucCons\SanPhamTheoDMC.cshtml" />
