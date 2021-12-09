@@ -15,23 +15,24 @@ namespace ChanhThu_Store.Controllers
         public ChanhThuStoreContext db = new ChanhThuStoreContext();
 
         // GET: TimKiem
-        public ActionResult Index(string timkiem)
+        public ActionResult Index(string tukhoa, string sapxep, int? trang)
         {
             IQueryable<SanPham> sanpham = null;
-            ViewBag.Loc = timkiem;
+            ViewBag.TimKiem = tukhoa;
+            ViewBag.SapXep = sapxep;
 
             sanpham = db.SanPhams.Select(s => s);
 
-            if (!String.IsNullOrEmpty(timkiem))
+            if (!String.IsNullOrEmpty(tukhoa))
             {
-                timkiem = timkiem.Trim();
-                var timkiemUnsign = ConvertToUnSignNoneSpace(timkiem);
+                tukhoa = tukhoa.Trim();
+                var tuKhoaUnsign = ConvertToUnSignNoneSpace(tukhoa);
                     sanpham = sanpham.Where(delegate (SanPham s)
                     {
-                        if (ConvertToUnSignNoneSpace(s.TenSanPham).IndexOf(timkiemUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0
-                            || ConvertToUnSignNoneSpace(s.Mota).IndexOf(timkiemUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0
-                            || ConvertToUnSignNoneSpace(s.DanhMucCon.TenDanhMucCon).IndexOf(timkiemUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0
-                            || ConvertToUnSignNoneSpace(s.DanhMucCon.DanhMuc.TenDanhMuc).IndexOf(timkiemUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0)
+                        if (ConvertToUnSignNoneSpace(s.TenSanPham).IndexOf(tuKhoaUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0
+                            || ConvertToUnSignNoneSpace(s.Mota).IndexOf(tuKhoaUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0
+                            || ConvertToUnSignNoneSpace(s.DanhMucCon.TenDanhMucCon).IndexOf(tuKhoaUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0
+                            || ConvertToUnSignNoneSpace(s.DanhMucCon.DanhMuc.TenDanhMuc).IndexOf(tuKhoaUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0)
                             return true;
                         else
                             return false;
@@ -40,11 +41,36 @@ namespace ChanhThu_Store.Controllers
             //trường hợp không nhập tìm kiếm
             else
             {
-                sanpham = sanpham.Where(s => s.TenSanPham.Contains(timkiem));
+                sanpham = sanpham.Where(s => s.TenSanPham.Contains(tukhoa));
             }
-            ViewBag.listsp = sanpham;
 
-            return View(sanpham);
+            //Sắp xếp
+            switch (sapxep)
+            {
+                case "mac-dinh":
+                    sanpham = sanpham.OrderBy(s => s.MaSanPham);
+                    break;
+                case "ten-A-Z":
+                    sanpham = sanpham.OrderBy(s => s.TenSanPham);
+                    break;
+                case "ten-Z-A":
+                    sanpham = sanpham.OrderByDescending(s => s.TenSanPham);
+                    break;
+                case "gia-thap-cao":
+                    sanpham = sanpham.OrderBy(s => s.Gia);
+                    break;
+                case "gia-cao-thap":
+                    sanpham = sanpham.OrderByDescending(s => s.Gia);
+                    break;
+                default:
+                    sanpham = sanpham.OrderByDescending(s => s.MaSanPham);
+                    break;
+            }
+            int pageSize = 9;
+            int pageNumber = (trang ?? 1);
+
+            ViewBag.listsp = sanpham;
+            return View(sanpham.ToPagedList(pageNumber, pageSize));
         }
 
         //hàm đổi tiếng việt có dấu sang không dấu và loại bỏ tất cả khoảng trắng trong chuỗi

@@ -415,7 +415,7 @@
                 <div class="product-categori">
                     <div class="search-product">
                         <form method="post" action="/tim-kiem">
-                            <input class="form-control" name="timkiem" placeholder="Tìm kiếm..." type="text">
+                            <input class="form-control" name="tukhoa" placeholder="Tìm kiếm..." type="text">
                             <button type="submit"> <i class="fa fa-search"></i> </button>
                         </form>
                     </div>
@@ -466,7 +466,7 @@
             });
         });
         //call paginate
-        var products = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.listsp));
-        PagingSort()
+        @*var products = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.listsp));
+        PagingSort()*@
     </script>
 }

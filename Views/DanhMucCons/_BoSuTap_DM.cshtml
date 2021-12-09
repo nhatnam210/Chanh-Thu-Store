@@ -3,10 +3,12 @@
     <div class="col-lg-12">
         <div class="special-menu text-center">
             <div class="button-group filter-button-group">
-                <button class="active" data-filter="*">Tất cả</button>
+                <button class="active" data-filter="*" data-aos="fade-up">Tất cả</button>
+                @{ var i = 0;}
                 @foreach (var item in Model)
                 {
-                    <button data-filter=".@item.MaDanhMuc">@item.TenDanhMuc</button>
+                    i += 100;
+                    <button data-filter=".@item.MaDanhMuc" data-aos="fade-up" data-aos-delay="@i" data-aos-easing="linear">@item.TenDanhMuc</button>
                 }
             </div>
         </div>

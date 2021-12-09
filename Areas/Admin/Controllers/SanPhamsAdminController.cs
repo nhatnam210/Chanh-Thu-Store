@@ -98,7 +98,7 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             //var articles = db.Articles.Include(a => a.Cetegory);
             int pageSize = 5;
             int pageNumber = (trang ?? 1);
-            return View(sanpham.ToPagedList(pageNumber, pageSize));
+            return PartialView(sanpham.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Admin/SanPhamsAdmin/Details/5
