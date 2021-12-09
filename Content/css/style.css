@@ -418,7 +418,7 @@ p {
 a.dropdown-item
 span.dropdown-item-inner
 span.text {
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .main-header {
@@ -1179,6 +1179,8 @@ ul.cart-list > li.total > .btn:hover {
     box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease-in-out 0s;
+    border-radius: var(--img-corner-radius);
+    overflow: hidden;
 }
 
     .offer-box-products:hover {
@@ -1216,6 +1218,7 @@ ul.cart-list > li.total > .btn:hover {
     .title-all p {
         color: #999999;
         font-size: 16px;
+        margin-top: 5px;
     }
 
 .products-box {
@@ -1338,7 +1341,6 @@ ul.cart-list > li.total > .btn:hover {
     .why-text h4 {
         font-size: 16px;
         font-weight: 700;
-        padding-bottom: 15px;
     }
 
     .why-text h5 {
@@ -1541,6 +1543,7 @@ ul.cart-list > li.total > .btn:hover {
 
 .option-account {
     user-select: none;
+    display: flex;
 }
 
 .option-blog {
@@ -2314,7 +2317,7 @@ ul.cart-list > li.total > .btn:hover {
         color: #fff;
         height: 55px;
         font-weight: 300;
-        font-size: 16px;
+        font-size: 14px;
         margin-bottom: 15px;
         padding: 0 20px;
         -webkit-transition: all 0.5s ease;
@@ -2655,6 +2658,7 @@ ul.cart-list > li.total > .btn:hover {
     line-height: 42px;
     padding-right: 15px;
     float: left;
+    user-select: none;
 }
 
 .product-item-filter .toolbar-sorter-right {
@@ -2685,12 +2689,6 @@ ul.cart-list > li.total > .btn:hover {
         background: #222;
         color: #ffffff;
     }
-
-        .toolbar-sorter-right .btn-light:hover {
-            background: var(--primary-color);
-            border-radius: 0px;
-            border: none;
-        }
 
     .toolbar-sorter-right .show > .btn-light.dropdown-toggle {
         background-color: var(--primary-color);
@@ -2757,7 +2755,6 @@ ul.cart-list > li.total > .btn:hover {
 .why-text.full-width h4 {
     font-size: 24px;
     font-weight: 700;
-    padding-bottom: 15px;
 }
 
 .why-text.full-width h5 del {
@@ -2874,6 +2871,7 @@ ul.cart-list > li.total > .btn:hover {
     color: #111111;
     font-size: 18px;
     padding: 4px 12px;
+    border-radius: var(--btn-corner-radius);
 }
 
     .product-item-filter li .nav-link.active {
@@ -2904,7 +2902,8 @@ ul.cart-list > li.total > .btn:hover {
 .why-text.full-width h4 {
     font-size: 24px;
     font-weight: 700;
-    padding-bottom: 15px;
+    padding-bottom: 0;
+    margin-bottom: 10px;
 }
 
 .why-text.full-width h5 del {
@@ -3810,6 +3809,7 @@ ul.cart-list > li.total > .btn:hover {
         outline: none;
         margin: 3px 0px;
         min-width: 110px;
+        margin-right: 5px;
     }
 
         .custom-login .login:hover,
@@ -5082,4 +5082,34 @@ ul.cart-list::-webkit-scrollbar-thumb,
     50% {
         transform: translateY(0px) scale(1);
     }
+}
+
+.banner-frame {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.dropdown-item.selected {
+   position:relative;
+   z-index: 1;
+}
+
+    .dropdown-item.selected:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: var(--primary-color);
+        opacity: 0.8;
+        filter: brightness(1.1);
+        z-index: -1;
+    }
+
+.option-view {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
