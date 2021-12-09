@@ -1,5 +1,5 @@
-﻿@*@model ChanhThu_Store.Models.DanhMucCon*@
-@model IEnumerable<ChanhThu_Store.Models.SanPham>
+﻿@model PagedList.IPagedList<ChanhThu_Store.Models.SanPham>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index";
@@ -31,18 +31,15 @@
                         <div class="col-12 col-sm-9 text-center text-sm-left">
                             <div class="toolbar-sorter-right">
                                 <span>Sắp xếp</span>
-                                <form action="" class="hm-searchbox">
-                                    @*<input id="MaDanhMucCon" name="id" hidden value="DMC02" type="radio" />*@
-                                    <select id="basic" name="sapxep" class="selectpicker show-tick form-control"
-                                            data-placeholder="$ USD">
-                                        <option class="optionvalue" value="0" data-display="Select">Không</option>
-                                        <option class="optionvalue" value="1" type="submit">Tên A → Z</option>
-                                        <option class="optionvalue" value="2" type="submit">Tên Z → A</option>
-                                        <option class="optionvalue" value="3" type="submit">Giá Thấp → Giá Cao</option>
-                                        <option class="optionvalue" value="4" type="submit">Giá Cao → Giá Thấp</option>
-                                        @*<option value="5" type="submit">Bán Chạy</option>*@
-                                    </select>
-                                </form>
+                                <select id="basic" name="sapxep" class="selectpicker show-tick form-control"
+                                        data-placeholder="$ USD">
+                                    @*data-display="Select"*@
+                                    <option value="mac-dinh">Không</option>
+                                    <option value="ten-A-Z">Tên A → Z</option>
+                                    <option value="ten-Z-A">Tên Z → A</option>
+                                    <option value="gia-thap-cao">Giá Thấp → Giá Cao</option>
+                                    <option value="gia-cao-thap">Giá Cao → Giá Thấp</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-12 col-sm-3 text-center text-sm-right">
@@ -53,10 +50,10 @@
                                     </a>
                                 </li>
                                 @*<li>
-                                        <a class="nav-link" href="#list-view" data-toggle="tab">
-                                            <i class="fa fa-list-ul"></i>
-                                        </a>
-                                    </li>*@
+                        <a class="nav-link" href="#list-view" data-toggle="tab">
+                            <i class="fa fa-list-ul"></i>
+                        </a>
+                    </li>*@
                             </ul>
                         </div>
                     </div>
@@ -80,7 +77,7 @@
                                                                 </div>
                                                             }
                                                         }
-                                                       
+
                                                         <div class="img-fit product-mobile " style="background-image: url('@item.HinhChinh'),url('/Content/images/default.png');">
                                                         </div>
                                                         <div class="mask-icon">
@@ -149,7 +146,7 @@
                                                                 </div>
                                                             }
                                                         }
-                                                       
+
                                                         <div class="img-fit product-mobile " style="background-image: url('@item.HinhChinh'),url('/Content/images/default.png');">
                                                         </div>
                                                         <div class="mask-icon">
@@ -216,7 +213,7 @@
                                                                 </div>
                                                             }
                                                         }
-                                                       
+
                                                         <div class="img-fit product-mobile " style="background-image: url('@item.HinhChinh'),url('/Content/images/default.png');">
                                                         </div>
                                                         <div class="mask-icon">
@@ -279,7 +276,7 @@
                                                             <p class="like bottom-left-radius text-capitalize">Đã thích</p>
                                                         </div>
 
-                                                       
+
                                                         <div class="img-fit product-mobile " style="background-image: url('@item.HinhChinh'),url('/Content/images/default.png');">
                                                         </div>
                                                         <div class="mask-icon">
@@ -346,7 +343,7 @@
                                                                 </div>
                                                             }
                                                         }
-                                                       
+
                                                         <div class="img-fit product-mobile " style="background-image: url('@item.HinhChinh'),url('/Content/images/default.png');">
                                                         </div>
                                                         <div class="mask-icon">
@@ -398,6 +395,11 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="pagelist_custom">
+                            <span class="show-page-text">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</span>
+                        </div>
+
+                        @Html.PagedListPager(Model, trang => Url.Action("Details", new { id= ViewBag.Id, trang, sapxep = ViewBag.SapXep }))
                     }
                     else
                     {
@@ -471,6 +473,14 @@
 
         //link
         //cua-hang/loai-san-pham?id=DMC01&trang=1&sapxep=ten-A-Z
+        $('#basic').change(() => {
+            var sortValue = $('#basic').val()
 
+            if (sortValue == "mac-dinh") {
+                window.location.href = `/cua-hang/loai-san-pham?id=@ViewBag.Id`
+            } else {
+                window.location.href = `/cua-hang/loai-san-pham?id=@ViewBag.Id&sapxep=${sortValue}`
+            }
+        })
     </script>
 }

@@ -63,7 +63,7 @@
                             <div class="tab-content">
                                 <!--Start grid view-->
                                 <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
-                                    <div class="row">
+                                    <div class="row" id="products">
                                         @foreach (var item in Model)
                                         {
                                             <div class="col-lg-4 col-xl-4 col-md-6 col-sm-6 parent">
@@ -286,5 +286,6 @@
                 window.location.href = `/cua-hang?trang=1&sapxep=${sortValue}`
             }
         })
+
     </script>
 }
