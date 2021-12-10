@@ -15,7 +15,7 @@ namespace ChanhThu_Store.Controllers
         public ChanhThuStoreContext db = new ChanhThuStoreContext();
 
         // GET: TimKiem
-        public ActionResult Index(string tukhoa, string sapxep, int? trang)
+        public ActionResult Index(string tukhoa, string sapxep)
         {
             IQueryable<SanPham> sanpham = null;
             ViewBag.TimKiem = tukhoa;
@@ -23,7 +23,7 @@ namespace ChanhThu_Store.Controllers
 
             sanpham = db.SanPhams.Select(s => s);
 
-            if (!String.IsNullOrEmpty(tukhoa))
+            if (!String.IsNullOrEmpty(tukhoa) && tukhoa.Trim().Length > 0)
             {
                 tukhoa = tukhoa.Trim();
                 var tuKhoaUnsign = ConvertToUnSignNoneSpace(tukhoa);
@@ -41,7 +41,7 @@ namespace ChanhThu_Store.Controllers
             //trường hợp không nhập tìm kiếm
             else
             {
-                sanpham = sanpham.Where(s => s.TenSanPham.Contains(tukhoa));
+                sanpham = sanpham.Take(0);
             }
 
             //Sắp xếp
@@ -66,11 +66,12 @@ namespace ChanhThu_Store.Controllers
                     sanpham = sanpham.OrderByDescending(s => s.MaSanPham);
                     break;
             }
-            int pageSize = 9;
-            int pageNumber = (trang ?? 1);
+            //int pageSize = 9;
+            //int pageNumber = (trang ?? 1);
 
             ViewBag.listsp = sanpham;
-            return View(sanpham.ToPagedList(pageNumber, pageSize));
+            //return View(sanpham.ToPagedList(pageNumber, pageSize));
+            return View(sanpham.ToList());
         }
 
         //hàm đổi tiếng việt có dấu sang không dấu và loại bỏ tất cả khoảng trắng trong chuỗi

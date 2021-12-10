@@ -24,7 +24,7 @@ namespace ChanhThu_Store.Controllers
         }
 
         // GET: DanhMucCons/Details/5
-        public ActionResult Details(string id, string sapxep, int? trang)
+        public ActionResult Details(string id, string sapxep)
         {
             ViewBag.SapXep = sapxep;
             IQueryable<SanPham> listSanPham = null;
@@ -76,63 +76,14 @@ namespace ChanhThu_Store.Controllers
                     listSanPham = listSanPham.OrderByDescending(s => s.MaSanPham);
                     break;
             }
-            int pageSize = 9;
-            int pageNumber = (trang ?? 1);
             ViewBag.Id = id;
-            return View(listSanPham.ToPagedList(pageNumber, pageSize));
+            //int pageSize = 9;
+            //int pageNumber = (trang ?? 1);
+            //return View(listSanPham.ToPagedList(pageNumber, pageSize));
+            return View(listSanPham.ToList());
 
         }
 
-        //public ActionResult SanPhamTheoDMC(string id, int? trang, string sapxep)
-        //{
-        //    ViewBag.Sapxep = sapxep;
-
-        //    //ViewBag.SapxepTen = sapxep == "Ten";
-        //    //ViewBag.SapxepTenGiam = sapxep == "Ten_desc";
-        //    //ViewBag.SapxepGia = sapxep == "Gia";
-        //    //ViewBag.SapxepGiaGiam = sapxep == "Gia_desc";
-        //    IQueryable<SanPham> listSanPham = null;
-        //    var userID = User.Identity.GetUserId();
-
-        //    listSanPham = from s in db.SanPhams
-        //                  where s.MaDanhMucCon == id
-        //                  orderby s.MaSanPham
-        //                  select s;
-        //    foreach (SanPham item in listSanPham)
-        //    {
-        //        if (userID != null)
-        //        {
-        //            item.isLogin = true;
-
-        //            TuongTac find = db.TuongTacs.FirstOrDefault(p => p.MaSanPham == item.MaSanPham && p.MaKhachHang == userID);
-        //            if (find != null)
-        //                item.isLiked = true;
-        //        }
-        //    }
-        //    //sắp xếp 
-        //    switch (sapxep)
-        //    {
-        //        case "Ten":
-        //            listSanPham = listSanPham.OrderBy(s => s.TenSanPham);
-        //            break;
-        //        case "TenGiam":
-        //            listSanPham = listSanPham.OrderByDescending(s => s.TenSanPham);
-        //            break;
-        //        case "Gia":
-        //            listSanPham = listSanPham.OrderBy(s => s.Gia);
-        //            break;
-        //        case "GiaGiam":
-        //            listSanPham = listSanPham.OrderByDescending(s => s.Gia);
-        //            break;
-        //        default:
-        //            listSanPham = listSanPham.OrderBy(s => s.MaSanPham);
-        //            break;
-        //    }
-        //    //var articles = db.Articles.Include(a => a.Cetegory);
-        //    int pageSize = 5;
-        //    int pageNumber = (trang ?? 1);
-        //    return PartialView("SanPhamTheoDMC", listSanPham.ToPagedList(pageNumber, pageSize));
-        //}
 
         public ActionResult _BoSuTap_DM()
         {
