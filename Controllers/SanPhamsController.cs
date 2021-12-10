@@ -17,7 +17,7 @@ namespace ChanhThu_Store.Controllers
         private ChanhThuStoreContext db = new ChanhThuStoreContext();
 
         // GET: SanPhams
-        public ActionResult Index(string sapxep, int? trang)
+        public ActionResult Index(string sapxep)
         {
             ViewBag.SapXep = sapxep;
 
@@ -71,11 +71,12 @@ namespace ChanhThu_Store.Controllers
                     break;
             }
 
-            int pageSize = 9;
-            int pageNumber = (trang ?? 1);
+            //int pageSize = 9;
+            //int pageNumber = (trang ?? 1);
 
             ViewBag.listsp = listSanPhamMacDinh;
-            return PartialView(listSanPhamMacDinh.ToPagedList(pageNumber, pageSize));
+            //return PartialView(listSanPhamMacDinh.ToPagedList(pageNumber, pageSize));
+            return PartialView(listSanPhamMacDinh.ToList());
         }
 
         // GET: SanPhams/Details/5

@@ -3634,7 +3634,6 @@
     <Content Include="Areas\Admin\Views\SlideFootersAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\VouchersAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\VouchersAdmin\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\VouchersAdmin\Details.cshtml" />
     <Content Include="Areas\Admin\Views\VouchersAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\VouchersAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\HoaDonsAdmin\InHoaDon.cshtml" />

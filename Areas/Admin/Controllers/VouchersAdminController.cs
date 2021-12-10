@@ -88,19 +88,19 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         }
 
         // GET: Admin/VouchersAdmin/Details/5
-        public ActionResult Details(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Voucher voucher = db.Vouchers.Find(id);
-            if (voucher == null)
-            {
-                return HttpNotFound();
-            }
-            return View(voucher);
-        }
+        //public ActionResult Details(string id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Voucher voucher = db.Vouchers.Find(id);
+        //    if (voucher == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(voucher);
+        //}
 
         // GET: Admin/VouchersAdmin/Create
         public ActionResult Create()

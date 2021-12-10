@@ -16,7 +16,7 @@
         */
         var defaults = {
             perPage: 9,              //how many items per page
-            autoScroll: true,           //boolean: scroll to top of the container if a user clicks on a pagination link
+            autoScroll: false,           //boolean: scroll to top of the container if a user clicks on a pagination link
             scope: '',             //which elements to target
             paginatePosition: ['bottom'],     //defines where the pagination will be displayed
             containerTag: 'nav',

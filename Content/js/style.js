@@ -359,8 +359,13 @@ $(window).scroll(function () {
     if (scrollVal >= 52) {
         $('.logo').css("width", "100px");
         //$('.navbar').css("background","#fff")
+        $('.main-map').css("margin-top", "180px")
+        $('.shop-detail-box-main').css("margin-top", "120px")
+
     } else {
         $('.logo').css("width", currentWidth);
+        $('.main-map').css("margin-top", "10px")
+        $('.shop-detail-box-main').css("margin-top", "10px")
     }
 })
 
@@ -548,3 +553,13 @@ $('#basic option').each((i, e) => {
         $(`#basic option[value="${selectedSort}"]`).attr("selected", "")
     }
 })
+
+// phân trang sản phẩm
+$('#grid-products').paginate()
+
+//tự động scroll về vị trí ô sắp xếp khi click chuyển trang sản phẩm
+$('.product-categorie-box .page').on("click", () => {
+    window.scrollTo({ top: 100, behavior: 'smooth' });
+})
+
+/*$('.list-product').paginate()*/
