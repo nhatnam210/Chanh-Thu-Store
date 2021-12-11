@@ -223,7 +223,6 @@
     <Compile Include="Models\Banner.cs" />
     <Compile Include="Models\BinhLuan.cs" />
     <Compile Include="Models\BUS\BannerBUS.cs" />
-    <Compile Include="Models\BUS\DanhMucBUS.cs" />
     <Compile Include="Models\BUS\SliderBUS.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\ChanhThuStoreContext.cs" />
@@ -3707,8 +3706,8 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Main_Layout.cshtml" />
-    <Content Include="Views\Shared\_DanhMucCon_DM.cshtml" />
-    <Content Include="Views\Shared\_PhanLoaiDanhMuc.cshtml" />
+    <Content Include="Views\Shared\DanhSachDMC.cshtml" />
+    <Content Include="Views\Shared\DanhSachDM.cshtml" />
     <Content Include="Views\SanPhams\Details.cshtml" />
     <Content Include="Views\SanPhams\Index.cshtml" />
     <Content Include="Views\DanhMucCons\Details.cshtml" />
@@ -3726,7 +3725,7 @@
     <Content Include="Views\Shared\_Slider_footer.cshtml" />
     <Content Include="Views\Account\YeuThich.cshtml" />
     <Content Include="Views\DanhMucCons\SanPhamTheoDMC.cshtml" />
-    <Content Include="Views\DanhMucCons\_BoSuTap_DM.cshtml" />
+    <Content Include="Views\DanhMucCons\TenBoSuTap.cshtml" />
     <Content Include="Views\Account\SuaThongTinCaNhan.cshtml" />
     <Content Include="Views\TimKiem\Index.cshtml" />
     <Content Include="Views\Account\LichSuMuaHang.cshtml" />
@@ -3736,7 +3735,6 @@
     <Content Include="Views\Account\_DoiVoucher.cshtml" />
     <Content Include="Views\Vouchers\LayDiemUser.cshtml" />
     <Content Include="Views\Vouchers\DanhSachVoucher.cshtml" />
-    <Content Include="Views\Shared\DemSP_DMC.cshtml" />
     <Content Include="Views\Cart\VoucherTheoUser.cshtml" />
     <Content Include="Views\SanPhams\ShowDanhSachBinhLuan.cshtml" />
     <Content Include="Views\Account\GetAvatarLogin.cshtml" />

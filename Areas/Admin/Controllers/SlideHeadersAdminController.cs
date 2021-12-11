@@ -17,7 +17,7 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         // GET: Admin/SlideHeadersAdmin
         public ActionResult Index()
         {
-            return View(db.SlideHeaders.ToList());
+            return View(db.SlideHeaders.OrderByDescending(s => s.Id).ToList());
         }
 
         // GET: Admin/SlideHeadersAdmin/Details/5

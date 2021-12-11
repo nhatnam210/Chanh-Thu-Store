@@ -85,7 +85,7 @@
 .pagination > .disabled > a:focus {
   color: #999999;
   cursor: not-allowed;
-  background-color: #ffffff;
+  background-color: #333;
   border-color: #dddddd;
 }
 

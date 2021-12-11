@@ -25,21 +25,21 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="banner-frame">
-                    <img class="img-fluid full-radius" src="@Model.HinhMinhHoa" alt="" />
+                    <img class="img-fluid full-radius shadow" src="@Model.HinhMinhHoa" alt="" />
                 </div>
             </div>
             <div class="col-lg-6 ">
                 <h2 class="noo-sh-title-top ">Chúng tôi là <span>@Model.TenCuaHang</span></h2>
-                <p class="text-justify">
+                <p class="text-justify introduce-shop" id="introduce-shop">
                     @Model.LoiGioiThieu
                 </p>
-                <a class="btn hvr-hover max-width-mobile show-more-introduce" href="#">Xem thêm</a>
+                <a class="btn hvr-hover max-width-mobile show-more-introduce" id="view-more-intro">Xem thêm</a>
             </div>
         </div>
         <div class="row my-5">
-            <div class="col-sm-6 col-lg-4" >
+            <div class="col-sm-6 col-lg-4">
                 <div class="service-block-inner" data-aos="fade-up">
-                    <h3 data-aos="fade-up" data-aos-delay="100" data-aos-easing="linear" >Đáng tin cậy</h3>
+                    <h3 data-aos="fade-up" data-aos-delay="100" data-aos-easing="linear">Đáng tin cậy</h3>
                     <p data-aos="fade-up" data-aos-delay="200" data-aos-easing="linear">
                         Chúng tôi luôn đảm bảo hàng chất lượng, rõ nguồn gốc và xuất xứ, giá cả phù hợp với mọi
                         người.
@@ -175,3 +175,19 @@
     </div>
 </div>
 <!-- End About Page -->
+@section scripts{
+    <script>
+        var check = true;
+        $('#view-more-intro').click(() => {
+            check = !check;
+            $('#view-more-intro').html("");
+            if (check) {
+                $('#introduce-shop').addClass('show');
+                $('#view-more-intro').html("Ẩn bớt");
+            } else {
+                $('#introduce-shop').removeClass('show');
+                $('#view-more-intro').html("Xem thêm");
+            }
+        })
+    </script>
+}

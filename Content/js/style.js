@@ -544,7 +544,7 @@ Paging and sort Jquery
 
 
 /* ..............................................
-Hiển thị trạng thái sắp xếp hiện tại cuar option
+Hiển thị trạng thái sắp xếp hiện tại của option
  ................................................. */
 
 $('#basic option').each((i, e) => {
@@ -562,4 +562,34 @@ $('.product-categorie-box .page').on("click", () => {
     window.scrollTo({ top: 100, behavior: 'smooth' });
 })
 
-/*$('.list-product').paginate()*/
+/* ..............................................
+Yêu thích bên ngoài
+ ................................................. */
+function YeuThichNgoai(option = 1) {
+    $(".js-tongle-like").each((i, e) => {
+        $(e).click(() => {
+            var SP = $(e).attr("product-data");
+            $.post("/api/yeuthich", { MaSanPham: SP })
+                .done(function (result) {
+                    if (result == "cancel") {
+                        showNotify('Đã xóa khỏi Yêu thích!', 'heart-dislike-outline')
+                        $(e).html('')
+                        $(e).append(`  <i class="far fa-heart not-like-heart-icon" ></i>`)
+                        if (option == 1) {
+                            $(`.type-lb[value="${SP}"]`).removeClass('show')
+                        }
+                    } else {
+                        showNotify('Đã thêm vào Yêu thích!', 'heart-outline')
+                        $(e).html('')
+                        $(e).append(`<i class="fas fa-heart liked-heart-icon"></i>`)
+                        if (option == 1) {
+                            $(`.type-lb[value="${SP}"]`).addClass('show')
+                        }
+                    }
+                })
+                .fail(function () {
+                    alert("Xảy ra lỗi!");
+                });
+        })
+    })
+}

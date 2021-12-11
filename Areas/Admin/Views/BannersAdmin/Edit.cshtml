@@ -18,7 +18,14 @@
         <span class="label-admin">Hình Banner</span>
 
         <div class="col-md-12">
-            @Html.EditorFor(model => model.HinhBanner, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="row">
+                <div class="col-md-9 mb-1">
+                    <input id="linkImg" class="form-control" name="HinhBanner" value="@Model.HinhBanner" />
+                </div>
+                <div class="col-md-3 mb-1">
+                    <a class="btn btn-outline-success d-flex flex-1 justify-content-center min-width-100" id="selectImg">Chọn ảnh</a>
+                </div>
+            </div>
             @Html.ValidationMessageFor(model => model.HinhBanner, "", new { @class = "text-danger" })
         </div>
 

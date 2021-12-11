@@ -243,6 +243,18 @@ namespace ChanhThu_Store.Controllers
             return PartialView("VoucherTheoUser", listVoucher);
         }
 
+        public ActionResult DemSLVCUser(string mavoucher)
+        {
+            var userID = User.Identity.GetUserId();
+
+            var SLVCUser = db.ChiTietVouchers
+                            .FirstOrDefault(v => v.MaVoucher == mavoucher && v.MaKhachHang == userID)
+                            .SoLuong;
+
+            return Content(SLVCUser.ToString());
+            ;
+        }
+
         public ActionResult ThongTinKhachDatHang()
         {
             var userID = User.Identity.GetUserId();

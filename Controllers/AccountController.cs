@@ -89,26 +89,38 @@ namespace ChanhThu_Store.Controllers
         {
             return View();
         }
+
         [Authorize]
-        public ActionResult YeuThich(int? page)
+        public ActionResult YeuThich()
         {
-            ApplicationUser currentUser = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>()
-                .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            var listFavorites = db.TuongTacs.Where(p => p.MaKhachHang == currentUser.Id).ToList();
+            //ApplicationUser currentUser = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>()
+            //    .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+
+            var userID = User.Identity.GetUserId();
+
+            var listFavorites = db.TuongTacs.Where(p => p.MaKhachHang == userID).ToList();
             var product = new List<SanPham>();
-            foreach (TuongTac temp in listFavorites)
+            foreach (TuongTac item in listFavorites)
             {
-                SanPham sabpham = temp.SanPham;
+                SanPham sabpham = item.SanPham;
 
                 product.Add(sabpham);
             }
 
-            //var articles = db.Articles.Include(a => a.Cetegory);
+            /*Check yêu thích*/
+            foreach (SanPham item in product)
+            {
+                if (userID != null)
+                {
+                    item.isLogin = true;
 
-            int pageSize = 6;
+                    TuongTac find = db.TuongTacs.FirstOrDefault(p => p.MaSanPham == item.MaSanPham && p.MaKhachHang == userID);
+                    if (find != null)
+                        item.isLiked = true;
+                }
+            }
 
-            int pageNumber = (page ?? 1);
-            return View(product.ToPagedList(pageNumber, pageSize));
+            return View(product.ToList());
 
         }
         [Authorize]

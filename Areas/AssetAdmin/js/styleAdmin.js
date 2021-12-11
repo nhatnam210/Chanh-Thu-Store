@@ -20,3 +20,28 @@ if (linkNavbarMenuAdmin) {
         })
     }
 }
+
+$('#selectImg').on('click', function (e) {
+    e.preventDefault();
+    var finder = new CKFinder();
+    finder.selectActionFunction = function (fileUrl) {
+        $('#linkImg').val(fileUrl);
+    };
+    finder.popup();
+})
+$('#selectImg1').on('click', function (e) {
+    e.preventDefault();
+    var finder = new CKFinder();
+    finder.selectActionFunction = function (fileUrl) {
+        $('#linkImg1').val(fileUrl);
+    };
+    finder.popup();
+})
+$('#selectImg2').on('click', function (e) {
+    e.preventDefault();
+    var finder = new CKFinder();
+    finder.selectActionFunction = function (fileUrl) {
+        $('#linkImg2').val(fileUrl);
+    };
+    finder.popup();
+})

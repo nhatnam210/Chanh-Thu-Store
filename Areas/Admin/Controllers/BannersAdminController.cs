@@ -17,7 +17,7 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         // GET: Admin/BannersAdmin
         public ActionResult Index()
         {
-            return View(db.Banners.ToList());
+            return View(db.Banners.OrderByDescending(s=>s.Id).ToList());
         }
 
         // GET: Admin/BannersAdmin/Details/5

@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using PagedList;
 using System.Text.RegularExpressions;
 using System.Text;
+using Microsoft.AspNet.Identity;
 
 namespace ChanhThu_Store.Controllers
 {
@@ -18,6 +19,7 @@ namespace ChanhThu_Store.Controllers
         public ActionResult Index(string tukhoa, string sapxep)
         {
             IQueryable<SanPham> sanpham = null;
+            var userID = User.Identity.GetUserId();
             ViewBag.TimKiem = tukhoa;
             ViewBag.SapXep = sapxep;
 
@@ -42,6 +44,19 @@ namespace ChanhThu_Store.Controllers
             else
             {
                 sanpham = sanpham.Take(0);
+            }
+
+            /*Check yêu thích*/
+            foreach (SanPham item in sanpham)
+            {
+                if (userID != null)
+                {
+                    item.isLogin = true;
+
+                    TuongTac find = db.TuongTacs.FirstOrDefault(p => p.MaSanPham == item.MaSanPham && p.MaKhachHang == userID);
+                    if (find != null)
+                        item.isLiked = true;
+                }
             }
 
             //Sắp xếp

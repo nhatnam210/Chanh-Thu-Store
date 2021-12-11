@@ -234,3 +234,16 @@ a.text-black-primary {
 .word-break {
     word-break: break-all;
 }
+
+.slider-admin__img {
+    width: 300px;
+    object-fit: contain;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.min-width-100 {
+    min-width: 100px;
+}

@@ -139,6 +139,12 @@
                                     </div>
                                 }
                             }
+                            else
+                            {
+                                <div class="cart-and-bay-btn max-btn">
+                                    <a href="/dang-nhap" data-product-id="@Model.MaSanPham" class="btn user-not-like "><i class="far fa-heart"></i>Yêu thích</a>
+                                </div>
+                            }
                         </div>
                     </form>
                 </div>
@@ -228,42 +234,39 @@
         /* ..............................................
         Yêu thích
         ................................................ */
-        $(document).ready(function () {
-            $(".js-tongle-yeuthich").click(function (e) {
-                var luotyeuthich = document.getElementById('like_num__value')
-                var curentLike = parseInt(luotyeuthich.innerText)
-                var element = $(e.target);
-                $.post("/api/yeuthich", { MaSanPham: element.attr("data-product-id") })
-                    .done(function (result) {
-                        if (result == "cancel") {
-                            showNotify('Đã xóa khỏi Yêu thích!', 'heart-dislike-outline')
-                            element
-                                .removeClass('user-liked')
-                                .addClass('user-not-like')
-                                .text("")
-                                .append(`<i class="far fa-heart"></i>Yêu thích`)
+        $(".js-tongle-yeuthich").click(function (e) {
+            var luotyeuthich = document.getElementById('like_num__value')
+            var curentLike = parseInt(luotyeuthich.innerText)
+            var element = $(e.target);
+            $.post("/api/yeuthich", { MaSanPham: element.attr("data-product-id") })
+                .done(function (result) {
+                    if (result == "cancel") {
+                        showNotify('Đã xóa khỏi Yêu thích!', 'heart-dislike-outline')
+                        element
+                            .removeClass('user-liked')
+                            .addClass('user-not-like')
+                            .text("")
+                            .append(`<i class="far fa-heart"></i>Yêu thích`)
 
-                            curentLike--;
-                            curentLike = curentLike < 0 ? 0 : curentLike;
-                            luotyeuthich.innerText = (curentLike).toString();
+                        curentLike--;
+                        curentLike = curentLike < 0 ? 0 : curentLike;
+                        luotyeuthich.innerText = (curentLike).toString();
 
-                        } else {
-                            showNotify('Đã thêm vào Yêu thích!', 'heart-outline')
-                            element
-                                .removeClass('user-not-like')
-                                .addClass('user-liked')
-                                .text("")
-                                .append(`<i class="fas fa-heart"></i>Đã thích`)
+                    } else {
+                        showNotify('Đã thêm vào Yêu thích!', 'heart-outline')
+                        element
+                            .removeClass('user-not-like')
+                            .addClass('user-liked')
+                            .text("")
+                            .append(`<i class="fas fa-heart"></i>Đã thích`)
 
-                            curentLike++;
-                            luotyeuthich.innerText = (curentLike).toString();
-                        }
-                    }).fail(function () {
-                        alert("Xảy ra lỗi khi yêu thích!");
-                    });
-            });
+                        curentLike++;
+                        luotyeuthich.innerText = (curentLike).toString();
+                    }
+                }).fail(function () {
+                    alert("Xảy ra lỗi khi yêu thích!");
+                });
         });
-
 
         /* ..............................................
         Xem thêm và bớt comment

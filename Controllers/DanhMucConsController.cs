@@ -84,25 +84,47 @@ namespace ChanhThu_Store.Controllers
 
         }
 
+        public ActionResult DanhSachDMC(string id)
+        {
+            var listDanhMucCon = db.DanhMucCons
+                                .Where(d => d.MaDanhMuc == id)
+                                .Select(d => d);
 
-        public ActionResult _BoSuTap_DM()
+            foreach (var item in listDanhMucCon)
+            {
+                var soSP = db.SanPhams
+                                .Where(s => s.MaDanhMucCon == item.MaDanhMucCon)
+                                .Count();
+                item.soSP = soSP;
+            }
+            return PartialView(listDanhMucCon);
+        }
+
+        public ActionResult DanhSachDM()
+        {
+            var listDanhMuc = db.DanhMucs
+                                .OrderBy(d=>d.MaDanhMuc)
+                                .Select(d => d);
+
+            foreach (var item in listDanhMuc)
+            {
+                var soDMC = db.DanhMucCons
+                                .Where(s => s.MaDanhMuc == item.MaDanhMuc)
+                                .Count();
+                item.soDMC = soDMC;
+            }
+            return PartialView(listDanhMuc);
+        }
+
+
+        public ActionResult TenBoSuTap()
         {
             IQueryable<DanhMuc> listDanhMuc = null;
 
             listDanhMuc = from d in db.DanhMucs
                           orderby d.MaDanhMuc
                           select d;
-            return PartialView("_BoSuTap_DM", listDanhMuc);
-        }
-
-        public ActionResult DemSP_DMC(String id)
-        {
-            IQueryable<SanPham> listSanPham = null;
-
-            listSanPham = (from s in db.SanPhams
-                           where s.MaDanhMucCon == id && s.SoLuongTonKho > 0
-                           select s).Distinct();
-            return PartialView("DemSP_DMC", listSanPham);
+            return PartialView(listDanhMuc);
         }
 
         protected override void Dispose(bool disposing)

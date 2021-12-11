@@ -72,10 +72,22 @@
                                                         {
                                                             if (item.isLiked)
                                                             {
-                                                                <div class="type-lb" data-id="@item.MaSanPham">
+                                                                <div class="type-lb show" value="@item.MaSanPham">
                                                                     <p class="like bottom-left-radius text-capitalize">Đã thích</p>
                                                                 </div>
                                                             }
+                                                            else
+                                                            {
+                                                                <div class="type-lb" value="@item.MaSanPham">
+                                                                    <p class="like bottom-left-radius text-capitalize">Đã thích</p>
+                                                                </div>
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="type-lb" value="@item.MaSanPham">
+                                                                <p class="like bottom-left-radius text-capitalize">Đã thích</p>
+                                                            </div>
                                                         }
 
                                                         <div class="img-fit product-mobile " style="background-image: url('@item.HinhChinh'),url('/Content/images/default.png');">
@@ -149,20 +161,22 @@
                             <button type="submit"> <i class="fa fa-search"></i> </button>
                         </form>
                     </div>
-                    @Html.Partial("_PhanLoaiDanhMuc", ChanhThu_Store.Models.BUS.DanhMucBUS.DanhSachDM())
-
+                    @*@Html.Partial("_PhanLoaiDanhMuc", ChanhThu_Store.Models.BUS.DanhMucBUS.DanhSachDM())*@
+                    @{
+                        Html.RenderAction("DanhSachDM", "DanhMucCons");
+                    }
                     <!-- <div class="filter-price-left">
-                        <div class="title-left">
-                            <h3>Price</h3>
-                        </div>
-                        <div class="price-box-slider">
-                            <div id="slider-range"></div>
-                            <p>
-                                <input type="text" id="amount" readonly style="border:0; color:#fbb714; font-weight:bold;">
-                                <button class="btn hvr-hover" type="submit">Filter</button>
-                            </p>
-                        </div>
-                    </div> -->
+        <div class="title-left">
+            <h3>Price</h3>
+        </div>
+        <div class="price-box-slider">
+            <div id="slider-range"></div>
+            <p>
+                <input type="text" id="amount" readonly style="border:0; color:#fbb714; font-weight:bold;">
+                <button class="btn hvr-hover" type="submit">Filter</button>
+            </p>
+        </div>
+    </div> -->
                 </div>
             </div>
         </div>
@@ -171,36 +185,9 @@
 <!-- End Shop Page -->
 @section scripts{
     <script>
-        //var listLiked = document.querySelectorAll('.js-tongle-like')
-        //console.log(listLiked)
-        //Array.from(listLiked).forEach((item) => {
-        //    console.log(item)
-        //})
-        $(document).ready(function () {
-            $(".js-tongle-like").click(function (e) {
-                var element = $(e.target);
-                $.post("/api/yeuthich", { MaSanPham: element.attr("product-data") })
-                    .done(function (result) {
-                        if (result == "cancel") {
-                            alert("Thành công!");
-                            showNotify('Đã xóa khỏi Yêu thích!', 'heart-dislike-outline', timeShowNotify)
-                            element
-                                //.text("")
-                                .append(` <i class="fas fa-heart not-like-heart-icon"></i>`)
 
-                        } else {
-                            alert("Xóa!");
-                            showNotify('Đã thêm vào Yêu thích!', 'heart-outline', timeShowNotify)
-                            element
-                                //.text("")
-                                .append(` <i class="fas fa-heart liked-heart-icon"></i>`)
-                        }
-                    })
-                    .fail(function () {
-                        alert("Xảy ra lỗi!");
-                    });
-            });
-        });
+        YeuThichNgoai();
+
        @*/var products = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.listsp));
        /* PagingSort()*/*@
         window.scrollTo({ top: 100, behavior: 'smooth' });

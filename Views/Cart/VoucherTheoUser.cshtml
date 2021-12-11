@@ -15,7 +15,7 @@
 
                 <div class="custom-control custom-radio">
                     <input checked="checked" id="voucher__@i" name="mavoucher" value="0" data-voucher="0" class="custom-control-input" type="radio">
-                    <label class="custom-control-label" for="voucher__@i">Không dùng</label> <span class="float-right font-weight-bold">0%</span>
+                    <label class="custom-control-label" for="voucher__@i">Không dùng</label> <span class="float-right font-weight-bold text-color">0%</span>
                 </div>
                 <div class="ml-4 mb-2 small voucher-payment-group"></div>
                 foreach (var item in Model)
@@ -25,16 +25,19 @@
                     DateTime ngayhientai = Convert.ToDateTime(thisDay);
                     int chenhlech = (ngayhientai - hansudung).Days;
                     var chenhlechAbs = Math.Abs(chenhlech);
-                    <div class="custom-control custom-radio">
+                    <div class="custom-control custom-radio payment">
                         <input id="voucher__@i" name="mavoucher" value="@item.MaVoucher" data-voucher="@item.GiaTriGiam" class="custom-control-input" type="radio">
-                        <label class="custom-control-label" for="voucher__@i">@item.TenVoucher</label><span class="float-right font-weight-bold">@item.GiaTriGiam%</span>
-                    </div>            
+                        <label class="custom-control-label" for="voucher__@i">@item.TenVoucher</label>
+                        <span class="float-right font-weight-bold text-color">@item.GiaTriGiam%</span>
+                    </div>
                     //Sắp hết
                     if (chenhlech == 0)
                     {
                         <div class="ml-4 mb-2 small">
-                            <span class="font-weight-bold">*HSD:</span>
+                            <span class="font-weight-bold text-uppercase">*HSD:</span>
                             <span>@item.HanSuDung.ToString("d", VN)</span>
+                            <span class="font-weight-bold text-uppercase">SL:</span>
+                            <span value="@item.MaVoucher" class="voucher-user__quantity text-red"></span>
                             <span class="font-italic text-red float-right voucher__day-count-down">(Ngày mai hết hạn)</span>
                         </div>
                     }
@@ -43,8 +46,10 @@
                         if (chenhlech == -1)
                         {
                             <div class="ml-4 mb-2 small">
-                                <span class="font-weight-bold">*HSD:</span>
+                                <span class="font-weight-bold text-uppercase">*HSD:</span>
                                 <span>@item.HanSuDung.ToString("d", VN)</span>
+                                <span class="font-weight-bold text-uppercase">SL:</span>
+                                <span value="@item.MaVoucher" class="voucher-user__quantity text-red"></span>
                                 <span class="font-italic text-red float-right voucher__day-count-down">(Còn @chenhlechAbs ngày)</span>
                             </div>
                         }
@@ -52,7 +57,9 @@
                         {
                             <div class="ml-4 mb-2 small">
                                 <span class="font-weight-bold">*HSD:</span>
-                                <span>@item.HanSuDung.ToString("d", VN)</span>
+                                <span>@item.HanSuDung.ToString("d", VN)</span> -
+                                <span class="font-weight-bold text-uppercase">SL:</span>
+                                <span value="@item.MaVoucher" class="voucher-user__quantity text-red"></span>
                                 <span class="font-italic float-right voucher__day-count-down">(Còn @chenhlechAbs ngày)</span>
                             </div>
                         }
@@ -64,16 +71,20 @@
                         if (ngay > 0)
                         {
                             <div class="ml-4 mb-2 small">
-                                <span class="font-weight-bold">*HSD:</span>
+                                <span class="font-weight-bold text-uppercase">*HSD:</span>
                                 <span> @item.HanSuDung.ToString("d", VN)</span>
+                                <span class="font-weight-bold text-uppercase">SL:</span>
+                                <span value="@item.MaVoucher" class="voucher-user__quantity text-red"></span>
                                 <span class="font-italic float-right voucher__day-count-down">(Còn @thang tháng @ngay ngày)</span>
                             </div>
                         }
                         else
                         {
                             <div class="ml-4 mb-2 small">
-                                <span class="font-weight-bold">*HSD:</span>
+                                <span class="font-weight-bold text-uppercase">*HSD:</span>
                                 <span> @item.HanSuDung.ToString("d", VN)</span>
+                                <span class="font-weight-bold text-uppercase">SL:</span>
+                                <span value="@item.MaVoucher" class="voucher-user__quantity text-red"></span>
                                 <span class="font-italic float-right voucher__day-count-down">(Còn @thang tháng)</span>
                             </div>
                         }
@@ -81,8 +92,10 @@
                     else
                     {
                         <div class="ml-4 mb-2 small">
-                            <span class="font-weight-bold">*HSD:</span>
+                            <span class="font-weight-bold text-uppercase">*HSD:</span>
                             <span> @item.HanSuDung.ToString("d", VN)</span>
+                            <span class="font-weight-bold text-uppercase">SL:</span>
+                            <span value="@item.MaVoucher" class="voucher-user__quantity text-red"></span>
                         </div>
                     }
                 }
@@ -94,3 +107,19 @@
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script>
+    $('.voucher-user__quantity').each((i, e) =>{
+        var maVC = $(e).attr("value")
+        $.ajax({
+            url: "/Cart/DemSLVCUser",
+            data: { mavoucher: maVC },
+            success: (res) => {
+                $(e).html(`(${res})`)
+            },
+            error: () => {
+                alert("Xảy ra lỗi voucher!")
+            }
+        })
+    })
+</script>
