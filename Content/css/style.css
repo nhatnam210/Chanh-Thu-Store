@@ -81,7 +81,7 @@ h6 {
     padding: 0 0 10px 0;
     font-weight: normal;
     line-height: 120% !important;
-    color: #1f1f1f;
+    color: #222;
     margin: 0;
 }
 
@@ -281,7 +281,9 @@ p {
 .bootstrap-select.btn-group .dropdown-menu {
     border: none;
     padding: 0px;
-    border-radius: 0px;
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
+    border-radius: var(--btn-corner-radius);
+    z-index: 9;
 }
 
 .right-phone-box {
@@ -319,7 +321,7 @@ p {
     font-size: 13px;
     padding: 2px 15px;
     font-family: "Poppins", sans-serif;
-    margin-top: 14px;
+    /*margin-top: 14px;*/
 }
 
     .offer-box li {
@@ -1289,7 +1291,12 @@ ul.cart-list > li.total > .btn:hover {
     top: 0px;
     right: 0px;
     z-index: 8;
+    display: none;
 }
+
+    .type-lb.show {
+        display: block;
+    }
 
     .type-lb .like {
         background: var(--red);
@@ -1350,7 +1357,7 @@ ul.cart-list > li.total > .btn:hover {
         padding: 4px;
         display: inline-block;
         background: var(--primary-color);
-        color: #000;
+        color: #222;
         font-weight: 600;
         margin-bottom: 5px;
     }
@@ -1523,7 +1530,7 @@ ul.cart-list > li.total > .btn:hover {
 
 .blog-content {
     position: relative;
-    height: 200px;
+    height: 180px;
 }
 
 .title-blog {
@@ -1558,15 +1565,16 @@ ul.cart-list > li.total > .btn:hover {
 }
 
     .option-blog li {
-        display: inline-block;
+        /*display: inline-block;*/
+        display: block;
     }
 
         .option-blog li a {
-            background: #222;
+            background:rgba(0 0 0 /80%);
             display: inline-block;
             font-size: 18px;
             color: #ffffff;
-            width: 34px;
+            width: 100%;
             height: 34px;
             text-align: center;
             line-height: 34px;
@@ -3770,7 +3778,7 @@ ul.cart-list > li.total > .btn:hover {
 .view-row-content h4 {
     --column-num: 2;
     --height: 20px;
-    font-size: calc(var(--height) - 4px);
+    font-size: calc(var(--height) - 5px);
 }
 
 .title-blog h4 {
@@ -4050,8 +4058,20 @@ ul.cart-list > li.total > .btn:hover {
         }
 
 .cart-list .photo {
-    background-color: var(--second-color);
+    background: var(--primary-color);
 }
+
+/*    .cart-list .photo:before {
+        content: '';
+        position:absolute;
+        width: 100%;
+        height: 100%;
+        top:0;
+        left: 0;
+        background: var(--primary-color);
+        opacity: 0.7;
+        filter: brightness(1.1);
+    }*/
 
     .cart-list .photo:hover {
         filter: brightness(0.8);
@@ -4133,7 +4153,6 @@ ul.cart-list > li.total > .btn:hover {
     margin-left: 5px;
     font-weight: 500;
     color: var(--gray) !important;
-    text-transform: capitalize;
     font-size: 13px;
 }
 
@@ -4158,8 +4177,9 @@ ul.cart-list > li.total > .btn:hover {
 
 .custom-control-label {
     cursor: pointer !important;
-    color: var(--text-color);
+    color: var(--title-color);
     font-weight: 600;
+    word-break:break-all;
 }
 
 /*slider buton*/
@@ -4571,6 +4591,11 @@ textarea {
     padding-right: 5px;
 }
 
+.custom-radio.payment {
+    display: flex;
+    justify-content: space-between;
+}
+/*end*/
 .showmore {
     display: flex;
     justify-content: center;
@@ -5135,3 +5160,18 @@ textarea {
     align-items: center;
     justify-content: center;
 }
+
+.cart-thumb {
+    object-fit: cover;
+    border-radius: var(--img-corner-radius);
+}
+
+.introduce-shop {
+    max-height: 210px;
+    overflow: hidden;
+    transition: all ease-in-out .5s;
+}
+
+    .introduce-shop.show {
+        max-height: 100%;
+    }

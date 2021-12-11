@@ -46,6 +46,20 @@
         </div>
     </div>
     <div class="form-group">
+        <span class="label-admin">Hình minh họa</span>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-9 mb-1">
+                    <input id="linkImg" class="form-control" name="HinhMinhHoa" value="@Model.HinhMinhHoa" />
+                </div>
+                <div class="col-md-3 mb-1">
+                    <a class="btn btn-outline-success d-flex flex-1 justify-content-center min-width-100" id="selectImg">Chọn ảnh</a>
+                </div>
+            </div>
+            @Html.ValidationMessageFor(model => model.HinhMinhHoa, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
         <span class="label-admin">Ngày thành lập</span>
         <div class="col-md-12">
             <input class="form-control" name="NgayThanhLap" type="text" value="@Model.NgayThanhLap.ToString("d", VN)">
@@ -73,13 +87,6 @@
             @Html.ValidationMessageFor(model => model.LoiGioiThieu, "", new { @class = "text-danger" })
         </div>
     </div>
-    <div class="form-group">
-        <span class="label-admin">Hình minh họa</span>
-        <div class="col-md-12">
-            @Html.EditorFor(model => model.HinhMinhHoa, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.HinhMinhHoa, "", new { @class = "text-danger" })
-        </div>
-    </div>
     <div class="form-group col-md-12">
         <div class="col-md-offset-2 btn-touch">
             <input type="submit" value="Cập nhật" class="btn btn-warning" />
@@ -90,4 +97,15 @@
     </div>
 </div>
 }
-
+@section jsCKFinder{
+    @*<script>
+        $('#selectImg').on('click', function (e) {
+            e.preventDefault();
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $('#linkImg').val(fileUrl);
+            };
+            finder.popup();
+        })
+    </script>*@
+}

@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Main_Admin.cshtml";
 }
 @section jsCKFinder{
-    <script>
+    @*<script>
         $('#selectImg').on('click', function (e) {
             e.preventDefault();
             var finder = new CKFinder();
@@ -30,7 +30,7 @@
             };
             finder.popup();
         })
-    </script>
+    </script>*@
  }
 
 @using (Html.BeginForm("Create", "SanPhamsAdmin", FormMethod.Post, new { @class = "form" }))
@@ -65,27 +65,42 @@
     <div class="form-group">
         <span class="label-admin">Hình trưng bày</span>
         <div class="col-md-12">
-            @*@Html.TextBoxFor(model => model.HinhChinh, new { htmlAttributes = new { @class = "form-control", @readonly = moduleEditModel.Content.ReadOnly }, id= "linkImg" })*@
-            <input id="linkImg" class="form-control" name="HinhChinh" value="" readonly="readonly" />
-            <a href="#" id="selectImg">Chọn ảnh</a>
+            <div class="row">
+                <div class="col-md-9 mb-1">
+                    <input id="linkImg" class="form-control" name="HinhChinh" value="" />
+                </div>
+                <div class="col-md-3 mb-1">
+                    <a class="btn btn-outline-success d-flex flex-1 justify-content-center min-width-100" id="selectImg">Chọn ảnh</a>
+                </div>
+            </div>
             @Html.ValidationMessageFor(model => model.HinhChinh, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
         <span class="label-admin">Hình phụ 1</span>
         <div class="col-md-12">
-            @*@Html.TextBoxFor(model => model.Hinh1, new { htmlAttributes = new { @class = "form-control" }, id = "linkImg1" })*@
-            <input id="linkImg1" class="form-control" name="Hinh1" value="" readonly="readonly" />
-            <a href="#" id="selectImg1">Chọn ảnh</a>
+            <div class="row">
+                <div class="col-md-9 mb-1">
+                    <input id="linkImg1" class="form-control" name="Hinh1" value="" />
+                </div>
+                <div class="col-md-3 mb-1">
+                    <a class="btn btn-outline-success d-flex flex-1 justify-content-center min-width-100" id="selectImg1">Chọn ảnh</a>
+                </div>
+            </div> 
             @Html.ValidationMessageFor(model => model.Hinh1, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
         <span class="label-admin">Hình phụ 2</span>
         <div class="col-md-12">
-            @*@Html.TextBoxFor(model => model.Hinh2, new { htmlAttributes = new { @class = "form-control" }, id = "linkImg2" })*@
-            <input id="linkImg2" class="form-control" name="Hinh2" value="" readonly="readonly" />
-            <a href="#" id="selectImg2">Chọn ảnh</a>
+            <div class="row">
+                <div class="col-md-9 mb-1">
+                    <input id="linkImg2" class="form-control" name="Hinh2" value="" />
+                </div>
+                <div class="col-md-3 mb-1">
+                    <a class="btn btn-outline-success d-flex flex-1 justify-content-center min-width-100"  id="selectImg2">Chọn ảnh</a>
+                </div>
+            </div>
             @Html.ValidationMessageFor(model => model.Hinh2, "", new { @class = "text-danger" })
         </div>
     </div>

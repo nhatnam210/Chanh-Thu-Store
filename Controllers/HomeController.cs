@@ -76,19 +76,50 @@ namespace ChanhThu_Store.Controllers
 
         public PartialViewResult SanPhamBanChay()
         {
-            return PartialView(ListBanChay());
+            var userID = User.Identity.GetUserId();
+            var listBanChay = ListBanChay();
+
+            /*Check yêu thích*/
+            foreach (SanPham item in listBanChay)
+            {
+                if (userID != null)
+                {
+                    item.isLogin = true;
+
+                    TuongTac find = db.TuongTacs.FirstOrDefault(p => p.MaSanPham == item.MaSanPham && p.MaKhachHang == userID);
+                    if (find != null)
+                        item.isLiked = true;
+                }
+            }
+
+            return PartialView(listBanChay.ToList());
         }
 
         public PartialViewResult SanPhamNoiBat()
         {
             IQueryable<SanPham> listNoiBat = null;
+            var userID = User.Identity.GetUserId();
 
             listNoiBat = (from n in db.SanPhams
                           where n.LuotYeuThich > 0
                           orderby n.LuotYeuThich descending, n.SoLuongDaBan descending
                           select n).Except(ListBanChay()).Take(4);
 
-            return PartialView(listNoiBat);
+            /*Check yêu thích*/
+            foreach (SanPham item in listNoiBat)
+            {
+                if (userID != null)
+                {
+                    item.isLogin = true;
+
+                    TuongTac find = db.TuongTacs.FirstOrDefault(p => p.MaSanPham == item.MaSanPham && p.MaKhachHang == userID);
+                    if (find != null)
+                        item.isLiked = true;
+                }
+            }
+
+
+            return PartialView(listNoiBat.ToList());
         }
 
         public PartialViewResult SanPhamMoiNhat()

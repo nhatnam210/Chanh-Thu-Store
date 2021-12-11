@@ -17,7 +17,7 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         // GET: Admin/SlideFootersAdmin
         public ActionResult Index()
         {
-            return View(db.SlideFooters.ToList());
+            return View(db.SlideFooters.OrderByDescending(s=>s.Id).ToList());
         }
 
 

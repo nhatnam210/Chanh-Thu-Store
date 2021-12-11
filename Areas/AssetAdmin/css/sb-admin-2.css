@@ -1623,10 +1623,10 @@ pre code {
   background-color: #b3e4ec;
 }
 
-.table-hover .table-info:hover > td,
-.table-hover .table-info:hover > th {
-  background-color: #b3e4ec;
-}
+    .table-hover .table-info:hover > td,
+    .table-hover .table-info:hover > th {
+        background-color: #b3e4ec;
+    }
 
 .table-warning,
 .table-warning > th,
@@ -11442,9 +11442,4 @@ body.sidebar-toggled footer.sticky-footer {
 .filter-admin {
     font-size: 18px;
     color: var(--primary-color);
-}
-
-.slider-admin__img {
-    width: 300px;
-    object-fit: contain;
 }

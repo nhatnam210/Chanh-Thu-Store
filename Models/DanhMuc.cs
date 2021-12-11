@@ -25,5 +25,6 @@
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DanhMucCon> DanhMucCons { get; set; }
+        public int soDMC = 0;
     }
 }
