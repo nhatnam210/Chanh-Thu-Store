@@ -1292,6 +1292,7 @@ ul.cart-list > li.total > .btn:hover {
     right: 0px;
     z-index: 8;
     display: none;
+    user-select: none;
 }
 
     .type-lb.show {
@@ -3082,6 +3083,7 @@ ul.cart-list > li.total > .btn:hover {
     font-size: 16px;
     padding: 0px;
     line-height: 35px !important;
+    font-weight: 500;
 }
 
 .order-box .font-weight-bold {
@@ -3090,6 +3092,7 @@ ul.cart-list > li.total > .btn:hover {
 
 #final-price {
     font-size: 25px;
+    font-weight: 500;
 }
 
 .gr-total h5 {
@@ -5120,6 +5123,7 @@ textarea {
     width: 180px;
     filter: drop-shadow(2px 5px 3px rgba(0 0 0 / 30%));
     animation: upAnDown linear 2s infinite;
+    user-select:none;
 }
 
 @keyframes upAnDown {
@@ -5175,3 +5179,10 @@ textarea {
     .introduce-shop.show {
         max-height: 100%;
     }
+
+.userpoint__bill-detail {
+    display: inline-block;
+    background: var(--primary-color);
+    padding: 5px;
+    border-radius: var(--btn-corner-radius);
+}

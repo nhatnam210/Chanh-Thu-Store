@@ -4,7 +4,7 @@
 @if (Request.IsAuthenticated)
 {
 <div class="user-point">
-    <div class="user-point__title">Điểm của bạn</div>
+    <div class="user-point__title">Điểm tích lũy của bạn</div>
     <div data-point="@Model.DiemTichLuy" class="user-point__value">@Model.DiemTichLuy</div>
 </div>
 }
@@ -15,3 +15,7 @@ else
     <a href="/dang-nhap" class="btn login hvr-hover">Đăng nhập</a>
 </div>
 }
+<div class="text-color text-center font-italic mt-3 mb-2">*Điểm tích lũy có được khi 
+    <span class="underline font-weight-bold"><a class="link-to-product underline" href="/cua-hang"> đặt mua</a></span> 
+    thành công những sản phẩm có số điểm tương ứng.
+    </div>

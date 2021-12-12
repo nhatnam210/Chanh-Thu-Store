@@ -3,7 +3,6 @@
     ViewBag.Title = "Payment";
     Layout = "~/Views/Shared/_Main_Layout.cshtml";
 }
-@{var Total = 0; }
 <!-- Start All Title Box -->
 <div class="all-title-box">
     <div class="container">
@@ -154,6 +153,8 @@
                     </div>
                     <div class="col-md-12 col-lg-12">
                         <div class="odr-box">
+                            @{var Total = 0;
+                                var diem = 0;}
                             @if (Model.Count > 0)
                             {
                                 <div class="title-left">
@@ -164,6 +165,7 @@
 
                                     {
                                         Total += item.Sanpham.Gia * item.Soluong;
+                                        diem += item.Sanpham.Diem * item.Soluong;
                                         <div class="media mb-2 border-bottom">
                                             <div class="media-body">
                                                 <a class="link-to-product text-lm-1" href="/cua-hang/san-pham?id=@item.Sanpham.MaSanPham">@item.Sanpham.TenSanPham</a>
@@ -189,35 +191,36 @@
                             <div class="title-left">
                                 <h3>Thống kê</h3>
                             </div>
-                            <div class="d-flex">
-                                <div class="font-weight-bold">Chi phí</div>
+                            <div class="d-flex text-color">
+                                <div class="font-weight-bold ">Chi phí</div>
                                 <div class="ml-auto font-weight-bold">Tổng</div>
                             </div>
                             <hr class="my-1">
-                            <div class="d-flex">
+                            <div class="d-flex align-items-center">
                                 <h4>Tổng tiền</h4>
                                 <div class="ml-auto font-weight-bold text-primary">@string.Format("{0:#,##0}", @Total) đ </div>
                             </div>
-
                             <hr class="my-1">
-                            <div class="d-flex">
+                            <div class="d-flex align-items-center">
+                                <h4>Tích lũy</h4>
+                                <div class="ml-auto text-color">@diem điểm</div>
+                            </div>
+                            <hr class="my-1">
+                            <div class="d-flex align-items-center">
                                 <h4>Giảm giá</h4>
                                 <div id="voucher-fee" class="ml-auto text-color">0%</div>
                             </div>
-                            <!-- <div class="d-flex">
-                        <h4>Thuế</h4>
-                        <div class="ml-auto font-weight-bold"> $ 2 </div>
-                    </div> -->
-                            <div class="d-flex">
+                            <hr class="my-1">
+                            <div class="d-flex align-items-center">
                                 <h4>Phí ship</h4>
                                 <div class="ml-auto text-color" id="ship-fee">0 đ</div>
                             </div>
-                            <hr>
-                            <div class="d-flex gr-total">
+                            <hr class="my-2 mt-2">
+                            <div class="d-flex gr-total align-items-center">
                                 <h5>Tổng thanh toán</h5>
-                                <div class="ml-auto h2" style="color:red" id="final-price">@Total</div>
+                                <div class="ml-auto text-red" id="final-price">@Total</div>
                             </div>
-                            <hr>
+                            <hr class="my-2 mt-2">
                         </div>
                     </div>
                     <div class="col-12 d-flex shopping-box"> <button type="submit" class="ml-auto btn hvr-hover max-width-mobile font-weight-bold p-2">Đặt Hàng</button> </div>

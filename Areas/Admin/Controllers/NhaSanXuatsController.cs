@@ -42,7 +42,6 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
                            select s;
             if (!String.IsNullOrEmpty(timkiem))
             {
-                timkiem = timkiem.Trim();
                 var timkiemUnsign = TimKiemController.ConvertToUnSignNoneSpace(timkiem);
                 nhasanxuat = nhasanxuat.Where(delegate (NhaSanXuat s)
                 {
@@ -212,8 +211,11 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
 
                 db.SanPhams.Remove(itemSP);
             }
+            if (nhaSanXuat != null)
+            {
+                db.NhaSanXuats.Remove(nhaSanXuat);
+            }
 
-            db.NhaSanXuats.Remove(nhaSanXuat);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

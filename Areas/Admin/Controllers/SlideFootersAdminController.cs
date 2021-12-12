@@ -96,7 +96,11 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             SlideFooter slideFooter = db.SlideFooters.Find(id);
+            if(slideFooter != null)
+            {
             db.SlideFooters.Remove(slideFooter);
+            }
+
             db.SaveChanges();
             return RedirectToAction("Index");
         }
