@@ -39,7 +39,6 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
                              select s;
             if (!String.IsNullOrEmpty(timkiem))
             {
-                timkiem = timkiem.Trim();
                 var timkiemUnsign = TimKiemController.ConvertToUnSignNoneSpace(timkiem);
                 danhmuc = danhmuc.Where(delegate (DanhMuc s)
                 {
@@ -217,7 +216,10 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
                 db.DanhMucCons.Remove(itemDMC);
             }
             DanhMuc danhMuc = db.DanhMucs.Find(id);
-            db.DanhMucs.Remove(danhMuc);
+            if(danhMuc != null)
+            {
+                db.DanhMucs.Remove(danhMuc);
+            }
             db.SaveChanges();
             return RedirectToAction("Index");
         }

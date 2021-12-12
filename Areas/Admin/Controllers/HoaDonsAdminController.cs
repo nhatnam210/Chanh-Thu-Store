@@ -50,7 +50,6 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
                 //|| s.NgayLap.ToString().Contains(timkiem)
                 //);
                 ////|| s.author.Contains(timkiem)
-                timkiem = timkiem.Trim();
                 var timkiemUnsign = TimKiemController.ConvertToUnSignNoneSpace(timkiem);
                 hoadon = hoadon.Where(delegate (HoaDon s)
                 {
@@ -181,7 +180,10 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
                                         .Select(c => c));
 
             HoaDon hoaDon = db.HoaDons.Find(id);
-            db.HoaDons.Remove(hoaDon);
+            if (hoaDon != null)
+            {
+                db.HoaDons.Remove(hoaDon);
+            }
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -38,11 +38,12 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             //tìm kiếm
             var danhmuccon = from s in db.DanhMucCons
                              select s;
-            if (danhmuccon.Count() > 0)
+            if (danhmuccon.Count() < 0)
             {
-                if (!String.IsNullOrEmpty(timkiem))
+                return View();
+            }
+            if (!String.IsNullOrEmpty(timkiem))
                 {
-                    timkiem = timkiem.Trim();
                     var timkiemUnsign = TimKiemController.ConvertToUnSignNoneSpace(timkiem);
                     danhmuccon = danhmuccon.Where(delegate (DanhMucCon s)
                     {
@@ -79,8 +80,7 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
                 int pageSize = 5;
                 int pageNumber = (trang ?? 1);
                 return View(danhmuccon.ToPagedList(pageNumber, pageSize));
-            }
-            return View();
+           
         }
 
         // GET: Admin/DanhMucConsAdmin/Create
@@ -218,7 +218,10 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             }
 
             DanhMucCon danhMucCon = db.DanhMucCons.Find(id);
-            db.DanhMucCons.Remove(danhMucCon);
+            if (danhMucCon != null)
+            {
+                db.DanhMucCons.Remove(danhMucCon);
+            }
             db.SaveChanges();
             return RedirectToAction("Index");
         }

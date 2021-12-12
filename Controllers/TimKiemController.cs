@@ -92,6 +92,11 @@ namespace ChanhThu_Store.Controllers
         //hàm đổi tiếng việt có dấu sang không dấu và loại bỏ tất cả khoảng trắng trong chuỗi
         public static string ConvertToUnSignNoneSpace(string input)
         {
+            if (String.IsNullOrEmpty(input))
+            {
+                return "";
+            }
+
             input = input.Trim();
             for (int i = 0x20; i < 0x30; i++)
             {
@@ -111,6 +116,11 @@ namespace ChanhThu_Store.Controllers
         //hàm đổi tiếng việt có dấu sang không dấu vã giữ nguyên các khoảng trắng trong chuỗi
         public static string ConvertToUnSign(string input)
         {
+            if (String.IsNullOrEmpty(input))
+            {
+                return "";
+            }
+
             input = input.Trim();
             for (int i = 0x20; i < 0x30; i++)
             {

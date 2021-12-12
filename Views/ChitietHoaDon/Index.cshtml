@@ -4,15 +4,18 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Main_Layout.cshtml";
 }
-     
 
 
-<h2 class="text-center title-table">Thông tin hóa đơn</h2>
+
+<h2 class="text-center title-table mb-2">Thông tin hóa đơn</h2>
+<div class="text-center mb-3">
+    <h2 class="text-center font-weight-bold title-color userpoint__bill-detail shadow"><span class="count-up">@ViewBag.DiemTong</span> điểm</h2>
+</div>
 <div class="table-container">
     <table class="table table-user table-striped shadow">
         <thead class="bg-primary text-white">
             <tr>
-                <th> 
+                <th>
                     Tên sản phẩm
                 </th>
                 <th>
@@ -24,17 +27,21 @@
                 <th>
                     Thành tiền
                 </th>
-                
+                <th>
+                    Tích lũy
+                </th>
             </tr>
         </thead>
 
         <tbody>
+            @{ var diem = 0;}
             @foreach (var item in Model)
             {
+                diem += item.SanPham.Diem * item.Soluong;
                 <tr>
                     <td>
                         @*@Html.DisplayFor(modelItem => item.SanPham.TenSanPham)*@
-                        <a class="link-to-product" href="/cua-hang/san-pham?id=@item.SanPham.MaSanPham">@item.SanPham.TenSanPham</a>
+                        <a class="link-to-product text-lm-2" href="/cua-hang/san-pham?id=@item.SanPham.MaSanPham">@item.SanPham.TenSanPham</a>
                     </td>
                     <td>
                         @string.Format("{0:#,##0}", @item.DonGia) đ
@@ -47,12 +54,11 @@
                         @string.Format("{0:#,##0}", (item.DonGia * item.Soluong)) đ
 
                     </td>
-
+                    <td>
+                        <span class="count-up">@(item.SanPham.Diem * item.Soluong)</span> điểm
+                    </td>
                 </tr>
             }
         </tbody>
-
-
-    </table>    
+    </table>
 </div>
-

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ChanhThu_Store.Models;
 using PagedList;
+using ChanhThu_Store.Controllers;
 
 namespace ChanhThu_Store.Areas.Admin.Controllers
 {
@@ -22,6 +23,7 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             ViewBag.SapXep = sapxep;
             ViewBag.SapXepTen = sapxep == "tên A-Z" ? "tên Z-A" : "tên A-Z";
             ViewBag.SapXepXacThuc = sapxep == "xác thực" ? "chưa xác thực" : "xác thực";
+            ViewBag.SapXepDiem = sapxep == "điểm cao > thấp" ? "điểm thấp > cao" : "điểm cao > thấp";
             //phan trang
             if (timkiem != null)
             {
@@ -35,10 +37,20 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             //tìm kiếm
             var khachhang = from s in db.AspNetUsers
                              select s;
+           
             if (!String.IsNullOrEmpty(timkiem))
             {
-                khachhang = khachhang.Where(s => s.Ten.Contains(timkiem));
-
+                var timkiemUnsign = TimKiemController.ConvertToUnSignNoneSpace(timkiem);
+                khachhang = khachhang.Where(delegate (AspNetUser s)
+                {
+                    if (TimKiemController.ConvertToUnSignNoneSpace(s.Ten).IndexOf(timkiemUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0
+                    || TimKiemController.ConvertToUnSignNoneSpace(s.PhoneNumber).IndexOf(timkiemUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0
+                    || TimKiemController.ConvertToUnSignNoneSpace(s.Email).IndexOf(timkiemUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0
+                    )
+                        return true;
+                    else
+                        return false;
+                }).AsQueryable();
             }
             //sắp xếp 
             switch (sapxep)
@@ -54,6 +66,12 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
                     break;
                 case "chưa xác thực":
                     khachhang = khachhang.OrderBy(s => s.EmailConfirmed);
+                    break;
+                case "điểm cao > thấp":
+                    khachhang = khachhang.OrderByDescending(s => s.DiemTichLuy);
+                    break;
+                case "điểm thấp > cao":
+                    khachhang = khachhang.OrderBy(s => s.DiemTichLuy);
                     break;
                 default:
                     khachhang = khachhang.OrderBy(s => s.Id);

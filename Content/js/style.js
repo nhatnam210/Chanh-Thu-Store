@@ -253,6 +253,8 @@ function countUpElement(element, delay = 2000, unit = 10) {
     });
 };
 
+countUpElement('.count-up')
+
 /* ..............................................
 Bật tắt bảng Ask Options
  ................................................. */

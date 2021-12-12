@@ -42,7 +42,6 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
                           select s;
             if (!String.IsNullOrEmpty(timkiem))
             {
-                timkiem = timkiem.Trim();
                 var timkiemUnsign = TimKiemController.ConvertToUnSignNoneSpace(timkiem);
                 sanpham = sanpham.Where(delegate (SanPham s)
                 {
@@ -249,7 +248,10 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             }
 
             SanPham sanPham = db.SanPhams.Find(id);
-            db.SanPhams.Remove(sanPham);
+            if (sanPham != null)
+            {
+                db.SanPhams.Remove(sanPham);
+            }
             db.SaveChanges();
             return RedirectToAction("Index");
         }

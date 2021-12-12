@@ -41,7 +41,6 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
                           select s;
             if (!String.IsNullOrEmpty(timkiem))
             {
-                timkiem = timkiem.Trim();
                 var timkiemUnsign = TimKiemController.ConvertToUnSignNoneSpace(timkiem);
                 voucher = voucher.Where(delegate (Voucher s)
                 {
@@ -210,7 +209,11 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
             }
 
             Voucher voucher = db.Vouchers.Find(id);
-            db.Vouchers.Remove(voucher);
+            if(voucher != null)
+            {
+                db.Vouchers.Remove(voucher);
+            }
+
             db.SaveChanges();
             return RedirectToAction("Index");
         }

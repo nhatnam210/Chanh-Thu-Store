@@ -110,7 +110,11 @@ namespace ChanhThu_Store.Areas.Admin.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             SlideHeader slideHeader = db.SlideHeaders.Find(id);
+            if(slideHeader != null)
+            {
             db.SlideHeaders.Remove(slideHeader);
+            }
+
             db.SaveChanges();
             return RedirectToAction("Index");
         }

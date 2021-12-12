@@ -17,12 +17,19 @@ namespace ChanhThu_Store.Controllers
         {
             var userID = User.Identity.GetUserId();
             IQueryable<ChiTietHoaDon> chitiet = null;
+            var diemTong = 0;
             if(userID != null)
             {
                 chitiet = from c in db.ChiTietHoaDons
                           join h in db.HoaDons on c.MaHoaDon equals h.MaHoaDon
                           where c.MaHoaDon == id && h.MaKhachHang == userID
                           select c;
+                foreach(var item in chitiet)
+                {
+                    diemTong += item.Soluong * item.SanPham.Diem;
+                }
+
+                ViewBag.DiemTong = diemTong;
                 return View(chitiet);
             }
 
