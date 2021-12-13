@@ -1,11 +1,14 @@
 ﻿@model IEnumerable<ChanhThu_Store.Models.SanPham>
+
+@{ var i = 0;}
 @foreach (var item in Model)
 {
+    i++;
     <div class="col-lg-3 col-md-6 col-sm-6 special-grid top-featured flex-column">
-        <div class="products-single fix shadow full-radius" >
+        <div class="products-single fix shadow full-radius">
             <div class="box-img-hover none-radius">
                 <div class="type-lb show">
-                    <p class="like bottom-left-radius text-capitalize">Yêu Thích</p>
+                    <p class="like bottom-left-radius text-capitalize">#@i Yêu Thích</p>
                 </div>
                 @*<img src="@item.HinhChinh" class="img-fluid" alt="Image">*@
                 <div class="img-fit product-mobile " style="background-image: url('@item.HinhChinh'),url('/Content/images/default.png');">

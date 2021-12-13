@@ -3251,6 +3251,9 @@
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\superslides.css" />
     <Content Include="Content\css\value.css" />
+    <Content Include="Content\images\avt_Nam.jpg" />
+    <Content Include="Content\images\avt_Phat.jpg" />
+    <Content Include="Content\images\avt_Huy.jpg" />
     <Content Include="Content\images\about-img.jpg" />
     <Content Include="Content\images\add-img-01.jpg" />
     <Content Include="Content\images\add-img-02.jpg" />

@@ -2194,6 +2194,7 @@ ul.cart-list > li.total > .btn:hover {
         height: 350px;
         transition: all 0.3s ease-in-out 0s;
         object-fit: cover;
+        margin-bottom: 60px;
     }
 
     .our-team:hover img {
@@ -5116,7 +5117,7 @@ textarea {
 
 .none-product__title {
     color: #444;
-    font-size: 18px;
+    font-size: 24px;
 }
 
 .none-product__img {
