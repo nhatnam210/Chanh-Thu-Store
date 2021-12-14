@@ -16,12 +16,12 @@ namespace ChanhThu_Store.Controllers
         public ChanhThuStoreContext db = new ChanhThuStoreContext();
 
         // GET: TimKiem
-        public ActionResult Index(string tukhoa, string sapxep)
+        public ActionResult Index(string tukhoa)
         {
             IQueryable<SanPham> sanpham = null;
             var userID = User.Identity.GetUserId();
             ViewBag.TimKiem = tukhoa;
-            ViewBag.SapXep = sapxep;
+
 
             sanpham = db.SanPhams.Select(s => s);
 
@@ -39,6 +39,55 @@ namespace ChanhThu_Store.Controllers
                         else
                             return false;
                     }).AsQueryable();
+            }
+            //trường hợp không nhập tìm kiếm
+            else
+            {
+                sanpham = sanpham.Take(0);
+            }
+
+            /*Check yêu thích*/
+            foreach (SanPham item in sanpham)
+            {
+                if (userID != null)
+                {
+                    item.isLogin = true;
+
+                    TuongTac find = db.TuongTacs.FirstOrDefault(p => p.MaSanPham == item.MaSanPham && p.MaKhachHang == userID);
+                    if (find != null)
+                        item.isLiked = true;
+                }
+            }
+
+
+    
+            
+            return View(sanpham.ToList());
+        }
+
+        public ActionResult Sapxep(string tukhoa, string sapxep)
+        {
+            IQueryable<SanPham> sanpham = null;
+            var userID = User.Identity.GetUserId();
+            ViewBag.TimKiem = tukhoa;
+            ViewBag.SapXep = sapxep;
+
+            sanpham = db.SanPhams.Select(s => s);
+
+            if (!String.IsNullOrEmpty(tukhoa) && tukhoa.Trim().Length > 0)
+            {
+                tukhoa = tukhoa.Trim();
+                var tuKhoaUnsign = ConvertToUnSignNoneSpace(tukhoa);
+                sanpham = sanpham.Where(delegate (SanPham s)
+                {
+                    if (ConvertToUnSignNoneSpace(s.TenSanPham).IndexOf(tuKhoaUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0
+                        || ConvertToUnSignNoneSpace(s.Mota).IndexOf(tuKhoaUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0
+                        || ConvertToUnSignNoneSpace(s.DanhMucCon.TenDanhMucCon).IndexOf(tuKhoaUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0
+                        || ConvertToUnSignNoneSpace(s.DanhMucCon.DanhMuc.TenDanhMuc).IndexOf(tuKhoaUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0)
+                        return true;
+                    else
+                        return false;
+                }).AsQueryable();
             }
             //trường hợp không nhập tìm kiếm
             else
@@ -81,12 +130,8 @@ namespace ChanhThu_Store.Controllers
                     sanpham = sanpham.OrderByDescending(s => s.MaSanPham);
                     break;
             }
-            //int pageSize = 9;
-            //int pageNumber = (trang ?? 1);
 
-            ViewBag.listsp = sanpham;
-            //return View(sanpham.ToPagedList(pageNumber, pageSize));
-            return View(sanpham.ToList());
+            return PartialView(sanpham.ToList());
         }
 
         //hàm đổi tiếng việt có dấu sang không dấu và loại bỏ tất cả khoảng trắng trong chuỗi

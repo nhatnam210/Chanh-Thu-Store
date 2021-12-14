@@ -336,16 +336,16 @@ if (userPoint && voucherPoint && voucherContainer
             askOptionsNo[index].addEventListener("click", closeAskOptionsShow);
             //Ấn "Đồng ý"
             askOptionsYes[index].addEventListener("click", () => {
-                //Trừ điểm
-                currentUserPoint -= voucherPointIndex;
-                //Kiêm tra điểm < 0;
-                var getCurrentUserPoint = currentUserPoint < 0 ? 0 : currentUserPoint;
-                //Gán giá trị sau khi trừ
-                userPoint.innerHTML = getCurrentUserPoint;
-                userPoint.dataset.point = getCurrentUserPoint;
-                closeAskOptionsShow();
-                updateVoucherState();
-                countUpElement('.user-point__value', 2000);
+                ////Trừ điểm
+                //currentUserPoint -= voucherPointIndex;
+                ////Kiêm tra điểm < 0;
+                //var getCurrentUserPoint = currentUserPoint < 0 ? 0 : currentUserPoint;
+                ////Gán giá trị sau khi trừ
+                //userPoint.innerHTML = getCurrentUserPoint;
+                //userPoint.dataset.point = getCurrentUserPoint;
+                //closeAskOptionsShow();
+                //updateVoucherState();
+                //countUpElement('.user-point__value', 2000);
             });
         }
     });
@@ -560,9 +560,12 @@ $('#basic option').each((i, e) => {
 $('#grid-products').paginate()
 
 //tự động scroll về vị trí ô sắp xếp khi click chuyển trang sản phẩm
-$('.product-categorie-box .page').on("click", () => {
-    window.scrollTo({ top: 100, behavior: 'smooth' });
-})
+function ClickScroll () {
+    $('.product-categorie-box .page').on("click", () => {
+        window.scrollTo({ top: 100, behavior: 'smooth' });
+    })
+}
+ClickScroll()
 
 /* ..............................................
 Yêu thích bên ngoài
