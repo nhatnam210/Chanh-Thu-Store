@@ -24,9 +24,9 @@ namespace ChanhThu_Store.Controllers
         }
 
         // GET: DanhMucCons/Details/5
-        public ActionResult Details(string id, string sapxep)
+        public ActionResult Details(string id)
         {
-            ViewBag.SapXep = sapxep;
+
             IQueryable<SanPham> listSanPham = null;
             var userID = User.Identity.GetUserId();
 
@@ -54,6 +54,41 @@ namespace ChanhThu_Store.Controllers
                         item.isLiked = true;
                 }
             }
+           
+            ViewBag.Id = id;
+            //int pageSize = 9;
+            //int pageNumber = (trang ?? 1);
+            //return View(listSanPham.ToPagedList(pageNumber, pageSize));
+            return View(listSanPham.ToList());
+
+        }
+        public ActionResult Sapxep(string id,string sapxep = null)
+        {
+            ViewBag.SapXep = sapxep;
+
+            IQueryable<SanPham> listSanPham = null;
+            var userID = User.Identity.GetUserId();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            listSanPham = from s in db.SanPhams
+                          where s.MaDanhMucCon == id && s.SoLuongTonKho > 0
+                          orderby s.MaSanPham
+                          select s;
+            /*Check yêu thích*/
+            foreach (SanPham item in listSanPham)
+            {
+                if (userID != null)
+                {
+                    item.isLogin = true;
+
+                    TuongTac find = db.TuongTacs.FirstOrDefault(p => p.MaSanPham == item.MaSanPham && p.MaKhachHang == userID);
+                    if (find != null)
+                        item.isLiked = true;
+                }
+            }
+
             //Sắp xếp
             switch (sapxep)
             {
@@ -76,14 +111,10 @@ namespace ChanhThu_Store.Controllers
                     listSanPham = listSanPham.OrderByDescending(s => s.MaSanPham);
                     break;
             }
-            ViewBag.Id = id;
-            //int pageSize = 9;
-            //int pageNumber = (trang ?? 1);
-            //return View(listSanPham.ToPagedList(pageNumber, pageSize));
-            return View(listSanPham.ToList());
 
+          
+            return PartialView(listSanPham.ToList());
         }
-
         public ActionResult DanhSachDMC(string id)
         {
             var listDanhMucCon = db.DanhMucCons
