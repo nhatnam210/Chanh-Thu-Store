@@ -30,8 +30,6 @@ namespace ChanhThu_Store.Controllers
             IQueryable<SanPham> listSanPham = null;
             var userID = User.Identity.GetUserId();
 
-          
-
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -62,7 +60,7 @@ namespace ChanhThu_Store.Controllers
             return View(listSanPham.ToList());
 
         }
-        public ActionResult Sapxep(string id,string sapxep = null)
+        public ActionResult Sapxep(string id,string sapxep)
         {
             ViewBag.SapXep = sapxep;
 

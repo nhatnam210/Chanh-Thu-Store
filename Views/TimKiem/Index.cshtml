@@ -188,12 +188,9 @@
 <!-- End Shop Page -->
 @section scripts{
     <script>
-
         YeuThichNgoai();
 
-       @*/var products = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.listsp));
-       /* PagingSort()*/*@
-        window.scrollTo({ top: 100, behavior: 'smooth' });
+        ScrollToTop(100);
 
         var tukhoa = $('#keyword').attr('key')
 
@@ -213,11 +210,6 @@
                     alert('Lỗi sắp xếp')
                 }
             })
-            //if (sortValue == "mac-dinh") {
-            //    window.location.href = `/tim-kiem?tukhoa=${tukhoa}`
-            //} else {
-            //    window.location.href = `/tim-kiem?tukhoa=${tukhoa}&sapxep=${sortValue}`
-            //}
         })
 
         @*<div class="pagelist_custom">
