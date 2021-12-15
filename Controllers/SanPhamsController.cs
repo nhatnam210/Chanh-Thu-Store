@@ -21,17 +21,13 @@ namespace ChanhThu_Store.Controllers
         {
             IQueryable<SanPham> listSanPhamMacDinh = null;
             var userID = User.Identity.GetUserId();
-            DanhMucCon DMCMacDinh = db.DanhMucCons.FirstOrDefault();
-
-            if (DMCMacDinh == null)
-            {
-                return HttpNotFound();
-            }
-
+            var MaDMCMacDinh = db.DanhMucCons.FirstOrDefault() != null ? db.DanhMucCons.FirstOrDefault().MaDanhMucCon : "";
+      
             listSanPhamMacDinh = db.SanPhams
-                                .Where(s => s.MaDanhMucCon == DMCMacDinh.MaDanhMucCon && s.SoLuongTonKho > 0)
+                                .Where(s => s.MaDanhMucCon == MaDMCMacDinh && s.SoLuongTonKho > 0)
                                 .OrderBy(s => s.MaSanPham)
                                 .Select(s => s);
+
             /*Check yêu thích*/
             foreach (SanPham item in listSanPhamMacDinh)
             {
@@ -45,27 +41,20 @@ namespace ChanhThu_Store.Controllers
                 }
             }
 
-
             ViewBag.listsp = listSanPhamMacDinh;
-            //return PartialView(listSanPhamMacDinh.ToPagedList(pageNumber, pageSize));
             return View(listSanPhamMacDinh.ToList());
         }
-        public ActionResult Sapxep(string sapxep = null)
+        public ActionResult Sapxep(string sapxep)
         {
             ViewBag.SapXep = sapxep;
 
             IQueryable<SanPham> listSanPhamMacDinh = null;
             var userID = User.Identity.GetUserId();
 
-            DanhMucCon DMCMacDinh = db.DanhMucCons.FirstOrDefault();
-
-            if (DMCMacDinh == null)
-            {
-                return HttpNotFound();
-            }
+            var MaDMCMacDinh = db.DanhMucCons.FirstOrDefault() != null ? db.DanhMucCons.FirstOrDefault().MaDanhMucCon : "";
 
             listSanPhamMacDinh = db.SanPhams
-                                .Where(s => s.MaDanhMucCon == DMCMacDinh.MaDanhMucCon && s.SoLuongTonKho > 0)
+                                .Where(s => s.MaDanhMucCon == MaDMCMacDinh && s.SoLuongTonKho > 0)
                                 .OrderBy(s => s.MaSanPham)
                                 .Select(s => s);
             /*Check yêu thích*/

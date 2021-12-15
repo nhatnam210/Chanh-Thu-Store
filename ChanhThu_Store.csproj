@@ -3755,6 +3755,8 @@
     <Content Include="Views\Shared\SDTTop.cshtml" />
     <Content Include="Views\Home\TenCuaHangSliderHome.cshtml" />
     <Content Include="Views\ContactUs\ThongTinLienHe.cshtml" />
+    <Content Include="Views\Shared\Not_Found.cshtml" />
+    <Content Include="Views\Shared\Sapxep.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -40,7 +40,7 @@ body {
     font-size: 15px;
     /*font-family: 'Itim', cursive;*/
     font-family: 'Be Vietnam Pro','Roboto',Arial, sans-serif;
-    Roboto, line-height: 1.80857;
+    line-height: 1.80857;
 }
 
 *::selection {
@@ -5117,7 +5117,7 @@ textarea {
 
 .none-product__title {
     color: #444;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .none-product__img {
