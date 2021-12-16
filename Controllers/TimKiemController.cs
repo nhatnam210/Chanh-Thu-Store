@@ -18,51 +18,8 @@ namespace ChanhThu_Store.Controllers
         // GET: TimKiem
         public ActionResult Index(string tukhoa)
         {
-            IQueryable<SanPham> sanpham = null;
-            var userID = User.Identity.GetUserId();
             ViewBag.TimKiem = tukhoa;
-
-
-            sanpham = db.SanPhams.Select(s => s);
-
-            if (!String.IsNullOrEmpty(tukhoa) && tukhoa.Trim().Length > 0)
-            {
-                tukhoa = tukhoa.Trim();
-                var tuKhoaUnsign = ConvertToUnSignNoneSpace(tukhoa);
-                    sanpham = sanpham.Where(delegate (SanPham s)
-                    {
-                        if (ConvertToUnSignNoneSpace(s.TenSanPham).IndexOf(tuKhoaUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0
-                            || ConvertToUnSignNoneSpace(s.Mota).IndexOf(tuKhoaUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0
-                            || ConvertToUnSignNoneSpace(s.DanhMucCon.TenDanhMucCon).IndexOf(tuKhoaUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0
-                            || ConvertToUnSignNoneSpace(s.DanhMucCon.DanhMuc.TenDanhMuc).IndexOf(tuKhoaUnsign, StringComparison.CurrentCultureIgnoreCase) >= 0)
-                            return true;
-                        else
-                            return false;
-                    }).AsQueryable();
-            }
-            //trường hợp không nhập tìm kiếm
-            else
-            {
-                sanpham = sanpham.Take(0);
-            }
-
-            /*Check yêu thích*/
-            foreach (SanPham item in sanpham)
-            {
-                if (userID != null)
-                {
-                    item.isLogin = true;
-
-                    TuongTac find = db.TuongTacs.FirstOrDefault(p => p.MaSanPham == item.MaSanPham && p.MaKhachHang == userID);
-                    if (find != null)
-                        item.isLiked = true;
-                }
-            }
-
-
-    
-            
-            return View(sanpham.ToList());
+            return View();
         }
 
         public ActionResult Sapxep(string tukhoa, string sapxep)

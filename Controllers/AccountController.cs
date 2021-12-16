@@ -21,7 +21,6 @@ namespace ChanhThu_Store.Controllers
         private readonly ChanhThuStoreContext db = new ChanhThuStoreContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
         public AccountController()
         {
         }
@@ -93,22 +92,22 @@ namespace ChanhThu_Store.Controllers
         [Authorize]
         public ActionResult YeuThich()
         {
-            //ApplicationUser currentUser = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>()
-            //    .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            return View();
+        }
+
+        public ActionResult SapXepYeuThich(string sapxep)
+        {
+            ViewBag.SapXep = sapxep;
 
             var userID = User.Identity.GetUserId();
 
-            var listFavorites = db.TuongTacs.Where(p => p.MaKhachHang == userID).ToList();
-            var product = new List<SanPham>();
-            foreach (TuongTac item in listFavorites)
-            {
-                SanPham sabpham = item.SanPham;
-
-                product.Add(sabpham);
-            }
+            var listYeuThich = from s in db.SanPhams
+                               join y in db.TuongTacs on s.MaSanPham equals y.MaSanPham
+                               where y.MaKhachHang == userID
+                               select s;
 
             /*Check yêu thích*/
-            foreach (SanPham item in product)
+            foreach (SanPham item in listYeuThich)
             {
                 if (userID != null)
                 {
@@ -120,9 +119,32 @@ namespace ChanhThu_Store.Controllers
                 }
             }
 
-            return View(product.ToList());
+            //Sắp xếp
+            switch (sapxep)
+            {
+                case "mac-dinh":
+                    listYeuThich = listYeuThich.OrderBy(s => s.MaSanPham);
+                    break;
+                case "ten-A-Z":
+                    listYeuThich = listYeuThich.OrderBy(s => s.TenSanPham);
+                    break;
+                case "ten-Z-A":
+                    listYeuThich = listYeuThich.OrderByDescending(s => s.TenSanPham);
+                    break;
+                case "gia-thap-cao":
+                    listYeuThich = listYeuThich.OrderBy(s => s.Gia);
+                    break;
+                case "gia-cao-thap":
+                    listYeuThich = listYeuThich.OrderByDescending(s => s.Gia);
+                    break;
+                default:
+                    listYeuThich = listYeuThich.OrderByDescending(s => s.MaSanPham);
+                    break;
+            }
 
+            return PartialView("Sapxep", listYeuThich.ToList());
         }
+
         [Authorize]
         public ActionResult LichSuMuaHang(int? page)
         {

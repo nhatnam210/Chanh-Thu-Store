@@ -1,5 +1,4 @@
 ﻿@model List<ChanhThu_Store.Models.SanPham>
-@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index";
@@ -95,28 +94,32 @@
 @section scripts{
     <script>
         YeuThichNgoai();
-
         ScrollToTop(100);
-        
+        loadEmptyProduct();
+
+        var haveProduct = $('.none-product__title').length <= 0;
+
         // sắp xếp
-        $('#basic').change(() => {
-            var sortValue = $('#basic').val()
-            
-            $.ajax({
-                url: "/SanPhams/Sapxep",
-                data: { sapxep: sortValue },
-                success: function (res) {
-                    $('#view-sp').html(res)
-                    
-                    $('#grid-products').paginate()
-                    ClickScroll()
-                },
-                error: function () {
-                    alert('Lỗi sắp xếp')
-                }
+        if (haveProduct) {
+            $('#basic').change(() => {
+                var sortValue = $('#basic').val()
+
+                $.ajax({
+                    url: "/SanPhams/Sapxep",
+                    data: { sapxep: sortValue },
+                    success: function (res) {
+                        $('#view-sp').html(res)
+
+                        $('#grid-products').paginate()
+                        ClickScroll();
+                        YeuThichNgoai();
+                    },
+                    error: function () {
+                        alert('Lỗi sắp xếp')
+                    }
+                })
+
             })
-
-        })
-
+        }
     </script>
 }

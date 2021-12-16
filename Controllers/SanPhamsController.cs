@@ -19,30 +19,7 @@ namespace ChanhThu_Store.Controllers
         // GET: SanPhams
         public ActionResult Index()
         {
-            IQueryable<SanPham> listSanPhamMacDinh = null;
-            var userID = User.Identity.GetUserId();
-            var MaDMCMacDinh = db.DanhMucCons.FirstOrDefault() != null ? db.DanhMucCons.FirstOrDefault().MaDanhMucCon : "";
-      
-            listSanPhamMacDinh = db.SanPhams
-                                .Where(s => s.MaDanhMucCon == MaDMCMacDinh && s.SoLuongTonKho > 0)
-                                .OrderBy(s => s.MaSanPham)
-                                .Select(s => s);
-
-            /*Check yêu thích*/
-            foreach (SanPham item in listSanPhamMacDinh)
-            {
-                if (userID != null)
-                {
-                    item.isLogin = true;
-
-                    TuongTac find = db.TuongTacs.FirstOrDefault(p => p.MaSanPham == item.MaSanPham && p.MaKhachHang == userID);
-                    if (find != null)
-                        item.isLiked = true;
-                }
-            }
-
-            ViewBag.listsp = listSanPhamMacDinh;
-            return View(listSanPhamMacDinh.ToList());
+            return View();
         }
         public ActionResult Sapxep(string sapxep)
         {
@@ -93,11 +70,7 @@ namespace ChanhThu_Store.Controllers
                     break;
             }
 
-            //int pageSize = 9;
-            //int pageNumber = (trang ?? 1);
-
             ViewBag.listsp = listSanPhamMacDinh;
-            //return PartialView(listSanPhamMacDinh.ToPagedList(pageNumber, pageSize));
             return PartialView(listSanPhamMacDinh.ToList());
         }
         // GET: SanPhams/Details/5

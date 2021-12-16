@@ -97,28 +97,30 @@
 @section scripts{
     <script>
         YeuThichNgoai();
-
         ScrollToTop(100);
-       
-        $('#basic').change(() => {
-            var sortValue = $('#basic').val()
-            
-            $.ajax({
-                url: "/DanhMucCons/Sapxep",
-                data: { sapxep: sortValue, id: "@ViewBag.Id" },
-                success: function (res) {
+
+        var haveProduct = $('.none-product__title').length <= 0;
+
+        // sắp xếp
+        if (haveProduct) {
+            $('#basic').change(() => {
+                var sortValue = $('#basic').val()
+
+                $.ajax({
+                    url: "/DanhMucCons/Sapxep",
+                    data: { sapxep: sortValue, id: "@ViewBag.Id" },
+                    success: function (res) {
                     $('#view-sp').html(res)
-                    
-                    $('#grid-products').paginate()
-                    ClickScroll()
-                },
-                error: function () {
-                    alert('Lỗi sắp xếp')
-                }
+
+                        $('#grid-products').paginate()
+                        ClickScroll();
+                        YeuThichNgoai();
+                    },
+                    error: function () {
+                        alert('Lỗi sắp xếp')
+                    }
+                })
             })
-
-        })
-
-        
+        }
     </script>
 }
