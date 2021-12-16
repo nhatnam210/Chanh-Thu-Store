@@ -26,99 +26,38 @@
         <div class="row justify-content-center">
             <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-left">
                 <div class="right-product-box">
-                    <div class="product-categorie-box">
-                        @if (Model.Count > 0)
-                        {
-                            <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
-                                    <div class="row" id="grid-products">
-                                        @foreach (var item in Model)
-                                        {
-                                            <div class="col-lg-4 col-xl-4 col-md-6 col-sm-6 parent">
-                                                <div class="products-single fix shadow full-radius">
-                                                    <div class="box-img-hover none-radius">
-                                                        @if (item.isLogin)
-                                                        {
-                                                            if (item.isLiked)
-                                                            {
-                                                                <div class="type-lb show" value="@item.MaSanPham">
-                                                                    <p class="like bottom-left-radius text-capitalize">Đã thích</p>
-                                                                </div>
-                                                            }
-                                                            else
-                                                            {
-                                                                <div class="type-lb" value="@item.MaSanPham">
-                                                                    <p class="like bottom-left-radius text-capitalize">Đã thích</p>
-                                                                </div>
-                                                            }
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="type-lb" value="@item.MaSanPham">
-                                                                <p class="like bottom-left-radius text-capitalize">Đã thích</p>
-                                                            </div>
-                                                        }
-
-                                                        <div class="img-fit product-mobile " style="background-image: url('@item.HinhChinh'),url('/Content/images/default.png');">
-                                                        </div>
-                                                        <div class="mask-icon">
-                                                            <ul>
-                                                                <li><a href="/cua-hang/san-pham?id=@item.MaSanPham" data-toggle="tooltip" data-placement="right" title="Chi tiết"><i class="fas fa-eye"></i></a></li>
-                                                                <li>
-                                                                    @if (item.isLogin)
-                                                                    {
-                                                                        if (item.isLiked)
-                                                                        {
-                                                                            <a product-data="@item.MaSanPham" class="heart-hover js-tongle-like" data-toggle="tooltip" data-placement="right"
-                                                                               title="Yêu thích">
-                                                                                <i class="fas fa-heart liked-heart-icon"></i>
-                                                                            </a>
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            <a product-data="@item.MaSanPham" class="heart-hover js-tongle-like" data-toggle="tooltip" data-placement="right"
-                                                                               title="Yêu thích">
-                                                                                <i class="far fa-heart not-like-heart-icon"></i>
-                                                                            </a>
-                                                                        }
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        <a href="/dang-nhap" class="heart-hover" data-toggle="tooltip" data-placement="right"
-                                                                           title="Yêu thích">
-                                                                            <i class="far fa-heart not-like-heart-icon"></i>
-                                                                        </a>
-                                                                    }
-
-                                                                </li>
-                                                            </ul>
-                                                            <a class="cart add-cart-notify text-capitalize hide-in-mobile font-weight-bold" href="/them-vao-gio?masanpham=@item.MaSanPham&soluong=1">Thêm Vào Giỏ</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="why-text view-row-content">
-                                                        <h4 class="name-product">@item.TenSanPham</h4>
-                                                        <h5 class="price-product">@string.Format("{0:#,##0}", @item.Gia) đ</h5>
-                                                        <a href="/them-vao-gio?masanpham=@item.MaSanPham&soluong=1" class="btn register hvr-hover text-capitalize add-cart-notify max-width-mobile show-in-mobile font-weight-bold font-size-mobile mt-1">Thêm vào giỏ</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        }
-                                    </div>
-                                </div>
+                    <div class="product-item-filter row">
+                        <div class="col-12 col-sm-9 text-center text-sm-left">
+                            <div class="toolbar-sorter-right">
+                                <span>Sắp xếp</span>
+                                <select id="basic" name="sapxep" class="selectpicker show-tick form-control"
+                                        data-placeholder="$ USD">
+                                    @*data-display="Select"*@
+                                    <option value="mac-dinh">Không</option>
+                                    <option value="ten-A-Z">Tên A → Z</option>
+                                    <option value="ten-Z-A">Tên Z → A</option>
+                                    <option value="gia-thap-cao">Giá Thấp → Giá Cao</option>
+                                    <option value="gia-cao-thap">Giá Cao → Giá Thấp</option>
+                                </select>
                             </div>
-                        }
-                        else
-                        {
-                            <div class="flex-column text-center mt-4 mb-4 d-flex align-items-center">
-                                <p class="none-product__title font-weight-bold font-italic mb-2 text-red">
-                                    Bạn chưa yêu thích sản phẩm nào!
-                                </p>
-                                <img class="none-product__img mt-3" src="~/Content/images/empty-product.png" />
-                                <a href="/cua-hang" class="updacart-box-mainte-cart btn hvr-hover max-width-mobile text-capitalize p-2 float-right mt-3 shadow">
-                                    Thêm yêu thích
-                                </a>
-                            </div>
-                        }
+                        </div>
+                        <div class="col-12 col-sm-3 text-center text-sm-right">
+                            <ul class="nav nav-tabs ml-auto">
+                                <li>
+                                    <a class="nav-link active" href="#grid-view" data-toggle="tab">
+                                        <i class="fa fa-th"></i>
+                                    </a>
+                                </li>
+                                @*<li>
+                            <a class="nav-link" href="#list-view" data-toggle="tab">
+                                <i class="fa fa-list-ul"></i>
+                            </a>
+                        </li>*@
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="view-sp">
+                        @{Html.RenderAction("SapXepYeuThich", "Account", new { sapxep = "mac-dinh" });}
                     </div>
                 </div>
             </div>
@@ -130,5 +69,33 @@
 @section scripts{
     <script>
         YeuThichNgoai();
+
+        ScrollToTop(100);
+
+
+        var haveProduct = $('.none-product__title').length <= 0;
+
+        // sắp xếp
+        if (haveProduct) {
+            $('#basic').change(() => {
+                var sortValue = $('#basic').val()
+
+                $.ajax({
+                    url: "/Account/SapXepYeuThich",
+                    data: { sapxep: sortValue },
+                    success: function (res) {
+                        $('#view-sp').html(res)
+
+                        $('#grid-products').paginate()
+                        ClickScroll();
+                        YeuThichNgoai();
+                    },
+                    error: function () {
+                        alert('Lỗi sắp xếp')
+                    }
+                })
+
+            })
+        }
     </script>
 }

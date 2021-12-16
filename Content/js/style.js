@@ -428,3 +428,25 @@ function YeuThichNgoai(option = 1) {
         })
     })
 }
+
+
+/* ..............................................
+Custum thông báo không có sản phẩm theo url
+ ................................................. */
+
+function loadEmptyProduct() {
+    $('#go-to-shop').hide()
+    if (location.href.includes('yeu-thich')) {
+        $('#none-product__title').html(`Bạn chưa yêu thích sản phẩm nào!`)
+        $('#none-product__title').addClass('text-red')
+        $('#go-to-shop').show()
+    } else if (location.href.includes('tim-kiem')) {
+        $('#none-product__title').html(`Không tìm thấy sản phẩm phù hợp!`)
+        $('#none-product__title').addClass('text-red')
+    } else {
+        $('#none-product__title').append(`Các sản phẩm hiện đang được cập nhật <br />
+            Xin quý khách vui lòng quay lại sau!`)
+    }
+}
+
+loadEmptyProduct();

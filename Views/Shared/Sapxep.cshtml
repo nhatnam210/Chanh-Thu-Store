@@ -27,13 +27,6 @@
                                             </div>
                                         }
                                     }
-                                    else
-                                    {
-                                        <div class="type-lb" value="@item.MaSanPham">
-                                            <p class="like bottom-left-radius text-capitalize">Đã thích</p>
-                                        </div>
-                                    }
-
                                     <div class="img-fit product-mobile " style="background-image: url('@item.HinhChinh'),url('/Content/images/default.png');">
                                     </div>
                                     <div class="mask-icon">
@@ -159,12 +152,21 @@
 }
 else
 {
-    <div class="flex-column text-center mt-4 mb-4">
-        <p class="none-product__title font-weight-bold font-italic mb-2">
-            Các sản phẩm hiện đang được cập nhật<br />
-            Xin quý khách vui lòng quay lại sau!
+    @*<div class="flex-column text-center mt-4 mb-4">
+            <p class="none-product__title font-weight-bold font-italic mb-2">
+                Các sản phẩm hiện đang được cập nhật<br />
+                Xin quý khách vui lòng quay lại sau!
+            </p>
+            <img class="none-product__img mt-3" src="~/Content/images/empty-product.png" />
+        </div>*@
+    <div class="flex-column text-center mt-4 mb-4 d-flex align-items-center">
+        <p id="none-product__title" class="none-product__title font-weight-bold font-italic mb-2">
         </p>
         <img class="none-product__img mt-3" src="~/Content/images/empty-product.png" />
+        <a id="go-to-shop" href="/cua-hang" class="updacart-box-mainte-cart btn hvr-hover max-width-mobile text-capitalize p-2 float-right mt-3 shadow">
+            Thêm yêu thích
+        </a>
     </div>
 }
+
 
