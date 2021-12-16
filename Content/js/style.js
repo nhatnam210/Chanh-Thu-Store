@@ -446,7 +446,6 @@ function loadEmptyProduct() {
     } else {
         $('#none-product__title').append(`Các sản phẩm hiện đang được cập nhật <br />
             Xin quý khách vui lòng quay lại sau!`)
-        console.log("1235")
     }
 }
 
