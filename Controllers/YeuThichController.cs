@@ -33,9 +33,8 @@ namespace ChanhThu_Store.Controllers
                     context.SaveChanges();
                     return Ok("cancel");
                 }
-                //var storage = new TuongTac() { MaSanPham = sanpham.MaSanPham, MaKhachHang = User.Identity.GetUserId(), YeuThich = true };
-                var storage = new TuongTac() { MaSanPham = sanpham.MaSanPham, MaKhachHang = User.Identity.GetUserId() };
-
+                var storage = new TuongTac() { MaSanPham = sanpham.MaSanPham, MaKhachHang = User.Identity.GetUserId(), YeuThich = true };
+                
                 sanphamthich.LuotYeuThich++;
                 context.TuongTacs.Add(storage);
                 context.SaveChanges();

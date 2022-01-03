@@ -18,7 +18,7 @@ namespace ChanhThu_Store.Models
         [StringLength(10)]
         public string MaSanPham { get; set; }
 
-        //public bool? YeuThich { get; set; }
+        public bool? YeuThich { get; set; }
 
         public virtual AspNetUser AspNetUser { get; set; }
 

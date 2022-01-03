@@ -35,7 +35,7 @@
                     {
                         <div class="ml-4 mb-2 small">
                             <span class="font-weight-bold text-uppercase">*HSD:</span>
-                            <span>@item.HanSuDung.ToString("d", VN)</span> -
+                            <span>@item.HanSuDung.ToString("d", VN)</span>
                             <span class="font-weight-bold text-uppercase">SL:</span>
                             <span value="@item.MaVoucher" class="voucher-user__quantity text-red"></span>
                             <span class="font-italic text-red float-right voucher__day-count-down">(Ngày mai hết hạn)</span>
@@ -47,7 +47,7 @@
                         {
                             <div class="ml-4 mb-2 small">
                                 <span class="font-weight-bold text-uppercase">*HSD:</span>
-                                <span>@item.HanSuDung.ToString("d", VN)</span> -
+                                <span>@item.HanSuDung.ToString("d", VN)</span>
                                 <span class="font-weight-bold text-uppercase">SL:</span>
                                 <span value="@item.MaVoucher" class="voucher-user__quantity text-red"></span>
                                 <span class="font-italic text-red float-right voucher__day-count-down">(Còn @chenhlechAbs ngày)</span>
@@ -72,7 +72,7 @@
                         {
                             <div class="ml-4 mb-2 small">
                                 <span class="font-weight-bold text-uppercase">*HSD:</span>
-                                <span> @item.HanSuDung.ToString("d", VN)</span> -
+                                <span> @item.HanSuDung.ToString("d", VN)</span>
                                 <span class="font-weight-bold text-uppercase">SL:</span>
                                 <span value="@item.MaVoucher" class="voucher-user__quantity text-red"></span>
                                 <span class="font-italic float-right voucher__day-count-down">(Còn @thang tháng @ngay ngày)</span>
@@ -82,7 +82,7 @@
                         {
                             <div class="ml-4 mb-2 small">
                                 <span class="font-weight-bold text-uppercase">*HSD:</span>
-                                <span> @item.HanSuDung.ToString("d", VN)</span> -
+                                <span> @item.HanSuDung.ToString("d", VN)</span>
                                 <span class="font-weight-bold text-uppercase">SL:</span>
                                 <span value="@item.MaVoucher" class="voucher-user__quantity text-red"></span>
                                 <span class="font-italic float-right voucher__day-count-down">(Còn @thang tháng)</span>
@@ -93,7 +93,7 @@
                     {
                         <div class="ml-4 mb-2 small">
                             <span class="font-weight-bold text-uppercase">*HSD:</span>
-                            <span> @item.HanSuDung.ToString("d", VN)</span> -
+                            <span> @item.HanSuDung.ToString("d", VN)</span>
                             <span class="font-weight-bold text-uppercase">SL:</span>
                             <span value="@item.MaVoucher" class="voucher-user__quantity text-red"></span>
                         </div>
@@ -114,7 +114,7 @@
 </div>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
-    $('.voucher-user__quantity').each((i, e) => {
+    $('.voucher-user__quantity').each((i, e) =>{
         var maVC = $(e).attr("value")
         $.ajax({
             url: "/Cart/DemSLVCUser",
