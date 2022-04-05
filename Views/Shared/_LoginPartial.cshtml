@@ -1,22 +1,36 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    if (User.IsInRole("Admin"))
     {
-    @Html.AntiForgeryToken()
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
+            @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
+            <a href="/admin" class="btn login hvr-hover">Quản lý</a>
+            <a class="btn login hvr-hover" href="javascript:document.getElementById('logoutForm').submit()">Đăng xuất</a>
+        }
+    }
+    else
+    {
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
+            @Html.AntiForgeryToken()
+            <a href="/nguoi-dung" class="name-account" routeValues: null>
+                @*@User.Identity.GetUserName()*@
+                <span>
+                    @{
+                        Html.RenderAction("GetAvatarLogin", "Account");
+                    }
+                </span>
+
+            </a>
+            <a class="btn login hvr-hover" href="javascript:document.getElementById('logoutForm').submit()">Đăng xuất</a>
+        }
     }
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
+    <a href="/dang-nhap" class="btn login hvr-hover">Đăng nhập</a>
+    <a href="/dang-ky" class="btn register hvr-hover">Đăng ký</a>
 }

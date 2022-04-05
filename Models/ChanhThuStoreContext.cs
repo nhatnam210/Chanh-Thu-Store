@@ -12,7 +12,13 @@ namespace ChanhThu_Store.Models
         {
         }
 
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<Banner> Banners { get; set; }
+        public virtual DbSet<BinhLuan> BinhLuans { get; set; }
         public virtual DbSet<ChiTietHoaDon> ChiTietHoaDons { get; set; }
         public virtual DbSet<ChiTietVoucher> ChiTietVouchers { get; set; }
         public virtual DbSet<DanhMuc> DanhMucs { get; set; }
@@ -28,9 +34,63 @@ namespace ChanhThu_Store.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<AspNetRole>()
+                .HasMany(e => e.AspNetUsers)
+                .WithMany(e => e.AspNetRoles)
+                .Map(m => m.ToTable("AspNetUserRoles").MapLeftKey("RoleId").MapRightKey("UserId"));
+
+            modelBuilder.Entity<AspNetUser>()
+                .HasMany(e => e.AspNetUserClaims)
+                .WithRequired(e => e.AspNetUser)
+                .HasForeignKey(e => e.UserId);
+
+            modelBuilder.Entity<AspNetUser>()
+                .HasMany(e => e.AspNetUserLogins)
+                .WithRequired(e => e.AspNetUser)
+                .HasForeignKey(e => e.UserId);
+
+            modelBuilder.Entity<AspNetUser>()
+                .HasMany(e => e.ChiTietVouchers)
+                .WithRequired(e => e.AspNetUser)
+                .HasForeignKey(e => e.MaKhachHang)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<AspNetUser>()
+                .HasMany(e => e.HoaDons)
+                .WithRequired(e => e.AspNetUser)
+                .HasForeignKey(e => e.MaKhachHang)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<AspNetUser>()
+                .HasMany(e => e.BinhLuans)
+                .WithRequired(e => e.AspNetUser)
+                .HasForeignKey(e => e.MaKhachHang)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<AspNetUser>()
+                .HasMany(e => e.TuongTacs)
+                .WithRequired(e => e.AspNetUser)
+                .HasForeignKey(e => e.MaKhachHang)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<SanPham>()
+                .HasMany(e => e.BinhLuans)
+                .WithRequired(e => e.SanPham)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<SanPham>()
+                .HasMany(e => e.TuongTacs)
+                .WithRequired(e => e.SanPham)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<ThongTinCuaHang>()
                 .Property(e => e.SDT)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Voucher>()
+                .HasMany(e => e.ChiTietVouchers)
+                .WithRequired(e => e.Voucher)
+                .WillCascadeOnDelete(false);
         }
     }
 }

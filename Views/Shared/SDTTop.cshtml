@@ -1,0 +1,6 @@
+﻿@model ChanhThu_Store.Models.ThongTinCuaHang
+
+<div class="right-phone-box">
+    @{ var sdt = "+84" + Model.SDT.Substring(1);}
+    <p>Gọi ngay : <a href="tel:@Model.SDT">@sdt</a></p>
+</div>

@@ -151,10 +151,10 @@ select.selectpicker {
 }
 /* line 201, bootstrap-select.scss */
 .bootstrap-select.btn-group .dropdown-menu {
-  min-width: 100%;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+    min-width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 /* line 205, bootstrap-select.scss */
 .bootstrap-select.btn-group .dropdown-menu.inner {
@@ -168,11 +168,13 @@ select.selectpicker {
   box-shadow: none;
 }
 /* line 216, bootstrap-select.scss */
-.bootstrap-select.btn-group .dropdown-menu a.dropdown-item {
-  position: relative;
-  cursor: pointer;
-  user-select: none;
-}
+    .bootstrap-select.btn-group .dropdown-menu a.dropdown-item {
+        position: relative;
+        cursor: pointer;
+        user-select: none;
+        display: inline-block;
+        font-weight: 500;
+    }
 /* line 221, bootstrap-select.scss */
 .bootstrap-select.btn-group .dropdown-menu a.dropdown-item.active small {
   color: #fff;

@@ -1,0 +1,96 @@
+﻿@model ChanhThu_Store.Models.ThongTinCuaHang
+
+<!-- Start Footer  -->
+<footer>
+    <div class="footer-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="footer-top-box">
+                        <h3>Thời Gian Hoạt Động</h3>
+                        <ul class="list-time">
+                            <li> Thứ 2 - Chủ Nhật:<span> @Model.ThoiGianMoCua - @Model.ThoiGianDongCua</span> </li>
+                            @*<li>Chủ Nhật: <span>08:00 đến 19:00</span></li>*@
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="footer-top-box">
+                        <h3>Bản Tin</h3>
+                        <form class="newsletter-box">
+                            <div class="form-group">
+                                <input class="" readonly type="email" name="Email" placeholder="Chức năng đang cập nhật" />
+                                <i class="fa fa-envelope"></i>
+                            </div>
+                            <button class="btn hvr-hover max-width-mobile" type="submit">Gửi</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="footer-top-box">
+                        <h3>Mạng Xã Hội</h3>
+                        <ul>
+                            <li><a href="https://www.facebook.com/ChanhThuStore17"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+                            @*<li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>*@
+                            <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a></li>
+                            @*<li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>*@
+                            @*<li><a href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a></li>*@
+                            @*<li><a href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>*@
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="footer-widget">
+                        <h4>@Model.TenCuaHang</h4>
+                        <p calss="text-lm-3">@Model.LoiGioiThieu</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="footer-link">
+                        <h4>Thông Tin</h4>
+                        <ul>
+                            <li><a href="/gioi-thieu" class="text-capitalize">Giới thiệu</a></li>
+                            @*<li><a href="#">Dịch Vụ Khách Hàng</a></li>*@
+                            @*<li><a href="#">Điều Khoản &amp; Điều Kiện</a></li>*@
+                            <li><a href="/lien-he" class="text-capitalize">Liên hệ</a></li>
+                            <li><a href="/bo-su-tap" class="text-capitalize">Bộ sưu tập</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="footer-link-contact">
+                        <h4>Thông tin liên hệ</h4>
+                        <ul>
+                            <li>
+                                <p><i class="fas fa-map-marker-alt"></i>Địa Chỉ: @Model.DiaChi</p>
+                            </li>
+                            <li>
+                                @{ var sdt = "+84" + Model.SDT.Substring(1);}
+                                <p>
+                                    <i class="fas fa-phone-square"></i>Số Điện Thoại:
+                                    <a href="tel:@Model.SDT">@sdt</a>
+                                </p>
+                            </li>
+                            <li>
+                                <p><i class="fas fa-envelope"></i>Email: <a href="mailto:chanhthustore@gmail.com">@Model.Email</a></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer  -->
+<!-- Start copyright  -->
+<div class="footer-copyright">
+    <p class="footer-company">
+        Chuyên cung cấp những sản phẩm tốt nhất. &copy; 2021 <a href="/trang-chu">@Model.TenCuaHang</a> @*Thiết kế bởi :
+            <a href="https://html.design/">html design</a>*@
+    </p>
+</div>
+<!-- End copyright  -->

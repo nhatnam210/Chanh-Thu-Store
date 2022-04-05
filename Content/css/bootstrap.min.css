@@ -31,11 +31,8 @@
     --breakpoint-md: 768px;
     --breakpoint-lg: 992px;
     --breakpoint-xl: 1200px;
-    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-        "Segoe UI Emoji", "Segoe UI Symbol";
-    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
-        "Liberation Mono", "Courier New", monospace;
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 *,
 ::after,
@@ -196,9 +193,19 @@ figure {
     margin: 0 0 1rem;
 }
 img {
+    
     vertical-align: middle;
     border-style: none;
+    
 }
+    img.logo {
+        vertical-align: middle;
+        border-style: none;
+        width: 150px;
+        object-fit: cover;
+        transition: all linear .2s;
+        border-radius: var(--img-corner-radius);
+    }
 svg:not(:root) {
     overflow: hidden;
 }
@@ -434,8 +441,9 @@ mark {
     content: "\2014 \00A0";
 }
 .img-fluid {
-    max-width: 100%;
-    height: auto;
+    height: 250px;
+    object-fit: cover;
+    width: 100%;
 }
 .img-thumbnail {
     padding: 0.25rem;
@@ -503,7 +511,7 @@ pre code {
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-    padding-bottom: 30px;
+    /*padding-bottom: 15px;*/
 }
 @media (min-width: 576px) {
     .container {
@@ -527,8 +535,8 @@ pre code {
 }
 .container-fluid {
     width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 10px;
+    padding-left: 10px;
     margin-right: auto;
     margin-left: auto;
 }
@@ -537,8 +545,8 @@ pre code {
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
+    margin-right: -10px;
+    margin-left: -10px;
 }
 .no-gutters {
     margin-right: 0;
@@ -622,8 +630,8 @@ pre code {
     position: relative;
     width: 100%;
     min-height: 1px;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 .col {
     -ms-flex-preferred-size: 0;
@@ -1481,14 +1489,15 @@ pre code {
     margin-bottom: 1rem;
     background-color: transparent;
 }
-.table td,
-.table th {
-    padding: 0.75rem;
-    vertical-align: top;
-    border-top: 1px solid #dee2e6;
-}
+    .table td,
+    .table th {
+        padding: 0.75rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+        border-bottom: 1px solid #dee2e6;
+    }
 .table thead th {
-    vertical-align: bottom;
+    vertical-align: middle;
     border-bottom: 2px solid #dee2e6;
 }
 .table tbody + tbody {
@@ -2981,6 +2990,7 @@ input[type="submit"].btn-block {
     white-space: nowrap;
     background-color: transparent;
     border: 0;
+    transition: all linear .2s;
 }
 .dropdown-item:focus,
 .dropdown-item:hover {
@@ -2988,11 +2998,18 @@ input[type="submit"].btn-block {
     text-decoration: none;
     background-color: #f8f9fa;
 }
+
+    .dropdown-item:hover {
+        color: #16181b;
+        text-decoration: none;
+        background-color: rgba(0 0 0 / 10%);
+    }
+
 .dropdown-item.active,
 .dropdown-item:active {
-    color: #fff;
+    /*color: #fff;*/
     text-decoration: none;
-    background-color: #007bff;
+    /*background-color: #007bff;*/
 }
 .dropdown-item.disabled,
 .dropdown-item:disabled {
@@ -4884,7 +4901,7 @@ button.close {
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 1050;
+    z-index: 99999999;
     display: none;
     overflow: hidden;
     outline: 0;
@@ -5307,6 +5324,7 @@ button.close {
     position: relative;
     width: 100%;
     overflow: hidden;
+    border-radius: var(--img-corner-radius);
 }
 .carousel-item {
     position: relative;

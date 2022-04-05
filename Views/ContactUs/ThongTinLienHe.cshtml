@@ -1,0 +1,18 @@
+﻿@model ChanhThu_Store.Models.ThongTinCuaHang
+
+<ul>
+    <li>
+        <p><i class="fas fa-map-marker-alt"></i>
+        <span class="font-weight-bold">Địa chỉ: </span>
+        <span class="text-black-primary">@Model.DiaChi</span>
+    </li>
+    <li>
+        @{ var sdt = "+84" + Model.SDT.Substring(1);}
+        <p><i class="fas fa-phone-square"></i><span class="font-weight-bold">Số điện thoại: </span>
+        <a class="text-black-primary" href="tel:@Model.SDT">@sdt</a></p>
+    </li>
+    <li>
+        <p><i class="fas fa-envelope"></i><span class="font-weight-bold">Email: </span>
+        <a  class="text-black-primary" href="mailto:@Model.Email">@Model.Email</a></p>
+    </li>
+</ul>

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<ChanhThu_Store.Models.ChiTietHoaDon>
+<div class="row">
+    <div class="col-12 table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="text-capitalize">Mã sản phẩm</th>
+                    <th class="text-capitalize">Tên Sản Phẩm</th>
+                    <th class="text-capitalize">Số Lượng</th>
+                    <th class="text-capitalize">Đơn Giá</th>
+                    <th class="text-capitalize">Thành tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@item.MaSanPham</td>
+                    <td>@item.SanPham.TenSanPham</td>
+                    <td>@item.Soluong <span class="text-lowercase">@item.SanPham.DonViTinh</span></td>
+                    <td>@string.Format("{0:#,##0}", item.DonGia) đ</td>
+                    <td>@string.Format("{0:#,##0}", item.DonGia* item.Soluong) đ</td>
+                </tr>
+
+                }
+
+            </tbody>
+        </table>
+    </div>
+    <!-- /.col -->
+</div>

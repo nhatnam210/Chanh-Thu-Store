@@ -1,0 +1,95 @@
+﻿@model ChanhThu_Store.Models.ThongTinCuaHang
+
+<!-- Sidebar -->
+<ul class="navbar-nav sidebar sidebar-dark accordion navbar-menu-admin" id="accordionSidebar">
+    <!-- Sidebar - Brand -->
+    @*<a class="sidebar-brand d-flex align-items-center justify-content-center link-to-home" href="/trang-chu">
+            <div class="sidebar-brand-text mx-3">
+                <i class="fas fa-home"></i>
+                ChanhThuStore
+                <hr class="sidebar-divider my-0">
+            </div>
+        </a>*@
+    <li class="nav-item link-to-home-wrap">
+        <a class="link-to-home" href="/trang-chu">
+            <i class="fas fa-home"></i>
+            <span>
+                @Model.TenCuaHang
+            </span>
+        </a>
+    </li>
+    <!-- Nav Item - Charts -->
+    <div class="nav-menu-wrap">
+    <li class="nav-item">
+        <a class="nav-link" href="/admin/nha-san-xuat">
+            <i class="fas fa-warehouse"></i>
+            <span>Nhà sản xuất</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/admin/danh-muc">
+            <i class="fas fa-bars"></i>
+            <span>Danh mục</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/admin/loai-san-pham">
+            <i class="fas fa-stream"></i>
+            <span>Loại sản phẩm</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/admin/san-pham">
+            <i class="fab fa-shopify"></i>
+            <span>Sản phẩm</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/admin/hoa-don">
+            <i class="fas fa-file-invoice-dollar"></i>
+            <span>Hóa đơn</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/admin/khach-hang">
+            <i class="fas fa-users"></i>
+            <span>Khách hàng</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/admin/voucher">
+            <i class="fas fa-ticket-alt"></i>
+            <span>Voucher</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/admin/thong-tin-cua-hang">
+            <i class="fas fa-info-circle"></i>
+            <span>Thông tin cửa hàng</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/admin/quang-cao">
+            <i class="fas fa-sticky-note"></i>
+            <span>Quảng cáo</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/admin/chay-anh-dau-trang">
+            <i class="fas fa-images"></i>
+            <span>Chạy ảnh đầu trang</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/admin/chay-anh-cuoi-trang">
+            <i class="fas fa-images"></i>
+            <span>Chạy ảnh cuối trang</span>
+        </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+    </div>
+
+</ul>
+<!-- End of Sidebar -->

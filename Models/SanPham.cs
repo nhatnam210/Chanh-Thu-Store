@@ -1,4 +1,4 @@
-namespace ChanhThu_Store.Models
+﻿namespace ChanhThu_Store.Models
 {
     using System;
     using System.Collections.Generic;
@@ -12,6 +12,7 @@ namespace ChanhThu_Store.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SanPham()
         {
+            BinhLuans = new HashSet<BinhLuan>();
             ChiTietHoaDons = new HashSet<ChiTietHoaDon>();
             TuongTacs = new HashSet<TuongTac>();
         }
@@ -20,47 +21,58 @@ namespace ChanhThu_Store.Models
         [StringLength(10)]
         public string MaSanPham { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vui lòng chọn danh mục con!")]
         [StringLength(6)]
         public string MaDanhMucCon { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vui lòng chọn nhà sản xuất!")]
         [StringLength(6)]
         public string MaNhaSanXuat { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        [Required(ErrorMessage = "Vui lòng nhập tên sản phẩm!")]
+        [StringLength(200, ErrorMessage = "Tên sản phẩm không được vượt quá {1} ký tự!")]
         public string TenSanPham { get; set; }
 
+        [Required(ErrorMessage = "Vui lòng nhập giá sản phẩm!")]
         public int Gia { get; set; }
 
-        [Required]
-        [StringLength(255)]
+        [Required(ErrorMessage = "Vui lòng chọn hình cho sản phẩm!")]
+        [StringLength(255, ErrorMessage = "Đường dẫn hình không được vượt quá {1} ký tự!")]
         public string HinhChinh { get; set; }
 
-        [StringLength(255)]
+        [StringLength(255, ErrorMessage = "Đường dẫn hình không được vượt quá {1} ký tự!")]
         public string Hinh1 { get; set; }
 
-        [StringLength(255)]
+        [StringLength(255, ErrorMessage = "Đường dẫn hình không được vượt quá {1} ký tự!")]
         public string Hinh2 { get; set; }
 
         public string Mota { get; set; }
 
+        [StringLength(20, ErrorMessage = "Đơn vị tính không được vượt quá {1} ký tự!")]
+        public string DonViTinh { get; set; }
+
+        [Required(ErrorMessage = "Vui lòng nhập số lượng tồn kho!")]
         public int SoLuongTonKho { get; set; }
 
-        public int SoLuongDaBan { get; set; }
+        public int? SoLuongDaBan { get; set; }
 
         public int? LuotYeuThich { get; set; }
 
+        [Required(ErrorMessage = "Vui lòng nhập ngày sản xuất!")]
         [Column(TypeName = "date")]
         public DateTime NgaySanXuat { get; set; }
 
+        [Required(ErrorMessage = "Vui lòng nhập hạn sử dụng!")]
         [Column(TypeName = "date")]
         public DateTime HanSuDung { get; set; }
 
+        [Required(ErrorMessage = "Vui lòng nhập điểm tích lũy!")]
         public int Diem { get; set; }
 
         public bool TinhTrang { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BinhLuan> BinhLuans { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
@@ -71,5 +83,7 @@ namespace ChanhThu_Store.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TuongTac> TuongTacs { get; set; }
+        public bool isLogin = false;
+        public bool isLiked = false;
     }
 }

@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ChanhThu_Store.Models;
+using Microsoft.AspNet.Identity;
+using PagedList;
 
 namespace ChanhThu_Store.Controllers
 {
@@ -24,100 +26,103 @@ namespace ChanhThu_Store.Controllers
         // GET: DanhMucCons/Details/5
         public ActionResult Details(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DanhMucCon danhMucCon = db.DanhMucCons.Find(id);
-            if (danhMucCon == null)
-            {
-                return HttpNotFound();
-            }
-            return View(danhMucCon);
-        }
-
-        // GET: DanhMucCons/Create
-        public ActionResult Create()
-        {
-            ViewBag.MaDanhMuc = new SelectList(db.DanhMucs, "MaDanhMuc", "TenDanhMuc");
+            ViewBag.Id = id;
             return View();
         }
-
-        // POST: DanhMucCons/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaDanhMucCon,MaDanhMuc,TenDanhMucCon,Hinh")] DanhMucCon danhMucCon)
+        public ActionResult Sapxep(string id,string sapxep)
         {
-            if (ModelState.IsValid)
-            {
-                db.DanhMucCons.Add(danhMucCon);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            ViewBag.SapXep = sapxep;
 
-            ViewBag.MaDanhMuc = new SelectList(db.DanhMucs, "MaDanhMuc", "TenDanhMuc", danhMucCon.MaDanhMuc);
-            return View(danhMucCon);
-        }
-
-        // GET: DanhMucCons/Edit/5
-        public ActionResult Edit(string id)
-        {
+            IQueryable<SanPham> listSanPham = null;
+            var userID = User.Identity.GetUserId();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DanhMucCon danhMucCon = db.DanhMucCons.Find(id);
-            if (danhMucCon == null)
+            listSanPham = from s in db.SanPhams
+                          where s.MaDanhMucCon == id && s.SoLuongTonKho > 0
+                          orderby s.MaSanPham
+                          select s;
+            /*Check yêu thích*/
+            foreach (SanPham item in listSanPham)
             {
-                return HttpNotFound();
+                if (userID != null)
+                {
+                    item.isLogin = true;
+
+                    TuongTac find = db.TuongTacs.FirstOrDefault(p => p.MaSanPham == item.MaSanPham && p.MaKhachHang == userID);
+                    if (find != null)
+                        item.isLiked = true;
+                }
             }
-            ViewBag.MaDanhMuc = new SelectList(db.DanhMucs, "MaDanhMuc", "TenDanhMuc", danhMucCon.MaDanhMuc);
-            return View(danhMucCon);
+
+            //Sắp xếp
+            switch (sapxep)
+            {
+                case "mac-dinh":
+                    listSanPham = listSanPham.OrderBy(s => s.MaSanPham);
+                    break;
+                case "ten-A-Z":
+                    listSanPham = listSanPham.OrderBy(s => s.TenSanPham);
+                    break;
+                case "ten-Z-A":
+                    listSanPham = listSanPham.OrderByDescending(s => s.TenSanPham);
+                    break;
+                case "gia-thap-cao":
+                    listSanPham = listSanPham.OrderBy(s => s.Gia);
+                    break;
+                case "gia-cao-thap":
+                    listSanPham = listSanPham.OrderByDescending(s => s.Gia);
+                    break;
+                default:
+                    listSanPham = listSanPham.OrderByDescending(s => s.MaSanPham);
+                    break;
+            }
+
+          
+            return PartialView(listSanPham.ToList());
+        }
+        public ActionResult DanhSachDMC(string id)
+        {
+            var listDanhMucCon = db.DanhMucCons
+                                .Where(d => d.MaDanhMuc == id)
+                                .Select(d => d);
+
+            foreach (var item in listDanhMucCon)
+            {
+                var soSP = db.SanPhams
+                                .Where(s => s.MaDanhMucCon == item.MaDanhMucCon)
+                                .Count();
+                item.soSP = soSP;
+            }
+            return PartialView(listDanhMucCon);
         }
 
-        // POST: DanhMucCons/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaDanhMucCon,MaDanhMuc,TenDanhMucCon,Hinh")] DanhMucCon danhMucCon)
+        public ActionResult DanhSachDM()
         {
-            if (ModelState.IsValid)
+            var listDanhMuc = db.DanhMucs
+                                .OrderBy(d=>d.MaDanhMuc)
+                                .Select(d => d);
+
+            foreach (var item in listDanhMuc)
             {
-                db.Entry(danhMucCon).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var soDMC = db.DanhMucCons
+                                .Where(s => s.MaDanhMuc == item.MaDanhMuc)
+                                .Count();
+                item.soDMC = soDMC;
             }
-            ViewBag.MaDanhMuc = new SelectList(db.DanhMucs, "MaDanhMuc", "TenDanhMuc", danhMucCon.MaDanhMuc);
-            return View(danhMucCon);
+            return PartialView(listDanhMuc);
         }
 
-        // GET: DanhMucCons/Delete/5
-        public ActionResult Delete(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DanhMucCon danhMucCon = db.DanhMucCons.Find(id);
-            if (danhMucCon == null)
-            {
-                return HttpNotFound();
-            }
-            return View(danhMucCon);
-        }
 
-        // POST: DanhMucCons/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult TenBoSuTap()
         {
-            DanhMucCon danhMucCon = db.DanhMucCons.Find(id);
-            db.DanhMucCons.Remove(danhMucCon);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            IQueryable<DanhMuc> listDanhMuc = null;
+
+            listDanhMuc = from d in db.DanhMucs
+                          orderby d.MaDanhMuc
+                          select d;
+            return PartialView(listDanhMuc);
         }
 
         protected override void Dispose(bool disposing)

@@ -1,0 +1,34 @@
+﻿@model ChanhThu_Store.Models.NhaSanXuat
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Main_Admin.cshtml";
+}
+
+@using (Html.BeginForm("Edit", "NhaSanXuats", FormMethod.Post, new { @class = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h2 class="table-admin__title text-center">Chỉnh sửa thông tin<br/> Nhà Sản Xuất</h2>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.MaNhaSanXuat)
+
+    <div class="form-group">
+        <span class="label-admin" >Tên nhà sản xuất</span>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.TenNhaSanXuat, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TenNhaSanXuat, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+        <div class="form-group col-md-12">
+            <div class="col-md-offset-2 btn-touch">
+                <input type="submit" value="Cập nhật" class="btn btn-warning" />
+            </div>
+        </div>
+        <div class="col-md-12 back-to-list ">
+            @Html.ActionLink("Trở lại", "Index")
+        </div>
+    </div>
+}

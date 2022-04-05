@@ -1,4 +1,4 @@
-namespace ChanhThu_Store.Models
+﻿namespace ChanhThu_Store.Models
 {
     using System;
     using System.Collections.Generic;
@@ -9,20 +9,9 @@ namespace ChanhThu_Store.Models
     [Table("SlideFooter")]
     public partial class SlideFooter
     {
-        [Key]
-        [StringLength(255)]
-        public string HinhSlideFooter1 { get; set; }
+        public int Id { get; set; }
 
-        [StringLength(255)]
-        public string HinhSlideFooter2 { get; set; }
-
-        [StringLength(255)]
-        public string HinhSlideFooter3 { get; set; }
-
-        [StringLength(255)]
-        public string HinhSlideFooter4 { get; set; }
-
-        [StringLength(255)]
-        public string HinhSlideFooter5 { get; set; }
+        [StringLength(255, ErrorMessage = "Đường dẫn hình không được vượt quá {1} ký tự!")]
+        public string HinhSlideFooter { get; set; }
     }
 }

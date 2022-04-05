@@ -18,6 +18,10 @@ namespace ChanhThu_Store.Models
         [Column(Order = 1)]
         public string MaKhachHang { get; set; }
 
+        public int? SoLuong { get; set; }
+
+        public virtual AspNetUser AspNetUser { get; set; }
+
         public virtual Voucher Voucher { get; set; }
     }
 }

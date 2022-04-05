@@ -1,0 +1,9 @@
+﻿@model IEnumerable<ChanhThu_Store.Models.DanhMucCon>
+
+@foreach (var item in Model)
+{
+<a href="/cua-hang/loai-san-pham?id=@item.MaDanhMucCon" class="danh-muc-con list-group-item list-group-item-action text-capitalize">
+    @item.TenDanhMucCon
+    <small value="@item.MaDanhMucCon" class="text-muted quantity-small loai-sp">(@item.soSP)</small>
+</a>
+}

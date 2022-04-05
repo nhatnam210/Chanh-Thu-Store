@@ -18,14 +18,9 @@ namespace ChanhThu_Store.Models
         [StringLength(10)]
         public string MaSanPham { get; set; }
 
-        [Required]
-        [StringLength(255)]
-        public string NoiDungBinhLuan { get; set; }
-
-        [Column(TypeName = "date")]
-        public DateTime? NgayBinhLuan { get; set; }
-
         public bool? YeuThich { get; set; }
+
+        public virtual AspNetUser AspNetUser { get; set; }
 
         public virtual SanPham SanPham { get; set; }
     }

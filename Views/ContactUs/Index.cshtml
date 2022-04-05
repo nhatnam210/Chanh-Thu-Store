@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Main_Layout.cshtml";
+}
+
+<!-- Start All Title Box -->
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Liên hệ</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/trang-chu">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Liên hệ</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End All Title Box -->
+<!-- Start Contact Us  -->
+<div class="contact-box-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-sm-12">
+                <div class="contact-form-right">
+                    <h2>Hãy liên hệ với chúng tôi ngay</h2>
+                    <p>Mọi ý kiến đóng góp của bạn chính là động lực để chúng tôi có thể phát triển, trở nên tốt hơn từng ngày.</p>
+                    <form id="contactForm">
+                        <div class="fb-comments" data-href="https://localhost:44340/lien-he" data-width="450" data-numposts="5"></div>
+                        
+                        <div class="fb-page" data-href="https://www.facebook.com/Chánh-Thu-Store-100075403785205/" data-tabs="events,messages" data-width="500" data-height="270" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/XBOX-Vietnam-100734395082213/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/XBOX-Vietnam-100734395082213/">XBOX Vietnam</a></blockquote></div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-12">
+                <div class="contact-info-left">
+                    <h2 class="text-capitalize text-black-shadow">
+                        Thông tin liên hệ
+                    </h2>
+                    <p class="text-white-shadow">Nếu bạn chưa nhận được hồi âm hoặc có việc cần liên hệ hãy sử dụng những thông tin bên dưới để liên hệ ngay nhé ! </p>
+                    @{ Html.RenderAction("ThongTinLienHe", "ContactUs");}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Cart -->

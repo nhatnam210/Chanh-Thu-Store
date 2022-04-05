@@ -1,0 +1,31 @@
+﻿@model IEnumerable<ChanhThu_Store.Models.SlideHeader>
+<div id="slides-shop" class="cover-slides">
+    <ul class="slides-container">
+        @foreach (var i in Model)
+        {
+            <li class="text-center">
+                <img src="@i.HinhSlideHeader" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 text-title="Chào mừng đến với" class="slide__title-header-top text-light-white">
+                                Chào mừng đến với
+                            </h1>
+                            @{ Html.RenderAction("TenCuaHangSliderHome", "Home");}
+                            <p text-title="@i.MoTaSliderHeader" class="m-b-40 text-light-blue">
+                                @i.MoTaSliderHeader
+                        </p>
+                        <p text-title="Khách hàng là thượng đế" class="m-b-40 text-light-blue">Khách hàng là thượng đế</p>
+                        <p style="margin-top: 20px;"><a class="btn hvr-hover font-weight-bold" href="/cua-hang">Mua Ngay</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+    <div class="slides-navigation">
+        <a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+        <a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+    </div>
+</div>
+

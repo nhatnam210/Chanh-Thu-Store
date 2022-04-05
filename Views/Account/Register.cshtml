@@ -1,88 +1,93 @@
 ﻿@model ChanhThu_Store.Models.RegisterViewModel
+@using ChanhThu_Store.Models
+
 @{
     ViewBag.Title = "Register";
     Layout = "~/Views/Shared/_Main_Layout.cshtml";
 }
 
-<h2>@ViewBag.Title.</h2>
-
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-            @Html.LabelFor(m => m.Ten, new { @class = "col-md-2 control-label" })
+@*<h2>@ViewBag.Title.</h2>
+    <h4>@ViewBag.Message</h4>
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <h4>Create a new account.</h4>
+        <hr />
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Ten, new { @class = "form-control" })
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
             </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+        <div class="form-group">
+                @Html.LabelFor(m => m.Ten, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Ten, new { @class = "form-control" })
+                </div>
         </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
         </div>
-    </div>
-}
-
+        <div class="form-group">
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default" value="Register" />
+            </div>
+        </div>
+    }*@
 
 <!-- Start Cart  -->
 <div class="cart-box-main">
     <div class="container">
         <div class="row new-account-login">
-            <div class="col-sm-6 col-lg-6 mb-3">
-                <div class="title-left">
-                    <h3>Tạo Tài Khoản</h3>
+            <div class="col-sm-12 col-lg-12 mb-3">
+                <div class="title-left account">
+                    <h3 class="text-capitalize">Đăng Ký Tài Khoản</h3>
                 </div>
-                <h5><a data-toggle="collapse" href="#formRegister" role="button" aria-expanded="false">Nhấn Vào Đây Để Đăng Kí</a></h5>
-                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "mt-3 collapse review-form-box", role = "form", id = "formRegister" }))
+                @*<h5><a data-toggle="collapse" href="#formRegister" role="button" aria-expanded="false">Nhấn Vào Đây Để Đăng Kí</a></h5>*@
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "mt-3 mb-3 review-form-box", role = "form", id = "formRegister" }))
                 {
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary("", new { @class = "text-danger" })
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="InputName" class="mb-0">Họ và Tên</label>
-                             @Html.TextBoxFor(m => m.Ten, new { @class = "form-control", type = "text", id = "InputName", placeholder = "Nhập họ và tên" })
+                            <label for="InputName" class="mb-0">Họ và Tên (<span class="text-red">*</span>)</label>
+                            @Html.TextBoxFor(m => m.Ten, new { @class = "form-control", type = "text", id = "InputName", placeholder = "Nhập họ và tên" })
+                            @Html.ValidationMessageFor(model => model.Ten, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group col-md-6">
                             <label for="InputPhone" class="mb-0">Số điện thoại</label>
-                            <input type="text" class="form-control" id="InputPhone" placeholder="Nhập số điện thoại">
+                            <input type="text" class="form-control" name="Phone" id="InputPhone" placeholder="Nhập số điện thoại">
                         </div>
                         <div class="form-group col-md-12">
-                            <label for="InputEmail1" class="mb-0">Email</label>
+                            <label for="InputEmail1" class="mb-0">Email (<span class="text-red">*</span>)</label>
                             @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email", id = "InputEmail1", placeholder = "Nhập email" })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="InputPassword1" class="mb-0">Mật Khẩu</label>
+                            <label for="InputPassword1" class="mb-0">Mật Khẩu (<span class="text-red">*</span>)</label>
                             @Html.PasswordFor(m => m.Password, new { @class = "form-control", type = "password", id = "InputPassword1", placeholder = "Nhập mật khẩu" })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="InputPassword2" class="mb-0">Xác thực mật khẩu</label>
+                            <label for="InputPassword2" class="mb-0">Xác thực mật khẩu (<span class="text-red">*</span>)</label>
                             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", type = "password", id = "InputPassword2", placeholder = "Nhập lại mật khẩu" })
+                            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
-                    <button type="submit" value="Register" class="btn hvr-hover">Đăng Kí</button>
-                    <button type="submit" class="btn hvr-hover">Dùng tài khoản Google</button>
+                    <button type="submit" value="Register" class="btn hvr-hover max-width-mobile">Đăng ký</button>
                 }
+            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
             </div>
         </div>
     </div>

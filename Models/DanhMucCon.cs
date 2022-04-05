@@ -1,5 +1,6 @@
-namespace ChanhThu_Store.Models
+﻿namespace ChanhThu_Store.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -23,16 +24,18 @@ namespace ChanhThu_Store.Models
         [StringLength(5)]
         public string MaDanhMuc { get; set; }
 
-        [Required]
-        [StringLength(20)]
+        [Required(ErrorMessage = "Vui lòng nhập tên loại sản phẩm!")]
+        [StringLength(20, ErrorMessage = "Tên loại sản phẩm không được vượt quá {0} ký tự!")]
         public string TenDanhMucCon { get; set; }
 
-        [StringLength(255)]
+        [StringLength(255, ErrorMessage = "Đường dẫn hình không được vượt quá {0} ký tự!")]
         public string Hinh { get; set; }
 
         public virtual DanhMuc DanhMuc { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [JsonIgnore]
         public virtual ICollection<SanPham> SanPhams { get; set; }
+        public int soSP = 0;
     }
 }

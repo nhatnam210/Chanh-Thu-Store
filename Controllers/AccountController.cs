@@ -9,17 +9,156 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ChanhThu_Store.Models;
+using System.Collections.Generic;
+using PagedList;
+using System.Data.Entity;
 
 namespace ChanhThu_Store.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        private readonly ChanhThuStoreContext db = new ChanhThuStoreContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
         public AccountController()
         {
+        }
+
+        [Authorize]
+        public ActionResult ThongTinCaNhan()
+        {
+            var user = System.Web.HttpContext.Current.User.Identity.GetUserId();
+            AspNetUser aspuser = db.AspNetUsers.Find(user);
+            if (aspuser == null)
+            {
+                return RedirectToAction("NotFound", "Home");
+            }
+            return View(aspuser);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult SuaThongTinCaNhan([Bind(Include = "Id,Ten,UserName,Email,EmailConfirmed,PasswordHash,PhoneNumber,DiaChi,DiemTichLuy,SecurityStamp,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,Avatar")] AspNetUser aspNetUser)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(aspNetUser).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Info", "Account");
+            }
+            return View(aspNetUser);
+        }
+        [HttpGet]
+        [Authorize]
+        public ActionResult SuaThongTinCaNhan()
+        {
+            var user = System.Web.HttpContext.Current.User.Identity.GetUserId();
+            AspNetUser aspuser = db.AspNetUsers.Find(user);
+            if (aspuser == null)
+            {
+                return RedirectToAction("NotFound", "Home");
+            }
+            return View(aspuser);
+        }
+        public ActionResult GetAvatarLogin()
+        {
+            var userID = User.Identity.GetUserId();
+            AspNetUser aspuser = db.AspNetUsers.Find(userID);
+            if (aspuser == null)
+            {
+                return RedirectToAction("NotFound", "Home");
+            }
+            return PartialView("GetAvatarLogin", aspuser);
+        }
+
+        public ActionResult GetAvatarComment()
+        {
+            var userID = User.Identity.GetUserId();
+            AspNetUser aspuser = db.AspNetUsers.Find(userID);
+            if (aspuser == null)
+            {
+                return RedirectToAction("NotFound", "Home");
+            }
+            return PartialView("GetAvatarComment", aspuser);
+        }
+
+        [Authorize]
+        public ActionResult Info()
+        {
+            return View();
+        }
+
+        [Authorize]
+        public ActionResult YeuThich()
+        {
+            return View();
+        }
+
+        public ActionResult SapXepYeuThich(string sapxep)
+        {
+            ViewBag.SapXep = sapxep;
+
+            var userID = User.Identity.GetUserId();
+
+            var listYeuThich = from s in db.SanPhams
+                               join y in db.TuongTacs on s.MaSanPham equals y.MaSanPham
+                               where y.MaKhachHang == userID
+                               select s;
+
+            /*Check yêu thích*/
+            foreach (SanPham item in listYeuThich)
+            {
+                if (userID != null)
+                {
+                    item.isLogin = true;
+
+                    TuongTac find = db.TuongTacs.FirstOrDefault(p => p.MaSanPham == item.MaSanPham && p.MaKhachHang == userID);
+                    if (find != null)
+                        item.isLiked = true;
+                }
+            }
+
+            //Sắp xếp
+            switch (sapxep)
+            {
+                case "mac-dinh":
+                    listYeuThich = listYeuThich.OrderBy(s => s.MaSanPham);
+                    break;
+                case "ten-A-Z":
+                    listYeuThich = listYeuThich.OrderBy(s => s.TenSanPham);
+                    break;
+                case "ten-Z-A":
+                    listYeuThich = listYeuThich.OrderByDescending(s => s.TenSanPham);
+                    break;
+                case "gia-thap-cao":
+                    listYeuThich = listYeuThich.OrderBy(s => s.Gia);
+                    break;
+                case "gia-cao-thap":
+                    listYeuThich = listYeuThich.OrderByDescending(s => s.Gia);
+                    break;
+                default:
+                    listYeuThich = listYeuThich.OrderByDescending(s => s.MaSanPham);
+                    break;
+            }
+
+            return PartialView("Sapxep", listYeuThich.ToList());
+        }
+
+        [Authorize]
+        public ActionResult LichSuMuaHang(int? page)
+        {
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            var userID = User.Identity.GetUserId();
+            IQueryable<HoaDon> hoadon = null;
+
+            hoadon = from h in db.HoaDons
+                     where h.MaKhachHang == userID
+                     orderby h.NgayLap descending, h.MaHoaDon descending
+                     select h;
+
+            return View(hoadon.ToPagedList(pageNumber, pageSize));
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -75,10 +214,62 @@ namespace ChanhThu_Store.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+
+            var findEmail = UserManager.FindByEmail(model.Email);
+
+            if (findEmail != null)
+            {
+                var userid = findEmail.Id;
+
+                if (!UserManager.IsEmailConfirmed(userid))
+                {
+                    return View("EmailNotConfirmed");
+                }
+            }
+
+
+            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: true);
             switch (result)
             {
                 case SignInStatus.Success:
+                    //return Redirect(Request.Headers["Referer"].ToString());
+                    return RedirectToLocal(returnUrl);
+                case SignInStatus.LockedOut:
+                    return View("Lockout");
+                case SignInStatus.RequiresVerification:
+                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                case SignInStatus.Failure:
+                default:
+                    ModelState.AddModelError("", "Invalid login attempt.");                     
+                    return View(model);
+            }
+        }
+        [AllowAnonymous]
+        public ActionResult LoginConfirm(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+
+        //
+        // POST: /Account/Login
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> LoginConfirm(LoginViewModel model, string returnUrl)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            // This doesn't count login failures towards account lockout
+            // To enable password failures to trigger account lockout, change to shouldLockout: true
+            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: true);
+            switch (result)
+            {
+                case SignInStatus.Success:
+                    //return Redirect(Request.Headers["Referer"].ToString());
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -90,7 +281,6 @@ namespace ChanhThu_Store.Controllers
                     return View(model);
             }
         }
-
         //
         // GET: /Account/VerifyCode
         [AllowAnonymous]
@@ -151,19 +341,18 @@ namespace ChanhThu_Store.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Ten = model.Ten };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Ten = model.Ten , PhoneNumber = model.Phone};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
-                    return RedirectToAction("Index", "Home");
+                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    await UserManager.SendEmailAsync(user.Id, "Xác Thực Tài Khoản", "Vui lòng ấn vào <a href=\"" + callbackUrl + "\">đây</a> để thực hiện việc xác thực");
+                    return View("~/Views/Account/RegisterSuccess.cshtml");
                 }
                 AddErrors(result);
             }
@@ -211,10 +400,10 @@ namespace ChanhThu_Store.Controllers
 
                 // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                await UserManager.SendEmailAsync(user.Id, "Reset Password", "Để đặt lại mật khẩu vui lòng ấn <a href=\"" + callbackUrl + "\">đây</a>");
+                return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
             // If we got this far, something failed, redisplay form
@@ -334,10 +523,10 @@ namespace ChanhThu_Store.Controllers
             {
                 case SignInStatus.Success:
                     return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
+                //case SignInStatus.LockedOut:
+                //    return View("Lockout");
+                //case SignInStatus.RequiresVerification:
+                //    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
                 case SignInStatus.Failure:
                 default:
                     // If the user does not have an account, then prompt the user to create an account
@@ -354,10 +543,10 @@ namespace ChanhThu_Store.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Index", "Manage");
-            }
+            //if (User.Identity.IsAuthenticated)
+            //{
+            //    return RedirectToAction("Index", "Manage");
+            //}
 
             if (ModelState.IsValid)
             {
@@ -375,7 +564,11 @@ namespace ChanhThu_Store.Controllers
                     if (result.Succeeded)
                     {
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                        return RedirectToLocal(returnUrl);
+                        string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                        await UserManager.SendEmailAsync(user.Id, "Xác Thực Tài Khoản", "Vui lòng ấn vào <a href=\"" + callbackUrl + "\">đây</a> để thực hiện việc xác thực");
+                        return View("~/Views/Account/RegisterSuccess.cshtml");
+
                     }
                 }
                 AddErrors(result);
@@ -392,6 +585,7 @@ namespace ChanhThu_Store.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            Session.Clear();
             return RedirectToAction("Index", "Home");
         }
 
@@ -422,8 +616,7 @@ namespace ChanhThu_Store.Controllers
 
             base.Dispose(disposing);
         }
-
-        #region Helpers
+     #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 

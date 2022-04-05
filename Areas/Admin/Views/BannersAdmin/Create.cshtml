@@ -1,0 +1,41 @@
+﻿@model ChanhThu_Store.Models.Banner
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Main_Admin.cshtml";
+}
+
+@using (Html.BeginForm("Create", "BannersAdmin", FormMethod.Post, new { @class = "form" }))
+
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h2 class="table-admin__title text-center">Thêm Hình Quảng cáo</h2>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <span class="label-admin" >Hình Banner</span>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-9 mb-1">
+                        <input id="linkImg" class="form-control" name="HinhBanner" value="" />
+                    </div>
+                    <div class="col-md-3 mb-1">
+                        <a class="btn btn-outline-success d-flex flex-1 justify-content-center min-width-100" id="selectImg">Chọn ảnh</a>
+                    </div>
+                </div>
+                @Html.ValidationMessageFor(model => model.HinhBanner, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-12">
+            <div class="col-md-offset-2 btn-touch">
+                <input type="submit" value="Thêm" class="btn btn-success" />
+            </div>
+        </div>
+        <div class="col-md-12 back-to-list">
+            @Html.ActionLink("Trở về", "Index")
+        </div>
+    </div>
+}
+

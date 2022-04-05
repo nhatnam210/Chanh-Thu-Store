@@ -31,7 +31,6 @@
 //     Include Views:          `False`
 
 
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -377,6 +376,12 @@ namespace ChanhThuStorePoCo
 
 
 
+		[Column] public string Avatar { get; set; }
+
+
+
+
+
 		[Column] public string SecurityStamp { get; set; }
 
 
@@ -419,7 +424,9 @@ namespace ChanhThuStorePoCo
 
 
 
-	[PrimaryKey("HinhBanner1", AutoIncrement=false)]
+	[PrimaryKey("Id")]
+
+
 
 
 	[ExplicitColumns]
@@ -429,13 +436,61 @@ namespace ChanhThuStorePoCo
 
 
 
-		[Column] public string HinhBanner1 { get; set; }
+		[Column] public int Id { get; set; }
 
 
 
 
 
-		[Column] public string HinhBanner2 { get; set; }
+		[Column] public string HinhBanner { get; set; }
+
+
+
+	}
+
+    
+
+	[TableName("dbo.BinhLuan")]
+
+
+
+	[PrimaryKey("MaBinhLuan")]
+
+
+
+
+	[ExplicitColumns]
+
+    public partial class BinhLuan : ChanhThuStorePoCoDB.Record<BinhLuan>  
+    {
+
+
+
+		[Column] public int MaBinhLuan { get; set; }
+
+
+
+
+
+		[Column] public string MaKhachHang { get; set; }
+
+
+
+
+
+		[Column] public string MaSanPham { get; set; }
+
+
+
+
+
+		[Column] public string NoiDungBinhLuan { get; set; }
+
+
+
+
+
+		[Column] public DateTime NgayBinhLuan { get; set; }
 
 
 
@@ -457,7 +512,7 @@ namespace ChanhThuStorePoCo
 
 
 
-		[Column] public string MaHoaDon { get; set; }
+		[Column] public int MaHoaDon { get; set; }
 
 
 
@@ -475,7 +530,7 @@ namespace ChanhThuStorePoCo
 
 
 
-		[Column] public int? DonGia { get; set; }
+		[Column] public int DonGia { get; set; }
 
 
 
@@ -504,6 +559,12 @@ namespace ChanhThuStorePoCo
 
 
 		[Column] public string MaKhachHang { get; set; }
+
+
+
+
+
+		[Column] public int? SoLuong { get; set; }
 
 
 
@@ -583,7 +644,9 @@ namespace ChanhThuStorePoCo
 
 
 
-	[PrimaryKey("MaHoaDon", AutoIncrement=false)]
+	[PrimaryKey("MaHoaDon")]
+
+
 
 
 	[ExplicitColumns]
@@ -593,7 +656,7 @@ namespace ChanhThuStorePoCo
 
 
 
-		[Column] public string MaHoaDon { get; set; }
+		[Column] public int MaHoaDon { get; set; }
 
 
 
@@ -611,13 +674,43 @@ namespace ChanhThuStorePoCo
 
 
 
-		[Column] public string MaVoucher { get; set; }
+		[Column] public string Ten { get; set; }
+
+
+
+
+
+		[Column] public string SDT { get; set; }
+
+
+
+
+
+		[Column] public string DiaChi { get; set; }
+
+
+
+
+
+		[Column] public string Email { get; set; }
+
+
+
+
+
+		[Column] public int? GiamGia { get; set; }
 
 
 
 
 
 		[Column] public int TongTien { get; set; }
+
+
+
+
+
+		[Column] public int? Ship { get; set; }
 
 
 
@@ -721,13 +814,19 @@ namespace ChanhThuStorePoCo
 
 
 
+		[Column] public string DonViTinh { get; set; }
+
+
+
+
+
 		[Column] public int SoLuongTonKho { get; set; }
 
 
 
 
 
-		[Column] public int SoLuongDaBan { get; set; }
+		[Column] public int? SoLuongDaBan { get; set; }
 
 
 
@@ -769,7 +868,9 @@ namespace ChanhThuStorePoCo
 
 
 
-	[PrimaryKey("HinhSlideFooter1", AutoIncrement=false)]
+	[PrimaryKey("Id")]
+
+
 
 
 	[ExplicitColumns]
@@ -779,31 +880,13 @@ namespace ChanhThuStorePoCo
 
 
 
-		[Column] public string HinhSlideFooter1 { get; set; }
+		[Column] public int Id { get; set; }
 
 
 
 
 
-		[Column] public string HinhSlideFooter2 { get; set; }
-
-
-
-
-
-		[Column] public string HinhSlideFooter3 { get; set; }
-
-
-
-
-
-		[Column] public string HinhSlideFooter4 { get; set; }
-
-
-
-
-
-		[Column] public string HinhSlideFooter5 { get; set; }
+		[Column] public string HinhSlideFooter { get; set; }
 
 
 
@@ -815,7 +898,9 @@ namespace ChanhThuStorePoCo
 
 
 
-	[PrimaryKey("HinhSlideHeader1", AutoIncrement=false)]
+	[PrimaryKey("Id")]
+
+
 
 
 	[ExplicitColumns]
@@ -825,19 +910,19 @@ namespace ChanhThuStorePoCo
 
 
 
-		[Column] public string HinhSlideHeader1 { get; set; }
+		[Column] public int Id { get; set; }
 
 
 
 
 
-		[Column] public string HinhSlideHeader2 { get; set; }
+		[Column] public string HinhSlideHeader { get; set; }
 
 
 
 
 
-		[Column] public string HinhSlideHeader3 { get; set; }
+		[Column] public string MoTaSliderHeader { get; set; }
 
 
 
@@ -897,13 +982,21 @@ namespace ChanhThuStorePoCo
 
 
 
-	[PrimaryKey("TenCuaHang", AutoIncrement=false)]
+	[PrimaryKey("Id")]
+
+
 
 
 	[ExplicitColumns]
 
     public partial class ThongTinCuaHang : ChanhThuStorePoCoDB.Record<ThongTinCuaHang>  
     {
+
+
+
+		[Column] public int Id { get; set; }
+
+
 
 
 
@@ -984,18 +1077,6 @@ namespace ChanhThuStorePoCo
 
 
 		[Column] public string MaSanPham { get; set; }
-
-
-
-
-
-		[Column] public string NoiDungBinhLuan { get; set; }
-
-
-
-
-
-		[Column] public DateTime? NgayBinhLuan { get; set; }
 
 
 

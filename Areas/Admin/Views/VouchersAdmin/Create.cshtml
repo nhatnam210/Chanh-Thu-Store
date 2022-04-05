@@ -1,0 +1,74 @@
+﻿@model ChanhThu_Store.Models.Voucher
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Main_Admin.cshtml";
+}
+
+@using (Html.BeginForm("Create", "VouchersAdmin", FormMethod.Post, new { @class = "form" }))
+
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h2 class="table-admin__title text-center text-capitalize">Thêm voucher</h2>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <span class="label-admin">Mã Voucher</span>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.MaVoucher, new { htmlAttributes = new { @class = "form-control" } })
+            <span class="field-validation-error text-danger">@ViewBag.Message</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <span class="label-admin">Tên Voucher</span>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.TenVoucher, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TenVoucher, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span class="label-admin">Giá trị Giảm</span>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.GiaTriGiam, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.GiaTriGiam, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span class="label-admin">Điểm Đổi</span>
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.DiemDoi, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DiemDoi, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span class="label-admin">Hạn Sử Dụng Voucher</span>
+        <div class="col-md-12">
+            @Html.TextBoxFor(m => m.HanSuDung, new { type = "date", id = "datepicker", name = "DueDate", @class = "form-control" })
+            @*<input name="DueDate" type="date" id="datepicker" class="form-control" value="" />*@
+            @Html.ValidationMessageFor(model => model.HanSuDung, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+
+
+    <div class="form-group col-md-12">
+        <div class="col-md-offset-2 btn-touch">
+            <input type="submit" value="Thêm" class="btn btn-success" />
+        </div>
+    </div>
+    <div class="col-md-12 back-to-list">
+        @Html.ActionLink("Trở về", "Index")
+    </div>
+</div>
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.css" rel="stylesheet">
+<script type="text/javascript">
+    $(function () {
+        $("#datepicker").datepicker();
+    });
+</script>

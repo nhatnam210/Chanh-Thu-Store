@@ -1,7 +1,9 @@
-﻿@model ChanhThu_Store.Models.DanhMucCon
+﻿@*@model PagedList.IPagedList<ChanhThu_Store.Models.SanPham>
+    @using PagedList.Mvc;*@
+@model List<ChanhThu_Store.Models.SanPham>
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Main_Layout.cshtml";
 }
 
@@ -10,9 +12,9 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h2>Shop</h2>
+                <h2>Cửa hàng</h2>
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Trang Chủ</a></li>
+                    <li class="breadcrumb-item"><a href="/trang-chu">Trang Chủ</a></li>
                     <li class="breadcrumb-item active">Cửa Hàng</li>
                 </ul>
             </div>
@@ -24,32 +26,101 @@
 <div class="shop-box-inner">
     <div class="container">
         <div class="row">
-            @Html.Partial("_SanPham_DMC", ChanhThu_Store.Models.BUS.SanPhamBUS.DanhSachSanPhamTheoDanhMucCon(Model.MaDanhMucCon))
-            <div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-right">
+            <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-left">
+                <div class="right-product-box">
+                    <div class="product-item-filter row">
+                        <div class="col-12 col-sm-9 text-center text-sm-left">
+                            <div class="toolbar-sorter-right">
+                                <span>Sắp xếp</span>
+                                <select id="basic" name="sapxep" class="selectpicker show-tick form-control"
+                                        data-placeholder="$ USD">
+                                    @*data-display="Select"*@
+                                    <option value="mac-dinh">Không</option>
+                                    <option value="ten-A-Z">Tên A → Z</option>
+                                    <option value="ten-Z-A">Tên Z → A</option>
+                                    <option value="gia-thap-cao">Giá Thấp → Giá Cao</option>
+                                    <option value="gia-cao-thap">Giá Cao → Giá Thấp</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-3 text-center text-sm-right">
+                            <ul class="nav nav-tabs ml-auto">
+                                <li>
+                                    <a class="nav-link active" href="#grid-view" data-toggle="tab">
+                                        <i class="fa fa-th"></i>
+                                    </a>
+                                </li>
+                                @*<li>
+                                    <a class="nav-link" href="#list-view" data-toggle="tab">
+                                        <i class="fa fa-list-ul"></i>
+                                    </a>
+                                </li>*@
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="view-sp">
+                        @{Html.RenderAction("Sapxep", "DanhMucCons", new { id = ViewBag.Id, sapxep = "mac-dinh" });}
+                    </div>
+                   
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
                 <div class="product-categori">
                     <div class="search-product">
-                        <form action="#">
-                            <input class="form-control" placeholder="Tìm kiếm..." type="text">
+                        <form method="post" action="/tim-kiem">
+                            <input class="form-control" name="tukhoa" placeholder="Tìm kiếm..." type="text">
                             <button type="submit"> <i class="fa fa-search"></i> </button>
                         </form>
                     </div>
-                    @Html.Partial("_PhanLoaiDanhMuc", ChanhThu_Store.Models.BUS.DanhMucBUS.DanhSachDM())
-
+                    @*@Html.Partial("_PhanLoaiDanhMuc", ChanhThu_Store.Models.BUS.DanhMucBUS.DanhSachDM())*@
+                    @{
+                        Html.RenderAction("DanhSachDM", "DanhMucCons");
+                    }
                     <!-- <div class="filter-price-left">
-                        <div class="title-left">
-                            <h3>Price</h3>
-                        </div>
-                        <div class="price-box-slider">
-                            <div id="slider-range"></div>
-                            <p>
-                                <input type="text" id="amount" readonly style="border:0; color:#fbb714; font-weight:bold;">
-                                <button class="btn hvr-hover" type="submit">Filter</button>
-                            </p>
-                        </div>
-                    </div> -->
+        <div class="title-left">
+            <h3>Price</h3>
+        </div>
+        <div class="price-box-slider">
+            <div id="slider-range"></div>
+            <p>
+                <input type="text" id="amount" readonly style="border:0; color:#fbb714; font-weight:bold;">
+                <button class="btn hvr-hover" type="submit">Filter</button>
+            </p>
+        </div>
+    </div> -->
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!-- End Shop Page -->
+@section scripts{
+    <script>
+        YeuThichNgoai();
+        ScrollToTop(100);
+
+        var haveProduct = $('.none-product__title').length <= 0;
+
+        // sắp xếp
+        if (haveProduct) {
+            $('#basic').change(() => {
+                var sortValue = $('#basic').val()
+
+                $.ajax({
+                    url: "/DanhMucCons/Sapxep",
+                    data: { sapxep: sortValue, id: "@ViewBag.Id" },
+                    success: function (res) {
+                    $('#view-sp').html(res)
+
+                        $('#grid-products').paginate()
+                        ClickScroll();
+                        YeuThichNgoai();
+                    },
+                    error: function () {
+                        alert('Lỗi sắp xếp')
+                    }
+                })
+            })
+        }
+    </script>
+}

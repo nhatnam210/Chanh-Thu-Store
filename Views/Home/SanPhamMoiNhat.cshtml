@@ -1,0 +1,33 @@
+﻿@model IEnumerable<ChanhThu_Store.Models.SanPham>
+
+<div class="row">
+    @{ var i = 0;}
+    @foreach (var item in Model)
+    {
+        i++;
+        <div class="col-md-6 col-lg-4 col-xl-4" data-aos="zoom-in-up" data-aos-delay="500" data-aos-easing="linear">
+            <div class="blog-box full-radius shadow flex-column">
+                <div class="box-img none-radius">
+                    <div class="type-lb show">
+                        <p class="new bottom-left-radius">#@i Mới</p>
+                    </div>
+                    @*<img class="img-fluid" src="@item.HinhChinh" alt="" />*@
+                    <div class="img-fit product-mobile" style="background-image: url('@item.HinhChinh'),url('/Content/images/default.png');">
+                    </div>
+                </div>
+                <div class="blog-content flex-grow-1 flex-shrink-1">
+                    <div class="title-blog view-row-content ">
+                        <h4>@item.TenSanPham</h4>
+                        <p class="new-product-descrip">
+                            @item.Mota
+                        </p>
+                    </div>
+                    <ul class="option-blog">
+                        @*<li><a href="#"><i class="far fa-heart"></i></a></li>*@
+                        <li><a href="/cua-hang/san-pham?id=@item.MaSanPham"><i class="fas fa-eye"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
+</div>

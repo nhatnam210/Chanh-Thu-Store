@@ -1,0 +1,121 @@
+﻿@model ChanhThu_Store.Models.AspNetUser
+@{
+    ViewBag.Title = "SuaThongTinCaNhan";
+    Layout = "~/Views/Shared/_Main_Layout.cshtml";
+}
+@section jsFooter{
+    <script>
+        $('#user-avatar__edit').on('click', function (e) {
+            e.preventDefault();
+            var finder = new CKFinder();
+            finder.callback = function (api) {
+                // Disable download function
+                api.disableFileContextMenuOption('downloadFile', false);
+                // Disable "View" option
+                api.disableFileContextMenuOption('viewFile');
+            }
+            finder.selectActionFunction = function (fileUrl) {
+                $('#user-avatar__link').val(fileUrl);
+                $('#user-avatar__show')[0].src = fileUrl;
+            };
+            finder.popup();
+        })
+    </script>
+}
+<!-- Start All Title Box -->
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Thông Tin Cá Nhân</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/trang-chu">Trang Chủ</a></li>
+                    <li class="breadcrumb-item active">Thông Tin Cá Nhân</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal form-user">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        <div class="form-group">
+            <div class="col-md-12">
+                <div class="col-md-12">
+                    @*@Html.TextBoxFor(model => model.Avatar, new { htmlAttributes = new { @class = "form-control linkImg" }, id = "linkImg" })*@
+                    <input id="user-avatar__link" class="form-control" hidden name="avatar" value="@Model.Avatar" readonly="readonly" />
+                    <div class="user-avatar__wrap">
+                        <div class="user-avatar__group">
+                            @if (Model.Avatar != null)
+                            {
+                                <img id="user-avatar__show" src="@Model.Avatar" />
+                            }
+                            else
+                            {
+                                <img id="user-avatar__show" src="~/Content/images/user-default.png" />
+                            }
+                            <div id="user-avatar__edit" class="user-avatar__edit">
+                                @*<img class="user-camera-img" src="~/Content/images/camera.png" />*@
+                                <ion-icon class="user-camera-img" name="camera"></ion-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12 user-input-info">
+                <div class="user-input__label">Email</div>
+                <input class="form-control user-input" value="@Model.Email" readonly />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12 user-input-info">
+                <div class="user-input__label">Tên khách hàng</div>
+                @Html.EditorFor(model => model.Ten, new { htmlAttributes = new { @class = "form-control user-input", placeholder = "Nhập tên của bạn" } })
+                @Html.ValidationMessageFor(model => model.Ten, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @Html.HiddenFor(model => model.UserName)
+        @Html.HiddenFor(Model => Model.Email)
+        @Html.HiddenFor(Model => Model.EmailConfirmed)
+        @Html.HiddenFor(Model => Model.PasswordHash)
+
+        <div class="form-group">
+            <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12 user-input-info">
+                <div class="user-input__label">Số điện thoại</div>
+                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control user-input", placeholder = "Nhập số điện thoại của bạn" } })
+                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-6 col-xl-6 col-md-6 col-sm-12 user-input-info">
+                <div class="user-input__label">Địa chỉ</div>
+                @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control user-input", placeholder = "Nhập địa chỉ của bạn" } })
+                @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @Html.HiddenFor(Model => Model.DiemTichLuy)
+        @Html.HiddenFor(Model => Model.SecurityStamp)
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-12 btn-update-info__wrap">
+                <button type="submit" class="btn hvr-hover max-width-mobile text-capitalize m-auto p-2">Cập nhật</button>
+            </div>
+        </div>
+    </div>
+    }
+</div>
+
+
+

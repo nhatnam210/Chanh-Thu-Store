@@ -1,0 +1,193 @@
+﻿@model ChanhThu_Store.Models.ThongTinCuaHang
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Main_Layout.cshtml";
+}
+
+<!-- Start All Title Box -->
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="title-page">Giới thiệu</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/trang-chu">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Giới thiệu</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End All Title Box -->
+<!-- Start About Page  -->
+<div class="about-box-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="banner-frame">
+                    <img class="img-fluid full-radius shadow" src="@Model.HinhMinhHoa" alt="" />
+                </div>
+            </div>
+            <div class="col-lg-6 ">
+                <h2 class="noo-sh-title-top ">Chúng tôi là <span>@Model.TenCuaHang</span></h2>
+                <p class="text-justify introduce-shop" id="introduce-shop">
+                    @Model.LoiGioiThieu
+                </p>
+                <a class="btn hvr-hover max-width-mobile show-more-introduce" id="view-more-intro">Xem thêm</a>
+            </div>
+        </div>
+        <div class="row my-5">
+            <div class="col-sm-6 col-lg-4">
+                <div class="service-block-inner" data-aos="fade-up">
+                    <h3 data-aos="fade-up" data-aos-delay="100" data-aos-easing="linear">Đáng tin cậy</h3>
+                    <p data-aos="fade-up" data-aos-delay="200" data-aos-easing="linear">
+                        Chúng tôi luôn đảm bảo hàng chất lượng, rõ nguồn gốc và xuất xứ, giá cả phù hợp với mọi
+                        người.
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <div class="service-block-inner" data-aos="fade-up">
+                    <h3 data-aos="fade-up" data-aos-delay="100" data-aos-easing="linear">Chuyên nghiệp</h3>
+                    <p data-aos="fade-up" data-aos-delay="200" data-aos-easing="linear">
+                        Đội ngũ nhân viên được đào tạo bài bản, phục vụ tận tình, luôn đặt khách hàng lên trên
+                        mình.
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <div class="service-block-inner" data-aos="fade-up">
+                    <h3 data-aos="fade-up" data-aos-delay="100" data-aos-easing="linear">Chuyên gia</h3>
+                    <p data-aos="fade-up" data-aos-delay="200" data-aos-easing="linear">
+                        Lĩnh vực bánh kẹo chính là thế mạnh của shop chúng tôi và chúng tôi cam đoan mọi loại sản
+                        phẩm đều là tốt nhất.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row my-4">
+            <div class="col-12">
+                <h2 class="noo-sh-title" data-aos="fade-up">Team @Model.TenCuaHang</h2>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <div class="hover-team">
+                    <div class="our-team" data-aos="zoom-in-up" data-aos-easing="linear">
+                        <img src="~/Content/images/avt_Nam.jpg"
+                             alt="" />
+                        <div class="team-content">
+                            <h3 class="title">Trần Nguyễn Nhật Nam</h3> <span class="post">Web Developer</span>
+                        </div>
+                        <ul class="social">
+                            <li>
+                                <a href="#" class="fab fa-facebook"></a>
+                            </li>
+                            <li>
+                                <a href="#" class="fab fa-twitter"></a>
+                            </li>
+                            <li>
+                                <a href="#" class="fab fa-google-plus"></a>
+                            </li>
+                            <li>
+                                <a href="#" class="fab fa-youtube"></a>
+                            </li>
+                        </ul>
+                        <div class="icon"> <i class="fa fa-plus" aria-hidden="true"></i> </div>
+                    </div>
+                    <div class="team-description">
+                        <p data-aos="fade-up" data-aos-easing="linear">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna diam, maximus ut
+                            ullamcorper quis, placerat id eros. Duis semper justo sed condimentum rutrum. Nunc
+                            tristique purus turpis. Maecenas vulputate.
+                        </p>
+                    </div>
+                    <hr class="my-0">
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <div class="hover-team">
+                    <div class="our-team" data-aos="zoom-in-up" data-aos-easing="linear">
+                        <img src="~/Content/images/avt_Huy.jpg"
+                             alt="" />
+                        <div class="team-content">
+                            <h3 class="title">Nguyễn Quốc Huy</h3> <span class="post">Web Developer</span>
+                        </div>
+                        <ul class="social">
+                            <li>
+                                <a href="#" class="fab fa-facebook"></a>
+                            </li>
+                            <li>
+                                <a href="#" class="fab fa-twitter"></a>
+                            </li>
+                            <li>
+                                <a href="#" class="fab fa-google-plus"></a>
+                            </li>
+                            <li>
+                                <a href="#" class="fab fa-youtube"></a>
+                            </li>
+                        </ul>
+                        <div class="icon"> <i class="fa fa-plus" aria-hidden="true"></i> </div>
+                    </div>
+                    <div class="team-description">
+                        <p data-aos="fade-up" data-aos-easing="linear">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna diam, maximus ut
+                            ullamcorper quis, placerat id eros. Duis semper justo sed condimentum rutrum. Nunc
+                            tristique purus turpis. Maecenas vulputate.
+                        </p>
+                    </div>
+                    <hr class="my-0">
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <div class="hover-team">
+                    <div class="our-team" data-aos="zoom-in-up" data-aos-easing="linear">
+                        <img src="~/Content/images/avt_Phat.jpg"
+                             alt="" />
+                        <div class="team-content">
+                            <h3 class="title">Tăng Thuận Phát</h3> <span class="post">Web Developer</span>
+                        </div>
+                        <ul class="social">
+                            <li>
+                                <a href="#" class="fab fa-facebook"></a>
+                            </li>
+                            <li>
+                                <a href="#" class="fab fa-twitter"></a>
+                            </li>
+                            <li>
+                                <a href="#" class="fab fa-google-plus"></a>
+                            </li>
+                            <li>
+                                <a href="#" class="fab fa-youtube"></a>
+                            </li>
+                        </ul>
+                        <div class="icon"> <i class="fa fa-plus" aria-hidden="true"></i> </div>
+                    </div>
+                    <div class="team-description">
+                        <p data-aos="fade-up" data-aos-easing="linear">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna diam, maximus ut
+                            ullamcorper quis, placerat id eros. Duis semper justo sed condimentum rutrum. Nunc
+                            tristique purus turpis. Maecenas vulputate.
+                        </p>
+                    </div>
+                    <hr class="my-0">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End About Page -->
+@section scripts{
+    <script>
+        var check = true;
+        $('#view-more-intro').click(() => {
+            check = !check;
+            $('#view-more-intro').html("");
+            if (check) {
+                $('#introduce-shop').addClass('show');
+                $('#view-more-intro').html("Ẩn bớt");
+            } else {
+                $('#introduce-shop').removeClass('show');
+                $('#view-more-intro').html("Xem thêm");
+            }
+        })
+    </script>
+}

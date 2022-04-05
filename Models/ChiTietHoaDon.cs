@@ -11,8 +11,8 @@ namespace ChanhThu_Store.Models
     {
         [Key]
         [Column(Order = 0)]
-        [StringLength(12)]
-        public string MaHoaDon { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int MaHoaDon { get; set; }
 
         [Key]
         [Column(Order = 1)]
@@ -21,7 +21,7 @@ namespace ChanhThu_Store.Models
 
         public int Soluong { get; set; }
 
-        public int? DonGia { get; set; }
+        public int DonGia { get; set; }
 
         public virtual HoaDon HoaDon { get; set; }
 

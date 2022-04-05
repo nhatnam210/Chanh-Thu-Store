@@ -1,0 +1,130 @@
+﻿@model IEnumerable<ChanhThu_Store.Models.Voucher>
+@using System.Globalization;
+@{ CultureInfo VN = new CultureInfo("vi-VN");}
+
+<div class="col-md-12 col-lg-12">
+    <div class="shipping-method-box">
+        <div class="title-left">
+            <h3>Voucher</h3>
+        </div>
+        <div class="mb-4 voucher-user-payment__list">
+            @{ var i = 0;}
+            @if (Model.Count() > 0)
+            {
+                DateTime thisDay = DateTime.Today;
+
+                <div class="custom-control custom-radio">
+                    <input checked="checked" id="voucher__@i" name="mavoucher" value="0" data-voucher="0" class="custom-control-input" type="radio">
+                    <label class="custom-control-label" for="voucher__@i">Không dùng</label> <span class="float-right font-weight-bold text-color">0%</span>
+                </div>
+                <div class="ml-4 mb-2 small voucher-payment-group"></div>
+                foreach (var item in Model)
+                {
+                    i++;
+                    DateTime hansudung = Convert.ToDateTime(item.HanSuDung);
+                    DateTime ngayhientai = Convert.ToDateTime(thisDay);
+                    int chenhlech = (ngayhientai - hansudung).Days;
+                    var chenhlechAbs = Math.Abs(chenhlech);
+                    <div class="custom-control custom-radio payment">
+                        <input id="voucher__@i" name="mavoucher" value="@item.MaVoucher" data-voucher="@item.GiaTriGiam" class="custom-control-input" type="radio">
+                        <label class="custom-control-label" for="voucher__@i">@item.TenVoucher</label>
+                        <span class="float-right font-weight-bold text-color">@item.GiaTriGiam%</span>
+                    </div>
+                    //Sắp hết
+                    if (chenhlech == 0)
+                    {
+                        <div class="ml-4 mb-2 small">
+                            <span class="font-weight-bold text-uppercase">*HSD:</span>
+                            <span>@item.HanSuDung.ToString("d", VN)</span>
+                            <span class="font-weight-bold text-uppercase">SL:</span>
+                            <span value="@item.MaVoucher" class="voucher-user__quantity text-red"></span>
+                            <span class="font-italic text-red float-right voucher__day-count-down">(Ngày mai hết hạn)</span>
+                        </div>
+                    }
+                    else if (chenhlech > -30)  //HSD nhỏ hơn 1 tháng
+                    {
+                        if (chenhlech == -1)
+                        {
+                            <div class="ml-4 mb-2 small">
+                                <span class="font-weight-bold text-uppercase">*HSD:</span>
+                                <span>@item.HanSuDung.ToString("d", VN)</span>
+                                <span class="font-weight-bold text-uppercase">SL:</span>
+                                <span value="@item.MaVoucher" class="voucher-user__quantity text-red"></span>
+                                <span class="font-italic text-red float-right voucher__day-count-down">(Còn @chenhlechAbs ngày)</span>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="ml-4 mb-2 small">
+                                <span class="font-weight-bold">*HSD:</span>
+                                <span>@item.HanSuDung.ToString("d", VN)</span> -
+                                <span class="font-weight-bold text-uppercase">SL:</span>
+                                <span value="@item.MaVoucher" class="voucher-user__quantity text-red"></span>
+                                <span class="font-italic float-right voucher__day-count-down">(Còn @chenhlechAbs ngày)</span>
+                            </div>
+                        }
+                    }
+                    else if (chenhlech <= -30 && chenhlech >= -365) // HSD lớn hơn 1 tháng và nhỏ hơn 1 năm
+                    {
+                        var thang = Convert.ToInt32(chenhlechAbs / 30);
+                        var ngay = chenhlechAbs % 30;
+                        if (ngay > 0)
+                        {
+                            <div class="ml-4 mb-2 small">
+                                <span class="font-weight-bold text-uppercase">*HSD:</span>
+                                <span> @item.HanSuDung.ToString("d", VN)</span>
+                                <span class="font-weight-bold text-uppercase">SL:</span>
+                                <span value="@item.MaVoucher" class="voucher-user__quantity text-red"></span>
+                                <span class="font-italic float-right voucher__day-count-down">(Còn @thang tháng @ngay ngày)</span>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="ml-4 mb-2 small">
+                                <span class="font-weight-bold text-uppercase">*HSD:</span>
+                                <span> @item.HanSuDung.ToString("d", VN)</span>
+                                <span class="font-weight-bold text-uppercase">SL:</span>
+                                <span value="@item.MaVoucher" class="voucher-user__quantity text-red"></span>
+                                <span class="font-italic float-right voucher__day-count-down">(Còn @thang tháng)</span>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="ml-4 mb-2 small">
+                            <span class="font-weight-bold text-uppercase">*HSD:</span>
+                            <span> @item.HanSuDung.ToString("d", VN)</span>
+                            <span class="font-weight-bold text-uppercase">SL:</span>
+                            <span value="@item.MaVoucher" class="voucher-user__quantity text-red"></span>
+                        </div>
+                    }
+                }
+            }
+            else
+            {
+                <div class="text-center">
+                    <div class="none-notify text-red ">Bạn chưa có voucher nào!</div>
+                    <span class="text-color underline font-weight-bold">
+                        <a href="/voucher" class="link-to-product underline">Đổi ngay!</a>
+                    </span>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script>
+    $('.voucher-user__quantity').each((i, e) =>{
+        var maVC = $(e).attr("value")
+        $.ajax({
+            url: "/Cart/DemSLVCUser",
+            data: { mavoucher: maVC },
+            success: (res) => {
+                $(e).html(`(${res})`)
+            },
+            error: () => {
+                alert("Xảy ra lỗi voucher!")
+            }
+        })
+    })
+</script>

@@ -1,4 +1,4 @@
-namespace ChanhThu_Store.Models
+﻿namespace ChanhThu_Store.Models
 {
     using System;
     using System.Collections.Generic;
@@ -9,14 +9,12 @@ namespace ChanhThu_Store.Models
     [Table("SlideHeader")]
     public partial class SlideHeader
     {
-        [Key]
-        [StringLength(255)]
-        public string HinhSlideHeader1 { get; set; }
+        public int Id { get; set; }
 
-        [StringLength(255)]
-        public string HinhSlideHeader2 { get; set; }
+        [StringLength(255, ErrorMessage = "Đường dẫn hình không được vượt quá {1} ký tự!")]
+        public string HinhSlideHeader { get; set; }
 
-        [StringLength(255)]
-        public string HinhSlideHeader3 { get; set; }
+        [StringLength(255, ErrorMessage = "Mô tả không được vượt quá {1} ký tự!")]
+        public string MoTaSliderHeader { get; set; }
     }
 }

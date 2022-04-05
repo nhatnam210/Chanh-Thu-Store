@@ -1,0 +1,143 @@
+﻿@model ChanhThu_Store.Models.HoaDon
+@using System.Globalization;
+@{ CultureInfo VN = new CultureInfo("vi-VN");}
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ChanhThuStoe | In hóa đơn</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
+
+    <link rel="shortcut icon" href="~/Content/images/chanhthustore_logo.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="~/Areas/AssetAdmin/css/all.min.css">
+    <link rel="stylesheet" href="~/Areas/AssetAdmin/css/sb-admin-2.css">
+    <link rel="stylesheet" href="~/Areas/AssetAdmin/css/adminlte.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="~/Content/css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="~/Content/css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/Content/css/custom.css">
+
+    <link rel="stylesheet" href="~/Content/css/all.css">
+    <link rel="stylesheet" href="~/Content/css/animate.css">
+    <link rel="stylesheet" href="~/Content/css/baguetteBox.min.css">
+    <link rel="stylesheet" href="~/Content/css/bootsnav.css">
+    <link rel="stylesheet" href="~/Content/css/bootstrap-select.css">
+    <link rel="stylesheet" href="~/Content/css/carousel-ticker.css">
+
+    <!-- Custom styles for this template-->
+    <link href="~/Areas/AssetAdmin/css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- jQuery UI CSS Reference -->
+    <link href="@Url.Content("~/Content/themes/base/minified/jquery-ui.min.css")" rel="stylesheet" />
+    <!-- Required jQuery and jQuery UI Javascript references -->
+    <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.10.4.min.js")"></script>
+
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/css/value.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Main content -->
+        <section class="invoice">
+            <!-- title row -->
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="page-header">
+                        <i style="margin-right:16px" class="fas fa-store"></i>
+                        @{Html.RenderAction("TenCuaHangBill", "HoaDonsAdmin");}
+                        <small class="float-right">
+                            Ngày: @Model.NgayLap.ToString("d", VN)
+                        </small>
+                    </h2>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- info row -->
+            <div class="row invoice-info">
+                <div class="col-sm-4 invoice-col">
+                    Nguồn giao
+                    @{Html.RenderAction("ThongTinCuaHangBill", "HoaDonsAdmin");}
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4 invoice-col">
+                    Giao đến
+                    <address>
+                        <strong>@Model.Ten</strong><br>
+                        Địa chỉ: @Model.DiaChi<br>
+                        SĐT: @Model.SDT<br>
+                        Email: @Model.Email
+                    </address>
+                </div>
+            </div>
+            <!-- /.row -->
+            <!-- Table row -->
+            <div class="print-bill-id">Mã Hóa Đơn: <span>@Model.MaHoaDon</span></div>
+            @{
+                Html.RenderAction("BillChiTietHoaDon", "HoaDonsAdmin", new { id = Model.MaHoaDon });
+            }
+            <!-- /.row -->
+
+            <div class="row">
+                <!-- accepted payments column -->
+                <div class="col-6 img-credit">
+                    <p class="lead">Phương thức thanh toán:</p>
+                    <img src="~/Areas/AssetAdmin/img/agribank-logo-1CEEE70C76-seeklogo.com.png" alt="Agribank">
+                    <img style="margin-left: 14px; margin-right: 14px" src="~/Areas/AssetAdmin/img/momo-upload-api-push-momo-avatar-190131152912 (1).png" alt="Momo">
+                    <img src="~/Areas/AssetAdmin/img/truck-24-hour-shipping-flat-circle-icon-vector-3442007-300x300.png" alt="Vietcombank">
+                    @*<img src="../../dist/img/credit/paypal2.png" alt="Paypal">*@
+
+                    <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
+                        Có thể thanh toán online qua các hình thức trên hoặc thanh toán khi nhận hàng
+                    </p>
+                </div>
+                <!-- /.col -->
+                <div class="col-6">
+                    @*<p class="lead">Amount Due 2/22/2014</p>*@
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tr>
+                                <th>Giảm giá:</th>
+                                <td>@Model.GiamGia%</td>
+                            </tr>
+                            <tr>
+                                <th style="width:50%">Tổng tiền hàng:</th>
+                                <td>@string.Format("{0:#,##0}", Model.TongTien) đ</td>
+                            </tr>
+
+                            <tr>
+                                <th>Phí ship:</th>
+                                <td>@string.Format("{0:#,##0}", Model.Ship) đ</td>
+                            </tr>
+                            <tr>
+                                <th>Tổng thanh toán:</th>
+                                <td class="print-bill-pay">@string.Format("{0:#,##0}", Model.TongTien + Model.Ship) đ</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- ./wrapper -->
+    <!-- Page specific script -->
+    <script>window.addEventListener("load", window.print());</script>
+</body>
+</html>
+

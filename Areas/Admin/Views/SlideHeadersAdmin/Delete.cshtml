@@ -1,0 +1,32 @@
+﻿@model ChanhThu_Store.Models.SlideHeader
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Main_Admin.cshtml";
+}
+
+
+<div class="form">
+    <div class="max">
+        @*<h2 class="admin-title">Delete Section</h2>*@
+        @*<hr />*@
+        <h3 class="question text-center">Bạn có chắc chắn muốn xóa hình này không ?</h3>
+        <dl class="dl-horizontal text-center text-white h1">
+            <dt>
+                <img width="400px" src="@Model.HinhSlideHeader" />
+            </dt>
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions btn-touch">
+                <input type="submit" value="Xóa" class="btn btn-danger" />
+            </div>
+            <div class=" col-md-12 back-to-list">
+                @Html.ActionLink("Trở lại", "Index")
+            </div>
+        }
+    </div>
+</div>

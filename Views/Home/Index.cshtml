@@ -5,6 +5,7 @@
 
 
 <!-- Start Slider -->
+
 <h1>Test</h1>
 <div id="slides-shop" class="cover-slides">
     <ul class="slides-container">
@@ -16,84 +17,56 @@
                         <h1 class="m-b-20"><strong>Chào Mừng Đến Với <br> ChanhThuStore</strong></h1>
                         <p class="m-b-40">Bạn đồng hành của mọi tiệc cưới <br> Khách hàng là thượng đế.</p>
                         <p><a class="btn hvr-hover" href="#">Mua Ngay</a></p>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li class="text-center">
-            <img src="~/Content/images/back1.jpg" alt="">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="m-b-20"><strong>Chào Mừng Đến Với <br> ChanhThuStore</strong></h1>
-                        <p class="m-b-40">Bạn đồng hành của mọi tiệc cưới <br> Khách hàng là thượng đế.</p>
-                        <p><a class="btn hvr-hover" href="#">Mua Ngay</a></p>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li class="text-center">
-            <img src="~/Content/images/back2.jpg" alt="">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="m-b-20"><strong>Chào Mừng Đến Với <br> ChanhThuStore</strong></h1>
-                        <p class="m-b-40">Bạn đồng hành của mọi tiệc cưới <br> Khách hàng là thượng đế.</p>
-                        <p><a class="btn hvr-hover" href="#">Mua Ngay</a></p>
-                    </div>
-                </div>
-            </div>
-        </li>
-    </ul>
-    <div class="slides-navigation">
-        <a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
-        <a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
-    </div>
-</div>
+=======
+<h1>TEST</h1>
+@Html.Partial("_Slider_home", ChanhThu_Store.Models.BUS.SliderBUS.DanhSachSliderHeader())
 <!-- End Slider -->
 <!-- Start Categories  -->
-<div class="categories-shop">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="shop-cat-box">
-                    <img class="img-fluid" src="~/Content/images/cate1.jpg" alt="" />
-                    <a class="btn hvr-hover" href="#">Bánh Hộp</a>
+@*<div class="categories-shop">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="shop-cat-box">
+                        <img class="img-fluid" src="~/Content/images/cate1.jpg" alt="" />
+                        <a class="btn hvr-hover" href="#">Bánh Hộp</a>
+>>>>>>> Phat
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="shop-cat-box">
-                    <img class="img-fluid" src="~/Content/images/cate2.jpg" alt="" />
-                    <a class="btn hvr-hover" href="#">Bánh Mứt</a>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="shop-cat-box">
+                        <img class="img-fluid" src="~/Content/images/cate2.jpg" alt="" />
+                        <a class="btn hvr-hover" href="#">Bánh Mứt</a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="shop-cat-box">
-                    <img class="img-fluid" src="~/Content/images/cate3.png" alt="" />
-                    <a class="btn hvr-hover" href="#">Bánh Nhập Khẩu</a>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="shop-cat-box">
+                        <img class="img-fluid" src="~/Content/images/cate3.png" alt="" />
+                        <a class="btn hvr-hover" href="#">Bánh Nhập Khẩu</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </div>*@
 <!-- End Categories -->
-
-<div class="box-add-products">
+<!-- Start Blog  -->
+<div class="new-blog">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12">
-                <div class="offer-box-products">
-                    <img class="img-fluid" src="~/Content/images/add-img-01.jpg" alt="" />
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12">
-                <div class="offer-box-products">
-                    <img class="img-fluid" src="~/Content/images/add-img-02.jpg" alt="" />
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1 class="text-capitalize" data-aos="fade-up" data-aos-easing="linear">Sản Phẩm Mới Nhất</h1>
+                    <p data-aos="fade-up" data-aos-easing="linear">Sản phẩm mới nhập về của Chánh Thu Store</p>
                 </div>
             </div>
         </div>
+        @*@Html.Partial("_SanPham_MoiNhat", ChanhThu_Store.Models.BUS.SanPhamBUS.Top3SPMoi())*@
+        @{
+            Html.RenderAction("SanPhamMoiNhat", "Home");
+        }
     </div>
 </div>
+<!-- End Blog  -->
+@Html.Partial("_Banner", ChanhThu_Store.Models.BUS.BannerBUS.DanhSachBanner())
 
 <!-- Start Products  -->
 <div class="products-box">
@@ -101,192 +74,41 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="title-all text-center">
-                    <h1>Bánh & Kẹo</h1>
-                    <p>Chất lượng hàng đầu chúng tôi số 2 không ai số 1</p>
+                    <h1 class="text-capitalize" data-aos="fade-up" data-aos-easing="linear">Sản phẩm nổi bật</h1>
+                    <p data-aos="fade-up" data-aos-easing="linear">Chất lượng hàng đầu chúng tôi số 2 không ai số 1</p>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12 filter-mobile">
                 <div class="special-menu text-center">
                     <div class="button-group filter-button-group">
-                        <button class="active" data-filter="*">Tất Cả</button>
-                        <button data-filter=".top-featured">Nổi Bật</button>
-                        <button data-filter=".best-seller">Bán Chạy</button>
+                        <button class="active text-capitalize" data-filter="*" data-aos="fade-up" data-aos-easing="linear">Tất Cả</button>
+                        <button class="text-capitalize" data-filter=".best-seller" data-aos="fade-up" data-aos-delay="100" data-aos-easing="linear">Mua nhiều nhất</button>
+                        <button class="text-capitalize" data-filter=".top-featured" data-aos="fade-up" data-aos-delay="200" data-aos-easing="linear">Ấn tượng</button>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="row special-list" data-aos="fade-up" data-aos-delay="600" data-aos-easing="linear">
 
-        <div class="row special-list">
-            <div class="col-lg-3 col-md-6 special-grid best-seller">
-                <div class="products-single fix">
-                    <div class="box-img-hover">
-                        <div class="type-lb">
-                            <p class="sale">Mới</p>
-                        </div>
-                        <img src="~/Content/images/banh1.png" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                            </ul>
-                            <a class="cart" href="#">Thêm Vào Giỏ</a>
-                        </div>
-                    </div>
-                    <div class="why-text">
-                        <h4>Bánh Trứng</h4>
-                        <h5> $7.79</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 special-grid top-featured">
-                <div class="products-single fix">
-                    <div class="box-img-hover">
-                        <div class="type-lb">
-                            <p class="sale">Mới</p>
-                        </div>
-                        <img src="~/Content/images/banh1.png" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                            </ul>
-                            <a class="cart" href="#">Thêm Vào Giỏ</a>
-                        </div>
-                    </div>
-                    <div class="why-text">
-                        <h4>Bánh Trứng</h4>
-                        <h5> $7.79</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 special-grid top-featured">
-                <div class="products-single fix">
-                    <div class="box-img-hover">
-                        <div class="type-lb">
-                            <p class="sale">Mới</p>
-                        </div>
-                        <img src="~/Content/images/banh1.png" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                            </ul>
-                            <a class="cart" href="#">Thêm Vào Giỏ</a>
-                        </div>
-                    </div>
-                    <div class="why-text">
-                        <h4>Bánh Trứng</h4>
-                        <h5> $7.79</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 special-grid best-seller">
-                <div class="products-single fix">
-                    <div class="box-img-hover">
-                        <div class="type-lb">
-                            <p class="sale">Mới</p>
-                        </div>
-                        <img src="~/Content/images/banh1.png" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                            </ul>
-                            <a class="cart" href="#">Thêm Vào Giỏ</a>
-                        </div>
-                    </div>
-                    <div class="why-text">
-                        <h4>Bánh Trứng</h4>
-                        <h5> $7.79</h5>
-                    </div>
-                </div>
-            </div>
+            @*@Html.Partial("_SanPham_NoiBat", ChanhThu_Store.Models.BUS.SanPhamBUS.SPNoiBat())*@
+            @{
+                Html.RenderAction("SanPhamNoiBat", "Home");
+            }
+            @{
+                Html.RenderAction("SanPhamBanChay", "Home");
+            }
+
+            @*@Html.Partial("_SanPham_BanChay", ChanhThu_Store.Models.BUS.SanPhamBUS.SPBanChay())*@
 
 
         </div>
     </div>
 </div>
 <!-- End Products  -->
-<!-- Start Blog  -->
-<div class="latest-blog">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="title-all text-center">
-                    <h1>Sản phẩm Mới Nhất</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 col-lg-4 col-xl-4">
-                <div class="blog-box">
-                    <div class="blog-img">
-                        <img class="img-fluid" src="~/Content/images/latest-blog1.jpg" alt="" />
-                    </div>
-                    <div class="blog-content">
-                        <div class="title-blog">
-                            <h3>Bánh Custas</h3>
-                            <p>
-                                Bánh Custas kem trứng Orion là sản phẩm từ lâu đã được đông đảo người tiêu dùng yêu thích, được làm từ các thành phần tự nhiên như: trứng, bột mì, đường, dầu thực vật... mang đến hương vị bánh thơm ngon, hấp dẫn.
-                            </p>
-                        </div>
-                        <ul class="option-blog">
-                            <li><a href="#"><i class="far fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fas fa-eye"></i></a></li>
-                            <li><a href="#"><i class="far fa-comments"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 col-xl-4">
-                <div class="blog-box">
-                    <div class="blog-img">
-                        <img class="img-fluid" src="~/Content/images/latest-blog1.jpg" alt="" />
-                    </div>
-                    <div class="blog-content">
-                        <div class="title-blog">
-                            <h3>Bánh Custas</h3>
-                            <p>
-                                Bánh Custas kem trứng Orion là sản phẩm từ lâu đã được đông đảo người tiêu dùng yêu thích, được làm từ các thành phần tự nhiên như: trứng, bột mì, đường, dầu thực vật... mang đến hương vị bánh thơm ngon, hấp dẫn.
-                            </p>
-                        </div>
-                        <ul class="option-blog">
-                            <li><a href="#"><i class="far fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fas fa-eye"></i></a></li>
-                            <li><a href="#"><i class="far fa-comments"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 col-xl-4">
-                <div class="blog-box">
-                    <div class="blog-img">
-                        <img class="img-fluid" src="~/Content/images/latest-blog1.jpg" alt="" />
-                    </div>
-                    <div class="blog-content">
-                        <div class="title-blog">
-                            <h3>Bánh Custas</h3>
-                            <p>
-                                Bánh Custas kem trứng Orion là sản phẩm từ lâu đã được đông đảo người tiêu dùng yêu thích, được làm từ các thành phần tự nhiên như: trứng, bột mì, đường, dầu thực vật... mang đến hương vị bánh thơm ngon, hấp dẫn.
-                            </p>
-                        </div>
-                        <ul class="option-blog">
-                            <li><a href="#"><i class="far fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fas fa-eye"></i></a></li>
-                            <li><a href="#"><i class="far fa-comments"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-<!-- End Blog  -->
+@section scripts{
+    <script>
+        YeuThichNgoai(2);
+    </script>
+}

@@ -1,9 +1,0 @@
-﻿@model IEnumerable<ChanhThu_Store.Models.DanhMucCon>
-@foreach (var item in Model)
-{
-    <a href="/cua-hang/danh-muc-con/id=@item.MaDanhMucCon" data-code="@item.MaDanhMucCon" class="danh-muc-con list-group-item list-group-item-action active">
-        @item.TenDanhMucCon
-        @*<small class="text-muted">(50)</small>*@
-    </a>
-}
-
